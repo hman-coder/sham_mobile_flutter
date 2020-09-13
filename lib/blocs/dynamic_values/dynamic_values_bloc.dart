@@ -6,18 +6,18 @@ import 'package:sham_mobile/repositories/dynamic_values_repository.dart';
 /// Provides constant values based on app changes such as
 /// user priority score changes.
 class DynamicValuesBloc {
-  DynamicValuesRepository repo;
+  DynamicValuesRepository _repo;
 
-  DynamicValuesBloc() : repo = DynamicValuesRepository();
+  DynamicValuesBloc() : _repo = DynamicValuesRepository();
 
   String _getReserveBookDays(BuildContext context) {
     int priorityPoints = User.singleton.priorityPoints;
     if(priorityPoints < 50) {
-      return repo.lowPrioBookDays;
+      return _repo.lowPrioBookDays;
     } else if(priorityPoints < 100) {
-      return repo.medPrioBookDays;
+      return _repo.medPrioBookDays;
     } else {
-      return repo.highPrioBookDays;
+      return _repo.highPrioBookDays;
     }
   }
 
