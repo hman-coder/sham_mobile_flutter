@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "946668953531",
+    "firebase_url": "https://sham-bookstore-ff9dc.firebaseio.com",
+    "project_id": "sham-bookstore-ff9dc",
+    "storage_bucket": "sham-bookstore-ff9dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946668953531:android:d1dd0daefc46899ab0ee9e",
+        "android_client_info": {
+          "package_name": "com.example.sham_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946668953531-nsv712i9149hqu8r1938iqtog2h1amv9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sham_mobile",
+            "certificate_hash": "25aaed5f27e417318f9d65d0f03ca9108abda67b"
+          }
+        },
+        {
+          "client_id": "946668953531-t7vn4nete87mvk45sr4a8ucrg768pn5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT6w0KhIZgHTtKHmVXB25uFsvza01WHFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946668953531-t7vn4nete87mvk45sr4a8ucrg768pn5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
