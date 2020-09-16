@@ -31,6 +31,7 @@ class ShamLocalizations {
           'your search by selecting elements from the lists below',
       'age_group' : 'Age group',
       'age_groups' : 'Age groups',
+
       'authors' : 'Authors',
 
       // B
@@ -50,7 +51,7 @@ class ShamLocalizations {
       'comments' : 'Comments',
       'contact_us' : 'Contact us',
       'change_language' : 'Change language',
-      'create_account' : 'Create account',
+      'create_new_account' : 'Create a new account',
       'create_account_to_complete_action' : 'You have to create an account to perform this action',
 
       // E
@@ -65,6 +66,7 @@ class ShamLocalizations {
       'error_report_button' : 'Report',
 
       //F
+      'facebook_sign_in' : 'Facebook account',
       'family' : 'family',
       'family_info' : 'Family information',
       'frequency' : 'Frequency',
@@ -72,12 +74,10 @@ class ShamLocalizations {
 
       // G
       'get_book' : 'Get book now',
+      'google_sign_in' : 'Google account',
 
       // H
-      'hide' : 'إخفاء',
-
-      // L
-      'login' : 'Login',
+      'hide' : 'hide',
 
       // M
       'more_info' : 'More info...',
@@ -111,8 +111,13 @@ class ShamLocalizations {
       'search_author_hint': 'Search authors',
       'search_book_hint': 'Search book title',
       'session_duration' : 'Session duration',
+      'sham_sign_in' : 'or sign in with Sham',
+      'sign_in' : 'Login',
+      'sign_in_description' : 'login description',
+      'sign_in_or_create_new_account' : 'Sign in or create a new account',
       'sign_up' : 'Sign up',
       'similar_books' : 'Similar books',
+      'social_sign_in' : 'Sign in with',
       'special_categories' : 'Special categories',
       'submit' : 'Submit',
 
@@ -133,6 +138,7 @@ class ShamLocalizations {
       'to_learn_more_about_priority' : 'To learn more about priority score, press "Priority score" below',
 
       // U
+      'use_app_without_account' : 'Use the app without an account',
       'user_profile' : 'User profile',
       'username' : 'Username',
 
@@ -180,9 +186,10 @@ class ShamLocalizations {
       'comments' : 'التعليقات',
       'contact_us' : 'اتصل بنا',
       'change_language' : 'تغيير اللغة',
-      'create_account' : 'إنشاء حساب',
+      'create_new_account' : 'إنشاء حساب جديد',
 
       //F
+      'facebook_sign_in' : 'حساب Facebook',
       'family' : 'العائلة',
       'family_info' : 'معلومات العائلة',
       'frequency' : 'التكرار',
@@ -201,12 +208,10 @@ class ShamLocalizations {
 
       // G
       'get_book' : 'احصل على الكتاب',
+      'google_sign_in' : 'حساب Google',
 
       // H
       'hide' : 'إخفاء',
-
-      // L
-      'login' : 'تسجيل الدخول',
 
       // M
       'more_info' : 'المزيد من المعلومات...',
@@ -240,8 +245,13 @@ class ShamLocalizations {
       'search_author_hint': 'أدخل اسم كاتب...',
       'search_book_hint': 'أدخل عنوان كتاب...',
       'session_duration' : 'مدة الجلسة',
+      'sham_sign_in' : 'أو عن طريق حساب شام',
+      'sign_in' : 'تسجيل الدخول',
+      'sign_in_description' : 'سيتيح لك إنشاء حساب على التطبيق القيام بعمليات شراء الكتب أو حجز مكان في نوادي الكتاب من منزلك بالإضافة إلى ميزات أخرى كثيرة!',
+      'sign_in_or_create_new_account' : 'إنشاء حساب جديد أو تسجيل الدخول',
       'sign_up' : 'إنشاء حساب',
       'similar_books' : 'كتب مشابهة',
+      'social_sign_in' : 'تسجيل الدخول عن طريق',
       'special_categories' : 'التصنيفات المميزة',
       'submit' : 'تأكيد',
 
@@ -262,6 +272,7 @@ class ShamLocalizations {
       'to_learn_more_about_priority' : 'اضغط على "نقاط الأولوية" أدناه لتعرف المزيد عن نقاط الأولوية',
 
       // U
+      'use_app_without_account' : 'متابعة استخدام التطبيق دون حساب',
       'user_profile' : 'ملف المستخدم',
       'username' : 'اسم المستخدم',
 

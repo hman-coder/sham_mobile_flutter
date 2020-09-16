@@ -209,7 +209,7 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
   }
 
   Widget _buildProperWidgetForState(BooksState state, BuildContext context) {
-    if(state is LoadingState) return CircularProgressIndicator();
+    if(state is LoadingState) return ConstrainedBox(constraints: BoxConstraints(maxWidth: 25, maxHeight: 25), child: CircularProgressIndicator());
     if(state is EmptyBookListState) return Center(child: Text(ShamLocalizations.of(context).getValue("no_books_found")));
     return ExceptionWidget(text: ShamLocalizations.of(context).getValue("error_while_building_ui"));
   }
