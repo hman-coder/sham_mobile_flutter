@@ -54,6 +54,7 @@ class FacebookSignInApi extends SignInApi{
       print(profile.toString());
       user.firstName = profile['first_name'];
       user.lastName = profile['last_name'];
+      user.email = profile['email'];
       user.gender = GenderConverters.fromString(profile['gender']);
       user.birthday = _dateTimeFromFacebookBirthday(profile['birthday']);
 

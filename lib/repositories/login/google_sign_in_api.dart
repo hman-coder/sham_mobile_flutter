@@ -20,7 +20,6 @@ class GoogleSignInApi extends SignInApi {
     _initializeGoogleSignInInstance();
     await _googleSignIn.signOut();
     GoogleSignInAccount acc = await _googleSignIn.signIn();
-
     if(acc == null)
       return null;
 
@@ -32,7 +31,8 @@ class GoogleSignInApi extends SignInApi {
         headers: await _googleSignIn.currentUser.authHeaders);
 
     return _extractUserFromResponse(response)
-      ..googleAccessToken = auth.accessToken;
+      ..googleAccessToken = auth.accessToken
+      ..email = acc.email;
   }
 
   void _initializeGoogleSignInInstance() async {
