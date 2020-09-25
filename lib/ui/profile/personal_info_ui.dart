@@ -100,7 +100,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                     child: obscureInfo ? Container()
                         : ListTile(
                       title: Text(localizations.getValue("family")),
-                      subtitle: Text(widget.user.family.name),
+                      // subtitle: Text(widget.user.family.name),
                     )
                 ),
               ],

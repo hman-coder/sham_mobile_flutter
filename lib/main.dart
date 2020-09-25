@@ -51,6 +51,7 @@ class Sham extends StatelessWidget {
                   const Locale('ar')
                 ],
                 theme: ThemeData(
+                  fontFamily: Provider.of<DefaultValues>(context).mainFontFamily,
                     bottomAppBarTheme: BottomAppBarTheme(
                       color: Colors.black,
                     ),

@@ -7,7 +7,7 @@ import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'package:sham_mobile/widgets/black_linear_gradient_background.dart';
+import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/cancel_button.dart';
 import 'package:sham_mobile/widgets/comment_widget.dart';
 import 'package:sham_mobile/widgets/default_values.dart';

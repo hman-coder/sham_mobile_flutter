@@ -5,6 +5,8 @@ class DefaultValues {
 
   final Color maroon = const Color(0xff8C0000);
 
+  final String mainFontFamily = 'Harmattan';
+
   final TextStyle sliverAppBarTextStyleWithShadow = TextStyle(
     shadows: [Shadow(
         color: Colors.black,

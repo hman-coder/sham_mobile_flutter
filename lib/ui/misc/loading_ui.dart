@@ -2,8 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'package:sham_mobile/ui/login/login_intro.dart';
 import 'package:sham_mobile/blocs/loading.dart';
+import 'package:sham_mobile/ui/login/login_ui.dart';
 import 'package:sham_mobile/ui/main/main_ui.dart';
 
 class LoadingUI extends StatelessWidget {
@@ -36,7 +36,7 @@ class LoadingUI extends StatelessWidget {
             return MainUI();
 
           else
-            return LoginIntroUI();
+            return LoginUI();
         }
       )
     );
@@ -44,7 +44,7 @@ class LoadingUI extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) {
     return GestureDetector(
-        onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginIntroUI())),
+        onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginUI())),
         child:  _buildMainComponents()
     );
   }

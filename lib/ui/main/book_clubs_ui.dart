@@ -6,7 +6,7 @@ import 'package:sham_mobile/helpers/string_helper.dart';
 import 'package:sham_mobile/models/activity.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/ui/misc/drawer_ui.dart';
-import 'package:sham_mobile/widgets/black_linear_gradient_background.dart';
+import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
 
