@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sham_mobile/providers/sham_localizations.dart';
 
 class PhoneAuthUI extends StatefulWidget {
   @override
@@ -16,14 +17,18 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
+      appBar: AppBar(
+        title: Text(ShamLocalizations.of(context).getValue('phone_number'))
+      ),
 
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 150),
+                  constraints: BoxConstraints(maxWidth: 200),
                   child: TextField(
                     keyboardType: TextInputType.phone,
                     onChanged: (text) => _number = text,

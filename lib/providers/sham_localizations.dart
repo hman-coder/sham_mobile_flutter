@@ -117,6 +117,7 @@ class ShamLocalizations {
       'sign_up' : 'Sign up',
       'similar_books' : 'Similar books',
       'sign_in_with' : 'Sign in with',
+      'skip' : 'Skip',
       'special_categories' : 'Special categories',
       'submit' : 'Submit',
 
@@ -250,6 +251,7 @@ class ShamLocalizations {
       'sign_up' : 'إنشاء حساب',
       'similar_books' : 'كتب مشابهة',
       'sign_in_with' : 'تسجيل الدخول عن طريق',
+      'skip' : 'تخطي',
       'special_categories' : 'التصنيفات المميزة',
       'submit' : 'تأكيد',
 

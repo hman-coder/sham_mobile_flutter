@@ -38,9 +38,11 @@ class LoginUIState extends State<LoginUI> {
             child: Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                  title: Text(
-                      ShamLocalizations.of(context).getValue('sign_in')
-                  )
+                  title: Text(ShamLocalizations.of(context).getValue('sign_in'),
+                    style: TextStyle(
+                        fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize
+                    ),
+                  ),
               ),
 
               body: Stack(
@@ -185,14 +187,15 @@ class SignInButton extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) => Consumer<DefaultValues>(
         builder: (context, values, child) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2.0),
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
           child: MaterialButton(
             disabledColor: Colors.black.withOpacity(0.1),
+            disabledTextColor: Colors.grey,
             onPressed: state is LoadingState
                 ? null
                 : () => this.onPressed(context),
 
-            color: color.withOpacity(0.5),
+            color: color.withOpacity(0.6),
 
             shape: Border(
               top: BorderSide(color: Colors.white),

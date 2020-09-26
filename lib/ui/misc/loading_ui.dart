@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/blocs/loading.dart';
-import 'package:sham_mobile/ui/login/login_ui.dart';
 import 'package:sham_mobile/ui/main/main_ui.dart';
 
 class LoadingUI extends StatelessWidget {
@@ -15,36 +14,24 @@ class LoadingUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoadingBloc>.value(
-      value: _bloc,
-      child: BlocBuilder<LoadingBloc, LoadingState>(
-        builder: (context, state) {
-          if (state is InitialState)
-            return Directionality(
-              textDirection: ShamLocalizations.of(context).getDirection(),
-              child: Scaffold(
-                  resizeToAvoidBottomInset: false,
-                  appBar: AppBar(
-                    title: Text(ShamLocalizations.of(context).getValue('title')),
-                    centerTitle: true,
-                  ),
-                  body: _buildBody(context)
-              ),
-            );
-
-          else if (state is IntroAlreadyShownState)
-            return MainUI();
-
-          else
-            return LoginUI();
-        }
-      )
-    );
+    Future.delayed(Duration(seconds: 3), () =>
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MainUI())));
+    return Directionality(
+            textDirection: ShamLocalizations.of(context).getDirection(),
+            child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                appBar: AppBar(
+                  title: Text(ShamLocalizations.of(context).getValue('title')),
+                  centerTitle: true,
+                ),
+                body: _buildBody(context)
+            ),
+          );
   }
 
   Widget _buildBody(BuildContext context) {
     return GestureDetector(
-        onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginUI())),
+        onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainUI())),
         child:  _buildMainComponents()
     );
   }
