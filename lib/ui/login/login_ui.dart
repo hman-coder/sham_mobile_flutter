@@ -11,7 +11,7 @@ import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/labeled_divider.dart';
 
-import 'phone_auth.dart';
+import 'phone_auth_ui.dart';
 
 class LoginUI extends StatefulWidget {
   @override

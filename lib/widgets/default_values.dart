@@ -30,4 +30,6 @@ class DefaultValues {
   final double largeTextSize = 20;
 
   final double mediumTextSize = 18;
+
+  final double smallTextSize = 16;
 }

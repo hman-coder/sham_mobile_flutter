@@ -31,7 +31,7 @@ class ShamLocalizations {
           'your search by selecting elements from the lists below',
       'age_group' : 'Age group',
       'age_groups' : 'Age groups',
-
+      'a_text_will_be_sent' : 'We will send a text message to the number you entered to validate your phone number.',
       'authors' : 'Authors',
 
       // B
@@ -49,10 +49,14 @@ class ShamLocalizations {
       'clubs' : 'Clubs',
       'comma' : ',',
       'comments' : 'Comments',
+      'confirm' : 'Confirm',
       'contact_us' : 'Contact us',
       'change_language' : 'Change language',
       'create_new_account' : 'Create a new account',
       'create_account_to_complete_action' : 'You have to create an account to perform this action',
+
+      // D
+      'done' : 'Done',
 
       // E
       'edit' : 'Edit',
@@ -60,11 +64,15 @@ class ShamLocalizations {
       'edit_name' : 'Edit name',
       'edit_phone_number' : 'Edit phone number',
       'edit_address' : 'Edit address',
+      'enter_phone_auth_pin_code' : 'Please enter the 6-digit code that was sent to the number you have submitted.',
+
       'enter_review' : 'Enter review',
       'error_report_message' : 'Please report this exception by pressing the button below. This requires an internet connection.',
       'error_while_building_ui' : 'An error occurred while building your interface.',
       'error_report_button' : 'Report',
 
+      'error_network' : 'A network error has occurred. Check your internet connection',
+      'error_unknown' : 'An unknown error has occurred.',
       //F
       'facebook_sign_in' : 'Facebook account',
       'family' : 'family',
@@ -78,6 +86,9 @@ class ShamLocalizations {
 
       // H
       'hide' : 'hide',
+
+      // I
+      'invalid_code': 'Invalid code',
 
       // M
       'more_info' : 'More info...',
@@ -95,7 +106,11 @@ class ShamLocalizations {
       'participants' : 'Participants',
       'personal_info' : 'Personal information',
       'phone_number' : 'Phone number',
-      'press_to_reivew_book' : 'Press here to review book',
+      'phone_number_authentication' : 'Phone number authentication',
+      'phone_number_benefits' : 'Adding a phone number to your account will allow you to benefit from services such as having books delivered to your home',
+      'please_enter_phone_number' : 'Please provide your phone number',
+      'please_enter_phone_number_guide' : 'Pressing the left field and select your country from the list; enter your phone number below; then press "Verify number"',
+      'press_to_review_book' : 'Press here to review book',
       'press_item_to_edit' : 'Press an item to edit it',
       'price' : 'Price',
       'priority_score' : 'Priority score',
@@ -103,6 +118,7 @@ class ShamLocalizations {
       'priority_score_high' : 'High',
       'priority_score_low' : 'Low',
       'priority_score_mid' : 'Mid',
+      'provide_valid_number' : 'You must provide a valid number',
 
       // S
       'search' : 'Search',
@@ -110,6 +126,7 @@ class ShamLocalizations {
       'saved' : 'Saved',
       'search_author_hint': 'Search authors',
       'search_book_hint': 'Search book title',
+      'select_country' : 'Select your country',
       'session_duration' : 'Session duration',
       'sign_in' : 'Login',
       'sign_in_description' : 'login description',
@@ -143,6 +160,7 @@ class ShamLocalizations {
       'username' : 'Username',
 
       // V
+      'verify_number' : 'Verify number',
       'view_list' : 'View list',
       'view_more' : 'View more',
     },
@@ -166,6 +184,7 @@ class ShamLocalizations {
           'عن طريق إضافتها أو إزالتها من القوائم أدناه',
       'age_group' : 'الفئة العمرية',
       'age_groups' : 'الفئات العمرية',
+      'a_text_will_be_sent' : 'سنقوم بإرسال رسالة إلى رقم الهاتف الذي قمت بإدخاله للتأكد من صحة الرقم.',
       'authors' : 'الكُتّاب',
 
       // B
@@ -184,9 +203,13 @@ class ShamLocalizations {
       'clubs' : 'النوادي',
       'comma' : '،',
       'comments' : 'التعليقات',
+      'confirm' : 'تأكيد',
       'contact_us' : 'اتصل بنا',
       'change_language' : 'تغيير اللغة',
       'create_new_account' : 'إنشاء حساب جديد',
+
+      // D
+      'done' : 'تم',
 
       //F
       'facebook_sign_in' : 'حساب Facebook',
@@ -201,10 +224,15 @@ class ShamLocalizations {
       'edit_username' : 'تعديل الاسم',
       'edit_phone_number' : 'تعديل رقم الهاتف',
       'edit_address' : 'تعديل العنوان',
+      'enter_phone_number' : 'أدخل رقم الهاتف',
       'enter_review' : 'أدخل التقييم',
       'error_report_message' : 'نرجو التبليغ عن هذا الخطأ عن طريق الضغط على الزر أدناه. يتطلب ذلك اتصالاً بالإنترنت.',
       'error_while_building_ui' : 'حصل خطأ أثناء بناء الواجهة',
       'error_report_button' : 'التبليغ',
+      'enter_phone_auth_pin_code' : 'يُرجى إدخال الرمز المكون من ستة أرقام المتضمن في الرسالة التي ستصلك.',
+
+      'error_network' : 'حدث خطأ في الشبكة. نرجوا التأكد من وجود اتصال بالإنترنت',
+      'error_unknown' : 'حدث خطأ غير معروف.',
 
       // G
       'get_book' : 'احصل على الكتاب',
@@ -212,6 +240,9 @@ class ShamLocalizations {
 
       // H
       'hide' : 'إخفاء',
+
+      // I
+      'invalid_code': 'رمز غير صحيح',
 
       // M
       'more_info' : 'المزيد من المعلومات...',
@@ -230,13 +261,18 @@ class ShamLocalizations {
       'participants' : 'المشتركون',
       'price' : 'السعر',
       'phone_number' : 'رقم الهاتف',
-      'press_to_reivew_book' : 'اضغط هنا لإضافة تقييم',
+      'phone_number_authentication' : 'التحقق من رقم الهاتف',
+      'phone_number_benefits' : 'سيتيح لك إضافة رقم هاتفك الاستفادة من خدماتناالإضافية كتوصيل الكتب إلى منزلك',
+      'please_enter_phone_number' : 'يرجى إدخال رقم هاتفك',
+      'please_enter_phone_number_guide' : 'اضغط على الحقل الأيسر لاختيار بلد من القائمة، ثم قم بإدخال رقم هاتفك، ثم اضغط "تأكيد الرقم"',
+      'press_to_review_book' : 'اضغط هنا لإضافة تقييم',
       'press_item_to_edit' : 'اضغط على عنصر لتعديله',
       'priority_score' : 'حالة الأولوية',
       'priority_score_obscured' : 'وضع الأولوية محجوب',
       'priority_score_high' : 'مرتفعة',
       'priority_score_low' : 'متدنية',
       'priority_score_mid' : 'متوسطة',
+      'provide_valid_number' : 'يرجى إدخال رقم هاتف صحيح',
 
       // S
       'save' : 'حفظ',
@@ -244,6 +280,7 @@ class ShamLocalizations {
       'search' : 'بحث',
       'search_author_hint': 'أدخل اسم كاتب...',
       'search_book_hint': 'أدخل عنوان كتاب...',
+      'select_country' : 'اختر بلدك',
       'session_duration' : 'مدة الجلسة',
       'sign_in' : 'تسجيل الدخول',
       'sign_in_description' : 'سيتيح لك إنشاء حساب على التطبيق القيام بعمليات شراء الكتب أو حجز مكان في نوادي الكتاب من منزلك بالإضافة إلى ميزات أخرى كثيرة!',
@@ -277,6 +314,7 @@ class ShamLocalizations {
       'username' : 'اسم المستخدم',
 
       // V
+      'verify_number' : 'تأكيد الرقم',
       'view_list' : 'استعراض القائمة',
       'view_more' : 'استعراض المزيد',
 

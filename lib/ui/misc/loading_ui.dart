@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/blocs/loading.dart';
+import 'package:sham_mobile/ui/login/phone_auth_ui.dart';
 import 'package:sham_mobile/ui/main/main_ui.dart';
 
 class LoadingUI extends StatelessWidget {
@@ -14,8 +15,8 @@ class LoadingUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3), () =>
-      Navigator.push(context, MaterialPageRoute(builder: (context) => MainUI())));
+    Future.delayed(Duration(seconds: 4), () =>
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PhoneAuthUI())));
     return Directionality(
             textDirection: ShamLocalizations.of(context).getDirection(),
             child: Scaffold(

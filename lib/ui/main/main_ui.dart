@@ -60,7 +60,7 @@ class _MainUIState extends State<MainUI> {
   }
 
   _showLoginUI(BuildContext context) async {
-    await Future.delayed(Duration(seconds: 2),() {
+    await Future.delayed(Duration(seconds: 4),() {
       if(! _loginIsShown) {
         _loginIsShown = true;
         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUI()));
