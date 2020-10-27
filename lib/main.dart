@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:sham_mobile/blocs/bloc_observer.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/bloc_observer.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'package:sham_mobile/ui/misc/loading_ui.dart';
+import 'package:sham_mobile/loading/widget/loading_ui.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 
-import 'blocs/dynamic_values/dynamic_values_bloc.dart';
+import 'dynamic_values/dynamic_values_bloc.dart';
 
 void main(){
   Bloc.observer = ShamBlocObserver();
