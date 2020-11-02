@@ -1,8 +1,18 @@
+import 'package:country_pickers/country.dart';
+
 class PhoneAuthState {}
 
-class InitialState extends PhoneAuthState{}
+class InitialState extends PhoneAuthState{
+  final Country country;
 
-class CountryChangedState extends PhoneAuthState {}
+  InitialState(this.country);
+}
+
+class CountryChangedState extends PhoneAuthState {
+  final Country country;
+
+  CountryChangedState(this.country);
+}
 
 class EmptyPhoneNumberState extends PhoneAuthState{}
 

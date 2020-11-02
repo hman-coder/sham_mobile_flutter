@@ -7,7 +7,7 @@ class ActivitiesUI extends StatelessWidget{
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('activities')),
+          title: Text(ShamLocalizations.getString(context, 'activities')),
         ),
         body: Center(child: Text('Activities')));
   }

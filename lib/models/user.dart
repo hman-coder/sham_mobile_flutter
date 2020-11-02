@@ -1,17 +1,9 @@
 import 'gender.dart';
 
 class User {
-  // Static/Current user
 
-  static User _instance;
-
-  static User get singleton {
-    if (_instance == null) buildTestUser();
-    return _instance;
-  }
-
-  static buildTestUser() {
-    _instance = User(
+  static User buildTestUser() {
+    return User(
       image: "assets/images/hisham.png",
       username: 'هشام صديق',
       id: 2,

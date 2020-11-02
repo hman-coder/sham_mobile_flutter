@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/book_clubs/repository/book_clubs_repository.dart';
+import 'package:sham_mobile/book_clubs/repository/book_clubs_repository.dart';
 
 import 'book_clubs_event.dart';
 import 'book_clubs_state.dart';

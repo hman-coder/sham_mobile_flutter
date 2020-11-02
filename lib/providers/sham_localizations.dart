@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 class ShamLocalizations {
@@ -8,6 +8,10 @@ class ShamLocalizations {
 
   static ShamLocalizations of(BuildContext context) {
     return Localizations.of<ShamLocalizations>(context, ShamLocalizations);
+  }
+
+  static String getString(BuildContext context, String key) {
+    return ShamLocalizations.of(context).getValue(key);
   }
 
   static Map<String, Map<String, String>> _localizedValues = {
@@ -107,6 +111,7 @@ class ShamLocalizations {
       'personal_info' : 'Personal information',
       'phone_number' : 'Phone number',
       'phone_number_authentication' : 'Phone number authentication',
+      'phone_number_description' : 'Phone number',
       'phone_number_benefits' : 'Adding a phone number to your account will allow you to benefit from services such as having books delivered to your home',
       'please_enter_phone_number' : 'Please provide your phone number',
       'please_enter_phone_number_guide' : 'Pressing the left field and select your country from the list; enter your phone number below; then press "Verify number"',
@@ -231,7 +236,7 @@ class ShamLocalizations {
       'error_report_button' : 'التبليغ',
       'enter_phone_auth_pin_code' : 'يُرجى إدخال الرمز المكون من ستة أرقام المتضمن في الرسالة التي ستصلك.',
 
-      'error_network' : 'حدث خطأ في الشبكة. نرجوا التأكد من وجود اتصال بالإنترنت',
+      'error_network' : 'حدث خطأ في الشبكة. نرجو التأكد من وجود اتصال بالإنترنت',
       'error_unknown' : 'حدث خطأ غير معروف.',
 
       // G

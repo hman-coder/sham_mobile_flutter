@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
@@ -35,29 +36,30 @@ class _DrawerUIState extends State<DrawerUI> {
 
   List<Widget> _buildAllElements(BuildContext context){
     List<Widget> ret = List()..add(_buildDrawerHeader(context));
-    if (User.singleton != null) ret.addAll(_buildDrawerUserItems(context));
+    if (context.bloc<UserBloc>() != null) ret.addAll(_buildDrawerUserItems(context));
     ret.addAll(_buildDrawerGlobalItems(context));
     return ret;
   }
 
   Widget _buildDrawerHeader(BuildContext context) {
+
     return DrawerHeader(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             CircleAvatar(
-                backgroundImage: User.singleton != null ?
-                AssetImage(User.singleton.image) :
+                backgroundImage: context.bloc<UserBloc>().user.id != 0 ?
+                AssetImage(context.bloc<UserBloc>().user.image) :
                 AssetImage('assets/images/profile_picture.png'),
                 radius: 35
             ),
             Container(
                 margin: EdgeInsets.only(top: 10, right: 10),
                 child: GestureDetector(
-                    onTap: User.singleton == null ? null // TODO: ADD LISTENER TO CREATE ACCOUNT
+                    onTap: context.bloc<UserBloc>().user.id == 0 ? null // TODO: ADD LISTENER TO CREATE ACCOUNT
                         : null,
-                    child: Text(User.singleton != null ? User.singleton.username :
-                    ShamLocalizations.of(context).getValue('create_account'),
+                    child: Text(context.bloc<UserBloc>().user.id != 0 ? context.bloc<UserBloc>().user.username :
+                    ShamLocalizations.getString(context, 'create_account'),
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Arslan',
@@ -76,7 +78,7 @@ class _DrawerUIState extends State<DrawerUI> {
 
   List<Widget> _buildDrawerUserItems(BuildContext context) {
     return <Widget>[
-      _buildListTile(context, 'personal_info', Icons.person, PersonalInfoUI(user: User.singleton)),
+      _buildListTile(context, 'personal_info', Icons.person, PersonalInfoUI(user: context.bloc<UserBloc>().user)),
       _buildListTile(context, 'family_info', Icons.group, FamilyInfoUI()),
       _buildListTile(context, 'account', Icons.local_atm, AccountInfoUI()),
       Divider(
@@ -101,7 +103,7 @@ class _DrawerUIState extends State<DrawerUI> {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => route));
         },
-        title: Text(ShamLocalizations.of(context).getValue(key),
+        title: Text(ShamLocalizations.getString(context, key),
             textDirection: ShamLocalizations.of(context).getDirection(),
             style: TextStyle(
                 color: Colors.white,

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:sham_mobile/models/gender.dart';
 import 'package:sham_mobile/models/user.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/login/repository/sign_in_api.dart';
+import 'package:sham_mobile/login/repository/sign_in_api.dart';
 import 'package:http/http.dart' as http;
 
 class FacebookSignInApi extends SignInApi{

@@ -5,14 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:sham_mobile/dynamic_values/dynamic_values_bloc.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
-import 'package:sham_mobile/models/user.dart';
+import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/view_book/bloc/view_book_bloc_barrel.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/cancel_button.dart';
 import 'package:sham_mobile/widgets/comment_widget.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
-import 'package:sham_mobile/blocs/view_book.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
 import 'package:sham_mobile/widgets/sign_up_alert_dialog.dart';
 
@@ -49,7 +48,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      ShamLocalizations.of(context).getValue('comments'),
+                      ShamLocalizations.getString(context, 'comments'),
                       style: TextStyle(fontSize: 22),
                     ),
                   ),
@@ -142,7 +141,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
             child: Text(
-              ShamLocalizations.of(context).getValue('similar_books'),
+              ShamLocalizations.getString(context, 'similar_books'),
               style: TextStyle(
                   fontSize: 18
               ),
@@ -196,7 +195,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                ShamLocalizations.of(context).getValue('rating'),
+                ShamLocalizations.getString(context, 'rating'),
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -241,7 +240,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
 
             Consumer<ViewBookBloc>(
               builder: (context, value, child) => FlatButton(
-                  child: Text(ShamLocalizations.of(context).getValue('press_to_reivew_book'),
+                  child: Text(ShamLocalizations.getString(context, 'press_to_reivew_book'),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.grey,
@@ -278,7 +277,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
                 )
             );
           }
-          return SliverToBoxAdapter(child: ExceptionWidget(text: ShamLocalizations.of(context).getValue('error_building_ui'),));
+          return SliverToBoxAdapter(child: ExceptionWidget(text: ShamLocalizations.getString(context, 'error_building_ui'),));
         }
     );
   }
@@ -378,7 +377,7 @@ class _ViewBookSliverAppBar extends StatelessWidget {
               child: Container(
                 color: Colors.white.withOpacity(0.25),
                 child: FlatButton(
-                  child: Text(ShamLocalizations.of(context).getValue('get_book') + '!',
+                  child: Text(ShamLocalizations.getString(context, 'get_book') + '!',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -441,7 +440,7 @@ class _ViewBookSliverAppBar extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) =>
-        User.singleton == null
+        context.bloc<UserBloc>().user.id == null
             ? SignUpAlertDialog()
             : _GetBookAlertDialog(book: book)
     );
@@ -462,7 +461,7 @@ class _GetBookAlertDialog extends StatelessWidget {
       textDirection: localizations.getDirection(),
       child: AlertDialog(
         title: Text(
-          ShamLocalizations.of(context).getValue("get_book"),
+          ShamLocalizations.getString(context, "get_book"),
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
 
@@ -476,7 +475,7 @@ class _GetBookAlertDialog extends StatelessWidget {
             child: Text(localizations.getValue("priority_score")),
             onPressed: () => null,
           ),
-          dynamicValues.userCanReserveBook
+          dynamicValues.userCanReserveBook(context)
               ? FlatButton(
             child: Text(localizations.getValue("reserve_book")),
             onPressed: () => null,

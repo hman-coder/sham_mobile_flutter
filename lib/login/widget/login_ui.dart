@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/login/bloc/login_bloc_barrel.dart';
 import 'package:provider/provider.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/profile_edit/edit_names_ui.dart';
+import 'package:sham_mobile/profile_edit/edit_names_ui.dart';
 import 'package:sham_mobile/widgets/delayed_animation.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/sham_custom_icons.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/labeled_divider.dart';
-
-import '../../phone_auth/widget/phone_auth_ui.dart';
+import 'package:sham_mobile/phone_auth/widget/phone_auth_ui.dart';
+import 'package:sham_mobile/contact_info/widget/required_contact_info_ui.dart';
 
 class LoginUI extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class LoginUIState extends State<LoginUI> {
         listener: (context, state) {
           if(state is UserAuthenticatedState)
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => EditNamesUI(state.user))
+                MaterialPageRoute(builder: (context) => RequiredContactInfoUI())
             );
         },
 
@@ -38,7 +38,7 @@ class LoginUIState extends State<LoginUI> {
             child: Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                  title: Text(ShamLocalizations.of(context).getValue('sign_in'),
+                  title: Text(ShamLocalizations.getString(context, 'sign_in'),
                     style: TextStyle(
                         fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize
                     ),
@@ -60,7 +60,7 @@ class LoginUIState extends State<LoginUI> {
                           child: LabeledDivider(
                             color: Colors.white,
                             thickness: 1,
-                            label: Text(ShamLocalizations.of(context).getValue('sign_in_with'),
+                            label: Text(ShamLocalizations.getString(context, 'sign_in_with'),
                               style: TextStyle(
                                 fontSize: Provider.of<DefaultValues>(context).mediumTextSize,
                                 color: Colors.white
@@ -77,7 +77,7 @@ class LoginUIState extends State<LoginUI> {
                         child: SignInButton(
                           color: Color(0xFFD44637),
                           icon: Icon(ShamCustomIcons.gmail, color: Colors.white.withOpacity(0.8)),
-                          text: ShamLocalizations.of(context).getValue('google_sign_in'),
+                          text: ShamLocalizations.getString(context, 'google_sign_in'),
                           onPressed: (ctx) => ctx.bloc<LoginBloc>().add(GoogleSignInRequested())
                         ),
                       ),
@@ -87,7 +87,7 @@ class LoginUIState extends State<LoginUI> {
                         child: SignInButton(
                             color: Color(0xFF29487D),
                             icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
-                            text: ShamLocalizations.of(context).getValue('facebook_sign_in'),
+                            text: ShamLocalizations.getString(context, 'facebook_sign_in'),
                             onPressed: (ctx) => ctx.bloc<LoginBloc>().add(FacebookSignInRequested())
                         ),
                       ),
@@ -97,9 +97,8 @@ class LoginUIState extends State<LoginUI> {
                         child: SignInButton(
                             color: Color(0xFF25D366),
                             icon: Icon(Icons.phone, color: Colors.white),
-                            text: ShamLocalizations.of(context).getValue('phone_number'),
-                            onPressed: (ctx) => Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => PhoneAuthUI(),))
+                            text: ShamLocalizations.getString(context, 'phone_number'),
+                            onPressed: _goToAndAwaitPhoneAuth
                         ),
                       ),
                     ],
@@ -141,7 +140,7 @@ class LoginUIState extends State<LoginUI> {
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: AutoSizeText(
-                ShamLocalizations.of(context).getValue('sign_in_description'),
+                ShamLocalizations.getString(context, 'sign_in_description'),
                 textAlign: TextAlign.center,
                 minFontSize: Provider.of<DefaultValues>(context).largeTextSize,
                 maxLines: 5,
@@ -155,6 +154,14 @@ class LoginUIState extends State<LoginUI> {
         ),
       ),
     );
+  }
+
+  void _goToAndAwaitPhoneAuth(BuildContext context) async {
+    String _phoneNumber = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => PhoneAuthUI(),));
+
+    if(_phoneNumber != null)
+      Navigator.pushReplacementNamed(context, '/contact_info');
   }
 
   int _delay = 400;

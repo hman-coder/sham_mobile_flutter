@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/books/main/widget/books_ui.dart';
-import 'package:sham_mobile/login/widget/login_ui.dart';
 import 'package:sham_mobile/widgets/sham_custom_icons.dart';
 
 import 'activities_ui.dart';
@@ -15,12 +14,9 @@ class MainUI extends StatefulWidget {
 }
 
 class _MainUIState extends State<MainUI> {
-  static bool _loginIsShown = false;
-
   @override
   Widget build(BuildContext context) {
     ShamLocalizations localization = ShamLocalizations.of(context);
-    _showLoginUI(context);
     return Directionality(
           textDirection: localization.getDirection(),
 
@@ -57,14 +53,5 @@ class _MainUIState extends State<MainUI> {
             ),
           ),
         );
-  }
-
-  _showLoginUI(BuildContext context) async {
-    await Future.delayed(Duration(seconds: 4),() {
-      if(! _loginIsShown) {
-        _loginIsShown = true;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUI()));
-      }
-    });
   }
 }

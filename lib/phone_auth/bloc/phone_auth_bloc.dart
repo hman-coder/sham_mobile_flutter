@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-
-import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,14 +10,15 @@ import 'phone_auth_state.dart';
 class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
   static final String _logTag = "sham.phone_auth_bloc";
 
-  Country selectedCountry;
-  String phoneNumber;
+  String _countryCode;
+  String _phoneNumber;
+  String _verificationId;
 
-  String verificationId;
+  String fullPhoneNumber;
 
   PhoneAuthBloc() :
-        selectedCountry = CountryPickerUtils.getCountryByIsoCode('sy'),
-        super(InitialState());
+        _countryCode = CountryPickerUtils.getCountryByIsoCode('sy').phoneCode,
+        super(InitialState(CountryPickerUtils.getCountryByIsoCode('sy')));
 
   @override
   Stream<PhoneAuthState> mapEventToState(PhoneAuthEvent event) async* {
@@ -30,22 +29,21 @@ class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
   }
 
   void _handlePhoneNumberChangedEvent(PhoneNumberChangedEvent event) {
-    phoneNumber = event.number;
+    _phoneNumber = event.number;
   }
 
   PhoneAuthState _handleCountryChangedEvent(CountrySelectedEvent event) {
-    selectedCountry = event.country;
-    log("Selected country changed. New country code: ${selectedCountry.phoneCode}");
-    return CountryChangedState();
+    _countryCode = event.country.phoneCode;
+    log("Selected country changed. New country code: $_countryCode");
+    return CountryChangedState(event.country);
   }
 
   Stream<PhoneAuthState> _handlePhoneNumberSubmittedEvent(PhoneNumberSubmittedEvent event) async*{
-    if(phoneNumber == null || phoneNumber.isEmpty)
+    if(_phoneNumber == null || _phoneNumber.isEmpty)
       yield EmptyPhoneNumberState();
 
     else {
       yield SendingCodeState();
-
 
       log("Starting verification", name: _logTag);
       await Firebase.initializeApp();
@@ -67,21 +65,21 @@ class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
   }
 
   String _buildPhoneNumber() {
-    String countryCode = selectedCountry.phoneCode.replaceAll('-', '');
-    String number = this.phoneNumber;
+    String countryCode = _countryCode.replaceAll('-', '');
+    String number = this._phoneNumber;
     while(number.startsWith('0')) {
       print('loop');
       number = number.replaceFirst('0', '');
     }
 
-    final String finalNumber = '+$countryCode$number';
-    log('Final phone number: $finalNumber', name: _logTag);
+   fullPhoneNumber = '+$countryCode$number';
+    log('Final phone number: $fullPhoneNumber', name: _logTag);
 
-    return finalNumber;
+    return fullPhoneNumber;
   }
 
   PhoneAuthState _handleVerificationIdReceived(String id, [forceResendingToken]) {
-    this.verificationId = id;
+    this._verificationId = id;
     log("Received verification id: $id", name: _logTag);
     return CodeSentState();
   }
@@ -100,7 +98,7 @@ class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
     yield ValidatingCodeState();
 
     AuthCredential a = PhoneAuthProvider.credential(
-        verificationId: verificationId, smsCode: event.code
+        verificationId: _verificationId, smsCode: event.code
     );
 
     try {

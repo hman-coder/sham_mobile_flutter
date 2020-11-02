@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/text_edit_dialog.dart';
 
@@ -22,8 +24,8 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
   @override
   Widget build(BuildContext context) {
     ShamLocalizations localizations = ShamLocalizations.of(context);
-    bool obscureInfo = User.singleton != null;
-    obscureInfo = obscureInfo ? ! User.singleton.canAccessInfo(widget.user) : true;
+    bool obscureInfo = context.bloc<UserBloc>().user.id == null;
+    obscureInfo = obscureInfo ? ! context.bloc<UserBloc>().user.canAccessInfo(widget.user) : true;
 
     return Directionality(
       textDirection: ShamLocalizations.of(context).getDirection(),
@@ -72,7 +74,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                         children: <Widget>[
                           Text("${_getPriorityLabelText(context, obscureInfo)}: "),
                           Text(_getPriorityValueText(context, obscureInfo),
-                              style: TextStyle(color: _getPriorityColor())
+                              style: TextStyle(color: _getPriorityColor(context))
                           ),
                         ]
                     )
@@ -111,19 +113,20 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
   }
 
   String _getPriorityLabelText(BuildContext context, bool obscured) {
-    if(obscured) return ShamLocalizations.of(context).getValue('priority_score_obscured');
-    else return ShamLocalizations.of(context).getValue("priority_score");
+    if(obscured) return ShamLocalizations.getString(context, 'priority_score_obscured');
+    else return ShamLocalizations.getString(context, "priority_score");
   }
 
   String _getPriorityValueText(BuildContext context, bool obscured) {
     if(obscured) return '';
-    if (widget.user.isLowPrio) return ShamLocalizations.of(context).getValue("priority_score_low");
-    if (widget.user.isMidPrio) return ShamLocalizations.of(context).getValue("priority_score_mid");
-    else return ShamLocalizations.of(context).getValue("priority_score_high");
+    if (widget.user.isLowPrio) return ShamLocalizations.getString(context, "priority_score_low");
+    if (widget.user.isMidPrio) return ShamLocalizations.getString(context, "priority_score_mid");
+    else return ShamLocalizations.getString(context, "priority_score_high");
   }
 
-  Color _getPriorityColor() {
-    if(User.singleton == null || widget.user.id != User.singleton?.id) return Colors.transparent;
+  Color _getPriorityColor(BuildContext context) {
+    User user = context.bloc<UserBloc>().user;
+    if(user == null || widget.user.id != user.id) return Colors.transparent;
     if (widget.user.isLowPrio) return Colors.red;
     if (widget.user.isMidPrio) return Colors.blue;
     else return Colors.green;
@@ -155,7 +158,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     return showDialog<String>(
         context: context,
         builder: (context) => TextEditDialog(
-          title: ShamLocalizations.of(context).getValue('edit_username'),
+          title: ShamLocalizations.getString(context, 'edit_username'),
           startingText: widget.user.username,
         )
     );
@@ -187,7 +190,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     return showDialog<String>(
         context: context,
         builder: (context) => TextEditDialog(
-          title: ShamLocalizations.of(context).getValue('edit_phone_number'),
+          title: ShamLocalizations.getString(context, 'edit_phone_number'),
           startingText: widget.user.phoneNumber,
         )
     );
@@ -207,9 +210,9 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     return showDialog<String>(
         context: context,
         builder: (context) => TextEditDialog(
-          title: ShamLocalizations.of(context).getValue("edit_address"),
+          title: ShamLocalizations.getString(context, "edit_address"),
           startingText: widget.user.address,
-          hintText: ShamLocalizations.of(context).getValue("address_hint"),
+          hintText: ShamLocalizations.getString(context, "address_hint"),
         )
     );
   }
@@ -225,7 +228,7 @@ class _PersonalInfoSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       centerTitle: true,
-      title: Text(ShamLocalizations.of(context).getValue("user_profile")),
+      title: Text(ShamLocalizations.getString(context, "user_profile")),
       pinned: true,
       backgroundColor: Colors.transparent,
       expandedHeight: 200,
@@ -244,7 +247,7 @@ class _PersonalInfoSliverAppBar extends StatelessWidget {
               SafeArea(
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
-                  backgroundImage: AssetImage(User.singleton.image),
+                  backgroundImage: AssetImage(context.bloc<UserBloc>().user.image),
                   radius: 70,
                 ),
               ),

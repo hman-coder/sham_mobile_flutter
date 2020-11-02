@@ -11,7 +11,7 @@ class CancelButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       child: Text(
-        ShamLocalizations.of(context).getValue('cancel'),
+        ShamLocalizations.getString(context, 'cancel'),
         style: style ?? DefaultTextStyle.of(context).style,
       ),
       onPressed: () => Navigator.pop(context, null),

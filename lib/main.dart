@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/bloc_observer.dart';
+import 'package:sham_mobile/bloc_observer.dart';
+import 'package:sham_mobile/login/widget/login_ui.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/loading/widget/loading_ui.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
-
+import 'package:sham_mobile/main/widget/main_ui.dart';
+import 'package:sham_mobile/contact_info/widget/required_contact_info_ui.dart';
 import 'dynamic_values/dynamic_values_bloc.dart';
 
 void main(){
@@ -40,36 +41,54 @@ class Sham extends StatelessWidget {
               },
 
               child: MaterialApp(
-                localizationsDelegates: [
-                  const ShamLocalizationsDelegate(),
-                  DefaultMaterialLocalizations.delegate,
-                  DefaultWidgetsLocalizations.delegate,
-                  DefaultCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: [
-                  const Locale('en'),
-                  const Locale('ar')
-                ],
+                routes: _getNamedRoutes(),
+
+                localizationsDelegates: _getLocalizationsDelegates(),
+
+                supportedLocales: _getSupportedLocales(),
+
                 theme: ThemeData(
-                  fontFamily: Provider.of<DefaultValues>(context).mainFontFamily,
+                    fontFamily: Provider.of<DefaultValues>(context).mainFontFamily,
+
                     bottomAppBarTheme: BottomAppBarTheme(
                       color: Colors.black,
                     ),
+
                     tabBarTheme: TabBarTheme.of(context).copyWith(
                       labelColor: Colors.white,
                       unselectedLabelColor: Color(0xffD0D0D0),
                     ),
+
                     primaryColor: defaultValues.maroon,
+
                     floatingActionButtonTheme: FloatingActionButtonThemeData(
                         backgroundColor: defaultValues.maroon
                     )
                 ),
+
                 title: 'Sham',
-                home: LoadingUI(),
               )
           ),
         ),
       ),
     );
   }
+
+  Map<String, Widget Function(BuildContext context)> _getNamedRoutes() => {
+    '/' : (context) => LoadingUI(),
+    '/main' : (context) => MainUI(),
+    '/login' : (context) => LoginUI(),
+    '/contact_info' : (context) => RequiredContactInfoUI(),
+  };
+
+  List<LocalizationsDelegate> _getLocalizationsDelegates() => [
+      const ShamLocalizationsDelegate(),
+      DefaultMaterialLocalizations.delegate,
+      DefaultWidgetsLocalizations.delegate,
+    ];
+
+  List<Locale> _getSupportedLocales() => [
+    const Locale('en'),
+    const Locale('ar')
+  ];
 }

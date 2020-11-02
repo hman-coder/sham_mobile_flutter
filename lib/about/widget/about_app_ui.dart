@@ -8,7 +8,7 @@ class AboutAppUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('about_app')),
+          title: Text(ShamLocalizations.getString(context, 'about_app')),
         ),
         body: Center(child: Text('About App')));
   }

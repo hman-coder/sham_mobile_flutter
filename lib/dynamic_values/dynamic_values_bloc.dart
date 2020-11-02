@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/models/user.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/dynamic_values/dynamic_values_repository.dart';
+import 'package:sham_mobile/dynamic_values/dynamic_values_repository.dart';
+import 'package:sham_mobile/user/user_bloc.dart';
 
 /// Provides constant values based on app changes such as
 /// user priority score changes.
 class DynamicValuesBloc {
   DynamicValuesRepository _repo;
 
-  DynamicValuesBloc() : _repo = DynamicValuesRepository();
+  DynamicValuesBloc() :
+        _repo = DynamicValuesRepository();
 
   String _getReserveBookDays(BuildContext context) {
-    int priorityPoints = User.singleton.priorityPoints;
+    int priorityPoints = context.bloc<UserBloc>().user.priorityPoints;
     if(priorityPoints < 50) {
       return _repo.lowPrioBookDays;
     } else if(priorityPoints < 100) {
@@ -33,10 +36,10 @@ class DynamicValuesBloc {
 
   String getReserveBookMessage(BuildContext context, double bookPrice) {
     ShamLocalizations localizations = ShamLocalizations.of(context);
-    int priorityPoints = User.singleton.priorityPoints;
+    int priorityPoints = User.buildTestUser().priorityPoints;
 
     String returnedString = "${_getReserveBookMessage(localizations, priorityPoints)}";
-    if(userCanReserveBook) {
+    if(userCanReserveBook(context)) {
       returnedString += " ${_getReserveBookDays(context)}."
           "${localizations.getValue("claim_book")}.\n"
           "${localizations.getValue("price")}: ${bookPrice.round()}.\n\n";
@@ -49,5 +52,5 @@ class DynamicValuesBloc {
     return returnedString;
   }
 
-  bool get userCanReserveBook => User.singleton.priorityPoints >= 50;
+  bool userCanReserveBook(BuildContext context) => context.bloc<UserBloc>().user.priorityPoints >= 50;
 }

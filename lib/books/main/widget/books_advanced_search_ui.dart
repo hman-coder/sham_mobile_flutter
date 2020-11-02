@@ -8,7 +8,7 @@ import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/category.dart';
 import 'package:sham_mobile/models/flagged_object.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/books/repository/filters_repository.dart';
+import 'package:sham_mobile/books/repository/filters_repository.dart';
 
 class BooksAdvancedSearchUI extends StatefulWidget {
   final Book searchBook;
@@ -148,7 +148,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
           return _FilterAlertDialog<Category>(
             allObjects: repo.categories,
             selectedObjects: widget.searchBook.categories.sublist(0),
-            title: ShamLocalizations.of(context).getValue("categories"),
+            title: ShamLocalizations.getString(context, "categories"),
           );
         }
     );
@@ -162,7 +162,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
           return _FilterAlertDialog<AgeGroup>(
             allObjects: repo.ageGroups,
             selectedObjects: widget.searchBook.ageGroups.sublist(0),
-            title: ShamLocalizations.of(context).getValue("age_groups"),
+            title: ShamLocalizations.getString(context, "age_groups"),
           );
         }
     );
@@ -194,7 +194,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
           return _FilterAlertDialog<Category>(
             allObjects: repo.specialCategories,
             selectedObjects: widget.searchBook.specialCategories.sublist(0),
-            title: ShamLocalizations.of(context).getValue("special_categories"),
+            title: ShamLocalizations.getString(context, "special_categories"),
           );
         }
     );

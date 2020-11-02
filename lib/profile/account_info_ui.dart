@@ -7,7 +7,7 @@ class AccountInfoUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('account')),
+          title: Text(ShamLocalizations.getString(context, 'account')),
         ),
         body: Center(child: Text('Account Info')));
   }

@@ -7,7 +7,7 @@ class OffersUI extends StatelessWidget{
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('offers')),
+          title: Text(ShamLocalizations.getString(context, 'offers')),
         ),
         body: Center(child: Text('offers')));
   }

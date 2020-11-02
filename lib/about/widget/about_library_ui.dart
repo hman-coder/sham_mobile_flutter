@@ -8,7 +8,7 @@ class AboutLibraryUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('about_sham')),
+          title: Text(ShamLocalizations.getString(context, 'about_sham')),
         ),
         body: Center(child: Text('About Sham')));
   }

@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/phone_auth/bloc/phone_auth_bloc_barrel.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
-import 'package:sham_mobile/phone_auth/bloc/phone_auth_bloc_barrel.dart';
 
 class PhoneAuthUI extends StatefulWidget {
   @override
@@ -17,9 +16,6 @@ class PhoneAuthUI extends StatefulWidget {
 }
 
 class _PhoneAuthUIState extends State<PhoneAuthUI> {
-  bool codeSent = false;
-  String verificationId;
-  String smsCode;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +24,13 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
       child: Directionality(
         textDirection: ShamLocalizations.of(context).getDirection(),
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: Text(ShamLocalizations.of(context).getValue('phone_number_authentication'))
+            title: Text(ShamLocalizations.getString(context, 'phone_number_authentication')),
+            leading: BackButton(
+              color: Colors.white,
+              onPressed: () => Navigator.pop(context, '+963935464603'),
+            ),
           ),
 
           body: Column(
@@ -41,7 +42,7 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
-                      ShamLocalizations.of(context).getValue('please_enter_phone_number'),
+                      ShamLocalizations.getString(context, 'please_enter_phone_number'),
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize,
@@ -53,7 +54,7 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Text(
-                      ShamLocalizations.of(context).getValue('please_enter_phone_number_guide') + ".",
+                      ShamLocalizations.getString(context, 'please_enter_phone_number_guide') + ".",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: Provider.of<DefaultValues>(context).mediumTextSize
@@ -69,25 +70,27 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
 
                 Center(child: _PhoneAuthSubmitButton()),
 
-                AnimatedSwitcher(
-                  duration: Duration(milliseconds: 200),
-                  child: BlocBuilder<PhoneAuthBloc, PhoneAuthState>(
-                    builder: (context, state) => (state is SendingCodeState)
+                SizedBox(height: 30,),
+
+                BlocBuilder<PhoneAuthBloc, PhoneAuthState>(
+                  builder: (context, state) => AnimatedSwitcher(
+                    duration: Duration(milliseconds: 400),
+                    child:  (state is SendingCodeState)
                         ? Center(child: SizedBox(height: 35, child: CircularProgressIndicator()))
                         : Container(),
                   ),
                 ),
 
-                Center(
-                  child: AnimatedSwitcher(
-                    duration: Duration(milliseconds: 200),
-                    child: BlocBuilder<PhoneAuthBloc, PhoneAuthState>(
-                      builder: (context, state) => ! (state is SendingCodeState)
+                BlocBuilder<PhoneAuthBloc, PhoneAuthState>(
+                  builder: (context, state) => Center(
+                    child: AnimatedSwitcher(
+                      duration: Duration(milliseconds: 400),
+                      child:  ! (state is SendingCodeState)
                           ? Container()
                           : Padding(
                             padding: const EdgeInsets.all(24.0),
                             child: Text(
-                              ShamLocalizations.of(context).getValue('a_text_will_be_sent'),
+                              ShamLocalizations.getString(context, 'a_text_will_be_sent'),
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontSize: Provider.of<DefaultValues>(context).mediumTextSize
@@ -122,8 +125,8 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
       Scaffold.of(context).showSnackBar(_buildSnackBarBasedOnState(context, state));
   }
 
-  void _showCodeDialog(BuildContext context) {
-    showDialog(
+  void _showCodeDialog(BuildContext context) async {
+    bool codeValidated = await showDialog<bool>(
       context: context,
         barrierDismissible: false,
       builder: (ctx) => BlocProvider<PhoneAuthBloc>.value(
@@ -131,6 +134,9 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
         child: _PinCodeDialog()
       )
     );
+
+    if(codeValidated)
+      Navigator.pop(context, context.bloc<PhoneAuthBloc>().fullPhoneNumber);
   }
 
   SnackBar _buildSnackBarBasedOnState(BuildContext context, PhoneAuthState state) {
@@ -143,9 +149,9 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
       messageLocalizationKey = 'error_unknown';
 
     return SnackBar(
-      content: Text(ShamLocalizations.of(context).getValue(messageLocalizationKey)),
+      content: Text(ShamLocalizations.getString(context, messageLocalizationKey)),
       action: SnackBarAction(
-        label: ShamLocalizations.of(context).getValue('done'),
+        label: ShamLocalizations.getString(context, 'done'),
         onPressed: Scaffold.of(context).hideCurrentSnackBar,
       ),
     );
@@ -171,7 +177,7 @@ class _PhoneNumberField extends StatelessWidget {
               color: Colors.grey.shade200,
               child: TextField(
                   decoration: InputDecoration(
-                    hintText: ShamLocalizations.of(context).getValue('phone_number'),
+                    hintText: ShamLocalizations.getString(context, 'phone_number'),
                     contentPadding: EdgeInsetsDirectional.only(start: 12),
                   ),
                   style: TextStyle(
@@ -194,7 +200,7 @@ class _CountryPickerButton extends StatelessWidget {
     return BlocBuilder<PhoneAuthBloc, PhoneAuthState>(
       buildWhen: _shouldRebuild,
       builder: (context, state) {
-        Country country = context.bloc<PhoneAuthBloc>().selectedCountry;
+        Country country = _countryFromState(state);
         return Container(
           decoration: BoxDecoration(
             border: Border(bottom: BorderSide()),
@@ -215,25 +221,30 @@ class _CountryPickerButton extends StatelessWidget {
     );
   }
 
-  void _showCountryPickerDialog(BuildContext context) async{
-    bool validated = await showDialog<bool>(
+  void _showCountryPickerDialog(BuildContext context) {
+    showDialog<bool>(
         context: context,
         builder: (ctx) => CountryPickerDialog(
             onValuePicked: (country) =>
                 context.bloc<PhoneAuthBloc>().add(CountrySelectedEvent(country)),
-            title: Text(ShamLocalizations.of(context).getValue('select_country')),
+            title: Text(ShamLocalizations.getString(context, 'select_country')),
             isSearchable: true,
             itemBuilder: (country) => _CountryDialogListItem(country),
         )
     );
-
-    // TODO: MOVE TO NEXT WIDGET
-    if(validated) Navigator.push(context, null);
-
   }
 
   bool _shouldRebuild(PhoneAuthState prev, PhoneAuthState curr) {
     return (curr is CountryChangedState) || (curr is InitialState);
+  }
+
+  Country _countryFromState(PhoneAuthState state) {
+    if(state is CountryChangedState)
+      return state.country;
+    if (state is InitialState)
+      return state.country;
+
+    return null;
   }
 }
 
@@ -270,7 +281,7 @@ class _PhoneAuthSubmitButton extends StatelessWidget {
       height: 40,
       minWidth: MediaQuery.of(context).size.width - 50,
       child: Text(
-        ShamLocalizations.of(context).getValue('verify_number'),
+        ShamLocalizations.getString(context, 'verify_number'),
         style: TextStyle(
             color: Colors.white,
             fontSize: Provider.of<DefaultValues>(context).largeTextSize
@@ -303,7 +314,7 @@ class _PinCodeDialog extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(ShamLocalizations.of(context).getValue('enter_phone_auth_pin_code'),
+                      Text(ShamLocalizations.getString(context, 'enter_phone_auth_pin_code'),
                           style: TextStyle(fontSize: Provider.of<DefaultValues>(context).mediumTextSize)
                       ),
 
@@ -325,7 +336,7 @@ class _PinCodeDialog extends StatelessWidget {
 
                             else if (state is InvalidCodeState)
                               return Center(child: Text(
-                                ShamLocalizations.of(context).getValue('invalid_code') + '.',
+                                ShamLocalizations.getString(context, 'invalid_code') + '.',
                                 style: TextStyle(
                                   color: Colors.red,
                                   fontSize: Provider.of<DefaultValues>(context).mediumTextSize
@@ -347,7 +358,7 @@ class _PinCodeDialog extends StatelessWidget {
                       FlatButton(
                         minWidth: double.infinity,
                         child: Text(
-                          ShamLocalizations.of(context).getValue('confirm'),
+                          ShamLocalizations.getString(context, 'confirm'),
                           style: TextStyle(
                             fontSize: Provider.of<DefaultValues>(context).mediumTextSize,
                             color: Colors.white
@@ -360,16 +371,16 @@ class _PinCodeDialog extends StatelessWidget {
                       FlatButton(
                         minWidth: double.infinity,
                         child: Text(
-                          ShamLocalizations.of(context).getValue('cancel'),
+                          ShamLocalizations.getString(context, 'cancel'),
                           style: TextStyle(
                             fontSize: Provider.of<DefaultValues>(context).mediumTextSize,
                             color: Provider.of<DefaultValues>(context).maroon
                           ),
                         ),
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () => Navigator.pop(context, false),
                       ),
                 ]
-          ),
+                ),
               ),
             )
         ),
@@ -377,7 +388,6 @@ class _PinCodeDialog extends StatelessWidget {
     );
   }
 }
-
 
 class _PinCodeField extends StatelessWidget {
   final Function(String) onCodeChanged;

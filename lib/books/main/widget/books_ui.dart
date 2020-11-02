@@ -5,7 +5,7 @@ import 'package:sham_mobile/models/book.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'view_books_ui.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/drawer/drawer_ui.dart';
+import 'package:sham_mobile/drawer/drawer_ui.dart';
 import 'package:sham_mobile/books/main/bloc/books_bloc_barrel.dart';
 import 'package:sham_mobile/books/advanced_search/bloc/book_search_bloc_barrel.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
@@ -87,9 +87,9 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
               controller: _tabController,
               indicatorColor: Colors.white,
               tabs: <Widget>[
-                Tab(text: ShamLocalizations.of(context).getValue("books")),
-                Tab(text: ShamLocalizations.of(context).getValue("bookmarks")),
-                Tab(text: ShamLocalizations.of(context).getValue("blind_dates")),
+                Tab(text: ShamLocalizations.getString(context, "books")),
+                Tab(text: ShamLocalizations.getString(context, "bookmarks")),
+                Tab(text: ShamLocalizations.getString(context, "blind_dates")),
               ],
             )),
       )
@@ -197,7 +197,7 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
                   return _BlindDateItem(blindDate: state.books[index]);
                 }
 
-                return ExceptionWidget(text: ShamLocalizations.of(context).getValue("error_while_building_ui"));
+                return ExceptionWidget(text: ShamLocalizations.getString(context, "error_while_building_ui"));
               },
 
               childCount: state.books.length
@@ -210,8 +210,8 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
 
   Widget _buildProperWidgetForState(BooksState state, BuildContext context) {
     if(state is LoadingState) return ConstrainedBox(constraints: BoxConstraints(maxWidth: 25, maxHeight: 25), child: CircularProgressIndicator());
-    if(state is EmptyBookListState) return Center(child: Text(ShamLocalizations.of(context).getValue("no_books_found")));
-    return ExceptionWidget(text: ShamLocalizations.of(context).getValue("error_while_building_ui"));
+    if(state is EmptyBookListState) return Center(child: Text(ShamLocalizations.getString(context, "no_books_found")));
+    return ExceptionWidget(text: ShamLocalizations.getString(context, "error_while_building_ui"));
   }
 }
 

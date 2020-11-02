@@ -8,7 +8,7 @@ class ContactUsUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('contact_us')),
+          title: Text(ShamLocalizations.getString(context, 'contact_us')),
         ),
         body: Center(child: Text('Contact us')));
   }

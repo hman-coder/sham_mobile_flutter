@@ -1,32 +1,37 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/loading/bloc/loading_bloc_barrel.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/phone_auth/widget/phone_auth_ui.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/main/widget/main_ui.dart';
+import 'package:sham_mobile/main/widget/main_ui.dart';
 
 class LoadingUI extends StatelessWidget {
-  final LoadingBloc _bloc;
-
-  LoadingUI({Key key}) : _bloc = LoadingBloc(), super(key: key) {
-    _bloc.add(LoadingEvent());
-  }
-
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 4), () =>
-      Navigator.push(context, MaterialPageRoute(builder: (context) => PhoneAuthUI())));
-    return Directionality(
-            textDirection: ShamLocalizations.of(context).getDirection(),
-            child: Scaffold(
-                resizeToAvoidBottomInset: false,
-                appBar: AppBar(
-                  title: Text(ShamLocalizations.of(context).getValue('title')),
-                  centerTitle: true,
-                ),
-                body: _buildBody(context)
+    return BlocProvider<LoadingBloc>(
+      create: (context) => LoadingBloc(),
+      child: Directionality(
+        textDirection: ShamLocalizations.of(context).getDirection(),
+        child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            appBar: AppBar(
+              title: Text(ShamLocalizations.getString(context, 'title')),
+              centerTitle: true,
             ),
-          );
+            body: BlocListener<LoadingBloc, LoadingState>(
+              listener: _listenToLoadingBloc,
+              child: _buildBody(context),
+            )
+        ),
+      ),
+    );
+  }
+
+  void _listenToLoadingBloc(BuildContext context, LoadingState state) async {
+    if(state is IntroNotShownState)
+      await Navigator.pushNamed(context, '/login');
+
+    Navigator.pushNamed(context, '/main');
   }
 
   Widget _buildBody(BuildContext context) {
@@ -38,7 +43,6 @@ class LoadingUI extends StatelessWidget {
 
   Column _buildMainComponents() {
     String loading = "يتم التحميل...";
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,

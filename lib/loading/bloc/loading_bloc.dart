@@ -6,24 +6,30 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoadingBloc extends Bloc<LoadingEvent, LoadingState> {
   static final String _introShownKey = 'intro_shown';
 
-  LoadingBloc() : super(InitialState());
+  LoadingBloc() : super(InitialState()) {
+    print('constructor');
+    _checkIfIntroWasShown();
+  }
 
   @override
   Stream<LoadingState> mapEventToState(LoadingEvent event) async* {
-    yield* checkIfIntroWasShown();
+    // yield* _checkIfIntroWasShown();
   }
 
-  Stream<LoadingState> checkIfIntroWasShown() async* {
+  void _checkIfIntroWasShown() async {
     await Future.delayed(Duration(seconds: 2));
+
     SharedPreferences.setMockInitialValues(new Map<String, dynamic>());
     SharedPreferences preferences = await SharedPreferences.getInstance();
+
     bool introShown = preferences.containsKey(_introShownKey);
+
     if(introShown) {
-      yield IntroAlreadyShownState();
+      emit(IntroAlreadyShownState());
 
     } else {
       await preferences.setBool(_introShownKey, true);
-      yield IntroNotShownState();
+      emit(IntroNotShownState());
     }
   }
 

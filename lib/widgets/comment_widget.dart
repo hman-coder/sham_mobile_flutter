@@ -24,7 +24,7 @@ class CommentWidget extends StatelessWidget {
                   backgroundImage: AssetImage(comment.userImage),
                 ),
 
-                title: Text(comment.username ?? ShamLocalizations.of(context).getValue('new_user'),
+                title: Text(comment.username ?? ShamLocalizations.getString(context, 'new_user'),
                     style: defaultValues.commentHeaderTextStyle
                 ),
 

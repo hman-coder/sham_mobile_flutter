@@ -18,10 +18,10 @@ class _ExceptionWidgetState extends State<ExceptionWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("${widget.text} ${ShamLocalizations.of(context).getValue('error_report_message')}"),
+            Text("${widget.text} ${ShamLocalizations.getString(context, 'error_report_message')}"),
             FlatButton(
               onPressed: () => print("Error reported"),
-              child: Text(ShamLocalizations.of(context).getValue('error_report_button')),
+              child: Text(ShamLocalizations.getString(context, 'error_report_button')),
             )
           ],
         )

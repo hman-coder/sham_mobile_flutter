@@ -32,7 +32,7 @@ class _FilterButtonState<T extends Filtered> extends State<FilterButton> {
         CheckedPopupMenuItem<Filter>(
           checked: _selectedFilter == filter,
           value: filter,
-          child: Text(ShamLocalizations.of(context).getValue(filter.toString())),
+          child: Text(ShamLocalizations.getString(context, filter.toString())),
         )
     ).toList();
   }

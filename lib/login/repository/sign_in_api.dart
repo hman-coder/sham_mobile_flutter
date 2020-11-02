@@ -1,4 +1,4 @@
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/login/repository/google_sign_in_api.dart';
+import 'package:sham_mobile/login/repository/google_sign_in_api.dart';
 import 'facebook_sign_in_api.dart';
 import 'package:sham_mobile/models/user.dart';
 

@@ -7,7 +7,7 @@ class FamilyInfoUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.of(context).getValue('family_info')),
+          title: Text(ShamLocalizations.getString(context, 'family_info')),
         ),
         body: Center(child: Text('Family Info')));
   }

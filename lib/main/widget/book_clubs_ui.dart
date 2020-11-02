@@ -5,7 +5,7 @@ import 'package:sham_mobile/book_clubs/bloc/book_clubs_bloc_barrel.dart';
 import 'package:sham_mobile/helpers/string_helper.dart';
 import 'package:sham_mobile/models/activity.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/drawer/drawer_ui.dart';
+import 'package:sham_mobile/drawer/drawer_ui.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
@@ -28,7 +28,7 @@ class BookClubsUI extends StatelessWidget{
   Widget _buildAppBar(BuildContext context) {
     return AppBar(
         centerTitle: true,
-        title: Text(ShamLocalizations.of(context).getValue('book_clubs')));
+        title: Text(ShamLocalizations.getString(context, 'book_clubs')));
   }
 
   Widget _buildBody(BuildContext context) {
@@ -47,7 +47,7 @@ class BookClubsUI extends StatelessWidget{
             );
           }
 
-          else return ExceptionWidget(text: ShamLocalizations.of(context).getValue('error_while_building_ui'));
+          else return ExceptionWidget(text: ShamLocalizations.getString(context, 'error_while_building_ui'));
         }
     );
   }
@@ -145,7 +145,7 @@ class BookClubsUI extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             GestureDetector(
-              child: Text(ShamLocalizations.of(context).getValue('more_info'),
+              child: Text(ShamLocalizations.getString(context, 'more_info'),
                   style: TextStyle(
                       color: Colors.blue
                   )

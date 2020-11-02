@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/models/user.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/login/repository/login_repository.dart';
+import 'package:sham_mobile/login/repository/login_repository.dart';
 import 'login_state.dart';
 import 'login_event.dart';
 
