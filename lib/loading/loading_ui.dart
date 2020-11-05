@@ -1,37 +1,24 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sham_mobile/loading/bloc/loading_bloc_barrel.dart';
+import 'package:sham_mobile/loading/loading_controller.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/main/widget/main_ui.dart';
 
-class LoadingUI extends StatelessWidget {
+class LoadingUI extends GetView<LoadingController> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoadingBloc>(
-      create: (context) => LoadingBloc(),
-      child: Directionality(
-        textDirection: ShamLocalizations.of(context).getDirection(),
-        child: Scaffold(
-            resizeToAvoidBottomInset: false,
-            appBar: AppBar(
-              title: Text(ShamLocalizations.getString(context, 'title')),
-              centerTitle: true,
-            ),
-            body: BlocListener<LoadingBloc, LoadingState>(
-              listener: _listenToLoadingBloc,
-              child: _buildBody(context),
-            )
-        ),
+    return Directionality(
+      textDirection: ShamLocalizations.of(context).getDirection(),
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            title: Text(ShamLocalizations.getString(context, 'title')),
+            centerTitle: true,
+          ),
+          body: _buildBody(context)
       ),
     );
-  }
-
-  void _listenToLoadingBloc(BuildContext context, LoadingState state) async {
-    if(state is IntroNotShownState)
-      await Navigator.pushNamed(context, '/login');
-
-    Navigator.pushNamed(context, '/main');
   }
 
   Widget _buildBody(BuildContext context) {
@@ -79,8 +66,6 @@ class LoadingUI extends StatelessWidget {
   }
 
   Widget _buildQuoteCard() {
-    String quote = "\"أجمل ما في الماضي أنه قد مضى\"";
-    String source = "أوسكار وايلد - صورة دوريان غراي";
     return Container(
       width: double.infinity,
       margin: EdgeInsets.only(left: 20, right: 20),
@@ -97,7 +82,7 @@ class LoadingUI extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 30, left: 30),
                 child: FittedBox(
                   fit: BoxFit.fitWidth,alignment: Alignment.center,
-                  child: AutoSizeText(quote,
+                  child: AutoSizeText(controller.quote,
                       maxLines: 2,
                       softWrap: true,
                       maxFontSize: 36,
@@ -110,7 +95,7 @@ class LoadingUI extends StatelessWidget {
                 ),
               ),
               Center(
-                child: AutoSizeText(source,
+                child: AutoSizeText(controller.author,
                     minFontSize: 20,
                     maxFontSize: 40,
                     style: TextStyle(

@@ -3,16 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/bloc_observer.dart';
-import 'package:sham_mobile/login/widget/login_ui.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'package:sham_mobile/loading/widget/loading_ui.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
-import 'package:sham_mobile/main/widget/main_ui.dart';
-import 'package:sham_mobile/contact_info/widget/required_contact_info_ui.dart';
 import 'dynamic_values/dynamic_values_bloc.dart';
+import 'package:get/get.dart';
+
+import 'loading/barrel.dart';
 
 void main(){
-  Bloc.observer = ShamBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -40,12 +38,16 @@ class Sham extends StatelessWidget {
                 if(! currentFocus.hasPrimaryFocus) currentFocus.unfocus();
               },
 
-              child: MaterialApp(
-                routes: _getNamedRoutes(),
-
+              child: GetMaterialApp(
                 localizationsDelegates: _getLocalizationsDelegates(),
 
                 supportedLocales: _getSupportedLocales(),
+
+                getPages: [
+                  GetPage(name: '/home', page: () => LoadingUI(), binding: LoadingBindings())
+                ],
+
+                initialRoute: '/home',
 
                 theme: ThemeData(
                     fontFamily: Provider.of<DefaultValues>(context).mainFontFamily,
@@ -73,13 +75,6 @@ class Sham extends StatelessWidget {
       ),
     );
   }
-
-  Map<String, Widget Function(BuildContext context)> _getNamedRoutes() => {
-    '/' : (context) => LoadingUI(),
-    '/main' : (context) => MainUI(),
-    '/login' : (context) => LoginUI(),
-    '/contact_info' : (context) => RequiredContactInfoUI(),
-  };
 
   List<LocalizationsDelegate> _getLocalizationsDelegates() => [
       const ShamLocalizationsDelegate(),
