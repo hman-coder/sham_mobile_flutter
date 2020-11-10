@@ -25,11 +25,13 @@ class DefaultValues {
     color: const Color(0xff8C0000),
   );
 
-  final double extraLargeTextSize = 26;
+  final double extraLargeTextSize = 30;
 
-  final double largeTextSize = 20;
+  final double largeTextSize = 26;
 
-  final double mediumTextSize = 18;
+  final double mediumTextSize = 20;
 
-  final double smallTextSize = 16;
+  final double smallTextSize = 18;
+
+  final double extraSmallTextSize = 16;
 }

@@ -45,7 +45,7 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
                       ShamLocalizations.getString(context, 'please_enter_phone_number'),
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize,
+                      fontSize: Provider.of<DefaultValues>(context).largeTextSize,
                       fontWeight: FontWeight.bold
                     ),
                   ),
@@ -57,7 +57,7 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
                       ShamLocalizations.getString(context, 'please_enter_phone_number_guide') + ".",
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          fontSize: Provider.of<DefaultValues>(context).mediumTextSize
+                          fontSize: Provider.of<DefaultValues>(context).smallTextSize
                       )
                   ),
                 ),
@@ -93,7 +93,7 @@ class _PhoneAuthUIState extends State<PhoneAuthUI> {
                               ShamLocalizations.getString(context, 'a_text_will_be_sent'),
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontSize: Provider.of<DefaultValues>(context).mediumTextSize
+                                  fontSize: Provider.of<DefaultValues>(context).smallTextSize
                               )
                           ),
                         ),
@@ -181,7 +181,7 @@ class _PhoneNumberField extends StatelessWidget {
                     contentPadding: EdgeInsetsDirectional.only(start: 12),
                   ),
                   style: TextStyle(
-                      fontSize: Provider.of<DefaultValues>(context).mediumTextSize
+                      fontSize: Provider.of<DefaultValues>(context).smallTextSize
                   ),
                   keyboardType: TextInputType.phone,
                   onChanged: (text) => context.bloc<PhoneAuthBloc>().add(PhoneNumberChangedEvent(text))
@@ -213,7 +213,7 @@ class _CountryPickerButton extends StatelessWidget {
               label: Text('+${country.phoneCode}',
                 style: TextStyle(fontSize: Provider
                     .of<DefaultValues>(context)
-                    .mediumTextSize),
+                    .smallTextSize),
               )
           ),
         );
@@ -284,7 +284,7 @@ class _PhoneAuthSubmitButton extends StatelessWidget {
         ShamLocalizations.getString(context, 'verify_number'),
         style: TextStyle(
             color: Colors.white,
-            fontSize: Provider.of<DefaultValues>(context).largeTextSize
+            fontSize: Provider.of<DefaultValues>(context).mediumTextSize
         ),
       ),
       onPressed: () {
@@ -315,7 +315,7 @@ class _PinCodeDialog extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(ShamLocalizations.getString(context, 'enter_phone_auth_pin_code'),
-                          style: TextStyle(fontSize: Provider.of<DefaultValues>(context).mediumTextSize)
+                          style: TextStyle(fontSize: Provider.of<DefaultValues>(context).smallTextSize)
                       ),
 
                       SizedBox(height: 20,),
@@ -339,7 +339,7 @@ class _PinCodeDialog extends StatelessWidget {
                                 ShamLocalizations.getString(context, 'invalid_code') + '.',
                                 style: TextStyle(
                                   color: Colors.red,
-                                  fontSize: Provider.of<DefaultValues>(context).mediumTextSize
+                                  fontSize: Provider.of<DefaultValues>(context).smallTextSize
                                 )
                               ));
 
@@ -360,7 +360,7 @@ class _PinCodeDialog extends StatelessWidget {
                         child: Text(
                           ShamLocalizations.getString(context, 'confirm'),
                           style: TextStyle(
-                            fontSize: Provider.of<DefaultValues>(context).mediumTextSize,
+                            fontSize: Provider.of<DefaultValues>(context).smallTextSize,
                             color: Colors.white
                           ),
                         ),
@@ -373,7 +373,7 @@ class _PinCodeDialog extends StatelessWidget {
                         child: Text(
                           ShamLocalizations.getString(context, 'cancel'),
                           style: TextStyle(
-                            fontSize: Provider.of<DefaultValues>(context).mediumTextSize,
+                            fontSize: Provider.of<DefaultValues>(context).smallTextSize,
                             color: Provider.of<DefaultValues>(context).maroon
                           ),
                         ),

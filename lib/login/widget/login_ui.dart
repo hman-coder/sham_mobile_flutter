@@ -40,7 +40,7 @@ class LoginUIState extends State<LoginUI> {
                 centerTitle: true,
                   title: Text(ShamLocalizations.getString(context, 'sign_in'),
                     style: TextStyle(
-                        fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize
+                        fontSize: Provider.of<DefaultValues>(context).largeTextSize
                     ),
                   ),
               ),
@@ -62,7 +62,7 @@ class LoginUIState extends State<LoginUI> {
                             thickness: 1,
                             label: Text(ShamLocalizations.getString(context, 'sign_in_with'),
                               style: TextStyle(
-                                fontSize: Provider.of<DefaultValues>(context).mediumTextSize,
+                                fontSize: Provider.of<DefaultValues>(context).smallTextSize,
                                 color: Colors.white
                               ),
                             ),
@@ -142,7 +142,7 @@ class LoginUIState extends State<LoginUI> {
               child: AutoSizeText(
                 ShamLocalizations.getString(context, 'sign_in_description'),
                 textAlign: TextAlign.center,
-                minFontSize: Provider.of<DefaultValues>(context).largeTextSize,
+                minFontSize: Provider.of<DefaultValues>(context).mediumTextSize,
                 maxLines: 5,
                 style: TextStyle(
                   fontSize: 22,

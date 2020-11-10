@@ -94,6 +94,9 @@ class ShamLocalizations {
       // I
       'invalid_code': 'Invalid code',
 
+      // L
+      'loading' : 'Loading',
+
       // M
       'more_info' : 'More info...',
 
@@ -248,6 +251,9 @@ class ShamLocalizations {
 
       // I
       'invalid_code': 'رمز غير صحيح',
+
+      // L
+      'loading' : 'يتم التحميل',
 
       // M
       'more_info' : 'المزيد من المعلومات...',
