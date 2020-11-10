@@ -73,7 +73,7 @@ class _ImageSwitcherState extends State<ImageSwitcher>
     firstImage = Image.asset(widget.images[_currentIndex++], fit: BoxFit.fitHeight);
 
     _currentIndex = _currentIndex >= widget.images.length ? 0 : _currentIndex;
-    print(_currentIndex);
+
     secondImage = Image.asset(widget.images[_currentIndex], fit: BoxFit.fitHeight,);
   }
 
