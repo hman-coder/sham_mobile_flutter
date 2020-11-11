@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:sham_mobile/bloc_observer.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'dynamic_values/dynamic_values_bloc.dart';
 import 'package:get/get.dart';
 
+import 'main/barrel.dart';
 import 'loading/barrel.dart';
+import 'login/login_barrel.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,9 +23,7 @@ void main(){
 class Sham extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//    User.buildTestUser();
-
-    return Provider<DynamicValuesBloc>(
+  return Provider<DynamicValuesBloc>(
       create: (context) => DynamicValuesBloc(),
       child: Provider<DefaultValues>(
         create: (BuildContext context) => DefaultValues(),
@@ -43,11 +41,9 @@ class Sham extends StatelessWidget {
 
                 supportedLocales: _getSupportedLocales(),
 
-                getPages: [
-                  GetPage(name: '/home', page: () => LoadingUI(), binding: LoadingBindings())
-                ],
+                getPages: _getPages(),
 
-                initialRoute: '/home',
+                initialRoute: '/loading',
 
                 theme: ThemeData(
                     fontFamily: Provider.of<DefaultValues>(context).mainFontFamily,
@@ -85,5 +81,11 @@ class Sham extends StatelessWidget {
   List<Locale> _getSupportedLocales() => [
     const Locale('en'),
     const Locale('ar')
+  ];
+
+  List<GetPage> _getPages() => [
+    GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings()),
+    GetPage(name:'/main', page: () => MainUI(), binding: MainBindings()),
+    GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings()),
   ];
 }
