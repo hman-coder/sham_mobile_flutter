@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'main/barrel.dart';
 import 'loading/barrel.dart';
 import 'login/login_barrel.dart';
+import 'phone_auth/widget/phone_auth_ui.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,5 +88,6 @@ class Sham extends StatelessWidget {
     GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings()),
     GetPage(name:'/main', page: () => MainUI(), binding: MainBindings()),
     GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings()),
+    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(),)
   ];
 }

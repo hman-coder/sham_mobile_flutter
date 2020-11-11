@@ -66,7 +66,7 @@ class GoogleSignInApi extends SignInApi {
       print(map.toString());
       user.firstName = map['names'][0]['givenName'];
       user.lastName = map['names'][0]['familyName'];
-      user.birthday = _dateTimeFromGoogleProfileMap(map);
+      user.birthday = _birthdayFromGoogleProfileMap(map);
       user.gender = _genderFromGoogleProfileMap(map);
       return user;
 
@@ -75,7 +75,7 @@ class GoogleSignInApi extends SignInApi {
     }
   }
 
-  DateTime _dateTimeFromGoogleProfileMap(Map<String, dynamic> profileMap) {
+  DateTime _birthdayFromGoogleProfileMap(Map<String, dynamic> profileMap) {
     Map<String, dynamic> dateMap = profileMap['birthdays'][0]['date'];
     return DateTime(
         dateMap['year'],
