@@ -1,6 +1,5 @@
 
 import 'package:get/get.dart';
-import 'package:sham_mobile/main/widget/main_ui.dart';
 import 'package:sham_mobile/user/user_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,11 +17,11 @@ class LoadingController extends GetxController {
   // get author =>_author;
 
   @override
-  void onInit() async {
+  void onInit() async{
     super.onInit();
     if(await _initializeSharedPreferences()) {
       _setupUserController();
-      Get.to(MainUI());
+      Get.toNamed('/main');
     }
   }
 
@@ -40,13 +39,14 @@ class LoadingController extends GetxController {
   // }
 
   Future<bool> _initializeSharedPreferences() async {
-    await Future.delayed(2.seconds);
+    await Future.delayed(4.seconds);
     // TODO: Load SharedPreferences.
     // TODO: Check for a list of quotes
     // TODO: if not found check for connection
     // TODO: if no connection, show error (don't start app)
     // TODO: else fetch the quotes from the internet
     // TODO: load quote
+
     SharedPreferences.setMockInitialValues(new Map<String, dynamic>());
     return true;
   }

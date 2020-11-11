@@ -44,17 +44,21 @@ class _ImageSwitcherState extends State<ImageSwitcher>
   @override
   void initState() {
     _resetImages();
+    _initController();
+    _initAnimation();
+
+    _controller.forward();
+
+    super.initState();
+  }
+
+  void _initController() {
     _controller = AnimationController(
       duration: widget.duration,
       vsync: this,
     );
 
-    _controller.addListener(() => setState(() {}));
-
-    _animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
-        parent: _controller,
-        curve: widget.curve
-    ));
+    _controller.addListener(() => setState(() => null));
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -63,10 +67,13 @@ class _ImageSwitcherState extends State<ImageSwitcher>
         _controller.forward();
       }
     });
+  }
 
-    _controller.forward();
-
-    super.initState();
+  void _initAnimation() {
+    _animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+        parent: _controller,
+        curve: widget.curve
+    ));
   }
 
   void _resetImages() {

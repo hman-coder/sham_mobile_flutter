@@ -5,6 +5,6 @@ import 'package:sham_mobile/loading/loading_controller.dart';
 class LoadingBindings extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => LoadingController());
+    Get.put<LoadingController>(LoadingController());
   }
 }
