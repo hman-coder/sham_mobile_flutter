@@ -21,7 +21,7 @@ class LoadingController extends GetxController {
     super.onInit();
     if(await _initializeSharedPreferences()) {
       _setupUserController();
-      Get.toNamed('/main');
+      Get.offNamed('/main');
     }
   }
 
