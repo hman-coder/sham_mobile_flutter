@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class ContactUsUI extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class ContactUsUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.getString(context, 'contact_us')),
+          title: Text('contact_us'.tr),
         ),
         body: Center(child: Text('Contact us')));
   }

@@ -6,6 +6,7 @@ import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/text_edit_dialog.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class PersonalInfoUI extends StatefulWidget {
   final User user;
@@ -23,7 +24,6 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
 
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     bool obscureInfo = context.bloc<UserBloc>().user.id == null;
     obscureInfo = obscureInfo ? ! context.bloc<UserBloc>().user.canAccessInfo(widget.user) : true;
 
@@ -41,8 +41,8 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      "- ${localizations.getValue('all_info_obscured_message')}.\n"
-                          "- ${localizations.getValue('press_item_to_edit')}.",
+                      "- ${'all_info_obscured_message'.tr}.\n"
+                          "- ${'press_item_to_edit'.tr}.",
                       maxLines: null,
                       textAlign: TextAlign.center,
                     ),
@@ -83,7 +83,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                 SliverToBoxAdapter(
                     child: obscureInfo ? Container()
                         : ListTile(
-                      title: Text(localizations.getValue("phone_number")),
+                      title: Text("phone_number".tr),
                       subtitle: Text(widget.user.phoneNumber),
                       onTap: () => _onEditPhoneNumber(context),
                     )
@@ -92,7 +92,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                 SliverToBoxAdapter(
                     child: obscureInfo ? Container()
                         : ListTile(
-                      title: Text(localizations.getValue("address")),
+                      title: Text("address".tr),
                       subtitle: Text(widget.user.address),
                       onTap: () => _onEditAddress(context),
                     )
@@ -101,7 +101,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                 SliverToBoxAdapter(
                     child: obscureInfo ? Container()
                         : ListTile(
-                      title: Text(localizations.getValue("family")),
+                      title: Text("family".tr),
                       // subtitle: Text(widget.user.family.name),
                     )
                 ),
@@ -113,15 +113,15 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
   }
 
   String _getPriorityLabelText(BuildContext context, bool obscured) {
-    if(obscured) return ShamLocalizations.getString(context, 'priority_score_obscured');
-    else return ShamLocalizations.getString(context, "priority_score");
+    if(obscured) return 'priority_score_obscured'.tr;
+    else return "priority_score".tr;
   }
 
   String _getPriorityValueText(BuildContext context, bool obscured) {
     if(obscured) return '';
-    if (widget.user.isLowPrio) return ShamLocalizations.getString(context, "priority_score_low");
-    if (widget.user.isMidPrio) return ShamLocalizations.getString(context, "priority_score_mid");
-    else return ShamLocalizations.getString(context, "priority_score_high");
+    if (widget.user.isLowPrio) return "priority_score_low".tr;
+    if (widget.user.isMidPrio) return "priority_score_mid".tr;
+    else return "priority_score_high".tr;
   }
 
   Color _getPriorityColor(BuildContext context) {
@@ -133,12 +133,11 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
   }
 
   void _showEmptyTextSnackBar(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     _snackBarScaffoldKey.currentState.showSnackBar(SnackBar(backgroundColor: Colors.black,
-      content: Text(localizations.getValue('text_is_empty')),
+      content: Text('text_is_empty'.tr),
       action: SnackBarAction(
         onPressed: () => _snackBarScaffoldKey.currentState.hideCurrentSnackBar(),
-        label: localizations.getValue('hide'),
+        label: 'hide'.tr,
       ),
     )
     );
@@ -158,7 +157,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     return showDialog<String>(
         context: context,
         builder: (context) => TextEditDialog(
-          title: ShamLocalizations.getString(context, 'edit_username'),
+          title: 'edit_username'.tr,
           startingText: widget.user.username,
         )
     );
@@ -166,15 +165,14 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
 
   void _onEditPhoneNumber(BuildContext context) async {
     String newPhoneNumber = await _showEditPhoneDialog(context);
-    ShamLocalizations localizations = ShamLocalizations.of(context);
 
     if(newPhoneNumber != null) {
       if (newPhoneNumber.isEmpty) {
         _snackBarScaffoldKey.currentState.showSnackBar(SnackBar(backgroundColor: Colors.black,
-          content: Text(localizations.getValue('text_is_empty')),
+          content: Text('text_is_empty'.tr),
           action: SnackBarAction(
             onPressed: () => _snackBarScaffoldKey.currentState.hideCurrentSnackBar(),
-            label: localizations.getValue('hide'),
+            label: 'hide'.tr,
           ),
         )
         );
@@ -190,7 +188,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     return showDialog<String>(
         context: context,
         builder: (context) => TextEditDialog(
-          title: ShamLocalizations.getString(context, 'edit_phone_number'),
+          title: 'edit_phone_number'.tr,
           startingText: widget.user.phoneNumber,
         )
     );
@@ -210,9 +208,9 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     return showDialog<String>(
         context: context,
         builder: (context) => TextEditDialog(
-          title: ShamLocalizations.getString(context, "edit_address"),
+          title: "edit_address".tr,
           startingText: widget.user.address,
-          hintText: ShamLocalizations.getString(context, "address_hint"),
+          hintText: "address_hint".tr,
         )
     );
   }
@@ -228,7 +226,7 @@ class _PersonalInfoSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       centerTitle: true,
-      title: Text(ShamLocalizations.getString(context, "user_profile")),
+      title: Text("user_profile".tr),
       pinned: true,
       backgroundColor: Colors.transparent,
       expandedHeight: 200,

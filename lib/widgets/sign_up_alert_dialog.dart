@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class SignUpAlertDialog extends StatefulWidget {
 
@@ -11,23 +12,22 @@ class SignUpAlertDialog extends StatefulWidget {
 class _SignUpAlertDialogState extends State<SignUpAlertDialog> {
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     return Directionality(
-      textDirection: localizations.getDirection(),
+      textDirection: ShamLocalizations.of(context).getDirection(),
       child: AlertDialog(
-        title: Text(localizations.getValue("get_book")),
+        title: Text("get_book".tr),
 
-        content: Text(localizations.getValue("account_needed_message"),
+        content: Text("account_needed_message".tr,
           maxLines: 10,
         ),
 
         actions: <Widget>[
           FlatButton(
-            child: Text(localizations.getValue("cancel")),
+            child: Text("cancel".tr),
             onPressed: () => Navigator.pop(context),
           ),
           FlatButton(
-            child: Text(localizations.getValue("sign_in")),
+            child: Text("sign_in".tr),
             onPressed: () => null,
           ),
         ],

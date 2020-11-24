@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class ExceptionWidget extends StatefulWidget {
   final String text;
@@ -18,10 +17,10 @@ class _ExceptionWidgetState extends State<ExceptionWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("${widget.text} ${ShamLocalizations.getString(context, 'error_report_message')}"),
+            Text("${widget.text} ${'error_report_message'.tr}"),
             FlatButton(
               onPressed: () => print("Error reported"),
-              child: Text(ShamLocalizations.getString(context, 'error_report_button')),
+              child: Text('error_report_button'.tr),
             )
           ],
         )

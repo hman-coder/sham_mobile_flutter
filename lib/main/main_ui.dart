@@ -5,7 +5,7 @@ import 'package:sham_mobile/main/main_controller.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/books/main/widget/books_ui.dart';
 import 'package:sham_mobile/widgets/sham_custom_icons.dart';
-
+import 'package:get/get_utils/get_utils.dart';
 import 'widget/activities_ui.dart';
 import 'widget/book_clubs_ui.dart';
 import 'widget/offers_ui.dart';
@@ -36,10 +36,10 @@ class MainUI extends GetView<MainController> {
                     currentIndex: context.watch<PageController>()?.page?.floor() ?? 0,
                     backgroundColor: Colors.black,
                     items: <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: ShamLocalizations.getString(context, 'books'), icon: Icon(ShamCustomIcons.book_stack)),
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: ShamLocalizations.getString(context, 'clubs'), icon: Icon(Icons.group)),
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: ShamLocalizations.getString(context, 'activities'), icon: Icon(Icons.event)),
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: ShamLocalizations.getString(context, 'offers'), icon: Icon(Icons.local_offer)),
+                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'books'.tr, icon: Icon(ShamCustomIcons.book_stack)),
+                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'clubs'.tr, icon: Icon(Icons.group)),
+                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'activities'.tr, icon: Icon(Icons.event)),
+                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'offers'.tr, icon: Icon(Icons.local_offer)),
                     ],
                   ),
                 ),

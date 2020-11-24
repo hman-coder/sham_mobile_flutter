@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/models/filter.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class FilterButton<T extends Filtered> extends StatefulWidget {
   final List<Filter> filters;
@@ -32,7 +32,7 @@ class _FilterButtonState<T extends Filtered> extends State<FilterButton> {
         CheckedPopupMenuItem<Filter>(
           checked: _selectedFilter == filter,
           value: filter,
-          child: Text(ShamLocalizations.getString(context, filter.toString())),
+          child: Text(filter.toString().tr),
         )
     ).toList();
   }

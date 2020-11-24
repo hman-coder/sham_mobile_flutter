@@ -9,6 +9,7 @@ import 'package:sham_mobile/drawer/drawer_ui.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class BookClubsUI extends StatelessWidget{
   BookClubsUI({Key key}) : super(key: key);
@@ -28,7 +29,7 @@ class BookClubsUI extends StatelessWidget{
   Widget _buildAppBar(BuildContext context) {
     return AppBar(
         centerTitle: true,
-        title: Text(ShamLocalizations.getString(context, 'book_clubs')));
+        title: Text('book_clubs'.tr));
   }
 
   Widget _buildBody(BuildContext context) {
@@ -47,7 +48,7 @@ class BookClubsUI extends StatelessWidget{
             );
           }
 
-          else return ExceptionWidget(text: ShamLocalizations.getString(context, 'error_while_building_ui'));
+          else return ExceptionWidget(text: 'error_while_building_ui'.tr);
         }
     );
   }
@@ -59,7 +60,6 @@ class BookClubsUI extends StatelessWidget{
   }
 
   Iterable<Widget> _buildBookClubItem(BuildContext context, Activity bookClub) sync*{
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     yield SliverPadding(
       padding: EdgeInsets.all(0.0),
       sliver: SliverAppBar(
@@ -91,10 +91,10 @@ class BookClubsUI extends StatelessWidget{
         delegate: SliverChildListDelegate(
           [
             Container(height: 10,),
-            _buildLabelValuePair(context, localizations.getValue('age_group'), bookClub.ageGroup.toString()),
-            _buildLabelValuePair(context, localizations.getValue('frequency'), bookClub.frequency),
-            _buildLabelValuePair(context, localizations.getValue('next_session'), StringHelper.dateToString(bookClub.nextSession)),
-            _buildLabelValuePair(context, localizations.getValue('participants'), '${bookClub.participants} \\ ${bookClub.slots}'),
+            _buildLabelValuePair(context, 'age_group'.tr, bookClub.ageGroup.toString()),
+            _buildLabelValuePair(context, 'frequency'.tr, bookClub.frequency),
+            _buildLabelValuePair(context, 'next_session'.tr, StringHelper.dateToString(bookClub.nextSession)),
+            _buildLabelValuePair(context, 'participants'.tr, '${bookClub.participants} \\ ${bookClub.slots}'),
             _buildMoreInfoButton(context, bookClub),
             Container(height: 15.0),
             Divider(
@@ -145,7 +145,7 @@ class BookClubsUI extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             GestureDetector(
-              child: Text(ShamLocalizations.getString(context, 'more_info'),
+              child: Text('more_info'.tr,
                   style: TextStyle(
                       color: Colors.blue
                   )

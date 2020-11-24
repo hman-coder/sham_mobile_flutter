@@ -35,7 +35,7 @@ class LoadingUI extends GetView<LoadingController> {
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
-                  Text("${ShamLocalizations.getString(context, 'loading')}...",
+                  Text("${'loading'.tr}...",
                     style: TextStyle(
                       fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize,
                       color: Colors.white,

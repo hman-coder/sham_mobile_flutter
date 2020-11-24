@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sham_mobile/error/error_controller.dart';
+import 'package:sham_mobile/phone_auth/phone_auth_bindings.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:sham_mobile/translations/translations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'dynamic_values/dynamic_values_bloc.dart';
 import 'package:get/get.dart';
@@ -9,7 +12,7 @@ import 'package:get/get.dart';
 import 'main/barrel.dart';
 import 'loading/barrel.dart';
 import 'login/login_barrel.dart';
-import 'phone_auth/widget/phone_auth_ui.dart';
+import 'phone_auth/phone_auth_ui.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,9 +41,16 @@ class Sham extends StatelessWidget {
               },
 
               child: GetMaterialApp(
+                onInit: () {
+                  Get.lazyPut(() => ErrorController());
+                },
                 localizationsDelegates: _getLocalizationsDelegates(),
 
-                supportedLocales: _getSupportedLocales(),
+                translations: ShamTranslations(),
+
+                locale: Locale('ar'),
+
+                // supportedLocales: _getSupportedLocales(),
 
                 getPages: _getPages(),
 
@@ -88,6 +98,6 @@ class Sham extends StatelessWidget {
     GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings()),
     GetPage(name:'/main', page: () => MainUI(), binding: MainBindings()),
     GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings()),
-    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(),)
+    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings())
   ];
 }

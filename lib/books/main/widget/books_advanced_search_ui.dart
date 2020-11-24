@@ -9,6 +9,7 @@ import 'package:sham_mobile/models/category.dart';
 import 'package:sham_mobile/models/flagged_object.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/books/repository/filters_repository.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class BooksAdvancedSearchUI extends StatefulWidget {
   final Book searchBook;
@@ -36,7 +37,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
       textDirection: localizations.getDirection(),
       child: Scaffold(
           appBar: AppBar(
-            title: Text(localizations.getValue('advanced_search')),
+            title: Text('advanced_search'.tr),
             actions: <Widget>[
               IconButton(
                 onPressed: () => Navigator.pop(context, widget.searchBook),
@@ -50,7 +51,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
             children: <Widget>[
               _buildFilterTile(
                 context,
-                text: localizations.getValue('categories'),
+                text: 'categories'.tr,
                 filterIsApplied: widget.searchBook.categories.length > 0,
                 onTap: () async {
                   List<Category> categories = await _showCategoriesDialog(context);
@@ -64,7 +65,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
 
               _buildFilterTile(
                 context,
-                text: localizations.getValue('age_groups'),
+                text: 'age_groups'.tr,
                 filterIsApplied: widget.searchBook.ageGroups.length > 0,
                 onTap: () async {
                   List<AgeGroup> ageGroups = await _showAgeGroupsDialog(context);
@@ -78,7 +79,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
 
               _buildFilterTile(
                 context,
-                text: localizations.getValue('authors'),
+                text: 'authors'.tr,
                 filterIsApplied: widget.searchBook.authors.length > 0,
                 onTap: () async {
                   List<Author> authors = await _showAuthorsDialog(context);
@@ -93,7 +94,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
 
               _buildFilterTile(
                   context,
-                  text: localizations.getValue('special_categories'),
+                  text: 'special_categories'.tr,
                   filterIsApplied: widget.searchBook.specialCategories.length > 0,
                   onTap: () async {
                     List<Category> specialCategories = await _showSpecialCategoriesDialog(context);
@@ -108,7 +109,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
 
               _buildFilterTile(
                   context,
-                  text: localizations.getValue('rating'),
+                  text: 'rating'.tr,
                   filterIsApplied: ! (widget.searchBook.rating[0] == -1),
                   onTap: () async {
                     List<double> ratings = await _showRatingsDialog(context);
@@ -148,7 +149,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
           return _FilterAlertDialog<Category>(
             allObjects: repo.categories,
             selectedObjects: widget.searchBook.categories.sublist(0),
-            title: ShamLocalizations.getString(context, "categories"),
+            title: "categories".tr,
           );
         }
     );
@@ -162,7 +163,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
           return _FilterAlertDialog<AgeGroup>(
             allObjects: repo.ageGroups,
             selectedObjects: widget.searchBook.ageGroups.sublist(0),
-            title: ShamLocalizations.getString(context, "age_groups"),
+            title: "age_groups".tr,
           );
         }
     );
@@ -194,7 +195,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
           return _FilterAlertDialog<Category>(
             allObjects: repo.specialCategories,
             selectedObjects: widget.searchBook.specialCategories.sublist(0),
-            title: ShamLocalizations.getString(context, "special_categories"),
+            title: "special_categories".tr,
           );
         }
     );
@@ -239,9 +240,8 @@ class _FilterAlertDialogState<T> extends State<_FilterAlertDialog<T>> {
 
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     return Directionality(
-      textDirection: localizations.getDirection(),
+      textDirection: ShamLocalizations.of(context).getDirection(),
       child: AlertDialog(
         title: Text(widget.title),
 
@@ -265,12 +265,12 @@ class _FilterAlertDialogState<T> extends State<_FilterAlertDialog<T>> {
 
         actions: <Widget>[
           FlatButton(
-            child: Text(localizations.getValue("cancel")),
+            child: Text("cancel".tr),
             onPressed: () => Navigator.pop(context, null),
           ),
 
           FlatButton(
-            child: Text(localizations.getValue("accept")),
+            child: Text("accept".tr),
             onPressed: () {
               print(_getResults().toList());
               Navigator.pop(context, _getResults().toList());
@@ -278,7 +278,7 @@ class _FilterAlertDialogState<T> extends State<_FilterAlertDialog<T>> {
           ),
 
           FlatButton(
-            child: Text(localizations.getValue("remove_all")),
+            child: Text("remove_all".tr),
             onPressed: () => setState(() => flaggedObjectsList.forEach((element) => element.isFlagged = false)),
           )
         ],
@@ -322,9 +322,8 @@ class _AuthorsAlertDialogState extends State<_AuthorsAlertDialog> {
 
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     return AlertDialog(
-      title: Text(localizations.getValue("authors")),
+      title: Text("authors".tr),
 
       content: CustomScrollView(
         slivers: <Widget>[
@@ -339,7 +338,7 @@ class _AuthorsAlertDialogState extends State<_AuthorsAlertDialog> {
                 print(text);
               }),
               decoration: InputDecoration(
-                  hintText: localizations.getValue("search_authors_hint"),
+                  hintText: "search_authors_hint".tr,
                   icon: Icon(Icons.search)
               ),
             ),
@@ -367,17 +366,17 @@ class _AuthorsAlertDialogState extends State<_AuthorsAlertDialog> {
 
       actions: <Widget>[
         FlatButton(
-          child: Text(localizations.getValue("cancel")),
+          child: Text("cancel".tr),
           onPressed: () => Navigator.pop(context, null),
         ),
 
         FlatButton(
-          child: Text(localizations.getValue("accept")),
+          child: Text("accept".tr),
           onPressed: () => Navigator.pop(context, _getResult().toList()),
         ),
 
         FlatButton(
-          child: Text(localizations.getValue("remove_all")),
+          child: Text("remove_all".tr),
           onPressed: () => setState(() {
             allAuthorsAsFlaggedObjects.forEach((element) => element.isFlagged = false);
             displayedList.forEach((element) => element.isFlagged = false);
@@ -425,11 +424,11 @@ class _RatingsDialogState extends State<_RatingsDialog> {
     return Directionality(
         textDirection: localizations.getDirection(),
         child: AlertDialog(
-          title: Text(localizations.getValue("rating")),
+          title: Text("rating".tr),
           content: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Text(localizations.getValue("from")),
+                Text("from".tr),
                 RatingBar(
                   initialRating: fromValue < 0 ? 0 : fromValue,
                   onRatingUpdate: (value) => setState(() => fromValue = value),
@@ -441,7 +440,7 @@ class _RatingsDialogState extends State<_RatingsDialog> {
                   ),
                 ),
 
-                Text(localizations.getValue("to")),
+                Text("to".tr),
                 RatingBar(
                   initialRating: toValue < 0 ? 0 : toValue,
                   onRatingUpdate: (value) => setState(() => toValue = value),
@@ -459,17 +458,17 @@ class _RatingsDialogState extends State<_RatingsDialog> {
 
           actions: <Widget>[
             FlatButton(
-              child: Text(localizations.getValue("cancel")),
+              child: Text("cancel".tr),
               onPressed: () => Navigator.pop(context, null),
             ),
 
             FlatButton(
-              child: Text(localizations.getValue("accept")),
+              child: Text("accept".tr),
               onPressed: () => Navigator.pop(context, _getResult()),
             ),
 
             FlatButton(
-              child: Text(localizations.getValue("remove_all")),
+              child: Text("remove_all".tr),
               onPressed: () => setState(() => fromValue = toValue = -1),
             )
           ],

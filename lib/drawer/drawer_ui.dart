@@ -9,6 +9,7 @@ import 'package:sham_mobile/about/widget/contact_us_ui.dart';
 import 'package:sham_mobile/profile/account_info_ui.dart';
 import 'package:sham_mobile/profile/family_info_ui.dart';
 import 'package:sham_mobile/profile/personal_info_ui.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class DrawerUI extends StatefulWidget{
   @override
@@ -59,7 +60,7 @@ class _DrawerUIState extends State<DrawerUI> {
                     onTap: context.bloc<UserBloc>().user.id == 0 ? null // TODO: ADD LISTENER TO CREATE ACCOUNT
                         : null,
                     child: Text(context.bloc<UserBloc>().user.id != 0 ? context.bloc<UserBloc>().user.username :
-                    ShamLocalizations.getString(context, 'create_account'),
+                    'create_account'.tr,
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Arslan',
@@ -103,7 +104,7 @@ class _DrawerUIState extends State<DrawerUI> {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => route));
         },
-        title: Text(ShamLocalizations.getString(context, key),
+        title: Text(key.tr,
             textDirection: ShamLocalizations.of(context).getDirection(),
             style: TextStyle(
                 color: Colors.white,

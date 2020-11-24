@@ -9,8 +9,8 @@ import 'package:sham_mobile/drawer/drawer_ui.dart';
 import 'package:sham_mobile/books/main/bloc/books_bloc_barrel.dart';
 import 'package:sham_mobile/books/advanced_search/bloc/book_search_bloc_barrel.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
-
 import 'books_advanced_search_ui.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class BooksUI extends StatefulWidget {
   BooksUI({Key key}) : super(key: key);
@@ -87,9 +87,9 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
               controller: _tabController,
               indicatorColor: Colors.white,
               tabs: <Widget>[
-                Tab(text: ShamLocalizations.getString(context, "books")),
-                Tab(text: ShamLocalizations.getString(context, "bookmarks")),
-                Tab(text: ShamLocalizations.getString(context, "blind_dates")),
+                Tab(text: "books".tr),
+                Tab(text: "bookmarks".tr),
+                Tab(text: "blind_dates".tr),
               ],
             )),
       )
@@ -97,14 +97,13 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
   }
 
   Widget _buildAppBarTitle(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     return BlocBuilder<BookSearchBloc, BookSearchState>(
       builder: (context, state) => AnimatedSwitcher(
         duration: Duration(milliseconds: 300),
         transitionBuilder: (child, animation) =>
             ScaleTransition(child: child, scale: animation),
         child:  state is SearchModeOffState
-            ? Text(localizations.getValue('books'))
+            ? Text('books'.tr)
             : TextField(
           onChanged: (str) => context.bloc<BookSearchBloc>().add(SearchEvent(Book(title: str))),
           autofocus: true,
@@ -115,7 +114,7 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
             ),
             fillColor: Colors.white,
             filled: true,
-            hintText: localizations.getValue('search_book_hint'),
+            hintText: 'search_book_hint'.tr,
           ),
         ),
       ),
@@ -197,7 +196,7 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
                   return _BlindDateItem(blindDate: state.books[index]);
                 }
 
-                return ExceptionWidget(text: ShamLocalizations.getString(context, "error_while_building_ui"));
+                return ExceptionWidget(text: "error_while_building_ui".tr);
               },
 
               childCount: state.books.length
@@ -210,8 +209,8 @@ class _BooksUIState extends State<BooksUI> with TickerProviderStateMixin {
 
   Widget _buildProperWidgetForState(BooksState state, BuildContext context) {
     if(state is LoadingState) return ConstrainedBox(constraints: BoxConstraints(maxWidth: 25, maxHeight: 25), child: CircularProgressIndicator());
-    if(state is EmptyBookListState) return Center(child: Text(ShamLocalizations.getString(context, "no_books_found")));
-    return ExceptionWidget(text: ShamLocalizations.getString(context, "error_while_building_ui"));
+    if(state is EmptyBookListState) return Center(child: Text("no_books_found".tr));
+    return ExceptionWidget(text: "error_while_building_ui".tr);
   }
 }
 

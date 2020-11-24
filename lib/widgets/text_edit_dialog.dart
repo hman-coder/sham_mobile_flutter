@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 
 import 'cancel_button.dart';
@@ -15,10 +16,9 @@ class TextEditDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     String returnedValue = startingText;
     return Directionality(
-      textDirection: localizations.getDirection(),
+      textDirection: ShamLocalizations.of(context).getDirection(),
       child: AlertDialog(
         title: Text(
           title,
@@ -39,7 +39,7 @@ class TextEditDialog extends StatelessWidget {
         actions: <Widget>[
           CancelButton(),
           FlatButton(
-            child: Text(localizations.getValue('edit')),
+            child: Text('edit'.tr),
             onPressed: () => Navigator.pop(context, returnedValue),
           )
         ],

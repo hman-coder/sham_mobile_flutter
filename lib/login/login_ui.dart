@@ -8,7 +8,7 @@ import 'package:sham_mobile/widgets/sham_custom_icons.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/labeled_divider.dart';
-import 'package:sham_mobile/phone_auth/widget/phone_auth_ui.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 import 'login_controller.dart';
 
@@ -20,7 +20,7 @@ class LoginUI extends GetView<LoginController> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-              title: Text(ShamLocalizations.getString(context, 'sign_in'),
+              title: Text('sign_in'.tr,
                 style: TextStyle(
                     fontSize: Provider.of<DefaultValues>(context).largeTextSize
                 ),
@@ -42,7 +42,7 @@ class LoginUI extends GetView<LoginController> {
                       child: LabeledDivider(
                         color: Colors.white,
                         thickness: 1,
-                        label: Text(ShamLocalizations.getString(context, 'sign_in_with'),
+                        label: Text('sign_in_with'.tr,
                           style: TextStyle(
                             fontSize: Provider.of<DefaultValues>(context).smallTextSize,
                             color: Colors.white
@@ -60,7 +60,7 @@ class LoginUI extends GetView<LoginController> {
                       disabled: controller.isProcessing,
                       color: Color(0xFFD44637),
                       icon: Icon(ShamCustomIcons.gmail, color: Colors.white.withOpacity(0.8)),
-                      text: ShamLocalizations.getString(context, 'google_sign_in'),
+                      text: 'google_sign_in'.tr,
                       onPressed: controller.performGoogleSignIn
                       ),
                     ),
@@ -72,7 +72,7 @@ class LoginUI extends GetView<LoginController> {
                       disabled: controller.isProcessing,
                       color: Color(0xFF29487D),
                       icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
-                      text: ShamLocalizations.getString(context, 'facebook_sign_in'),
+                      text: 'facebook_sign_in'.tr,
                       onPressed: controller.performFacebookSignIn
                       ),
                     ),
@@ -83,7 +83,7 @@ class LoginUI extends GetView<LoginController> {
                     child: Obx(() => SignInButton(
                       color: Color(0xFF25D366),
                       icon: Icon(Icons.phone, color: Colors.white),
-                      text: ShamLocalizations.getString(context, 'phone_number'),
+                      text: 'phone_number'.tr,
                       onPressed: controller.performPhoneSignIn,
                       disabled: controller.isProcessing,
                       ),
@@ -126,7 +126,7 @@ class LoginUI extends GetView<LoginController> {
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: AutoSizeText(
-                ShamLocalizations.getString(context, 'sign_in_description'),
+                'sign_in_description'.tr,
                 textAlign: TextAlign.center,
                 minFontSize: Provider.of<DefaultValues>(context).mediumTextSize,
                 maxLines: 5,

@@ -6,7 +6,7 @@ class MainController extends GetxController{
   void onInit() {
     print('main on init');
     if(_isFirstAppStart()) {
-      Get.toNamed('/login');
+      Future.delayed(3.seconds).then((value) => Get.toNamed('/login'));
     }
     super.onInit();
   }

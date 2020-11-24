@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class AccountInfoUI extends StatelessWidget {
   @override
@@ -7,8 +7,8 @@ class AccountInfoUI extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(ShamLocalizations.getString(context, 'account')),
+          title: Text('account'.tr),
         ),
-        body: Center(child: Text('Account Info')));
+        body: Center(child: Text('Account Info'.tr)));
   }
 }

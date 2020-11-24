@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class RequiredContactInfoUI extends StatelessWidget {
   @override
@@ -15,22 +15,22 @@ class RequiredContactInfoUI extends StatelessWidget {
           Text('required info'),
 
           CheckboxListTile(
-            title: Text(ShamLocalizations.getString(context, "phone_number")),
-            subtitle: Text(ShamLocalizations.getString(context, "phone_number_description")),
+            title: Text("phone_number".tr),
+            subtitle: Text("phone_number_description".tr),
             value: true,
             onChanged: null
           ),
 
           CheckboxListTile(
-            title: Text(ShamLocalizations.getString(context, "personal_info")),
-            subtitle: Text(ShamLocalizations.getString(context, "personal_info_description")),
+            title: Text("personal_info".tr),
+            subtitle: Text("personal_info_description".tr),
             value: true,
             onChanged: null,
           ),
 
           CheckboxListTile(
-              title: Text(ShamLocalizations.getString(context, "personal_info")),
-              subtitle: Text(ShamLocalizations.getString(context, "personal_info_description")),
+              title: Text("personal_info".tr),
+              subtitle: Text("personal_info_description".tr),
               value: true,
               onChanged: null,
           ),

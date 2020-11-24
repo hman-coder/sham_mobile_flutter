@@ -6,6 +6,7 @@ import 'package:sham_mobile/models/comment.dart';
 import 'package:sham_mobile/providers/sham_localizations.dart';
 
 import 'default_values.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class CommentWidget extends StatelessWidget {
   final Comment comment;
@@ -24,7 +25,7 @@ class CommentWidget extends StatelessWidget {
                   backgroundImage: AssetImage(comment.userImage),
                 ),
 
-                title: Text(comment.username ?? ShamLocalizations.getString(context, 'new_user'),
+                title: Text(comment.username ?? 'new_user'.tr,
                     style: defaultValues.commentHeaderTextStyle
                 ),
 

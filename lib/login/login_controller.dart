@@ -34,9 +34,9 @@ class LoginController extends GetxController {
 
   void performPhoneSignIn() async {
     _isProcessing.value = true;
-    String _phoneNumber = await Get.toNamed('/phone_auth');
+    var phoneNumber = await Get.toNamed('/phone_auth');
 
-    if(_phoneNumber != null)
+    if(phoneNumber != null)
       Get.offNamed('/contact_info');
   }
 }
