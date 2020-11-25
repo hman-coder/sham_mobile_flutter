@@ -60,6 +60,8 @@ Map<String, String> get englishTranslations => {
 
   'error_network' : 'A network error has occurred. Check your internet connection',
   'error_unknown' : 'An unknown error has occurred.',
+  'error_unknown_description' : 'If this error persists you can report it.',
+
   //F
   'facebook_sign_in' : 'Facebook account',
   'family' : 'family',
@@ -132,6 +134,7 @@ Map<String, String> get englishTranslations => {
   // R
   'rating' : 'Rating',
   'remove_all' : 'Remove all',
+  'report' : 'Report',
   'reserve_book' : 'Reserve book',
   'reserve_book_request_high_priority' : 'Because you have a high priority score, your book will be reserved for',
   'reserve_book_request_medium_priority_1' : 'You have a medium priority score, so you can reserve a book for only',

@@ -66,6 +66,7 @@ Map<String, String> get arabicTranslations => {
 
   'error_network' : 'حدث خطأ في الشبكة. نرجو التأكد من وجود اتصال بالإنترنت',
   'error_unknown' : 'حدث خطأ غير معروف.',
+  'error_unknown_description' : 'إن استمر هذا الخطأ بالظهور فبإمكانك التبليغ عنه.',
 
   // G
   'get_book' : 'احصل على الكتاب',
@@ -131,6 +132,7 @@ Map<String, String> get arabicTranslations => {
   // R
   'rating' : 'التقييم',
   'remove_all' : 'إزالة الكل',
+  'report' : 'تبليغ',
   'reserve_book' : 'احجز الكتاب',
   'reserve_book_request_high_priority' : 'لأنك لديك مجموع نقاط أولوية مرتفع فسوف تستطيع حجز نسخة من الكتاب لمدة',
   'reserve_book_request_medium_priority' : 'لديك مجموع نقاط أولوية متوسط، لذلك تستطيع حجز نسخة من الكتاب لمدة',
