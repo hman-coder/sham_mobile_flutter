@@ -39,7 +39,7 @@ class LoadingController extends GetxController {
   // }
 
   Future<bool> _initializeSharedPreferences() async {
-    await Future.delayed(4.seconds);
+    await Future.delayed(10.seconds);
     // TODO: Load SharedPreferences.
     // TODO: Check for a list of quotes
     // TODO: if not found check for connection

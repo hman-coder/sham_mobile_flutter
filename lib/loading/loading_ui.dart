@@ -76,7 +76,7 @@ class LoadingUI extends GetView<LoadingController> {
             'assets/images/sham_kids.jpg',
             'assets/images/sham_single_book.jpg',
           ],
-          duration: Duration(seconds: 4),
+          duration: 3.seconds,
         ),
       );
     }
