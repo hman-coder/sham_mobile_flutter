@@ -43,6 +43,17 @@ class ErrorController extends GetxController {
 
     return null;
   }
+
+  showUnknownError() {
+    Get.rawSnackbar(
+          messageText: ErrorMessageTextWidget('error_unknown_description'.tr),
+          titleText: ErrorHeaderTextWidget('error_unknown'.tr),
+          snackPosition: SnackPosition.BOTTOM,
+          duration: 5.seconds,
+          mainButton: FlatButton(onPressed: () => print('report'), child: Text('report'.tr)),
+          isDismissible: true,
+        );
+  }
 }
 
 class ShamError {
