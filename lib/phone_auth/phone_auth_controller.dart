@@ -125,7 +125,8 @@ class PhoneAuthController extends GetxController {
       );
 
     } catch(error) {
-      if(error is FirebaseAuthException)
+      if(error is FirebaseAuthException) {
+        _state.value = _PhoneAuthState.invalid_pin_code;
         Get.find<ErrorController>().showError(
             ShamError(
                 message: 'invalid_code'.tr,
@@ -133,9 +134,12 @@ class PhoneAuthController extends GetxController {
                 displayType: ErrorDisplayType.dialog
             )
         );
+      }
 
-      else
+      else {
+        _state.value = _PhoneAuthState.none;
         Get.find<ErrorController>().showUnknownError();
+      }
     }
   }
 }
