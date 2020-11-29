@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
+
 
 class ErrorHeaderTextWidget extends StatelessWidget {
   final String header;
@@ -9,7 +11,7 @@ class ErrorHeaderTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-        textDirection: ShamLocalizations.of(context).getDirection(),
+        textDirection: Get.direction,
         child: Text(
           header,
           style: TextStyle(
@@ -28,7 +30,7 @@ class ErrorMessageTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-        textDirection: ShamLocalizations.of(context).getDirection(),
+        textDirection: Get.direction,
         child: Text(
           message,
           style: TextStyle(

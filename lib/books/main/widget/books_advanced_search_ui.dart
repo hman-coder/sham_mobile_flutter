@@ -7,9 +7,10 @@ import 'package:sham_mobile/models/author.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/category.dart';
 import 'package:sham_mobile/models/flagged_object.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+
 import 'package:sham_mobile/books/repository/filters_repository.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 class BooksAdvancedSearchUI extends StatefulWidget {
   final Book searchBook;
@@ -31,10 +32,8 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
 
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
-
     return Directionality(
-      textDirection: localizations.getDirection(),
+      textDirection: Get.direction,
       child: Scaffold(
           appBar: AppBar(
             title: Text('advanced_search'.tr),
@@ -170,14 +169,13 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
   }
 
   Future<List<Author>> _showAuthorsDialog(BuildContext context) async {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     return showDialog<List<Author>>(
         context: context,
         barrierDismissible: false,
         builder: (buildContext) {
 
           return Directionality(
-              textDirection: localizations.getDirection(),
+              textDirection: Get.direction,
               child: _AuthorsAlertDialog(
                 allAuthors: repo.authors,
                 selectedAuthors: widget.searchBook.authors,
@@ -241,7 +239,7 @@ class _FilterAlertDialogState<T> extends State<_FilterAlertDialog<T>> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: AlertDialog(
         title: Text(widget.title),
 
@@ -420,9 +418,8 @@ class _RatingsDialogState extends State<_RatingsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    ShamLocalizations localizations = ShamLocalizations.of(context);
     return Directionality(
-        textDirection: localizations.getDirection(),
+        textDirection: Get.direction,
         child: AlertDialog(
           title: Text("rating".tr),
           content: SingleChildScrollView(

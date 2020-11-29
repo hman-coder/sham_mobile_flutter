@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/models/comment.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+
 
 import 'default_values.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -15,8 +15,7 @@ class CommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<DefaultValues>(
-        builder: (context, defaultValues, child) => Column(
+    return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -26,7 +25,7 @@ class CommentWidget extends StatelessWidget {
                 ),
 
                 title: Text(comment.username ?? 'new_user'.tr,
-                    style: defaultValues.commentHeaderTextStyle
+                    style: DefaultValues.commentHeaderTextStyle
                 ),
 
                 trailing: comment.rating == null || comment.rating == 0 ? Container(width: 0,)
@@ -47,12 +46,11 @@ class CommentWidget extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 35),
                 child: Text(
                   comment.body,
-                  style: defaultValues.commentTextStyle,
+                  style: DefaultValues.commentTextStyle,
                   maxLines: 20,
                 ),
               )
             ]
-        )
-    );
+        );
   }
 }

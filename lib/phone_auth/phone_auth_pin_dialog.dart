@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 
 import 'phone_auth_controller.dart';
@@ -13,7 +12,7 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: Dialog(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -23,7 +22,7 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text('enter_phone_auth_pin_code'.tr,
-                        style: TextStyle(fontSize: Provider.of<DefaultValues>(context).smallTextSize)
+                        style: TextStyle(fontSize: DefaultValues.smallTextSize)
                     ),
 
                     SizedBox(height: 20,),
@@ -46,7 +45,7 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                               'invalid_code'.tr + '.',
                               style: TextStyle(
                                   color: Colors.red,
-                                  fontSize: Provider.of<DefaultValues>(context).smallTextSize
+                                  fontSize: DefaultValues.smallTextSize
                               )
                           ));
 
@@ -66,11 +65,11 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                       child: Text(
                         'confirm'.tr,
                         style: TextStyle(
-                            fontSize: Provider.of<DefaultValues>(context).smallTextSize,
+                            fontSize: DefaultValues.smallTextSize,
                             color: Colors.white
                         ),
                       ),
-                      color: Provider.of<DefaultValues>(context).maroon,
+                      color: DefaultValues.maroon,
                       onPressed: () => controller.submitPinCode(_pinCode),
                     ),
 
@@ -78,8 +77,8 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                       minWidth: double.infinity,
                       child: Text('cancel'.tr,
                         style: TextStyle(
-                            fontSize: Provider.of<DefaultValues>(context).smallTextSize,
-                            color: Provider.of<DefaultValues>(context).maroon
+                            fontSize: DefaultValues.smallTextSize,
+                            color: DefaultValues.maroon
                         ),
                       ),
                       onPressed: () => Navigator.pop(context, false),

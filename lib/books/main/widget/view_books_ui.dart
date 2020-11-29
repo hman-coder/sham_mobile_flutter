@@ -6,7 +6,6 @@ import 'package:sham_mobile/dynamic_values/dynamic_values_bloc.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/view_book/bloc/view_book_bloc_barrel.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/cancel_button.dart';
@@ -14,7 +13,8 @@ import 'package:sham_mobile/widgets/comment_widget.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
 import 'package:sham_mobile/widgets/sign_up_alert_dialog.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 class ViewBookUI extends StatefulWidget {
   final Book book;
@@ -32,7 +32,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
     return BlocProvider<ViewBookBloc>(
       create: (context) => ViewBookBloc(widget.book),
       child: Directionality(
-        textDirection: ShamLocalizations.of(context).getDirection(),
+        textDirection: Get.direction,
         child: Scaffold(
           body: CustomScrollView(
             slivers: <Widget>[
@@ -319,9 +319,7 @@ class _ViewBookSliverAppBar extends StatelessWidget {
   Widget _buildSliverAppBarFlexibleSpace(BuildContext context) {
     return FlexibleSpaceBar(
         titlePadding: EdgeInsets.zero,
-        title: Consumer<DefaultValues>(
-          builder: (context, defaultValues, child) =>
-              Column(
+        title: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -329,7 +327,7 @@ class _ViewBookSliverAppBar extends StatelessWidget {
                   Padding(
                     padding: EdgeInsetsDirectional.only(start: 12),
                     child: Text(book.title,
-                      style: defaultValues.sliverAppBarTextStyleWithShadow,
+                      style: DefaultValues.sliverAppBarTextStyleWithShadow,
                       maxLines: 1,
                     ),
                   ),
@@ -346,7 +344,6 @@ class _ViewBookSliverAppBar extends StatelessWidget {
                   _buildSliverAppBarActions(context)
                 ],
               ),
-        ),
         background: LinearGradientBackground(
             color: Colors.black54,
             child: Image.asset(book.image,
@@ -456,7 +453,7 @@ class _GetBookAlertDialog extends StatelessWidget {
     DynamicValuesBloc dynamicValues = Provider.of<DynamicValuesBloc>(context, listen: false);
 
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: AlertDialog(
         title: Text(
           "get_book".tr,
@@ -496,7 +493,7 @@ class _AddOrUpdateReviewDialogState extends State<_AddOrUpdateReviewDialog> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: AlertDialog(
         title: Text(
             "enter_review".tr,

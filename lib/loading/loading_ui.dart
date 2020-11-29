@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/loading/loading_controller.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/image_switcher.dart';
 
@@ -11,7 +10,7 @@ class LoadingUI extends GetView<LoadingController> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
 
@@ -37,7 +36,7 @@ class LoadingUI extends GetView<LoadingController> {
 
                   Text("${'loading'.tr}...",
                     style: TextStyle(
-                      fontSize: Provider.of<DefaultValues>(context).extraLargeTextSize,
+                      fontSize: DefaultValues.extraLargeTextSize,
                       color: Colors.white,
                     ),
                   )

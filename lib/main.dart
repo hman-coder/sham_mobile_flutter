@@ -3,16 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/error/error_controller.dart';
 import 'package:sham_mobile/phone_auth/phone_auth_bindings.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+
 import 'package:sham_mobile/translations/translations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'dynamic_values/dynamic_values_bloc.dart';
 import 'package:get/get.dart';
 
-import 'main/barrel.dart';
-import 'loading/barrel.dart';
+import 'main/main_barrel.dart';
+import 'loading/loading_barrel.dart';
 import 'login/login_barrel.dart';
 import 'phone_auth/phone_auth_ui.dart';
+import 'user/user_controller.dart';
+import 'contact_info/contact_info_barrel.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,64 +29,58 @@ void main(){
 class Sham extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-  return Provider<DynamicValuesBloc>(
-      create: (context) => DynamicValuesBloc(),
-      child: Provider<DefaultValues>(
-        create: (BuildContext context) => DefaultValues(),
+  return GestureDetector(
+      // Allows hiding the keyboard when a TextField loses focus
+        onTap: () {
+          FocusNode currentFocus = FocusScope.of(context);
+          if(! currentFocus.hasPrimaryFocus) currentFocus.unfocus();
+        },
 
-        child: Consumer<DefaultValues>(
-          builder: (context, defaultValues, _) => GestureDetector(
-            // Allows hiding the keyboard when a TextField loses focus
-              onTap: () {
-                FocusNode currentFocus = FocusScope.of(context);
-                if(! currentFocus.hasPrimaryFocus) currentFocus.unfocus();
-              },
+        child: GetMaterialApp(
+          onInit: _initializeControllers,
+          localizationsDelegates: _getLocalizationsDelegates(),
 
-              child: GetMaterialApp(
-                onInit: () {
-                  Get.lazyPut(() => ErrorController());
-                },
-                localizationsDelegates: _getLocalizationsDelegates(),
+          translations: ShamTranslations(),
 
-                translations: ShamTranslations(),
+          locale: Locale('ar'),
 
-                locale: Locale('ar'),
+          // supportedLocales: _getSupportedLocales(),
 
-                // supportedLocales: _getSupportedLocales(),
+          getPages: _getPages(),
 
-                getPages: _getPages(),
+          initialRoute: '/loading',
 
-                initialRoute: '/loading',
+          theme: ThemeData(
+              fontFamily: DefaultValues.mainFontFamily,
 
-                theme: ThemeData(
-                    fontFamily: Provider.of<DefaultValues>(context).mainFontFamily,
+              bottomAppBarTheme: BottomAppBarTheme(
+                color: Colors.black,
+              ),
 
-                    bottomAppBarTheme: BottomAppBarTheme(
-                      color: Colors.black,
-                    ),
+              tabBarTheme: TabBarTheme.of(context).copyWith(
+                labelColor: Colors.white,
+                unselectedLabelColor: Color(0xffD0D0D0),
+              ),
 
-                    tabBarTheme: TabBarTheme.of(context).copyWith(
-                      labelColor: Colors.white,
-                      unselectedLabelColor: Color(0xffD0D0D0),
-                    ),
+              primaryColor: DefaultValues.maroon,
 
-                    primaryColor: defaultValues.maroon,
-
-                    floatingActionButtonTheme: FloatingActionButtonThemeData(
-                        backgroundColor: defaultValues.maroon
-                    )
-                ),
-
-                title: 'Sham',
+              floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: DefaultValues.maroon
               )
           ),
-        ),
-      ),
+
+          title: 'Sham',
+        )
     );
   }
 
+  _initializeControllers () {
+    Get.lazyPut(() => ErrorController());
+    Get.lazyPut(() => UserController());
+    Get.lazyPut(() => DefaultValues());
+  }
+
   List<LocalizationsDelegate> _getLocalizationsDelegates() => [
-      const ShamLocalizationsDelegate(),
       DefaultMaterialLocalizations.delegate,
       DefaultWidgetsLocalizations.delegate,
     ];
@@ -98,6 +94,7 @@ class Sham extends StatelessWidget {
     GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings()),
     GetPage(name:'/main', page: () => MainUI(), binding: MainBindings()),
     GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings()),
-    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings())
+    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings()),
+    GetPage(name: '/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings()),
   ];
 }

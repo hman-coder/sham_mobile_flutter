@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+
 import 'view_books_ui.dart';
 import 'package:sham_mobile/drawer/drawer_ui.dart';
 import 'package:sham_mobile/books/main/bloc/books_bloc_barrel.dart';

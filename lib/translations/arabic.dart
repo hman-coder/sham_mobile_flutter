@@ -37,6 +37,12 @@ Map<String, String> get arabicTranslations => {
   'comma' : '،',
   'comments' : 'التعليقات',
   'confirm' : 'تأكيد',
+  'contact_info' : 'معلومات الاتصال',
+  'contact_info_description' : 'ستمكننا هذه المعلومات من إيصال خدماتنا إلى منزلك',
+  'contact_info_change_phone_number' : 'لقد قمت بإضافة رقم هاتفك. اضغط هنا لتغييره.',
+  'contact_info_change_personal_info' : 'لقد قمت بإضافة معلوماتك الشخصية. اضغط هنا لتعديلها.',
+  'contact_info_change_change_address' : 'لقد قمت بإضافة عنوانك. اضغط هنا لتعديله.',
+  'contact_info_info_not_provided' : 'لم تقم بملء هذه البيانات. اضغط هنا لملئها.',
   'contact_us' : 'اتصل بنا',
   'change_language' : 'تغيير اللغة',
   'create_new_account' : 'إنشاء حساب جديد',
@@ -155,4 +161,5 @@ Map<String, String> get arabicTranslations => {
   'verify_number' : 'تأكيد الرقم',
   'view_list' : 'استعراض القائمة',
   'view_more' : 'استعراض المزيد',
+
 };

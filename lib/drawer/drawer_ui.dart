@@ -1,15 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/models/user.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/about/widget/about_app_ui.dart';
 import 'package:sham_mobile/about/widget/about_library_ui.dart';
 import 'package:sham_mobile/about/widget/contact_us_ui.dart';
 import 'package:sham_mobile/profile/account_info_ui.dart';
 import 'package:sham_mobile/profile/family_info_ui.dart';
 import 'package:sham_mobile/profile/personal_info_ui.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 class DrawerUI extends StatefulWidget{
   @override
@@ -105,7 +104,7 @@ class _DrawerUIState extends State<DrawerUI> {
                 MaterialPageRoute(builder: (context) => route));
         },
         title: Text(key.tr,
-            textDirection: ShamLocalizations.of(context).getDirection(),
+            textDirection: Get.direction,
             style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Arslan',

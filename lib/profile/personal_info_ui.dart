@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/models/user.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/text_edit_dialog.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 class PersonalInfoUI extends StatefulWidget {
   final User user;
@@ -28,7 +27,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     obscureInfo = obscureInfo ? ! context.bloc<UserBloc>().user.canAccessInfo(widget.user) : true;
 
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: Scaffold(
         key: _snackBarScaffoldKey,
         body: Scaffold(
@@ -230,14 +229,13 @@ class _PersonalInfoSliverAppBar extends StatelessWidget {
       pinned: true,
       backgroundColor: Colors.transparent,
       expandedHeight: 200,
-      flexibleSpace: Consumer<DefaultValues>(
-        builder: (context, defaultValues, child) => FlexibleSpaceBar(
+      flexibleSpace: FlexibleSpaceBar(
           background: Stack(
             alignment: Alignment.bottomCenter,
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Container(color: defaultValues.maroon, height: 150),
+                  Container(color: DefaultValues.maroon, height: 150),
                   Container(color: Colors.transparent, height: 50,),
                 ],
               ),
@@ -252,7 +250,6 @@ class _PersonalInfoSliverAppBar extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 

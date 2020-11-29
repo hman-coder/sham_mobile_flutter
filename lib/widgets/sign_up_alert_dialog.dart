@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 class SignUpAlertDialog extends StatefulWidget {
 
@@ -13,7 +13,7 @@ class _SignUpAlertDialogState extends State<SignUpAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: AlertDialog(
         title: Text("get_book".tr),
 

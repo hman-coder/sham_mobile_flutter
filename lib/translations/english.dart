@@ -37,6 +37,12 @@ Map<String, String> get englishTranslations => {
   'comma' : ',',
   'comments' : 'Comments',
   'confirm' : 'Confirm',
+  'contact_info' : 'Contact Information',
+  'contact_info_change_phone_number' : 'You have already added a phone number. Click here to edit.',
+  'contact_info_change_personal_info' : 'You have already completed your personal info. Click here to edit.',
+  'contact_info_change_change_address' : 'You have already added your address. Click here to edit.',
+  'contact_info_info_not_provided' : 'You have not provided this info yet. Click here to fill your info',
+  'contact_info_description' : 'These information will allow us to deliver our services to you. ',
   'contact_us' : 'Contact us',
   'change_language' : 'Change language',
   'create_new_account' : 'Create a new account',
@@ -99,7 +105,6 @@ Map<String, String> get englishTranslations => {
   'personal_info' : 'Personal information',
   'phone_number' : 'Phone number',
   'phone_number_authentication' : 'Phone number authentication',
-  'phone_number_description' : 'Phone number',
   'phone_number_benefits' : 'Adding a phone number to your account will allow you to benefit from services such as having books delivered to your home',
   'please_enter_phone_number' : 'Please provide your phone number',
   'please_enter_phone_number_guide' : 'Pressing the left field and select your country from the list; enter your phone number below; then press "Verify number"',
@@ -157,5 +162,6 @@ Map<String, String> get englishTranslations => {
   'verify_number' : 'Verify number',
   'view_list' : 'View list',
   'view_more' : 'View more',
+
 
 };

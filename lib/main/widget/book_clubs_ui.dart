@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:get/instance_manager.dart';
 import 'package:sham_mobile/book_clubs/bloc/book_clubs_bloc_barrel.dart';
 import 'package:sham_mobile/helpers/string_helper.dart';
 import 'package:sham_mobile/models/activity.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/drawer/drawer_ui.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/exception_widget.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 class BookClubsUI extends StatelessWidget{
   BookClubsUI({Key key}) : super(key: key);
@@ -74,11 +74,9 @@ class BookClubsUI extends StatelessWidget{
             titlePadding: EdgeInsets.only(
                 right: 10,
                 left: 10),
-            title: Consumer<DefaultValues>(
-              builder: (context, defaultValues, child) => Text(bookClub.title,
-                  style: defaultValues.sliverAppBarTextStyleWithShadow
+            title: Text(bookClub.title,
+                  style: DefaultValues.sliverAppBarTextStyleWithShadow
               ),
-            ),
             background: LinearGradientBackground(
                 color: Colors.black54,
                 child: Image.asset(bookClub.image, fit: BoxFit.cover,)),
@@ -112,7 +110,7 @@ class BookClubsUI extends StatelessWidget{
           right: 15.0, left: 15.0, top:5, bottom: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        textDirection: ShamLocalizations.of(context).getDirection(),
+        textDirection: Get.direction,
         children: <Widget>[
           Expanded(
               flex: 5,
@@ -129,7 +127,7 @@ class BookClubsUI extends StatelessWidget{
             child: Text(value,
               style: TextStyle(
                   fontSize: 16,
-                  color: Provider.of<DefaultValues>(context).maroon
+                  color: DefaultValues.maroon
               ),
             ),
           ),

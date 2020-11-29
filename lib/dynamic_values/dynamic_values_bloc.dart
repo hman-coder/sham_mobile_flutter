@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
+
 import 'package:sham_mobile/dynamic_values/dynamic_values_repository.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:get/get_utils/get_utils.dart';

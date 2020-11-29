@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/main/main_controller.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/books/main/widget/books_ui.dart';
 import 'package:sham_mobile/widgets/sham_custom_icons.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'widget/activities_ui.dart';
 import 'widget/book_clubs_ui.dart';
 import 'widget/offers_ui.dart';
@@ -13,7 +12,7 @@ import 'widget/offers_ui.dart';
 class MainUI extends GetView<MainController> {
   Widget build(BuildContext context) {
     return Directionality(
-          textDirection: ShamLocalizations.of(context).getDirection(),
+          textDirection: Get.direction,
 
           child: ChangeNotifierProvider<PageController>(
             create: (context) => PageController(),

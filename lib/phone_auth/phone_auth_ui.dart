@@ -3,17 +3,16 @@ import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/phone_auth/phone_auth_controller.dart';
 
 class PhoneAuthUI extends GetView<PhoneAuthController> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -36,9 +35,7 @@ class PhoneAuthUI extends GetView<PhoneAuthController> {
                 'please_enter_phone_number'.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                    fontSize: Provider
-                        .of<DefaultValues>(context)
-                        .largeTextSize,
+                    fontSize: DefaultValues.largeTextSize,
                     fontWeight: FontWeight.bold
                 ),
               ),
@@ -50,9 +47,7 @@ class PhoneAuthUI extends GetView<PhoneAuthController> {
                   'please_enter_phone_number_guide'.tr + ".",
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                      fontSize: Provider
-                          .of<DefaultValues>(context)
-                          .smallTextSize
+                      fontSize: DefaultValues.smallTextSize
                   )
               ),
             ),
@@ -89,9 +84,7 @@ class PhoneAuthUI extends GetView<PhoneAuthController> {
                           'a_text_will_be_sent'.tr,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                              fontSize: Provider
-                                  .of<DefaultValues>(context)
-                                  .smallTextSize
+                              fontSize: DefaultValues.smallTextSize
                           )
                       ),
                     ),
@@ -128,7 +121,7 @@ class _PhoneNumberField extends GetView<PhoneAuthController> {
                     contentPadding: EdgeInsetsDirectional.only(start: 12),
                   ),
                   style: TextStyle(
-                      fontSize: Provider.of<DefaultValues>(context).smallTextSize
+                      fontSize: DefaultValues.smallTextSize
                   ),
                   keyboardType: TextInputType.phone,
                   onChanged: (text) => controller.phoneNumber = text
@@ -154,9 +147,7 @@ class _CountryPickerButton extends GetView<PhoneAuthController> {
               onPressed: () => _showCountryPickerDialog(context),
               icon: CountryPickerUtils.getDefaultFlagImage(controller.country),
               label: Text('+${controller.country.phoneCode}',
-                style: TextStyle(fontSize: Provider
-                    .of<DefaultValues>(context)
-                    .smallTextSize),
+                style: TextStyle(fontSize: DefaultValues.smallTextSize),
               )
           ),
         ),
@@ -212,7 +203,7 @@ class _PhoneAuthSubmitButton extends GetView<PhoneAuthController> {
           'verify_number'.tr,
           style: TextStyle(
               color: Colors.white,
-              fontSize: Provider.of<DefaultValues>(context).mediumTextSize
+              fontSize: DefaultValues.mediumTextSize
           ),
         ),
         onPressed: controller.isSendingCode ? null : () {
@@ -220,7 +211,7 @@ class _PhoneAuthSubmitButton extends GetView<PhoneAuthController> {
           controller.submitPhoneNumber();
         },
       disabledColor: Colors.grey,
-      color: Provider.of<DefaultValues>(context).maroon,
+      color: DefaultValues.maroon,
       ),
     );
   }

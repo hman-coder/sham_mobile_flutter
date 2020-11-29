@@ -15,11 +15,11 @@ class LoginController extends GetxController {
     _isProcessing.value = true;
     try {
       User user = await _repository.fetchUserFromGoogleAccount();
+
     } catch (error) {
       print(error);
     }
     _isProcessing.value = false;
-
   }
 
   void performFacebookSignIn() async {
@@ -35,6 +35,8 @@ class LoginController extends GetxController {
   void performPhoneSignIn() async {
     _isProcessing.value = true;
     var phoneNumber = await Get.toNamed('/phone_auth');
+
+    _isProcessing.value = false;
 
     if(phoneNumber != null)
       Get.offNamed('/contact_info');

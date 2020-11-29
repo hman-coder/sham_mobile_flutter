@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:sham_mobile/providers/sham_localizations.dart';
-
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'cancel_button.dart';
 
 class TextEditDialog extends StatelessWidget {
@@ -18,7 +17,7 @@ class TextEditDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     String returnedValue = startingText;
     return Directionality(
-      textDirection: ShamLocalizations.of(context).getDirection(),
+      textDirection: Get.direction,
       child: AlertDialog(
         title: Text(
           title,
