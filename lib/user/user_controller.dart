@@ -6,9 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserController extends GetxController{
   final String _userIdSharedPreferencesKey = 'user_id';
 
-  var obsUser = User().obs;
+  var _obsUser = User().obs;
 
-  User get user => obsUser.value;
+  User get user => _obsUser.value;
 
   @override
   void onInit() {
@@ -19,8 +19,16 @@ class UserController extends GetxController{
   void _initializeUser() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     int userId = sp.getInt(_userIdSharedPreferencesKey) ?? 0;
-    obsUser.update((val) {
+    _obsUser.update((val) {
       val.id = userId;
     });
+  }
+
+  listenToUserChanges(Function(User) onUpdated) {
+    _obsUser.listen(onUpdated);
+  }
+
+  updatePhoneNumber(String value) {
+    _obsUser.update((user) => user.phoneNumber = value);
   }
 }

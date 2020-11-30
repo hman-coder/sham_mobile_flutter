@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sham_mobile/login/repository/login_repository.dart';
 import 'package:sham_mobile/models/user.dart';
+import 'package:sham_mobile/user/user_controller.dart';
 
 class LoginController extends GetxController {
   var _isProcessing = false.obs;
@@ -35,10 +36,12 @@ class LoginController extends GetxController {
   void performPhoneSignIn() async {
     _isProcessing.value = true;
     var phoneNumber = await Get.toNamed('/phone_auth');
+    if(phoneNumber != null) {
+      await Get.find<UserController>().updatePhoneNumber(phoneNumber);
+      Get.offNamed('/contact_info');
+    }
 
     _isProcessing.value = false;
 
-    if(phoneNumber != null)
-      Get.offNamed('/contact_info');
   }
 }
