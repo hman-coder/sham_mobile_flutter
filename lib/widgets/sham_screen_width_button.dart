@@ -12,11 +12,14 @@ class ShamScreenWidthButton extends StatelessWidget {
 
   final double height;
 
+  final ShapeBorder shape;
+
   const ShamScreenWidthButton({
     Key key,
     this.onPressed,
     this.onLongPress,
     this.text,
+    this.shape,
     this.height = 40}) : super(key: key);
 
   @override
@@ -24,6 +27,7 @@ class ShamScreenWidthButton extends StatelessWidget {
     return FlatButton(
       splashColor: Colors.white.withOpacity(0.5),
       height: height,
+      shape: shape,
       minWidth: MediaQuery.of(context).size.width - 50,
       child: Text(
         text,
