@@ -43,6 +43,7 @@ Map<String, String> get englishTranslations => {
   'contact_info_change_change_address' : 'You have already added your address. Click here to edit.',
   'contact_info_info_not_provided' : 'You have not provided this info yet. Click here to fill your info',
   'contact_info_description' : 'These information will allow us to deliver our services to you. ',
+  'contact_info_your_info_is_safe' : 'This info is classified, and only revealed on delivery.',
   'contact_us' : 'Contact us',
   'change_language' : 'Change language',
   'create_new_account' : 'Create a new account',

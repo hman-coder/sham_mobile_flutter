@@ -43,6 +43,7 @@ Map<String, String> get arabicTranslations => {
   'contact_info_change_personal_info' : 'لقد قمت بإضافة معلوماتك الشخصية. اضغط هنا لتعديلها.',
   'contact_info_change_change_address' : 'لقد قمت بإضافة عنوانك. اضغط هنا لتعديله.',
   'contact_info_info_not_provided' : 'لم تقم بملء هذه البيانات. اضغط هنا لملئها.',
+  'contact_info_your_info_is_safe' : 'تُحفظ هذه المعلومات بسرية تامة، ولا يتم كشفها إلا عند التوصيل.',
   'contact_us' : 'اتصل بنا',
   'change_language' : 'تغيير اللغة',
   'create_new_account' : 'إنشاء حساب جديد',
