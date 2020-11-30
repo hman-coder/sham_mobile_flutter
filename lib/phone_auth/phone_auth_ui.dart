@@ -7,6 +7,7 @@ import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/phone_auth/phone_auth_controller.dart';
+import 'package:sham_mobile/widgets/sham_screen_width_button.dart';
 
 class PhoneAuthUI extends GetView<PhoneAuthController> {
   @override
@@ -195,24 +196,13 @@ class _CountryDialogListItem extends StatelessWidget {
 class _PhoneAuthSubmitButton extends GetView<PhoneAuthController> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() => FlatButton(
-        splashColor: Colors.white.withOpacity(0.5),
-        height: 40,
-        minWidth: MediaQuery.of(context).size.width - 50,
-        child: Text(
-          'verify_number'.tr,
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: DefaultValues.mediumTextSize
-          ),
-        ),
+    return Obx(() => ShamScreenWidthButton(
+        text: 'verify_number'.tr,
         onPressed: controller.isSendingCode ? null : () {
           FocusScope.of(context).unfocus();
           controller.submitPhoneNumber();
         },
-      disabledColor: Colors.grey,
-      color: DefaultValues.maroon,
-      ),
+      )
     );
   }
 }
