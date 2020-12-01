@@ -10,6 +10,7 @@ Map<String, String> get englishTranslations => {
   'activities' : 'Activities',
   'add_review' : 'Add review',
   'address' : 'Address',
+  'address_other_field_hint' : 'other landmarks (nearby store, bystreet, etc)',
   'address_helper_text' : 'This information will help us deliver some services (like delivering books) to your doorstep.',
   'address_hint' : 'City, street, building no., floor',
 
@@ -32,6 +33,10 @@ Map<String, String> get englishTranslations => {
   'cancel' : 'Cancel',
   'categories' : 'Categories',
   'category' : 'Category',
+  'city' : 'City',
+  'city_aleppo' : 'Aleppo',
+  'city_damascus' : 'Damascus',
+  'city_homs' : 'Homs',
   'claim_book' : 'Please claim your book within this period',
   'clubs' : 'Clubs',
   'comma' : ',',
@@ -50,6 +55,7 @@ Map<String, String> get englishTranslations => {
   'create_account_to_complete_action' : 'You have to create an account to perform this action',
 
   // D
+  'district' : 'District',
   'done' : 'Done',
 
   // E
@@ -69,10 +75,11 @@ Map<String, String> get englishTranslations => {
   'error_unknown' : 'An unknown error has occurred.',
   'error_unknown_description' : 'If this error persists you can report it.',
 
-  //F
+  // F
   'facebook_sign_in' : 'Facebook account',
   'family' : 'family',
   'family_info' : 'Family information',
+  'first_name' : 'First name',
   'frequency' : 'Frequency',
   'from' : 'From',
 
@@ -87,6 +94,7 @@ Map<String, String> get englishTranslations => {
   'invalid_code': 'Invalid code',
 
   // L
+  'last_name' : 'Last Name',
   'loading' : 'Loading',
 
   // M
@@ -99,6 +107,7 @@ Map<String, String> get englishTranslations => {
 
   // O
   'offers' : 'Offers',
+  'others' : 'Others',
 
   // P
   'password' : 'Password',
@@ -109,6 +118,7 @@ Map<String, String> get englishTranslations => {
   'phone_number_benefits' : 'Adding a phone number to your account will allow you to benefit from services such as having books delivered to your home',
   'please_enter_phone_number' : 'Please provide your phone number',
   'please_enter_phone_number_guide' : 'Pressing the left field and select your country from the list; enter your phone number below; then press "Verify number"',
+  'please_fill_required_info_below' : 'Please fill required info below',
   'press_to_review_book' : 'Press here to review book',
   'press_item_to_edit' : 'Press an item to edit it',
   'price' : 'Price',
@@ -126,6 +136,7 @@ Map<String, String> get englishTranslations => {
   'search_author_hint': 'Search authors',
   'search_book_hint': 'Search book title',
   'select_country' : 'Select your country',
+  'select_city' : 'Select city',
   'session_duration' : 'Session duration',
   'sign_in' : 'Login',
   'sign_in_description' : 'login description',
@@ -135,6 +146,7 @@ Map<String, String> get englishTranslations => {
   'sign_in_with' : 'Sign in with',
   'skip' : 'Skip',
   'special_categories' : 'Special categories',
+  'street' : 'Street',
   'submit' : 'Submit',
 
   // R

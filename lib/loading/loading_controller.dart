@@ -21,7 +21,7 @@ class LoadingController extends GetxController {
     super.onInit();
     if(await _initializeSharedPreferences()) {
       _setupUserController();
-      Get.offNamed('/main');
+      Get.offNamed('/contact_info');
     }
   }
 
@@ -39,7 +39,7 @@ class LoadingController extends GetxController {
   // }
 
   Future<bool> _initializeSharedPreferences() async {
-    await Future.delayed(10.seconds);
+    await Future.delayed(3.seconds);
     // TODO: Load SharedPreferences.
     // TODO: Check for a list of quotes
     // TODO: if not found check for connection

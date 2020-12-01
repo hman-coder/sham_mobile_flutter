@@ -92,7 +92,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
                     child: obscureInfo ? Container()
                         : ListTile(
                       title: Text("address".tr),
-                      subtitle: Text(widget.user.address),
+                      subtitle: Text(widget.user.address.summary),
                       onTap: () => _onEditAddress(context),
                     )
                 ),
@@ -199,7 +199,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
     if(newAddress != null) {
       if(newAddress.isEmpty) _showEmptyTextSnackBar(context);
 
-      else setState(() => widget.user.address = newAddress);
+      // else setState(() => widget.user.address = newAddress);
     }
   }
 
@@ -208,7 +208,7 @@ class _PersonalInfoUIState extends State<PersonalInfoUI> {
         context: context,
         builder: (context) => TextEditDialog(
           title: "edit_address".tr,
-          startingText: widget.user.address,
+          startingText: widget.user.address.summary,
           hintText: "address_hint".tr,
         )
     );

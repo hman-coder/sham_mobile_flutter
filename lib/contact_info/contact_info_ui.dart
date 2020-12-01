@@ -44,7 +44,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
                         ? "contact_info_change_phone_number".tr
                         : "contact_info_info_not_provided".tr),
                     value: controller.isPhoneNumberAuthenticated,
-                    onChanged: (val) => Get.toNamed('phone_auth'),
+                    onChanged: (val) => controller.onPhoneNumberPressed(),
                   )
               ),
             ),
@@ -61,7 +61,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
                       ? "contact_info_change_personal_info".tr
                       : "contact_info_info_not_provided".tr),
                   value: controller.isPersonalInfoGiven,
-                  onChanged: (val) => print('personal info'),
+                  onChanged: (val) => controller.onPersonalInfoPressed(),
                 ),
               ),
             ),
@@ -78,7 +78,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
                         ? "contact_info_change_change_address".tr
                         : "contact_info_info_not_provided".tr),
                     value: controller.isAddressGiven,
-                    onChanged: (val) => print('something'),
+                    onChanged: (val) => controller.onAddressPressed(),
                 ),
               ),
             ),

@@ -9,6 +9,7 @@ Map<String, String> get arabicTranslations => {
   'account_needed_message' : 'يجب أن يكون لديك حساب لتستطيع المتابعة',
   'activities' : 'النشاطات',
   'address' : 'العنوان',
+  'address_other_field_hint' : 'نقاط علامة أخرى (متجر مجاور، شارع فرعي، إلخ)',
   'address_helper_text' : 'ستساعدنا هذه المعلومات في تقديم خدمات محددة (كإيصال الكتب) عند منزلك',
   'address_hint' : 'المدينة، الحي، الشارع، رقم البناء، الطابق',
   'add_book_review' : 'اضغط هنا لإضافة تقييم',
@@ -32,6 +33,10 @@ Map<String, String> get arabicTranslations => {
   'cancel' : 'إلغاء',
   'categories' : 'التصنيفات',
   'category' : 'التصنيف',
+  'city' : 'المدينة',
+  'city_aleppo' : 'حلب',
+  'city_damascus' : 'دمشق',
+  'city_homs' : 'حمص',
   'claim_book' : 'يرجى أخذ نسختك من الكتاب في هذه الفترة',
   'clubs' : 'النوادي',
   'comma' : '،',
@@ -50,11 +55,13 @@ Map<String, String> get arabicTranslations => {
 
   // D
   'done' : 'تم',
+  'district' : 'الحي',
 
-  //F
+  // F
   'facebook_sign_in' : 'حساب Facebook',
   'family' : 'العائلة',
   'family_info' : 'معلومات العائلة',
+  'first_name' : 'الاسم الأول',
   'frequency' : 'التكرار',
   'from' : 'من',
 
@@ -86,6 +93,7 @@ Map<String, String> get arabicTranslations => {
   'invalid_code': 'رمز غير صحيح',
 
   // L
+  'last_name' : 'اسم العائلة',
   'loading' : 'يتم التحميل',
 
   // M
@@ -98,6 +106,7 @@ Map<String, String> get arabicTranslations => {
 
   // O
   'offers' : 'العروض',
+  'others' : 'أخرى',
 
   // P
   'password' : 'كلمة السر',
@@ -109,6 +118,7 @@ Map<String, String> get arabicTranslations => {
   'phone_number_benefits' : 'سيتيح لك إضافة رقم هاتفك الاستفادة من خدماتناالإضافية كتوصيل الكتب إلى منزلك',
   'please_enter_phone_number' : 'يرجى إدخال رقم هاتفك',
   'please_enter_phone_number_guide' : 'اضغط على الحقل الأيسر لاختيار بلد من القائمة، ثم قم بإدخال رقم هاتفك، ثم اضغط "تأكيد الرقم"',
+  'please_fill_required_info_below' : 'يرجى ملء البيانات المطلوبة أدناه',
   'press_to_review_book' : 'اضغط هنا لإضافة تقييم',
   'press_item_to_edit' : 'اضغط على عنصر لتعديله',
   'priority_score' : 'حالة الأولوية',
@@ -125,6 +135,7 @@ Map<String, String> get arabicTranslations => {
   'search_author_hint': 'أدخل اسم كاتب...',
   'search_book_hint': 'أدخل عنوان كتاب...',
   'select_country' : 'اختر بلدك',
+  'select_city' : 'اختر المدينة',
   'session_duration' : 'مدة الجلسة',
   'sign_in' : 'تسجيل الدخول',
   'sign_in_description' : 'سيتيح لك إنشاء حساب على التطبيق القيام بعمليات شراء الكتب أو حجز مكان في نوادي الكتاب من منزلك بالإضافة إلى ميزات أخرى كثيرة!',
@@ -134,6 +145,7 @@ Map<String, String> get arabicTranslations => {
   'sign_in_with' : 'تسجيل الدخول عن طريق',
   'skip' : 'تخطي',
   'special_categories' : 'التصنيفات المميزة',
+  'street' : 'الشارع',
   'submit' : 'تأكيد',
 
   // R

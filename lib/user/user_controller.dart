@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sham_mobile/models/address.dart';
 
 import 'package:sham_mobile/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,5 +31,16 @@ class UserController extends GetxController{
 
   updatePhoneNumber(String value) {
     _obsUser.update((user) => user.phoneNumber = value);
+  }
+
+  updatePersonalInfo(String firstName, String lastName) {
+    _obsUser.update((user) {
+      if(firstName.isNotEmpty) user.firstName = firstName;
+      if(lastName.isNotEmpty) user.lastName = lastName;
+    });
+  }
+
+  updateAddress(Address address) {
+    _obsUser.update((user) => user.address = address);
   }
 }
