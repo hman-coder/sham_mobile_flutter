@@ -1,3 +1,4 @@
+import 'address.dart';
 import 'gender.dart';
 
 class User {
@@ -9,7 +10,12 @@ class User {
       id: 2,
       priorityPoints: 60,
       phoneNumber: "0988888888",
-      address: "الميريديان - شارع ورد شان - بناية البطيخ المبسمر",
+      address: Address(
+        city: 'aleppo',
+        district: 'الفرقان',
+        street: 'شارع الإكسبريس',
+        others: 'بناء مازن الباشا، جانب أورانج كيك'
+      ),
       // family: Family(id: 10, name: "عائلة هشام صديق يا ويلي"),
       birthday: DateTime(1991, 9, 29),
     );
@@ -37,7 +43,7 @@ class User {
   String password;
   String image;
   String phoneNumber;
-  String address;
+  Address address;
   String facebookAccessToken;
   String googleAccessToken;
   int priorityPoints;
