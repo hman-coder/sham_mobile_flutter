@@ -23,6 +23,14 @@ class DefaultValues {
     color: const Color(0xff8C0000),
   );
 
+  static InputDecoration get defaultTextFieldInputDecoration =>
+      InputDecoration(
+          labelStyle: TextStyle(fontSize: DefaultValues.mediumTextSize),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15)
+          )
+      );
+
   static final double extraLargeTextSize = 30;
 
   static final double largeTextSize = 26;
