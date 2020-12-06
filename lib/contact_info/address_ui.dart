@@ -4,9 +4,9 @@ import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/models/address.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/sham_screen_width_button.dart';
+import 'package:sham_mobile/error/error_controller.dart';
 
-// TODO: HANDLE FIELDS NOT FILLED
-
+// ignore: must_be_immutable
 class AddressUI extends StatelessWidget {
   final Address address;
 
@@ -15,10 +15,10 @@ class AddressUI extends StatelessWidget {
   AddressUI({Key key, Address address}) :
         address = address,
         _modifiedAddress = Address(
-          city: address.city,
-          district: address.district,
-          street: address.street,
-          others: address.others
+            city: address?.city ?? '',
+            district: address?.district ?? '',
+            street: address?.street ?? '',
+            others: address?.others ?? ''
         ),
         super(key: key);
 
@@ -71,8 +71,8 @@ class AddressUI extends StatelessWidget {
                   controller: TextEditingController(text: address?.others),
                 decoration: DefaultValues
                     .defaultTextFieldInputDecoration.copyWith(
-                  labelText: 'others'.tr,
-                  hintText: 'address_other_field_hint'.tr + ' *',
+                  labelText: 'others'.tr  + ' *',
+                  hintText: 'address_other_field_hint'.tr,
                 ),
 
                 onChanged: (text) => _modifiedAddress.others = text,
@@ -88,13 +88,36 @@ class AddressUI extends StatelessWidget {
                   ),
                   text: 'save'.tr,
                   height: 60,
-                  onPressed: () => Get.back(result: _modifiedAddress),
+                  onPressed: onSubmit,
                 ),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  onSubmit() {
+    if(_allFieldsAreFilled()) Get.back(result: _modifiedAddress);
+
+    else _showFillFieldsError();
+  }
+
+  bool _allFieldsAreFilled() {
+    return _modifiedAddress.street.isNotEmpty
+        && _modifiedAddress.district.isNotEmpty
+        && _modifiedAddress.city.isNotEmpty
+        && _modifiedAddress.others.isNotEmpty;
+  }
+
+  _showFillFieldsError() {
+    Get.find<ShamErrorController>().showError(
+        ShamError(
+            displayType: ErrorDisplayType.snackbar,
+            severity: ErrorSeverity.mild,
+            message: 'please_fill_fields_with_star'.tr
+        )
     );
   }
 }

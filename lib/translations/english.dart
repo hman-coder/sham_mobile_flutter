@@ -118,6 +118,7 @@ Map<String, String> get englishTranslations => {
   'phone_number_benefits' : 'Adding a phone number to your account will allow you to benefit from services such as having books delivered to your home',
   'please_enter_phone_number' : 'Please provide your phone number',
   'please_enter_phone_number_guide' : 'Pressing the left field and select your country from the list; enter your phone number below; then press "Verify number"',
+  'please_fill_fields_with_star' : 'Please fill all fields marked with a star (*)',
   'please_fill_required_info_below' : 'Please fill required info below',
   'press_to_review_book' : 'Press here to review book',
   'press_item_to_edit' : 'Press an item to edit it',

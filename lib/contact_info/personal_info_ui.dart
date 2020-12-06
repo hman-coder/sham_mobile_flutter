@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sham_mobile/error/error_controller.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/sham_screen_width_button.dart';
 
-// TODO: HANDLE FIELDS NOT FILLED
-
+// ignore: must_be_immutable
 class PersonalInfoUI extends StatelessWidget {
   final String firstName;
 
@@ -13,11 +13,14 @@ class PersonalInfoUI extends StatelessWidget {
 
   PersonalInfoUI({Key key,
     this.firstName,
-    this.lastName}) : super(key: key);
+    this.lastName}) :
+        modifiedFirstName = firstName ?? '',
+        modifiedLastName = lastName ?? '',
+        super(key: key);
 
-  String editedFirstName = '';
+  String modifiedFirstName;
 
-  String editedLastName = '';
+  String modifiedLastName;
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +32,17 @@ class PersonalInfoUI extends StatelessWidget {
         body: ListView(
           children: [
             _PersonalInfoTextField(
-              labelText: 'first_name'.tr,
+              labelText: 'first_name'.tr + ' *',
               inputAction: TextInputAction.next,
               text: firstName,
-              onTextChanged: (text) => editedFirstName = text
+              onTextChanged: (text) => modifiedFirstName = text
               ),
 
                 _PersonalInfoTextField(
-                labelText: 'last_name'.tr,
+                labelText: 'last_name'.tr+ ' *',
                 text: lastName,
                 inputAction: TextInputAction.done,
-                onTextChanged: (text) => editedLastName = text,
+                onTextChanged: (text) => modifiedLastName = text,
                 ),
 
                 SizedBox(height: 25,),
@@ -51,12 +54,33 @@ class PersonalInfoUI extends StatelessWidget {
                     ),
                     text: 'save'.tr,
                     height: 60,
-                    onPressed: () => Get.back(result: [editedFirstName, editedLastName]),
+                    onPressed: onSubmit,
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  onSubmit() {
+    if(_allFieldsAreFilled()) Get.back(result: [modifiedFirstName, modifiedLastName]);
+
+    else _showFillFieldsError();
+  }
+
+  bool _allFieldsAreFilled() {
+    return modifiedFirstName.isNotEmpty
+        && modifiedLastName.isNotEmpty;
+  }
+
+  _showFillFieldsError() {
+    Get.find<ShamErrorController>().showError(
+      ShamError(
+          displayType: ErrorDisplayType.snackbar,
+          severity: ErrorSeverity.mild,
+          message: 'please_fill_fields_with_star'.tr
+      )
     );
   }
 }

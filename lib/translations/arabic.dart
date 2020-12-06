@@ -119,6 +119,7 @@ Map<String, String> get arabicTranslations => {
   'please_enter_phone_number' : 'يرجى إدخال رقم هاتفك',
   'please_enter_phone_number_guide' : 'اضغط على الحقل الأيسر لاختيار بلد من القائمة، ثم قم بإدخال رقم هاتفك، ثم اضغط "تأكيد الرقم"',
   'please_fill_required_info_below' : 'يرجى ملء البيانات المطلوبة أدناه',
+  'please_fill_fields_with_star' : 'يرجى ملء جميع الخانات المشارة برمز نجمة (*)',
   'press_to_review_book' : 'اضغط هنا لإضافة تقييم',
   'press_item_to_edit' : 'اضغط على عنصر لتعديله',
   'priority_score' : 'حالة الأولوية',
