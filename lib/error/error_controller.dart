@@ -1,10 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:sham_mobile/widgets/default_values.dart';
 import 'error_widgets.dart';
 import 'package:get/get.dart';
 
-class ErrorController extends GetxController {
+class ShamErrorController extends GetxController {
   showError(ShamError error) {
     switch(error.displayType) {
       case ErrorDisplayType.snackbar:
@@ -26,7 +27,7 @@ class ErrorController extends GetxController {
         break;
       case ErrorDisplayType.toast:
         break;
-  };
+    };
   }
 
   Color _mapSeverityToColor(ErrorSeverity severity) {
@@ -50,7 +51,16 @@ class ErrorController extends GetxController {
           titleText: ErrorHeaderTextWidget('error_unknown'.tr),
           snackPosition: SnackPosition.BOTTOM,
           duration: 5.seconds,
-          mainButton: FlatButton(onPressed: () => print('report'), child: Text('report'.tr)),
+          mainButton: FlatButton(
+              onPressed: () => print('report'),
+              child: Text('report'.tr,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: DefaultValues.mediumTextSize,
+                  fontWeight: FontWeight.bold
+                ),
+              )
+          ),
           isDismissible: true,
         );
   }
