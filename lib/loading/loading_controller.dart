@@ -52,6 +52,5 @@ class LoadingController extends GetxController {
   }
 
   void _setupUserController() {
-    Get.put(UserController(), permanent: true);
   }
 }

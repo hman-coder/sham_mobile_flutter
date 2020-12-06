@@ -75,9 +75,9 @@ class Sham extends StatelessWidget {
   }
 
   _initializeControllers () {
-    Get.lazyPut(() => ErrorController());
-    Get.lazyPut(() => UserController());
-    Get.lazyPut(() => DefaultValues());
+    Get.put(ShamErrorController(), permanent: true);
+    Get.put(UserController(), permanent: true);
+    Get.put(DefaultValues(), permanent: true);
   }
 
   List<LocalizationsDelegate> _getLocalizationsDelegates() => [
