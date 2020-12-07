@@ -101,4 +101,6 @@ class User {
         'google AT: $googleAccessToken, \n'
         '}';
   }
+
+  String get fullName => '$firstName $lastName';
 }
