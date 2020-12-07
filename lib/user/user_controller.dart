@@ -12,6 +12,9 @@ class UserController extends GetxController{
 
   User get user => _obsUser.value;
 
+  bool get isUserLoggedIn =>
+      user.id != null && user.id != 0;
+
   @override
   void onInit() {
     super.onInit();
