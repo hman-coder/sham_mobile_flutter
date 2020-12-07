@@ -1,6 +1,5 @@
 
 import 'package:get/get.dart';
-import 'package:sham_mobile/user/user_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoadingController extends GetxController {

@@ -6,11 +6,13 @@ class MainController extends GetxController{
   void onInit() {
     print('main on init');
     if(_isFirstAppStart()) {
+      print('first time');
       Future.delayed(3.seconds).then((value) => Get.toNamed('/login'));
     }
     super.onInit();
   }
 
   bool _isFirstAppStart() =>
-    Get.find<UserController>().user.id == 0;
+    Get.find<UserController>().user?.id == null
+        || Get.find<UserController>().user.id == 0;
 }

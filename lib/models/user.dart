@@ -91,12 +91,14 @@ class User {
   @override
   String toString() {
     return 'User{'
-        'first name: $firstName; '
-        'last_name: $lastName; '
-        'birthday: $birthday; '
-        'gender: $gender; '
-        'facebook AT: $facebookAccessToken; '
-        'google AT: $googleAccessToken, '
+        'first name: $firstName \n'
+        'last_name: $lastName; \n'
+        'birthday: $birthday; \n'
+        'phone number: $phoneNumber; \n'
+        'address: ${address?.summary}; \n'
+        'gender: $gender; \n'
+        'facebook AT: $facebookAccessToken; \n'
+        'google AT: $googleAccessToken, \n'
         '}';
   }
 }
