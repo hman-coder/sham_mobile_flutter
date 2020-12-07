@@ -96,5 +96,13 @@ class Sham extends StatelessWidget {
     GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings()),
     GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings()),
     GetPage(name: '/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings()),
+
+    // Placeholders
+    GetPage(name: '/user/profile', page: () => ContactInfoUI(), ),
+    GetPage(name: '/user/family_info', page: () => ContactInfoUI(), ),
+    GetPage(name: '/user/account_info', page: () => ContactInfoUI(), ),
+    GetPage(name: '/drawer/about_app', page: () => ContactInfoUI(), ),
+    GetPage(name: '/drawer/about_library', page: () => ContactInfoUI(), ),
+    GetPage(name: '/drawer/contact_us', page: () => ContactInfoUI(), ),
   ];
 }
