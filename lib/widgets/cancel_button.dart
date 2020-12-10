@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get.dart';
 
 class CancelButton extends StatelessWidget {
   final TextStyle style;
@@ -14,7 +14,7 @@ class CancelButton extends StatelessWidget {
         'cancel'.tr,
         style: style ?? DefaultTextStyle.of(context).style,
       ),
-      onPressed: () => Navigator.pop(context, null),
+      onPressed: () => Get.back(),
     );
   }
 }
