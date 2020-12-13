@@ -14,13 +14,17 @@ class LoadingFooter extends StatelessWidget {
 
             case LoadStatus.canLoading:
             case LoadStatus.loading:
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(width: 10, child: CircularProgressIndicator(strokeWidth: 2,)),
-                  SizedBox(width: 10),
-                  Text('loading'.tr)
-                ],
+              return Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: 20, maxHeight: 20),
+                        child: CircularProgressIndicator(strokeWidth: 2,)),
+                    SizedBox(width: 10),
+                    Text('loading'.tr)
+                  ],
+                ),
               );
 
             default:
