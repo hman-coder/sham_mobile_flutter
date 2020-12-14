@@ -12,18 +12,6 @@
 ///       - asset: fonts/ShamCustomIcons.ttf
 ///
 ///
-/// * Zocial, Copyright (C) 2012 by Sam Collins
-///         Author:    Sam Collins
-///         License:   MIT (http://opensource.org/licenses/mit-license.php)
-///         Homepage:  http://zocial.smcllns.com/
-/// * Elusive, Copyright (C) 2013 by Aristeides Stathopoulos
-///         Author:    Aristeides Stathopoulos
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://aristeides.com/
-/// * Typicons, (c) Stephen Hutchings 2012
-///         Author:    Stephen Hutchings
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://typicons.com/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -31,9 +19,11 @@ class ShamCustomIcons {
   ShamCustomIcons._();
 
   static const _kFontFam = 'ShamCustomIcons';
+  static const _kFontPkg = null;
 
-  static const IconData gmail = const IconData(0xe800, fontFamily: _kFontFam);
-  static const IconData book_stack = const IconData(0xe801, fontFamily: _kFontFam);
-  static const IconData facebook = const IconData(0xe802, fontFamily: _kFontFam);
-  static const IconData twitter = const IconData(0xe803, fontFamily: _kFontFam);
+  static const IconData blind_date = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData book_stack = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData facebook = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData gmail = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData twitter = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
