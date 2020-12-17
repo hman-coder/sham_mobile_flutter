@@ -1,4 +1,5 @@
 import 'address.dart';
+import 'book_list.dart';
 import 'gender.dart';
 
 class User {
@@ -50,6 +51,7 @@ class User {
   DateTime birthday;
   int id;
   String email;
+  List<BookList> bookLists;
   Gender gender;
 
   User(
@@ -66,7 +68,8 @@ class User {
       this.phoneNumber,
       this.address,
       this.birthday,
-      this.gender
+      this.gender,
+      this.bookLists = const []
       });
 
   bool get isLowPrio => priorityPoints < 50;

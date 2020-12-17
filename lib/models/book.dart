@@ -24,12 +24,12 @@ class Book with ChangeNotifier {
   List<double> rating;
   double price;
 
-  bool _bookmarked;
+  bool _addedToLibrary;
 
   Book({this.title = '', this.authors = const [], this.rating = const [-1, -1],
     this.isNew, this.hasOffer, this.image, this.categories = const [],
     this.ageGroups = const [], this.specialCategories = const [],
-    this.offers = const [], this.price = 0, bool bookmarked = false}) : _bookmarked = bookmarked ?? false;
+    this.offers = const [], this.price = 0, bool bookmarked = false}) : _addedToLibrary = bookmarked ?? false;
 
   Book.noNulls() :
         title = '',
@@ -43,7 +43,7 @@ class Book with ChangeNotifier {
         offers = List(),
         price = 0,
         rating = [-1, -1],
-        _bookmarked = false;
+        _addedToLibrary = false;
 
   Book.fromBook(Book book) :
         title = book.title,
@@ -55,11 +55,11 @@ class Book with ChangeNotifier {
         specialCategories = book.specialCategories,
         categories = book.categories,
         rating = book.rating,
-        _bookmarked = false;
+        _addedToLibrary = false;
 
   // Setters
-  set bookmarked(bool bookmarked) {
-    _bookmarked = bookmarked;
+  set addedToLibrary(bool bookmarked) {
+    _addedToLibrary = bookmarked;
     notifyListeners();
   }
 
@@ -76,7 +76,7 @@ class Book with ChangeNotifier {
     return ret.substring(0, ret.length - 3);
   }
 
-  bool get bookmarked => _bookmarked;
+  bool get addedToLibrary => _addedToLibrary;
 
   // Adders
   void addAuthor(Author author) {
