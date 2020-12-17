@@ -30,6 +30,14 @@ class ShamErrorController extends GetxController {
     };
   }
 
+  Future<bool> showConfirmation
+      ({@required String title, @required String message}) async {
+    assert(title != null && message != null, 'You must provide both title and message');
+    return await Get.dialog<bool>(
+      ConfirmationDialog(title: title, message: message)
+    );
+  }
+
   Color _mapSeverityToColor(ErrorSeverity severity) {
     switch(severity) {
       case ErrorSeverity.severe:
