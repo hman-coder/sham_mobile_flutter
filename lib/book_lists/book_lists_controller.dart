@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sham_mobile/error/error_controller.dart';
+import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
 
 class BookListsController extends GetxController {
@@ -13,13 +14,19 @@ class BookListsController extends GetxController {
 
   @override
   void onInit() {
-    setMockValues();
+    _setMockValues();
     super.onInit();
   }
 
-  void setMockValues() {
+  void _setMockValues() {
     _bookLists.add(BookList(name: 'wishlist'.tr, id: 1));
     _bookLists.add(BookList(name: 'bookmarks'.tr, id: 2));
+  }
+
+  void addBookToBookList(Book book, BookList bookList) {
+    BookList localBookList = _bookLists.firstWhere((element) => element.id == bookList.id);
+    if(! localBookList.contains(book))
+      localBookList.add(book);
   }
 
   /// Returns whether the book was added or not
