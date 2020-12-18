@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'age_group.dart';
@@ -5,7 +6,7 @@ import 'author.dart';
 import 'category.dart';
 import 'offer.dart';
 
-class Book with ChangeNotifier {
+class Book extends Equatable with ChangeNotifier {
   // Main properties
   String title;
   bool isNew ;
@@ -127,4 +128,7 @@ class Book with ChangeNotifier {
         "specials: ${specialCategories != null ? specialCategories.length : 'null'}\n"
         "ageGroups: ${ageGroups != null ? ageGroups.length : 'null'}";
   }
+
+  @override
+  List<Object> get props => [title, authors];
 }

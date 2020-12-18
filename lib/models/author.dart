@@ -1,4 +1,6 @@
-class Author {
+import 'package:equatable/equatable.dart';
+
+class Author extends Equatable {
   String name;
 
   String birthYear;
@@ -10,18 +12,11 @@ class Author {
   Author({this.name, this.birthYear, this.deathYear, this.description});
 
   @override
-  bool operator ==(other) {
-    if(other is Author)
-      return name == other.name;
-    return false;
-  }
-
-  @override
   String toString() {
     return name;
   }
 
   @override
-  int get hashCode => super.hashCode;
+  List<Object> get props => [name];
 
 }
