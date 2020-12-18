@@ -39,6 +39,15 @@ class BookListsController extends GetxController {
           message: 'text_is_empty'.tr)
       );
       return false;
+
+    } else if (Get.find<BookListsController>().bookLists.contains(bookList)){
+      Get.find<ShamErrorController>()
+          .showError(ShamError(
+          severity: ErrorSeverity.mild,
+          displayType: ErrorDisplayType.snackbar,
+          message: 'list_already_exists'.tr)
+      );
+      return false;
     }
 
     else {
