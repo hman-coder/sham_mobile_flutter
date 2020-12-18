@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
-import 'package:sham_mobile/books/main/repository/books_repository.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/books/books_repository.dart';
 import 'view_book_event.dart';
 import 'view_book_state.dart';
 

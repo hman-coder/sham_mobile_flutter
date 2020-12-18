@@ -399,13 +399,13 @@ class _ViewBookSliverAppBar extends StatelessWidget {
                         icon: AnimatedSwitcher(
                             duration: Duration(milliseconds: 300),
                             child: Icon(
-                              book.bookmarked ? Icons.bookmark : Icons.bookmark_border,
-                              color: book.bookmarked ? Colors.amber : Colors.white,
+                              book.addedToLibrary ? Icons.bookmark : Icons.bookmark_border,
+                              color: book.addedToLibrary ? Colors.amber : Colors.white,
                               size: 20,
                               key: UniqueKey(),
                             )
                         ),
-                        onPressed: () => book.bookmarked = ! book.bookmarked,
+                        onPressed: () => book.addedToLibrary = ! book.addedToLibrary,
                       ),
                     ),
                   ),

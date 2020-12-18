@@ -8,6 +8,8 @@ Map<String, String> get arabicTranslations => {
   'account': 'الحساب',
   'account_needed_message' : 'يجب أن يكون لديك حساب لتستطيع المتابعة',
   'activities' : 'النشاطات',
+  'add' : 'إضافة',
+  'add_book_list' : 'إضافة قائمة جديدة',
   'address' : 'العنوان',
   'address_other_field_hint' : 'نقاط علامة أخرى (متجر مجاور، شارع فرعي، إلخ)',
   'address_helper_text' : 'ستساعدنا هذه المعلومات في تقديم خدمات محددة (كإيصال الكتب) عند منزلك',
@@ -42,6 +44,7 @@ Map<String, String> get arabicTranslations => {
   'comma' : '،',
   'comments' : 'التعليقات',
   'confirm' : 'تأكيد',
+  'confirm_book_list_removal' : 'هل أنت متأكد من حذف هذه القائمة مع جميع الكتب المحفوظة فيها؟',
   'contact_info' : 'معلومات الاتصال',
   'contact_info_description' : 'ستمكننا هذه المعلومات من إيصال خدماتنا إلى منزلك',
   'contact_info_change_phone_number' : 'لقد قمت بإضافة رقم هاتفك. اضغط هنا لتغييره.',
@@ -50,6 +53,7 @@ Map<String, String> get arabicTranslations => {
   'contact_info_info_not_provided' : 'لم تقم بملء هذه البيانات. اضغط هنا لملئها.',
   'contact_info_your_info_is_safe' : 'تُحفظ هذه المعلومات بسرية تامة، ولا يتم كشفها إلا عند التوصيل.',
   'contact_us' : 'اتصل بنا',
+  'contains' : 'يحتوي',
   'change_language' : 'تغيير اللغة',
   'create_new_account' : 'إنشاء حساب جديد',
 
@@ -71,12 +75,15 @@ Map<String, String> get arabicTranslations => {
   'edit_username' : 'تعديل الاسم',
   'edit_phone_number' : 'تعديل رقم الهاتف',
   'edit_address' : 'تعديل العنوان',
+  'elements' : 'عنصراً',
+  'enter_book_list_name' : 'أدخل اسم القائمة',
   'enter_phone_number' : 'أدخل رقم الهاتف',
   'enter_review' : 'أدخل التقييم',
   'error_report_message' : 'نرجو التبليغ عن هذا الخطأ عن طريق الضغط على الزر أدناه. يتطلب ذلك اتصالاً بالإنترنت.',
   'error_while_building_ui' : 'حصل خطأ أثناء بناء الواجهة',
   'error_report_button' : 'التبليغ',
   'enter_phone_auth_pin_code' : 'يُرجى إدخال الرمز المكون من ستة أرقام المتضمن في الرسالة التي ستصلك.',
+  'error_while_retrieving_data' : 'خطأ أثناء تحميل المعلومات',
 
   'error_network' : 'حدث خطأ في الشبكة. نرجو التأكد من وجود اتصال بالإنترنت',
   'error_unknown' : 'حدث خطأ غير معروف.',
@@ -94,6 +101,7 @@ Map<String, String> get arabicTranslations => {
 
   // L
   'last_name' : 'اسم العائلة',
+  'list_already_exists' : 'القائمة موجودة',
   'loading' : 'يتم التحميل',
 
   // M
@@ -135,6 +143,7 @@ Map<String, String> get arabicTranslations => {
   'search' : 'بحث',
   'search_author_hint': 'أدخل اسم كاتب...',
   'search_book_hint': 'أدخل عنوان كتاب...',
+  'select_book_list' : 'اختر قائمة الكتب',
   'select_country' : 'اختر بلدك',
   'select_city' : 'اختر المدينة',
   'session_duration' : 'مدة الجلسة',
@@ -176,4 +185,6 @@ Map<String, String> get arabicTranslations => {
   'view_list' : 'استعراض القائمة',
   'view_more' : 'استعراض المزيد',
 
+  // W
+  'wishlist' : 'قائمة الشراء',
 };

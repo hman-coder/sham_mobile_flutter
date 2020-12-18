@@ -4,20 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'book_search_state.dart';
 import 'book_search_event.dart';
-import 'package:sham_mobile/books/main/bloc/books_bloc_barrel.dart';
 
 class BookSearchBloc extends Bloc<BookSearchEvent, BookSearchState> {
   /// Needed to notify the booksBloc with the current tab index
   /// when search is cancelled.
   final TabController tabController;
 
-  final BooksBloc booksBloc;
+  // final BooksBloc booksBloc;
 
   static Book _lastSearchBook = Book();
 
   Book get lastSearchBook => _lastSearchBook;
 
-  BookSearchBloc({@required this.tabController, @required this.booksBloc})
+  BookSearchBloc({@required this.tabController})
       : super(SearchModeOffState());
 
   @override
@@ -48,7 +47,7 @@ class BookSearchBloc extends Bloc<BookSearchEvent, BookSearchState> {
     _lastSearchBook = event.searchBook;
 
     lastSearchRequest = Timer(Duration(milliseconds: 300), () {
-      booksBloc.add(SearchBooksEvent(_lastSearchBook));
+      // booksBloc.add(SearchBooksEvent(_lastSearchBook));
     });
   }
 }

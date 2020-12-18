@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +7,7 @@ import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/category.dart';
 import 'package:sham_mobile/models/flagged_object.dart';
 
-import 'package:sham_mobile/books/repository/filters_repository.dart';
+import 'package:sham_mobile/books/to_be_edited/repository/filters_repository.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 

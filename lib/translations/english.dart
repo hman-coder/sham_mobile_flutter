@@ -8,6 +8,8 @@ Map<String, String> get englishTranslations => {
   'account' : 'Account',
   'account_needed_message' : 'You must have an account to perform this action',
   'activities' : 'Activities',
+  'add' : 'Add',
+  'add_book_list' : 'Add book list',
   'add_review' : 'Add review',
   'address' : 'Address',
   'address_other_field_hint' : 'other landmarks (nearby store, bystreet, etc)',
@@ -42,6 +44,7 @@ Map<String, String> get englishTranslations => {
   'comma' : ',',
   'comments' : 'Comments',
   'confirm' : 'Confirm',
+  'confirm_book_list_removal' : 'Are you sure you want to delete this list with all its contents?',
   'contact_info' : 'Contact Information',
   'contact_info_change_phone_number' : 'You have already added a phone number. Click here to edit.',
   'contact_info_change_personal_info' : 'You have already completed your personal info. Click here to edit.',
@@ -50,6 +53,7 @@ Map<String, String> get englishTranslations => {
   'contact_info_description' : 'These information will allow us to deliver our services to you. ',
   'contact_info_your_info_is_safe' : 'This info is classified, and only revealed on delivery.',
   'contact_us' : 'Contact us',
+  'contains' : 'Contains',
   'change_language' : 'Change language',
   'create_new_account' : 'Create a new account',
   'create_account_to_complete_action' : 'You have to create an account to perform this action',
@@ -64,12 +68,14 @@ Map<String, String> get englishTranslations => {
   'edit_name' : 'Edit name',
   'edit_phone_number' : 'Edit phone number',
   'edit_address' : 'Edit address',
+  'elements' : 'elements',
   'enter_phone_auth_pin_code' : 'Please enter the 6-digit code that was sent to the number you have submitted.',
-
+  'enter_book_list_name' : 'Enter list name',
   'enter_review' : 'Enter review',
   'error_report_message' : 'Please report this exception by pressing the button below. This requires an internet connection.',
   'error_while_building_ui' : 'An error occurred while building your interface.',
   'error_report_button' : 'Report',
+  'error_while_retrieving_data' : 'Error retrieving data',
 
   'error_network' : 'A network error has occurred. Check your internet connection',
   'error_unknown' : 'An unknown error has occurred.',
@@ -95,6 +101,7 @@ Map<String, String> get englishTranslations => {
 
   // L
   'last_name' : 'Last Name',
+  'list_already_exists' : 'List already exists',
   'loading' : 'Loading',
 
   // M
@@ -136,6 +143,7 @@ Map<String, String> get englishTranslations => {
   'saved' : 'Saved',
   'search_author_hint': 'Search authors',
   'search_book_hint': 'Search book title',
+  'select_book_list' : 'Select book list',
   'select_country' : 'Select your country',
   'select_city' : 'Select city',
   'session_duration' : 'Session duration',
@@ -177,5 +185,6 @@ Map<String, String> get englishTranslations => {
   'view_list' : 'View list',
   'view_more' : 'View more',
 
-
+  // W
+  'wishlist' : 'WishList'
 };

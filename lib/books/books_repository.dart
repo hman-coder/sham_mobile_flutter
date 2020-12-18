@@ -1,5 +1,3 @@
-
-
 import 'package:sham_mobile/helpers/string_helper.dart';
 import 'package:sham_mobile/models/age_group.dart';
 import 'package:sham_mobile/models/comment.dart';
@@ -9,10 +7,11 @@ import 'package:sham_mobile/models/category.dart';
 import 'package:sham_mobile/models/offer.dart';
 
 class BooksRepository{
-  List<Book> search(Book searchBook) {
-    if(searchBook.title.isEmpty && searchBook.authors.isEmpty &&
-        searchBook.categories.isEmpty && searchBook.ageGroups.isEmpty &&
-        searchBook.specialCategories.isEmpty && searchBook.rating[0] == 0 && (searchBook.rating[0] == 0 || searchBook.rating[0] == 5)) {
+
+  Future<List<Book>> loadBooks(Book filterBook, [int fromIndex]) async {
+    if(filterBook.title.isEmpty && filterBook.authors.isEmpty &&
+        filterBook.categories.isEmpty && filterBook.ageGroups.isEmpty &&
+        filterBook.specialCategories.isEmpty && filterBook.rating[0] == 0 && (filterBook.rating[0] == 0 || filterBook.rating[0] == 5)) {
       return allBooks;
     }
 
@@ -21,9 +20,7 @@ class BooksRepository{
     for (var i = 0; i < allBooks.length; i++) {
       Book book = allBooks[i];
 
-      if (_eligibleForSearch(searchBook, book)) {
-        list.add(book);
-      }
+      if (_eligibleForSearch(filterBook, book)) list.add(book);
     }
 
     return list;
@@ -85,7 +82,7 @@ class BooksRepository{
 
   Iterable<Book> get testBookmarks sync*{
     for(Book book in allBooks) {
-      if(book.bookmarked) yield book;
+      if(book.addedToLibrary) yield book;
     }
   }
 
