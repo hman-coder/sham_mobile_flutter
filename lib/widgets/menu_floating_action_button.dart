@@ -8,9 +8,6 @@ import 'package:flutter/material.dart';
 /// to hide the menu upon tapping one of the buttons. The [duration]
 /// argument will not be used if a controller is specified.
 class MenuFloatingActionButton extends StatefulWidget {
-  static _MenuFloatingActionButtonState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MenuFloatingActionButtonState>();
-
   final List<Widget> menuItems;
 
   final FloatingActionButton fab;
