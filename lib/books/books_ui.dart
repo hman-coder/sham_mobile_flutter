@@ -73,7 +73,6 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin{
           animationController: menuFabController,
           fromDegree: 190,
           toDegree: 260,
-          closeMenu: closeFabMenu,
           curve: Curves.easeInOutBack,
           duration: Duration(milliseconds: 700),
           menuItems: [
