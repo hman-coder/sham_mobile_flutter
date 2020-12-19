@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/books/books_controller.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/main/main_controller.dart';
-import 'package:sham_mobile/books/main/widget/books_ui.dart';
+import 'package:sham_mobile/books/books_ui.dart';
 import 'package:sham_mobile/widgets/sham_custom_icons.dart';
 import 'widget/activities_ui.dart';
 import 'widget/book_clubs_ui.dart';
@@ -23,7 +24,10 @@ class MainUI extends GetView<MainController> {
                 body: PageView(
                   controller: pageController,
                   children: <Widget>[
-                    BooksUI(key: Key("books_ui")),
+                    GetBuilder<BooksController>(
+                      init: BooksController(),
+                      builder: (controller) => BooksUI(),
+                    ),
                     BookClubsUI(key: PageStorageKey<String>("book_clubs_ui")),
                     ActivitiesUI(),
                     OffersUI()

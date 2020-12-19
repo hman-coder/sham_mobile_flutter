@@ -5,10 +5,10 @@ class MainController extends GetxController{
   @override
   void onInit() {
     print('main on init');
-    if(_isFirstAppStart()) {
-      print('first time');
-      Future.delayed(3.seconds).then((value) => Get.toNamed('/login'));
-    }
+    // if(_isFirstAppStart()) {
+    //   print('first time');
+    //   Future.delayed(3.seconds).then((value) => Get.toNamed('/login'));
+    // }
     super.onInit();
   }
 
