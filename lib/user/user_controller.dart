@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/models/address.dart';
 import 'package:sham_mobile/models/gender.dart';
-
+import 'package:sham_mobile/widgets/sign_up_alert_dialog.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,8 +13,41 @@ class UserController extends GetxController{
 
   User get user => _obsUser.value;
 
-  bool get isUserLoggedIn =>
-      user.id != null && user.id != 0;
+  bool get isUserLoggedIn => true;
+      // user.id != null && user.id != 0;
+
+  bool get hasCompletedContactInfo =>
+      isUserLoggedIn
+          && ! user.phoneNumber.isNullOrBlank
+          && ! user.firstName.isNullOrBlank
+          && ! ( (user.address?.summary).isNullOrBlank);
+
+  /// Checks if the user is eligible for services (delivering books, etc)
+  Future<bool> get eligibleForServices async {
+    // Check if user is signed in
+    if(await _checkAndRequireSignIn())
+
+      // Check if contact info is filled
+      if(await _checkAndRequireContactInfo())
+        return true;
+
+    return false;
+  }
+
+  /// shows a login dialog if needed
+  Future<bool> _checkAndRequireSignIn() async {
+    if(! isUserLoggedIn)
+      await Get.dialog(SignUpAlertDialog());
+
+    return isUserLoggedIn;
+  }
+
+  Future<bool> _checkAndRequireContactInfo() async {
+    if(! hasCompletedContactInfo)
+      await Get.dialog(ContactInfoAlertDialog());
+
+    return hasCompletedContactInfo;
+}
 
   @override
   void onInit() {
