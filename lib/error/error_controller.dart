@@ -90,10 +90,10 @@ class ShamMessage {
     this.header});
 }
 
-enum ErrorSeverity {
+enum MessageSeverity {
   severe, moderate, mild,
 }
 
-enum ErrorDisplayType {
+enum MessageDisplayType {
   snackbar, dialog, toast
 }
