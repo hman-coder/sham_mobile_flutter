@@ -4,6 +4,8 @@ import 'package:sham_mobile/book_lists/book_lists_controller.dart';
 import 'package:sham_mobile/models/book_list.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 
+import 'book_list_tile.dart';
+
 class BookListsPickerDialog extends GetView<BookListsController> {
   @override
   Widget build(BuildContext context) {
@@ -23,18 +25,12 @@ class BookListsPickerDialog extends GetView<BookListsController> {
               Divider(),
               _AddBookListTile(),
               Divider(),
-            ]..addAll(controller.bookLists.map(_buildBookListTile)),
+            ]..addAll(controller.bookLists.map((value) => BookListTile(
+                onTap: () => Get.back(result: value),
+                bookList: value))),
         ),
         ),
       )
-    );
-  }
-
-  Widget _buildBookListTile(BookList bookList) {
-    return ListTile(
-        title: Text(bookList.name, style: TextStyle(fontSize: DefaultValues.mediumTextSize)),
-        subtitle: Text( '${'contains'.tr} ${bookList.books.length} ${'elements'.tr}'),
-      onTap: () => Get.back(result: bookList),
     );
   }
 }
