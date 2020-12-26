@@ -6,7 +6,7 @@ import 'error_widgets.dart';
 import 'package:get/get.dart';
 
 class ShamErrorController extends GetxController {
-  showError(ShamError error) {
+  showMessage(ShamMessage error) {
     switch(error.displayType) {
       case ErrorDisplayType.snackbar:
         Get.rawSnackbar(
@@ -74,7 +74,7 @@ class ShamErrorController extends GetxController {
   }
 }
 
-class ShamError {
+class ShamMessage {
   final ErrorSeverity severity;
 
   final ErrorDisplayType displayType;
@@ -83,7 +83,7 @@ class ShamError {
 
   final String header;
 
-  ShamError({
+  ShamMessage({
     @required this.severity,
     @required this.displayType,
     @required this.message,
