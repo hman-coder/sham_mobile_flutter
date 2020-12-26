@@ -3,13 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 
-class SignUpAlertDialog extends StatefulWidget {
-
-  @override
-  _SignUpAlertDialogState createState() => _SignUpAlertDialogState();
-}
-
-class _SignUpAlertDialogState extends State<SignUpAlertDialog> {
+class SignUpAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -24,11 +18,14 @@ class _SignUpAlertDialogState extends State<SignUpAlertDialog> {
         actions: <Widget>[
           FlatButton(
             child: Text("cancel".tr),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Get.back(),
           ),
           FlatButton(
             child: Text("sign_in".tr),
-            onPressed: () => null,
+            onPressed: () async {
+              await Get.toNamed('/login');
+              Get.back();
+            },
           ),
         ],
       ),
