@@ -9,9 +9,9 @@ class SignUpAlertDialog extends StatelessWidget {
     return Directionality(
       textDirection: Get.direction,
       child: AlertDialog(
-        title: Text("get_book".tr),
+        title: Text("login_dialog_header".tr),
 
-        content: Text("account_needed_message".tr,
+        content: Text("login_dialog_message".tr,
           maxLines: 10,
         ),
 
@@ -32,3 +32,36 @@ class SignUpAlertDialog extends StatelessWidget {
     );
   }
 }
+
+
+class ContactInfoAlertDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: Get.direction,
+      child: AlertDialog(
+        title: Text("contact_info_dialog_header".tr),
+
+        content: Text("contact_info_dialog_message".tr,
+          maxLines: 10,
+        ),
+
+        actions: <Widget>[
+          FlatButton(
+            child: Text("cancel".tr),
+            onPressed: () => Get.back(),
+          ),
+
+          FlatButton(
+            child: Text("contact_info".tr),
+            onPressed: () async {
+              await Get.toNamed('/login');
+              Get.back();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+

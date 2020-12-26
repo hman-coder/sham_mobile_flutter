@@ -6,7 +6,6 @@ Map<String, String> get englishTranslations => {
   'about_sham' : 'About Sham',
   'accept' : 'Accept',
   'account' : 'Account',
-  'account_needed_message' : 'You must have an account to perform this action',
   'activities' : 'Activities',
   'add' : 'Add',
   'add_book_list' : 'Add book list',
@@ -27,6 +26,7 @@ Map<String, String> get englishTranslations => {
   // B
   'books' : 'Books',
   'book_clubs' : 'Book clubs',
+  'book_requested_successfully' : 'Book was requested successfully',
   'book_reserved_successfully' : 'Book has been successfully reserved',
   'blind_dates' : 'Blind dates',
   'bookmarks' : 'Bookmarks',
@@ -45,12 +45,15 @@ Map<String, String> get englishTranslations => {
   'comments' : 'Comments',
   'confirm' : 'Confirm',
   'confirm_book_list_removal' : 'Are you sure you want to delete this list with all its contents?',
+  'confirm_book_request_message' : 'Are you sure you want this book delivered to you',
   'contact_info' : 'Contact Information',
   'contact_info_change_phone_number' : 'You have already added a phone number. Click here to edit.',
   'contact_info_change_personal_info' : 'You have already completed your personal info. Click here to edit.',
   'contact_info_change_change_address' : 'You have already added your address. Click here to edit.',
-  'contact_info_info_not_provided' : 'You have not provided this info yet. Click here to fill your info',
   'contact_info_description' : 'These information will allow us to deliver our services to you. ',
+  'contact_info_info_not_provided' : 'You have not provided this info yet. Click here to fill your info',
+  'contact_info_missing_header' : 'Contact Info Required',
+  'contact_info_missing_message' : 'Please provide enough contact info to use this feature',
   'contact_info_your_info_is_safe' : 'This info is classified, and only revealed on delivery.',
   'contact_us' : 'Contact us',
   'contains' : 'Contains',
@@ -103,6 +106,8 @@ Map<String, String> get englishTranslations => {
   'last_name' : 'Last Name',
   'list_already_exists' : 'List already exists',
   'loading' : 'Loading',
+  'login_dialog_header' : 'Account needed',
+  'login_dialog_message' : 'You must have an account to perform this action',
 
   // M
   'more_info' : 'More info...',
@@ -136,6 +141,9 @@ Map<String, String> get englishTranslations => {
   'priority_score_low' : 'Low',
   'priority_score_mid' : 'Mid',
   'provide_valid_number' : 'You must provide a valid number',
+
+  // Q
+  'question_mark' : '?',
 
   // S
   'search' : 'Search',

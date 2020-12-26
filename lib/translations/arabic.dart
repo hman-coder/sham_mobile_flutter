@@ -6,7 +6,6 @@ Map<String, String> get arabicTranslations => {
   'about_sham' : 'حول شام',
   'accept' : 'موافق',
   'account': 'الحساب',
-  'account_needed_message' : 'يجب أن يكون لديك حساب لتستطيع المتابعة',
   'activities' : 'النشاطات',
   'add' : 'إضافة',
   'add_book_list' : 'إضافة قائمة جديدة',
@@ -27,6 +26,7 @@ Map<String, String> get arabicTranslations => {
   'blind_dates' : 'موعد أعمى',
   'book_clubs' : 'نوادي الكتاب',
   'bookmarks' : 'المفضلة',
+  'book_requested_successfully' : 'تم طلب الكتاب بنجاح',
   'books' : 'الكتب',
   'book_reserved_for' : 'سيتم حجز نسخة من هذا الكتاب لمدة',
   'book_reserved_successfully' : 'تم حجز نسخة من هذا الكتاب لك',
@@ -44,12 +44,15 @@ Map<String, String> get arabicTranslations => {
   'comma' : '،',
   'comments' : 'التعليقات',
   'confirm' : 'تأكيد',
+  'confirm_book_request_message' : 'هل أنت متؤكد من أنك تريد إيصال هذا الكتاب إليك',
   'confirm_book_list_removal' : 'هل أنت متأكد من حذف هذه القائمة مع جميع الكتب المحفوظة فيها؟',
   'contact_info' : 'معلومات الاتصال',
   'contact_info_description' : 'ستمكننا هذه المعلومات من إيصال خدماتنا إلى منزلك',
   'contact_info_change_phone_number' : 'لقد قمت بإضافة رقم هاتفك. اضغط هنا لتغييره.',
   'contact_info_change_personal_info' : 'لقد قمت بإضافة معلوماتك الشخصية. اضغط هنا لتعديلها.',
   'contact_info_change_change_address' : 'لقد قمت بإضافة عنوانك. اضغط هنا لتعديله.',
+  'contact_info_missing_header' : 'نقص في معلومات الاتصال',
+  'contact_info_missing_message' : 'يرجى استكمال معلومات الاتصال الخاصة بك لتستفيد من هذه الخدمة',
   'contact_info_info_not_provided' : 'لم تقم بملء هذه البيانات. اضغط هنا لملئها.',
   'contact_info_your_info_is_safe' : 'تُحفظ هذه المعلومات بسرية تامة، ولا يتم كشفها إلا عند التوصيل.',
   'contact_us' : 'اتصل بنا',
@@ -103,6 +106,8 @@ Map<String, String> get arabicTranslations => {
   'last_name' : 'اسم العائلة',
   'list_already_exists' : 'القائمة موجودة',
   'loading' : 'يتم التحميل',
+  'login_dialog_header' : 'تسجيل الدخول',
+  'login_dialog_message' : 'يجب أن يكون لديك حساب لتستطيع المتابعة',
 
   // M
   'more_info' : 'المزيد من المعلومات...',
@@ -136,6 +141,9 @@ Map<String, String> get arabicTranslations => {
   'priority_score_low' : 'متدنية',
   'priority_score_mid' : 'متوسطة',
   'provide_valid_number' : 'يرجى إدخال رقم هاتف صحيح',
+
+  // Q
+  'question_mark' : '؟',
 
   // S
   'save' : 'حفظ',
