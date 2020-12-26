@@ -6,26 +6,26 @@ import 'error_widgets.dart';
 import 'package:get/get.dart';
 
 class ShamMessageController extends GetxController {
-  showMessage(ShamMessage message) {
-    switch(message.displayType) {
-      case ErrorDisplayType.snackbar:
+  showMessage(ShamMessage error) {
+    switch(error.displayType) {
+      case MessageDisplayType.snackbar:
         Get.rawSnackbar(
           snackPosition: SnackPosition.BOTTOM,
-          titleText: message.header == null ? null : ErrorHeaderTextWidget(message.header) ,
-          messageText: ErrorMessageTextWidget(message.message),
+          titleText: error.header == null ? null : ErrorHeaderTextWidget(error.header) ,
+          messageText: ErrorMessageTextWidget(error.message),
         );
         break;
 
-      case ErrorDisplayType.dialog:
+      case MessageDisplayType.dialog:
         Get.defaultDialog(
-            title: message.header,
+            title: error.header,
             content: Center(
-                child: Text(message.message)
+                child: Text(error.message)
             ),
-            backgroundColor: _mapSeverityToColor(message.severity).withOpacity(0.8),
+            backgroundColor: _mapSeverityToColor(error.severity).withOpacity(0.8),
         );
         break;
-      case ErrorDisplayType.toast:
+      case MessageDisplayType.toast:
         break;
     };
   }
@@ -38,15 +38,15 @@ class ShamMessageController extends GetxController {
     );
   }
 
-  Color _mapSeverityToColor(ErrorSeverity severity) {
+  Color _mapSeverityToColor(MessageSeverity severity) {
     switch(severity) {
-      case ErrorSeverity.severe:
+      case MessageSeverity.severe:
         return Colors.red;
 
-      case ErrorSeverity.moderate:
+      case MessageSeverity.moderate:
         return Colors.amber;
 
-      case ErrorSeverity.mild:
+      case MessageSeverity.mild:
         return Colors.black;
     }
 
@@ -75,9 +75,9 @@ class ShamMessageController extends GetxController {
 }
 
 class ShamMessage {
-  final ErrorSeverity severity;
+  final MessageSeverity severity;
 
-  final ErrorDisplayType displayType;
+  final MessageDisplayType displayType;
 
   final String message;
 

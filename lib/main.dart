@@ -75,7 +75,7 @@ class Sham extends StatelessWidget {
   }
 
   _initializeControllers () {
-    Get.put(ShamErrorController(), permanent: true);
+    Get.put(ShamMessageController(), permanent: true);
     Get.put(UserController(), permanent: true);
     Get.put(DefaultValues(), permanent: true);
   }

@@ -96,16 +96,16 @@ class PhoneAuthController extends GetxController {
     log('An error has occurred: $error', name: _logTag, level: 2);
     if(error != null && (error?.plugin != null)) {
       if (error.code == "network-request-failed")
-        Get.find<ShamErrorController>().showError(
-            ShamError(
-              displayType: ErrorDisplayType.snackbar,
+        Get.find<ShamMessageController>().showMessage(
+            ShamMessage(
+              displayType: MessageDisplayType.snackbar,
               message: 'No internet connection',
-              severity: ErrorSeverity.mild,
+              severity: MessageSeverity.mild,
             )
         );
 
       else
-        Get.find<ShamErrorController>().showUnknownError();
+        Get.find<ShamMessageController>().showUnknownError();
     }
   }
 
@@ -127,18 +127,18 @@ class PhoneAuthController extends GetxController {
     } catch(error) {
       if(error is FirebaseAuthException) {
         _state.value = _PhoneAuthState.invalid_pin_code;
-        Get.find<ShamErrorController>().showError(
-            ShamError(
+        Get.find<ShamMessageController>().showMessage(
+            ShamMessage(
                 message: 'invalid_code'.tr,
-                severity: ErrorSeverity.moderate,
-                displayType: ErrorDisplayType.dialog
+                severity: MessageSeverity.moderate,
+                displayType: MessageDisplayType.dialog
             )
         );
       }
 
       else {
         _state.value = _PhoneAuthState.none;
-        Get.find<ShamErrorController>().showUnknownError();
+        Get.find<ShamMessageController>().showUnknownError();
       }
     }
   }

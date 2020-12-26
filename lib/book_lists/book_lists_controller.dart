@@ -32,19 +32,19 @@ class BookListsController extends GetxController {
   /// Returns whether the book was added or not
   Future<bool> addBookList(BookList bookList) async {
     if(bookList?.name == null || bookList.name.isEmpty) {
-      Get.find<ShamErrorController>()
-          .showError(ShamError(
-          severity: ErrorSeverity.mild,
-          displayType: ErrorDisplayType.snackbar,
+      Get.find<ShamMessageController>()
+          .showMessage(ShamMessage(
+          severity: MessageSeverity.mild,
+          displayType: MessageDisplayType.snackbar,
           message: 'text_is_empty'.tr)
       );
       return false;
 
     } else if (Get.find<BookListsController>().bookLists.contains(bookList)){
-      Get.find<ShamErrorController>()
-          .showError(ShamError(
-          severity: ErrorSeverity.mild,
-          displayType: ErrorDisplayType.snackbar,
+      Get.find<ShamMessageController>()
+          .showMessage(ShamMessage(
+          severity: MessageSeverity.mild,
+          displayType: MessageDisplayType.snackbar,
           message: 'list_already_exists'.tr)
       );
       return false;
@@ -59,7 +59,7 @@ class BookListsController extends GetxController {
 
   void removeBookList(BookList bookList) async {
     assert (bookList?.id != null && bookList.id != 0);
-    bool confirmed = await Get.find<ShamErrorController>()
+    bool confirmed = await Get.find<ShamMessageController>()
         .showConfirmation(title: 'confirm'.tr, message: 'confirm_book_list_removal'.tr);
 
     if(confirmed) {

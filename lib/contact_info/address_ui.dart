@@ -112,10 +112,10 @@ class AddressUI extends StatelessWidget {
   }
 
   _showFillFieldsError() {
-    Get.find<ShamErrorController>().showError(
-        ShamError(
-            displayType: ErrorDisplayType.snackbar,
-            severity: ErrorSeverity.mild,
+    Get.find<ShamMessageController>().showMessage(
+        ShamMessage(
+            displayType: MessageDisplayType.snackbar,
+            severity: MessageSeverity.mild,
             message: 'please_fill_fields_with_star'.tr
         )
     );

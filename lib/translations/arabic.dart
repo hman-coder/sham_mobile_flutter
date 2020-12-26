@@ -48,6 +48,8 @@ Map<String, String> get arabicTranslations => {
   'confirm_book_list_removal' : 'هل أنت متأكد من حذف هذه القائمة مع جميع الكتب المحفوظة فيها؟',
   'contact_info' : 'معلومات الاتصال',
   'contact_info_description' : 'ستمكننا هذه المعلومات من إيصال خدماتنا إلى منزلك',
+  'contact_info_dialog_header' : 'معلومات الاتصال',
+  'contact_info_dialog_message' : 'يرجى استكمال معلومات الاتصال لتتمكن من المتابعة',
   'contact_info_change_phone_number' : 'لقد قمت بإضافة رقم هاتفك. اضغط هنا لتغييره.',
   'contact_info_change_personal_info' : 'لقد قمت بإضافة معلوماتك الشخصية. اضغط هنا لتعديلها.',
   'contact_info_change_change_address' : 'لقد قمت بإضافة عنوانك. اضغط هنا لتعديله.',
@@ -175,6 +177,7 @@ Map<String, String> get arabicTranslations => {
   'reserve_book_request_medium_priority' : 'لديك مجموع نقاط أولوية متوسط، لذلك تستطيع حجز نسخة من الكتاب لمدة',
   'reserve_book_request_low_priority' : 'عذراً، ليس بإمكانك أن تحجز كتاباً لأن مجموع نقاط الأولوية لديك منخفض',
   'reserve_book_request_submitted' : 'تم إرسال طلبك',
+  'request_sent' : 'تم إرسال طلبك',
   'review' : 'تقييم',
 
   // T

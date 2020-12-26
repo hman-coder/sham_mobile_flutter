@@ -51,6 +51,8 @@ Map<String, String> get englishTranslations => {
   'contact_info_change_personal_info' : 'You have already completed your personal info. Click here to edit.',
   'contact_info_change_change_address' : 'You have already added your address. Click here to edit.',
   'contact_info_description' : 'These information will allow us to deliver our services to you. ',
+  'contact_info_dialog_header' : 'Contact Info',
+  'contact_info_dialog_message' : 'Please complete your contact info in order to continue',
   'contact_info_info_not_provided' : 'You have not provided this info yet. Click here to fill your info',
   'contact_info_missing_header' : 'Contact Info Required',
   'contact_info_missing_message' : 'Please provide enough contact info to use this feature',
@@ -175,6 +177,7 @@ Map<String, String> get englishTranslations => {
   'reserve_book_request_medium_priority_1' : 'You have a medium priority score, so you can reserve a book for only',
   'reserve_book_request_low_priority' : 'We\'re sorry, but your priority score doesn\'t allow you to reserve this book',
   'reserve_book_request_submitted' : 'Your request has been submitted',
+  'request_sent' : 'Your request was sent',
   'review' : 'Review',
 
   // T

@@ -16,11 +16,11 @@ class UserController extends GetxController{
   bool get isUserLoggedIn => true;
       // user.id != null && user.id != 0;
 
-  bool get hasCompletedContactInfo =>
-      isUserLoggedIn
-          && ! user.phoneNumber.isNullOrBlank
-          && ! user.firstName.isNullOrBlank
-          && ! ( (user.address?.summary).isNullOrBlank);
+  bool get hasCompletedContactInfo => true;
+      // isUserLoggedIn
+      //     && ! user.phoneNumber.isNullOrBlank
+      //     && ! user.firstName.isNullOrBlank
+      //     && ! ( (user.address?.summary).isNullOrBlank);
 
   /// Checks if the user is eligible for services (delivering books, etc)
   Future<bool> get eligibleForServices async {
@@ -103,7 +103,11 @@ class UserController extends GetxController{
     });
   }
 
-  changeUser(User user) {
-    _obsUser.value = user;
+  changeUser(User newUser) {
+
+    // TODO: Remove this line when testing is finished
+    newUser.id = newUser.id != null && newUser.id == 0 ? 1 : newUser.id;
+
+    _obsUser.value = newUser;
   }
 }

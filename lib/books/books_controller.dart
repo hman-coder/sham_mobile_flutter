@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sham_mobile/blind_dates/blind_dates_controller.dart';
+import 'package:sham_mobile/blind_dates/blind_dates_ui.dart';
 import 'package:sham_mobile/book_lists/book_lists_controller.dart';
 import 'package:sham_mobile/book_lists/book_lists_dialog.dart';
 import 'books_repository.dart';
@@ -59,5 +61,17 @@ class BooksController extends GetxController {
     }
 
     return false;
+  }
+
+  void goToBlindDates() {
+    Get.to(GetBuilder(
+      builder: (controller) => BlindDatesUI(),
+      init: BlindDatesController(),
+    )
+    );
+  }
+
+  void goToBookLists() {
+
   }
 }
