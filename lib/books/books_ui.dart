@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/blind_dates/blind_dates_ui.dart';
 import 'package:sham_mobile/models/book.dart';
+import 'package:sham_mobile/widgets/book_tile.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/loading_footer.dart';
 import 'package:sham_mobile/widgets/menu_floating_action_button.dart';
@@ -76,9 +77,14 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
           enablePullUp: true,
           footer: LoadingFooter(),
           child: ListView.builder(
-                itemBuilder: (context, index) =>
-                    _MainBookItem(booksController.books[index]),
-                itemCount: booksController.books.length,
+            itemBuilder: (context, index) {
+              Book book = booksController.books[index];
+              return BookTile(
+                book: book,
+                trailing: _BookTileTrailingIcon(book: book)
+              );
+            },
+            itemCount: booksController.books.length,
               ),
         )
     );
@@ -93,7 +99,7 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
       duration: Duration(milliseconds: 500),
       menuItems: [
         FloatingActionButton(
-          heroTag: 'sub_btn_1',
+          heroTag: 'blind_dates_fab',
           onPressed: () async {
             await menuFabController.reverse();
             booksController.goToBlindDates();
@@ -103,7 +109,7 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
         ),
 
         FloatingActionButton(
-          heroTag: 'sub_btn_2',
+          heroTag: 'book_lists_fab',
           onPressed: () async {
             await menuFabController.reverse();
             booksController.goToBookLists();
@@ -118,35 +124,30 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
   }
 }
 
-class _MainBookItem extends StatefulWidget {
+class _BookTileTrailingIcon extends StatefulWidget {
   final Book book;
 
-  const _MainBookItem(this.book, {Key key}) : super(key: key);
+  const _BookTileTrailingIcon({Key key, @required this.book}) : super(key: key);
 
   @override
-  __MainBookItemState createState() => __MainBookItemState();
+  _BookTileTrailingIconState createState() => _BookTileTrailingIconState();
 }
 
-class __MainBookItemState extends State<_MainBookItem> {
+class _BookTileTrailingIconState extends State<_BookTileTrailingIcon> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-        title: Text(widget.book.title),
-        subtitle: Text(widget.book.authorsAsString),
-        leading: Image.asset(widget.book.image),
-        trailing: IconButton(
-            onPressed: onPress,
-            icon: AnimatedSwitcher(
-              transitionBuilder: (child, animation) =>
-                  ScaleTransition(scale: animation, child: child),
-              duration: Duration(milliseconds: 400),
-              child: Icon(
-                widget.book.addedToLibrary ? Icons.playlist_add_check : Icons.playlist_add,
-                color: widget.book.addedToLibrary ? Colors.blue : Colors.grey,
-                key: ValueKey('${widget.book.title}-${widget.book.addedToLibrary}'),
-              ),
-            )
-        ),
+    return IconButton(
+        onPressed: onPress,
+        icon: AnimatedSwitcher(
+          transitionBuilder: (child, animation) =>
+              ScaleTransition(scale: animation, child: child),
+          duration: Duration(milliseconds: 400),
+          child: Icon(
+            widget.book.addedToLibrary ? Icons.playlist_add_check : Icons.playlist_add,
+            color: widget.book.addedToLibrary ? Colors.blue : Colors.grey,
+            key: ValueKey('${widget.book.title}-${widget.book.addedToLibrary}'),
+          ),
+        )
     );
   }
 
