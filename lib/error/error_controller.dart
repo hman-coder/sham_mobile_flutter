@@ -5,24 +5,24 @@ import 'package:sham_mobile/widgets/default_values.dart';
 import 'error_widgets.dart';
 import 'package:get/get.dart';
 
-class ShamErrorController extends GetxController {
-  showMessage(ShamMessage error) {
-    switch(error.displayType) {
+class ShamMessageController extends GetxController {
+  showMessage(ShamMessage message) {
+    switch(message.displayType) {
       case ErrorDisplayType.snackbar:
         Get.rawSnackbar(
           snackPosition: SnackPosition.BOTTOM,
-          titleText: error.header == null ? null : ErrorHeaderTextWidget(error.header) ,
-          messageText: ErrorMessageTextWidget(error.message),
+          titleText: message.header == null ? null : ErrorHeaderTextWidget(message.header) ,
+          messageText: ErrorMessageTextWidget(message.message),
         );
         break;
 
       case ErrorDisplayType.dialog:
         Get.defaultDialog(
-            title: error.header,
+            title: message.header,
             content: Center(
-                child: Text(error.message)
+                child: Text(message.message)
             ),
-            backgroundColor: _mapSeverityToColor(error.severity).withOpacity(0.8),
+            backgroundColor: _mapSeverityToColor(message.severity).withOpacity(0.8),
         );
         break;
       case ErrorDisplayType.toast:
