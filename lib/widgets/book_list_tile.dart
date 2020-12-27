@@ -8,13 +8,19 @@ class BookListTile extends StatelessWidget {
 
   final Function() onTap;
 
-  const BookListTile({Key key, @required this.bookList, @required this.onTap}) :
+  final Widget leading;
+
+  final Widget trailing;
+
+  const BookListTile({Key key, @required this.bookList, @required this.onTap, this.leading, this.trailing}) :
         assert(bookList != null && onTap != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: leading,
+      trailing: trailing,
       title: Text(bookList.name, style: TextStyle(fontSize: DefaultValues.mediumTextSize)),
       subtitle: Text( '${'contains'.tr} ${bookList.books.length} ${'elements'.tr}'),
       onTap: onTap,

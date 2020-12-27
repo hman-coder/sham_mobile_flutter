@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:sham_mobile/book_list/book_list_controller.dart';
+import 'package:sham_mobile/book_list/book_list_ui.dart';
+import 'package:sham_mobile/book_lists/book_lists_dialogs.dart';
 import 'package:sham_mobile/error/error_controller.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
@@ -29,31 +32,70 @@ class BookListsController extends GetxController {
       localBookList.add(book);
   }
 
-  /// Returns whether the book was added or not
-  Future<bool> addBookList(BookList bookList) async {
-    if(bookList?.name == null || bookList.name.isEmpty) {
+  void addBookList() async {
+    String name = await _showEnterBookListNameDialog();
+
+    if(name == null) return;      // User pressed cancel
+
+    BookList bookList = BookList(name: name);
+
+    // If bookList doesn't already exists, then add:
+    if(! (await _checkIfBookListExists(bookList))) {
+      await Future.delayed(1.5.seconds);
+      _bookLists.add(bookList..id = bookLists.length);
+    }
+  }
+
+  /// Shows a dialog for the user to enter the desired name.
+  /// If the user enters an empty String, it shows the
+  /// appropriate message.
+  Future<String> _showEnterBookListNameDialog() async {
+    String name = await Get.dialog(AddOrEditBookListDialog());
+
+    if(name != null && name?.isEmpty) {
       Get.find<ShamMessageController>()
           .showMessage(ShamMessage(
           severity: MessageSeverity.mild,
           displayType: MessageDisplayType.snackbar,
           message: 'text_is_empty'.tr)
       );
-      return false;
 
-    } else if (Get.find<BookListsController>().bookLists.contains(bookList)){
+      return null;
+    }
+
+    return name;
+  }
+
+  /// Checks if bookList exists and shows appropriate dialog
+  /// if it does.
+  Future<bool> _checkIfBookListExists(BookList bookList) async {
+    bool bookListExists = bookLists.contains(bookList);
+
+    if (bookListExists){
       Get.find<ShamMessageController>()
           .showMessage(ShamMessage(
           severity: MessageSeverity.mild,
           displayType: MessageDisplayType.snackbar,
           message: 'list_already_exists'.tr)
       );
-      return false;
+      return true;
     }
 
-    else {
-      await Future.delayed(2.seconds);
-      _bookLists.add(bookList);
-      return true;
+    return false;
+  }
+
+  void editBookList(BookList bookList) async {
+    String newBookListName = await _showEnterBookListNameDialog();
+
+    // User pressed cancel
+    if(newBookListName == null) return;
+
+    BookList newBookList = BookList(id: bookList.id, name: newBookListName);
+    if(!(await _checkIfBookListExists(newBookList))) {
+      await Future.delayed(1.seconds);
+
+      _bookLists.remove(bookList);
+      _bookLists.add(newBookList);
     }
   }
 
@@ -68,7 +110,11 @@ class BookListsController extends GetxController {
     }
   }
 
-  void updateBookList(BookList bookList) async {
-
+  onBookListPressed(BookList bookList) async {
+    Get.to(GetBuilder<BookListBooksController>(
+      init: BookListBooksController(bookList),
+      builder: (controller) => BookListBooksUI()
+    )
+    );
   }
 }

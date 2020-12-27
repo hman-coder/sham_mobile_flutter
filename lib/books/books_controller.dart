@@ -3,12 +3,13 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/blind_dates/blind_dates_controller.dart';
 import 'package:sham_mobile/blind_dates/blind_dates_ui.dart';
 import 'package:sham_mobile/book_lists/book_lists_controller.dart';
-import 'package:sham_mobile/book_lists/book_lists_dialog.dart';
+import 'package:sham_mobile/book_lists/book_lists_dialogs.dart';
 import 'books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
 import 'package:sham_mobile/user/user_controller.dart';
 
+import 'package:sham_mobile/book_lists/book_lists_ui.dart';
 
 class BooksController extends GetxController {
   RefreshController _refreshController = RefreshController(
@@ -72,6 +73,6 @@ class BooksController extends GetxController {
   }
 
   void goToBookLists() {
-
+    Get.to(BookListsUI());
   }
 }

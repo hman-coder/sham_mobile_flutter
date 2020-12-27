@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/books/books_controller.dart';
+import 'package:sham_mobile/books/books_controller.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/main/main_controller.dart';

@@ -25,6 +25,7 @@ Map<String, String> get arabicTranslations => {
   // B
   'blind_dates' : 'موعد أعمى',
   'book_clubs' : 'نوادي الكتاب',
+  'book_lists' : 'قوائم الكتب المحفوظة',
   'bookmarks' : 'المفضلة',
   'book_requested_successfully' : 'تم طلب الكتاب بنجاح',
   'books' : 'الكتب',

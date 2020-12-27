@@ -26,6 +26,7 @@ Map<String, String> get englishTranslations => {
   // B
   'books' : 'Books',
   'book_clubs' : 'Book clubs',
+  'book_lists' : 'Book Lists',
   'book_requested_successfully' : 'Book was requested successfully',
   'book_reserved_successfully' : 'Book has been successfully reserved',
   'blind_dates' : 'Blind dates',
