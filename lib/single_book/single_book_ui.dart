@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
@@ -6,73 +7,59 @@ import 'package:sham_mobile/dynamic_values/dynamic_values_bloc.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
-import 'package:sham_mobile/view_book/bloc/view_book_bloc_barrel.dart';
+import 'package:sham_mobile/widgets/comment_widget.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/cancel_button.dart';
-import 'package:sham_mobile/widgets/comment_widget.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
-import 'package:sham_mobile/widgets/exception_widget.dart';
 import 'package:sham_mobile/widgets/sign_up_alert_dialog.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
+import 'single_book_controller.dart';
 
-class ViewBookUI extends StatefulWidget {
-  final Book book;
-
-  const ViewBookUI({Key key, this.book}) : super(key: key);
-
-  @override
-  _ViewBookUIState createState() => _ViewBookUIState();
-}
-
-class _ViewBookUIState extends State<ViewBookUI> {
-
+class SingleBookUI extends GetView<SingleBookController> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ViewBookBloc>(
-      create: (context) => ViewBookBloc(widget.book),
-      child: Directionality(
-        textDirection: Get.direction,
-        child: Scaffold(
-          body: CustomScrollView(
-            slivers: <Widget>[
-              _ViewBookSliverAppBar(book: widget.book),
+    return Directionality(
+      textDirection: Get.direction,
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: <Widget>[
+            _ViewBookSliverAppBar(book: controller.book),
 
-              _buildInfoSection(context),
+            _buildInfoSection(),
 
-              _buildSimilarBooksListView(context),
+            _buildSimilarBooksListView(),
 
-              _buildReviewSection(context),
+            _buildReviewSection(),
 
-              SliverToBoxAdapter(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      'comments'.tr,
-                      style: TextStyle(fontSize: 22),
-                    ),
+            SliverToBoxAdapter(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'comments'.tr,
+                    style: TextStyle(fontSize: 22),
                   ),
                 ),
               ),
+            ),
 
-              _buildComments(context),
+            _buildComments(),
 
-              SliverToBoxAdapter(
-                  child: BlocBuilder<ViewBookBloc, ViewBookState>(
-                    builder: (context, state) => state is LoadingCommentsState
-                        ? CircularProgressIndicator()
-                        : Container(height: 20),
-                  )
-              )
-            ],
-          ),
+            // SliverToBoxAdapter(
+            //     child: BlocBuilder<ViewBookBloc, ViewBookState>(
+            //       builder: (context, state) => state is LoadingCommentsState
+            //           ? CircularProgressIndicator()
+            //           : Container(height: 20),
+            //     )
+            // )
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildInfoSection(BuildContext context) {
+  Widget _buildInfoSection() {
     return SliverToBoxAdapter(
       child: Card(
           margin: EdgeInsets.symmetric(vertical: 8),
@@ -80,21 +67,21 @@ class _ViewBookUIState extends State<ViewBookUI> {
           elevation: 5,
           child: Column(
             children: <Widget>[
-              _buildBookInfoItem(context, 'categories'.tr, widget.book.categories),
+              _buildBookInfoItem('categories'.tr, controller.book.categories),
 
               Divider(
                 height: 0.5,
                 color: Colors.grey,
               ),
 
-              _buildBookInfoItem(context, 'age_groups'.tr, widget.book.ageGroups),
+              _buildBookInfoItem('age_groups'.tr, controller.book.ageGroups),
 
               Divider(
                 height: 0.5,
                 color: Colors.grey,
               ),
 
-              _buildBookInfoItem(context, 'special_categories'.tr, widget.book.specialCategories),
+              _buildBookInfoItem('special_categories'.tr, controller.book.specialCategories),
 
               Divider(
                 height: 0.5,
@@ -106,7 +93,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
     );
   }
 
-  Widget _buildBookInfoItem(BuildContext context, String header, List items) {
+  Widget _buildBookInfoItem(String header, List items) {
     return ListTile(
       isThreeLine: false,
 
@@ -132,7 +119,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
     );
   }
 
-  Widget _buildSimilarBooksListView(BuildContext context) {
+  Widget _buildSimilarBooksListView() {
     return SliverToBoxAdapter(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,11 +149,11 @@ class _ViewBookUIState extends State<ViewBookUI> {
                         children: <Widget>[
                           LinearGradientBackground(
                               color: Colors.black54,
-                              child: Image.asset(widget.book.image, fit: BoxFit.fill,)
+                              child: Image.asset(controller.book.image, fit: BoxFit.fill,)
                           ),
 
                           Text(
-                            widget.book.title,
+                            controller.book.title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(color: Colors.white),
@@ -182,7 +169,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
     );
   }
 
-  Widget _buildReviewSection(BuildContext context) {
+  Widget _buildReviewSection() {
     return SliverToBoxAdapter(
       child: Card(
         elevation: 5,
@@ -213,7 +200,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
                 children: <Widget>[
                   RatingBar(
                     ignoreGestures: true,
-                    initialRating: widget.book.rating[0],
+                    initialRating: controller.book.rating[0],
                     onRatingUpdate: (value) => null,
                     allowHalfRating: true,
                     itemBuilder: (context, index) => Icon(
@@ -227,7 +214,7 @@ class _ViewBookUIState extends State<ViewBookUI> {
                     color: Colors.black,
                   ),
 
-                  Text('${widget.book.rating[0]}/5')
+                  Text('${controller.book.rating[0]}/5')
                 ],
               ),
             ),
@@ -237,61 +224,47 @@ class _ViewBookUIState extends State<ViewBookUI> {
               color: Colors.grey,
             ),
 
-            Consumer<ViewBookBloc>(
-              builder: (context, value, child) => FlatButton(
-                  child: Text('press_to_reivew_book'.tr,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                          fontSize: 18
-                      )
-                  ),
-                  onPressed: () => _showReviewDialog(context)
-              ),
-            )
+            FlatButton(
+                child: Text('press_to_review_book'.tr,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                        fontSize: 18
+                    )
+                ),
+                onPressed: () => _showReviewDialog()
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildComments(BuildContext context) {
-    return BlocBuilder<ViewBookBloc, ViewBookState>(
-        buildWhen: (previous, current) => current is CommentsLoadedState,
-        builder: (context, state) {
-          if(state is CommentsLoadedState) {
-            // Include dividers in child count except for the last one
-            int childCount = state.comments.length * 2 - 1;
-            return SliverList(
-                delegate: SliverChildBuilderDelegate(
-                        (context, index) =>
-                    (index % 2 == 1) // isDivider
-                        ? Divider()
-
-                        : CommentWidget(
-                        comment: state.comments[(index / 2).floor()]),
-
-                    // Include dividers in childCount.
-                    childCount: childCount
-                )
-            );
-          }
-          return SliverToBoxAdapter(child: ExceptionWidget(text: 'error_building_ui'.tr,));
-        }
+  Widget _buildComments() {
+    return SliverPadding(
+      padding: EdgeInsets.only(bottom: 20),
+      sliver: SliverToBoxAdapter(
+          child: Obx(() => controller.isLoadingComments
+              ? ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: 35, maxWidth: 35),
+                  child: Center(child: CircularProgressIndicator()))
+              : Column(
+            mainAxisSize: MainAxisSize.min,
+            children: controller.comments.map<Widget>((comment) => CommentWidget(comment: comment)).toList(),
+          )
+          )
+      ),
     );
   }
 
-  void _showReviewDialog(BuildContext context) async {
-    Comment comment = await showDialog<Comment>(
-      context: context,
-      builder: (context) => _AddOrUpdateReviewDialog(),
-    );
+  void _showReviewDialog() async {
+    Comment comment = await Get.dialog(_AddOrUpdateReviewDialog(),);
 
     print('${comment.body}');
 
     if (comment != null) {
       comment.userImage = 'assets/images/user_icon.png';
-      context.bloc<ViewBookBloc>().add(AddReviewEvent(comment));
+      // context.bloc<ViewBookBloc>().add(AddReviewEvent(comment));
     }
   }
 
@@ -532,7 +505,7 @@ class _AddOrUpdateReviewDialogState extends State<_AddOrUpdateReviewDialog> {
 
           FlatButton(
             child: Text("submit".tr),
-            onPressed: () => Navigator.pop(context, comment),
+            onPressed: () => Get.back(result: comment),
           )
         ],
       ),

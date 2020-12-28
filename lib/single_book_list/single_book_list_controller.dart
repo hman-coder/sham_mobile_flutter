@@ -6,7 +6,7 @@ import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
 
 /// Responsible for loading books of a specific
-class BookListBooksController extends GetxController {
+class SingleBookListController extends GetxController {
   final BookList bookList;
 
   final books = <Book>[].obs;
@@ -15,7 +15,7 @@ class BookListBooksController extends GetxController {
 
   final RefreshController refreshController = RefreshController();
 
-  BookListBooksController(this.bookList);
+  SingleBookListController(this.bookList);
 
   @override
   void onInit() {

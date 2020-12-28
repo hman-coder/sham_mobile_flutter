@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sham_mobile/book/view_book_ui.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/widgets/book_tile.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/widgets/loading_footer.dart';
-import 'book_list_controller.dart';
+import 'single_book_list_controller.dart';
 
-class BookListBooksUI extends StatefulWidget {
+class SingleBookListUI extends StatefulWidget {
 
-  BookListBooksUI({Key key}) : super(key: key);
+  SingleBookListUI({Key key}) : super(key: key);
 
   @override
-  _BookListBooksUIState createState() => _BookListBooksUIState();
+  _SingleBookListUIState createState() => _SingleBookListUIState();
 }
 
-class _BookListBooksUIState extends State<BookListBooksUI> {
-  final BookListBooksController controller = Get.find<BookListBooksController>();
+class _SingleBookListUIState extends State<SingleBookListUI> {
+  final SingleBookListController controller = Get.find<SingleBookListController>();
 
   @override
   void initState() {

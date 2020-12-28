@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sham_mobile/book/book_controller.dart';
-import 'package:sham_mobile/book/view_book_ui.dart';
+import 'package:sham_mobile/single_book/single_book_controller.dart';
+import 'package:sham_mobile/single_book/single_book_ui.dart';
 import 'package:sham_mobile/models/book.dart';
 
 class BookTile extends StatelessWidget {
@@ -18,8 +18,8 @@ class BookTile extends StatelessWidget {
     return ListTile(
       title: Text(book.title),
       onTap: onTap ?? () => Get.to(GetBuilder(
-        init: BookController(book),
-        builder: (controller) => ViewBookUI()
+        init: SingleBookController(book),
+        builder: (controller) => SingleBookUI()
       )
       ),
       subtitle: Text(book.authorsAsString),

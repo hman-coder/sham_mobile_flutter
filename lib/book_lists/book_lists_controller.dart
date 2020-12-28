@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:sham_mobile/book_list/book_list_controller.dart';
-import 'package:sham_mobile/book_list/book_list_ui.dart';
+import 'package:sham_mobile/single_book_list/single_book_list_controller.dart';
+import 'package:sham_mobile/single_book_list/single_book_list_ui.dart';
 import 'package:sham_mobile/book_lists/book_lists_dialogs.dart';
 import 'package:sham_mobile/error/error_controller.dart';
 import 'package:sham_mobile/models/book.dart';
@@ -111,9 +111,9 @@ class BookListsController extends GetxController {
   }
 
   onBookListPressed(BookList bookList) async {
-    Get.to(GetBuilder<BookListBooksController>(
-      init: BookListBooksController(bookList),
-      builder: (controller) => BookListBooksUI()
+    Get.to(GetBuilder<SingleBookListController>(
+      init: SingleBookListController(bookList),
+      builder: (controller) => SingleBookListUI()
     )
     );
   }
