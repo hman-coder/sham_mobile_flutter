@@ -19,6 +19,7 @@ class CommentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              Divider(),
               ListTile(
                 leading: CircleAvatar(
                   backgroundImage: AssetImage(comment.userImage),
