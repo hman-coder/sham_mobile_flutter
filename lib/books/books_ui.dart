@@ -27,7 +27,6 @@ class BooksUI extends StatefulWidget {
 
 class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
   BooksController booksController = Get.find<BooksController>();
-  bool closeFabMenu = false;
 
   AnimationController menuFabController;
 
@@ -138,15 +137,10 @@ class _BookTileTrailingIconState extends State<_BookTileTrailingIcon> {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: onPress,
-        icon: AnimatedSwitcher(
-          transitionBuilder: (child, animation) =>
-              ScaleTransition(scale: animation, child: child),
-          duration: Duration(milliseconds: 400),
-          child: Icon(
-            widget.book.addedToLibrary ? Icons.playlist_add_check : Icons.playlist_add,
-            color: widget.book.addedToLibrary ? Colors.blue : Colors.grey,
-            key: ValueKey('${widget.book.title}-${widget.book.addedToLibrary}'),
-          ),
+        icon: Icon(
+          widget.book.addedToLibrary ? Icons.playlist_add_check : Icons.playlist_add,
+          color: widget.book.addedToLibrary ? Colors.blue : Colors.grey,
+          key: ValueKey('${widget.book.title}-${widget.book.addedToLibrary}'),
         )
     );
   }
