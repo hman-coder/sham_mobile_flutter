@@ -8,6 +8,7 @@ import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
 import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:sham_mobile/widgets/comment_widget.dart';
+import 'package:sham_mobile/widgets/single_tap_button.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/cancel_button.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
@@ -24,42 +25,184 @@ class SingleBookUI extends GetView<SingleBookController> {
       child: Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
-            _ViewBookSliverAppBar(book: controller.book),
+            _SingleBookSliverAppBar(),
 
-            _buildInfoSection(),
+            _SingleBookInfoSection(),
 
-            _buildSimilarBooksListView(),
+            _SingleBookSimilarBooksListView(),
 
-            _buildReviewSection(),
+            _SingleBookReviewSection(),
 
             SliverToBoxAdapter(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Text(
-                    'comments'.tr,
-                    style: TextStyle(fontSize: 22),
-                  ),
-                ),
-              ),
+              child: _buildCommentsLabel()
             ),
 
-            _buildComments(),
+            _SingleBookComments(),
 
-            // SliverToBoxAdapter(
-            //     child: BlocBuilder<ViewBookBloc, ViewBookState>(
-            //       builder: (context, state) => state is LoadingCommentsState
-            //           ? CircularProgressIndicator()
-            //           : Container(height: 20),
-            //     )
-            // )
           ],
         ),
       ),
     );
   }
 
-  Widget _buildInfoSection() {
+  Widget _buildCommentsLabel() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text(
+          'comments'.tr,
+          style: TextStyle(fontSize: 22),
+        ),
+      ),
+    );
+  }
+
+  void _showReviewDialog() async {
+    Comment comment = await Get.dialog(_AddOrUpdateReviewDialog(),);
+
+    print('${comment.body}');
+
+    if (comment != null) {
+      comment.userImage = 'assets/images/user_icon.png';
+      // context.bloc<ViewBookBloc>().add(AddReviewEvent(comment));
+    }
+  }
+}
+
+class _SingleBookSliverAppBar extends GetView<SingleBookController> {
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(automaticallyImplyLeading: false,
+        pinned: true,
+        elevation: 10.0,
+        expandedHeight: 400,
+        bottom: PreferredSize(
+            preferredSize: Size(double.infinity, 50),
+            child: Container()
+        ),
+        flexibleSpace: _buildSliverAppBarFlexibleSpace()
+    );
+  }
+
+  Widget _buildSliverAppBarFlexibleSpace() {
+    return FlexibleSpaceBar(
+        titlePadding: EdgeInsets.zero,
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsetsDirectional.only(start: 12),
+              child: Text(controller.book.title,
+                style: DefaultValues.sliverAppBarTextStyleWithShadow,
+                maxLines: 1,
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsetsDirectional.only(start: 12, bottom: 5),
+              child: Text(controller.book.authorsAsString,
+                style: TextStyle(
+                    fontSize: 12
+                ),
+              ),
+            ),
+
+            _buildSliverAppBarActions()
+          ],
+        ),
+        background: LinearGradientBackground(
+            color: Colors.black54,
+            child: Image.asset(controller.book.image,
+              fit: BoxFit.fill ,
+            )
+        )
+    );
+  }
+
+  Widget _buildSliverAppBarActions() {
+    return Container(
+        height: 40,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.4),
+            border: Border(
+                top: BorderSide(
+                  width: 0.5,
+                  color: Colors.white,
+                )
+            )
+        ),
+        child: IntrinsicHeight(
+          child: Row(
+            children: <Widget>[
+
+              Expanded(
+                flex: 60,
+                child: IntrinsicHeight(
+                  child: FlatButton(
+                    color: Colors.white.withOpacity(0.25),
+                    child: Text('get_book'.tr + '!',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: controller.onReserveBook,
+                  ),
+                ),
+              ),
+
+              VerticalDivider(
+                width: 0.5,
+                color: Colors.white,
+              ),
+
+              Expanded(
+                  flex: 20,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: SingleTapButton(
+                      child: Obx(() => Icon(
+                            controller.book.addedToLibrary ? Icons.playlist_add_check: Icons.playlist_add,
+                            color: controller.book.addedToLibrary ? Colors.blue : Colors.white,
+                            size: 20,
+                          ),
+                      ),
+                      onTap: () => controller.addToPlayList(),
+                    ),
+                  ),
+              ),
+
+              VerticalDivider(
+                width: 0.5,
+                color: Colors.white,
+              ),
+
+              Expanded(
+                  flex: 20,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints.expand(),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        child: Icon(Icons.share, color: Colors.white, size: 20,),
+                        onTap: () => print("Boookmarked ${controller.book.title}"),
+                      ),
+                    ),
+                  )
+              )
+            ],
+          ),
+        )
+    );
+  }
+}
+
+class _SingleBookInfoSection extends GetView<SingleBookController> {
+  @override
+  Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Card(
           margin: EdgeInsets.symmetric(vertical: 8),
@@ -118,8 +261,12 @@ class SingleBookUI extends GetView<SingleBookController> {
       ),
     );
   }
+}
 
-  Widget _buildSimilarBooksListView() {
+class _SingleBookSimilarBooksListView extends GetView<SingleBookController> {
+
+  @override
+  Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,8 +315,11 @@ class SingleBookUI extends GetView<SingleBookController> {
       ),
     );
   }
+}
 
-  Widget _buildReviewSection() {
+class _SingleBookReviewSection extends GetView<SingleBookController> {
+  @override
+  Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Card(
         elevation: 5,
@@ -232,224 +382,30 @@ class SingleBookUI extends GetView<SingleBookController> {
                         fontSize: 18
                     )
                 ),
-                onPressed: () => _showReviewDialog()
+                onPressed: () => null
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildComments() {
+class _SingleBookComments extends GetView<SingleBookController> {
+  @override
+  Widget build(BuildContext context) {
     return SliverPadding(
       padding: EdgeInsets.only(bottom: 20),
       sliver: SliverToBoxAdapter(
           child: Obx(() => controller.isLoadingComments
               ? ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 35, maxWidth: 35),
-                  child: Center(child: CircularProgressIndicator()))
+              constraints: BoxConstraints(maxHeight: 35, maxWidth: 35),
+              child: Center(child: CircularProgressIndicator()))
               : Column(
             mainAxisSize: MainAxisSize.min,
             children: controller.comments.map<Widget>((comment) => CommentWidget(comment: comment)).toList(),
           )
           )
-      ),
-    );
-  }
-
-  void _showReviewDialog() async {
-    Comment comment = await Get.dialog(_AddOrUpdateReviewDialog(),);
-
-    print('${comment.body}');
-
-    if (comment != null) {
-      comment.userImage = 'assets/images/user_icon.png';
-      // context.bloc<ViewBookBloc>().add(AddReviewEvent(comment));
-    }
-  }
-
-}
-
-class _ViewBookSliverAppBar extends StatelessWidget {
-  final Book book;
-
-  const _ViewBookSliverAppBar({Key key, @required this.book}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(automaticallyImplyLeading: false,
-        pinned: true,
-        elevation: 10.0,
-        expandedHeight: 400,
-        bottom: PreferredSize(
-            preferredSize: Size(double.infinity, 50),
-            child: Container()
-        ),
-        flexibleSpace: _buildSliverAppBarFlexibleSpace(context)
-    );
-  }
-
-  Widget _buildSliverAppBarFlexibleSpace(BuildContext context) {
-    return FlexibleSpaceBar(
-        titlePadding: EdgeInsets.zero,
-        title: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(start: 12),
-                    child: Text(book.title,
-                      style: DefaultValues.sliverAppBarTextStyleWithShadow,
-                      maxLines: 1,
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(start: 12, bottom: 5),
-                    child: Text(book.authorsAsString,
-                      style: TextStyle(
-                          fontSize: 12
-                      ),
-                    ),
-                  ),
-
-                  _buildSliverAppBarActions(context)
-                ],
-              ),
-        background: LinearGradientBackground(
-            color: Colors.black54,
-            child: Image.asset(book.image,
-              fit: BoxFit.fill ,
-            )
-        )
-    );
-  }
-
-  Widget _buildSliverAppBarActions(BuildContext context) {
-    return Container(
-        height: 40,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.4),
-            border: Border(
-                top: BorderSide(
-                  width: 0.5,
-                  color: Colors.white,
-                )
-            )
-        ),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              flex: 60,
-              child: Container(
-                color: Colors.white.withOpacity(0.25),
-                child: FlatButton(
-                  child: Text('get_book'.tr + '!',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () => _showGetBook(context),
-                ),
-              ),
-            ),
-
-            VerticalDivider(
-              width: 0.5,
-              color: Colors.white,
-            ),
-
-            Expanded(
-                flex: 20,
-                child: Material(
-                  color: Colors.transparent,
-                  child: ChangeNotifierProvider<Book>.value(
-                    value: book,
-                    child: Consumer<Book>(
-                      builder: (context, book, child) => IconButton(
-                        icon: AnimatedSwitcher(
-                            duration: Duration(milliseconds: 300),
-                            child: Icon(
-                              book.addedToLibrary ? Icons.bookmark : Icons.bookmark_border,
-                              color: book.addedToLibrary ? Colors.amber : Colors.white,
-                              size: 20,
-                              key: UniqueKey(),
-                            )
-                        ),
-                        onPressed: () => book.addedToLibrary = ! book.addedToLibrary,
-                      ),
-                    ),
-                  ),
-                )
-            ),
-
-            VerticalDivider(
-              width: 0.5,
-              color: Colors.white,
-            ),
-
-            Expanded(
-                flex: 20,
-                child: Material(
-                  color: Colors.transparent,
-                  child: IconButton(
-                    icon: Icon(Icons.share, color: Colors.white, size: 20,),
-                    onPressed: () => print("Boookmarked ${book.title}"),
-                  ),
-                )
-            )
-          ],
-        )
-    );
-  }
-
-  void _showGetBook(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) =>
-        context.bloc<UserBloc>().user.id == null
-            ? SignUpAlertDialog()
-            : _GetBookAlertDialog(book: book)
-    );
-  }
-}
-
-class _GetBookAlertDialog extends StatelessWidget {
-  final Book book;
-
-  const _GetBookAlertDialog({Key key, @required this.book}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    DynamicValuesBloc dynamicValues = Provider.of<DynamicValuesBloc>(context, listen: false);
-
-    return Directionality(
-      textDirection: Get.direction,
-      child: AlertDialog(
-        title: Text(
-          "get_book".tr,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-
-        content: Text(dynamicValues.getReserveBookMessage(context, book.price),
-          maxLines: 20,
-        ),
-
-        actions: <Widget>[
-          CancelButton(),
-          FlatButton(
-            child: Text("priority_score".tr),
-            onPressed: () => null,
-          ),
-          dynamicValues.userCanReserveBook(context)
-              ? FlatButton(
-            child: Text("reserve_book".tr),
-            onPressed: () => null,
-          )
-              : Container()
-        ],
       ),
     );
   }

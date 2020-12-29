@@ -64,6 +64,8 @@ Map<String, String> get arabicTranslations => {
   'create_new_account' : 'إنشاء حساب جديد',
 
   // D
+  'deliver_book' : 'إيصال الكتاب',
+  'deliver_book_confirmation' : 'هل أنت متأكد من أنك تريد إيصال هذا الكتاب إليك',
   'done' : 'تم',
   'district' : 'الحي',
 

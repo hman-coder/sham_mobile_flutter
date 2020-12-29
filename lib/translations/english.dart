@@ -65,6 +65,8 @@ Map<String, String> get englishTranslations => {
   'create_account_to_complete_action' : 'You have to create an account to perform this action',
 
   // D
+  'deliver_book' : 'Deliver Book',
+  'deliver_book_confirmation' : 'Are you sure you want this book delivered',
   'district' : 'District',
   'done' : 'Done',
 
