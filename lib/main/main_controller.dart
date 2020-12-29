@@ -4,12 +4,17 @@ import 'package:sham_mobile/user/user_controller.dart';
 class MainController extends GetxController{
   @override
   void onInit() {
-    print('main on init');
-    // if(_isFirstAppStart()) {
-    //   print('first time');
-    //   Future.delayed(3.seconds).then((value) => Get.toNamed('/login'));
-    // }
     super.onInit();
+  }
+
+
+  @override
+  void onReady() {
+    super.onReady();
+    if(_isFirstAppStart()) {
+      print('first time');
+      Get.toNamed('/login');
+    }
   }
 
   bool _isFirstAppStart() =>
