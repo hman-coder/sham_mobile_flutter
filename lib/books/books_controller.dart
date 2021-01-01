@@ -4,6 +4,8 @@ import 'package:sham_mobile/blind_dates/blind_dates_controller.dart';
 import 'package:sham_mobile/blind_dates/blind_dates_ui.dart';
 import 'package:sham_mobile/book_lists/book_lists_controller.dart';
 import 'package:sham_mobile/book_lists/book_lists_dialogs.dart';
+import 'package:sham_mobile/search_book/dart/search_book_controller.dart';
+import 'package:sham_mobile/search_book/dart/search_book_ui.dart';
 import 'books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
@@ -38,7 +40,7 @@ class BooksController extends GetxController {
   void loadMoreBooks() async {
     printInfo(info: ': loading more books');
     await Future.delayed(3.seconds);
-    _obsBooks.addAll(await _repository.loadBooks(Book(), _obsBooks.length-1));
+    _obsBooks.addAll(_repository.allBooks);
 
     _refreshController.loadComplete();
   }
@@ -46,7 +48,7 @@ class BooksController extends GetxController {
   void refreshBooks() async {
     await Future.delayed(3.seconds);
     _obsBooks.clear();
-    _obsBooks.addAll(await _repository.loadBooks(Book(), _obsBooks.length-1));
+    _obsBooks.addAll(await _repository.allBooks);
 
     _refreshController.refreshCompleted();
   }
@@ -74,5 +76,13 @@ class BooksController extends GetxController {
 
   void goToBookLists() {
     Get.to(BookListsUI());
+  }
+
+  void goToSearch() {
+    Get.to(GetBuilder(
+      builder: (controller) => SearchBookUI(),
+      init: SearchBookController(),
+    )
+    );
   }
 }

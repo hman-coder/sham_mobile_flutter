@@ -1,2 +1,2 @@
-export 'file:///E:/Prog/Flutter/sham_mobile/lib/books/books_ui.dart';
-export 'file:///E:/Prog/Flutter/sham_mobile/lib/books/books_bindings.dart';
+export 'package:sham_mobile/books/books_ui.dart';
+export 'package:sham_mobile/books/books_bindings.dart';

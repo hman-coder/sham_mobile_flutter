@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
-import 'package:sham_mobile/dynamic_values/dynamic_values_bloc.dart';
-import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
-import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:sham_mobile/widgets/comment_widget.dart';
 import 'package:sham_mobile/widgets/single_tap_button.dart';
 import 'package:sham_mobile/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets/cancel_button.dart';
 import 'package:sham_mobile/widgets/default_values.dart';
-import 'package:sham_mobile/widgets/sign_up_alert_dialog.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'single_book_controller.dart';
@@ -350,7 +344,7 @@ class _SingleBookReviewSection extends GetView<SingleBookController> {
                 children: <Widget>[
                   RatingBar(
                     ignoreGestures: true,
-                    initialRating: controller.book.rating[0],
+                    initialRating: controller.book.rating,
                     onRatingUpdate: (value) => null,
                     allowHalfRating: true,
                     itemBuilder: (context, index) => Icon(
@@ -364,7 +358,7 @@ class _SingleBookReviewSection extends GetView<SingleBookController> {
                     color: Colors.black,
                   ),
 
-                  Text('${controller.book.rating[0]}/5')
+                  Text('${controller.book.rating}/5')
                 ],
               ),
             ),

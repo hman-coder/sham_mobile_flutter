@@ -8,24 +8,6 @@ import 'package:sham_mobile/models/offer.dart';
 
 class BooksRepository{
 
-  Future<List<Book>> loadBooks(Book filterBook, [int fromIndex]) async {
-    if(filterBook.title.isEmpty && filterBook.authors.isEmpty &&
-        filterBook.categories.isEmpty && filterBook.ageGroups.isEmpty &&
-        filterBook.specialCategories.isEmpty && filterBook.rating[0] == 0 && (filterBook.rating[0] == 0 || filterBook.rating[0] == 5)) {
-      return allBooks;
-    }
-
-    List<Book> list = List();
-
-    for (var i = 0; i < allBooks.length; i++) {
-      Book book = allBooks[i];
-
-      if (_eligibleForSearch(filterBook, book)) list.add(book);
-    }
-
-    return list;
-  }
-
   List<Comment> testComments = [
     Comment(
       body: "كتاب رائع وقيم جداً. أنصح الجميع بقراءته",
@@ -64,7 +46,7 @@ class BooksRepository{
     bool categories = searchBook.categories.isEmpty || _checkIfListAppliesForSearch(book.categories, searchBook.categories);
     bool specials = searchBook.specialCategories.isEmpty || _checkIfListAppliesForSearch(book.specialCategories, searchBook.specialCategories);
     bool groups = searchBook.ageGroups.isEmpty || _checkIfListAppliesForSearch(book.ageGroups, searchBook.ageGroups);
-    bool rating = (searchBook.rating[0] == -1 || (book.rating[0] >= searchBook.rating[0] && book.rating[0] <= searchBook.rating[1]));
+    bool rating = (searchBook.rating == -1 || (book.rating >= searchBook.rating && book.rating <= searchBook.rating));
 
     return title && authors && categories && specials && groups && rating;
   }
@@ -104,7 +86,7 @@ class BooksRepository{
   final List<Book> allBooks = [
     Book(
       title: 'اثنا عشر قانوناً للحياة: ترياق للفوضى',
-      rating: [4.2],
+      rating: 4.2,
       price: 5000,
       authors: [Author(name: 'جوردان ب. بيترسون')],
       isNew: true,
@@ -128,7 +110,7 @@ class BooksRepository{
     ),
     Book(
       title: 'الجريمة والعقاب',
-      rating: [4],
+      rating: 4,
       authors: [Author(name: 'فيدور دوستويفسكي')],
       isNew: false,
       hasOffer: false,
@@ -154,7 +136,7 @@ class BooksRepository{
     ),
     Book(
       title: 'المرجع الأكيد في لغة الجسد',
-      rating: [3.5],
+      rating: 3.5,
       authors: [Author(name: 'آلان وباربارا بييز')],
       isNew: false,
       price: 4200,
@@ -183,7 +165,7 @@ class BooksRepository{
       title: 'أسرار عقلية المليونير',
       authors: [Author(name: 'توماس هارف إيكر')],
       isNew: true,
-      rating: [3],
+      rating: 3,
       price: 3000,
       hasOffer: true,
       image: 'assets/images/mill.png',
@@ -209,7 +191,7 @@ class BooksRepository{
     Book(
       title: 'صورة دوريان غراي',
       authors: [Author(name: 'أوسكار وايلد')],
-      rating: [5],
+      rating: 5,
       price: 3800,
       isNew: false,
       hasOffer: true,
@@ -237,7 +219,7 @@ class BooksRepository{
     Book(
       title: 'فن اللامبالاة',
       authors: [Author(name: 'مارك مانسون')],
-      rating: [2.9],
+      rating: 2.9,
       price: 3000,
       isNew: true,
       hasOffer: false,
@@ -263,7 +245,7 @@ class BooksRepository{
 
     Book(
       title: 'اثنا عشر قانوناً للحياة: ترياق للفوضى',
-      rating: [4.2],
+      rating: 4.2,
       price: 5000,
       authors: [Author(name: 'جوردان ب. بيترسون')],
       isNew: true,
@@ -287,7 +269,7 @@ class BooksRepository{
     ),
     Book(
       title: 'الجريمة والعقاب',
-      rating: [4],
+      rating: 4,
       authors: [Author(name: 'فيدور دوستويفسكي')],
       isNew: false,
       hasOffer: false,
@@ -313,7 +295,7 @@ class BooksRepository{
     ),
     Book(
       title: 'المرجع الأكيد في لغة الجسد',
-      rating: [3.5],
+      rating: 3.5,
       authors: [Author(name: 'آلان وباربارا بييز')],
       isNew: false,
       price: 4200,
@@ -342,7 +324,7 @@ class BooksRepository{
       title: 'أسرار عقلية المليونير',
       authors: [Author(name: 'توماس هارف إيكر')],
       isNew: true,
-      rating: [3],
+      rating: 3,
       price: 3000,
       hasOffer: true,
       image: 'assets/images/mill.png',
@@ -368,7 +350,7 @@ class BooksRepository{
     Book(
       title: 'صورة دوريان غراي',
       authors: [Author(name: 'أوسكار وايلد')],
-      rating: [5],
+      rating: 5,
       price: 3800,
       isNew: false,
       hasOffer: true,
@@ -396,7 +378,7 @@ class BooksRepository{
     Book(
       title: 'فن اللامبالاة',
       authors: [Author(name: 'مارك مانسون')],
-      rating: [2.9],
+      rating: 2.9,
       price: 3000,
       isNew: true,
       hasOffer: false,

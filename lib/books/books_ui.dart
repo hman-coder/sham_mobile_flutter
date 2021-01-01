@@ -58,11 +58,18 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
         resizeToAvoidBottomInset: false,
 
         appBar: AppBar(
-            title: Center(
-                child: Text('books'.tr,
-                  style: TextStyle(fontSize: DefaultValues.largeTextSize),
-                )
+          title: Center(
+              child: Text('books'.tr,
+                style: TextStyle(fontSize: DefaultValues.largeTextSize),
+              )
+          ),
+
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: booksController.goToSearch,
             )
+          ],
         ),
 
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
@@ -120,6 +127,59 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
       fab: FloatingActionButton(),
     );
+  }
+
+  void _showSearch(context) {
+    showSearch(context: context, delegate: BookSearchDelegate());
+  }
+}
+
+class BookSearchDelegate extends SearchDelegate {
+
+  BookSearchDelegate() : super(searchFieldLabel: 'search'.tr);
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () => query = '',
+      ),
+
+      IconButton(
+        icon: Icon(Icons.settings),
+        onPressed: () => print('advanced search'),
+      ),
+
+      IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () => showResults(context)
+      )
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () => close(context, null),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return ListView.builder(
+      itemCount: 20,
+      itemBuilder: (context, index) => Padding(
+        padding: EdgeInsets.all(20),
+        child: Text(index.toString()),
+      ),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return Text(query);
   }
 }
 

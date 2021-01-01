@@ -108,7 +108,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
               _buildFilterTile(
                   context,
                   text: 'rating'.tr,
-                  filterIsApplied: ! (widget.searchBook.rating[0] == -1),
+                  filterIsApplied: ! (widget.searchBook.rating == -1),
                   onTap: () async {
                     List<double> ratings = await _showRatingsDialog(context);
                     setState(() => widget.searchBook.rating = ratings == null
@@ -204,7 +204,7 @@ class _BooksAdvancedSearchUIState extends State<BooksAdvancedSearchUI> {
         barrierDismissible: false,
         builder: (buildContext) {
           return _RatingsDialog(
-            ratings: widget.searchBook.rating,
+            ratings: [widget.searchBook.rating, widget.searchBook.rating],
           );
         }
     );
