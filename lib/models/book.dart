@@ -19,15 +19,12 @@ class Book extends Equatable with ChangeNotifier {
   List<Offer> offers;
   int count;
   int pages;
-
-  /// Rating was turned into a list to allow minimum/maximum
-  /// ratings during advanced search.
-  List<double> rating;
+  double rating;
   double price;
 
   bool _addedToLibrary;
 
-  Book({this.title = '', this.authors = const [], this.rating = const [-1, -1],
+  Book({this.title = '', this.authors = const [], this.rating = -1,
     this.isNew, this.hasOffer, this.image, this.categories = const [],
     this.ageGroups = const [], this.specialCategories = const [],
     this.offers = const [], this.price = 0, bool bookmarked = false}) : _addedToLibrary = bookmarked ?? false;
@@ -43,7 +40,7 @@ class Book extends Equatable with ChangeNotifier {
         categories = List(),
         offers = List(),
         price = 0,
-        rating = [-1, -1],
+        rating = -1,
         _addedToLibrary = false;
 
   Book.fromBook(Book book) :
