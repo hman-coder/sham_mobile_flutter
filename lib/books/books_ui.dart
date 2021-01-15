@@ -68,6 +68,11 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
             IconButton(
               icon: Icon(Icons.search),
               onPressed: booksController.goToSearch,
+            ),
+
+            IconButton(
+              icon: Icon(Icons.sort),
+              onPressed: booksController.goToFilters,
             )
           ],
         ),

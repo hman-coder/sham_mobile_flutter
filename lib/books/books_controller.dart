@@ -4,8 +4,11 @@ import 'package:sham_mobile/blind_dates/blind_dates_controller.dart';
 import 'package:sham_mobile/blind_dates/blind_dates_ui.dart';
 import 'package:sham_mobile/book_lists/book_lists_controller.dart';
 import 'package:sham_mobile/book_lists/book_lists_dialogs.dart';
-import 'package:sham_mobile/search_book/dart/search_book_controller.dart';
-import 'package:sham_mobile/search_book/dart/search_book_ui.dart';
+import 'package:sham_mobile/filter/filter_controller.dart';
+import 'package:sham_mobile/filter/filters_ui.dart';
+import 'package:sham_mobile/models/book_filter.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/search_book/search_book_controller.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/search_book/search_book_ui.dart';
 import 'books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
@@ -25,6 +28,8 @@ class BooksController extends GetxController {
   RefreshController get refreshController => _refreshController;
 
   List<Book> get books => _obsBooks.toList();
+
+  static BookSearchFilter _currentSearchFilter = BookSearchFilter();
 
   @override
   void onInit() {
@@ -84,5 +89,11 @@ class BooksController extends GetxController {
       init: SearchBookController(),
     )
     );
+  }
+
+  void goToFilters() {
+    Get.to(GetBuilder<FilterController>(
+        init: FilterController(_currentSearchFilter),
+        builder: (_) => FiltersUI()));
   }
 }
