@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sham_mobile/search_book/dart/search_book_controller.dart';
+import 'package:sham_mobile/search_book/search_book_controller.dart';
 import 'package:sham_mobile/widgets/book_tile.dart';
 
 class SearchBookUI extends GetView<SearchBookController> {
@@ -48,17 +48,12 @@ class SearchBookUI extends GetView<SearchBookController> {
     return [
       IconButton(
         icon: Icon(Icons.clear, color: Colors.grey),
-        onPressed: () => controller.clearSearch(),
-      ),
-
-      IconButton(
-        icon: Icon(Icons.settings, color: Colors.grey),
-        onPressed: () => print('advanced search'),
+        onPressed: controller.clearSearch,
       ),
 
       IconButton(
           icon: Icon(Icons.search, color: Colors.grey),
-          onPressed: () => controller.search()
+          onPressed: controller.search
       )
     ];
   }

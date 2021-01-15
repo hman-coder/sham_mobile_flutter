@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/books/books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
+import 'package:sham_mobile/models/book_filter.dart';
+
+import 'package:sham_mobile/book_barrel.dart';
 
 class SearchBookController extends GetxController {
-  static final _searchConfiguration = Book().obs;
+  static final _searchFilter = BookSearchFilter().obs;
 
   final results = <Book>[].obs;
 
@@ -15,12 +18,14 @@ class SearchBookController extends GetxController {
   // true = show results; false = show suggestions
   final _showResults = false.obs;
 
+  BookSearchFilter get searchFilter => _searchFilter.value;
+
   bool get showResults => _showResults.value;
 
   @override
   void onInit() {
     super.onInit();
-    textFieldController.addListener(() {_searchConfiguration.value.title = textFieldController.text;});
+    textFieldController.addListener(() {_searchFilter.value.title = textFieldController.text;});
   }
 
   void setSearchText(String text) {
@@ -37,22 +42,21 @@ class SearchBookController extends GetxController {
   void search() async {
     if(_configIsEmpty) return;
     _showResults.value = true;
+
     await Future.delayed(2.seconds);
-
     results.clear();
-
     results.addAll(BooksRepository().allBooks
-        .where((element) => element.title.contains(RegExp(_searchConfiguration.value.title))));
+        .where((element) => element.title.contains(RegExp(_searchFilter.value.title))));
   }
 
   bool get _configIsEmpty {
-    Book searchConfig = _searchConfiguration.value;
+    BookSearchFilter searchConfig = _searchFilter.value;
     return searchConfig.title.isNullOrBlank
         && searchConfig.ageGroups.isEmpty
         && searchConfig.authors.isEmpty
         && searchConfig.categories.isEmpty
         && searchConfig.specialCategories.isEmpty
-        && searchConfig.rating <= 0;
+        && searchConfig.minRating <= 0;
   }
 
   void clearSearch() {
