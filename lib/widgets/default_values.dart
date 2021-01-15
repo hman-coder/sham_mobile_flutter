@@ -33,7 +33,7 @@ class DefaultValues {
 
   static final double extraLargeTextSize = 30;
 
-  static final double largeTextSize = 26;
+  static final double largeTextSize = 24;
 
   static final double mediumTextSize = 20;
 
