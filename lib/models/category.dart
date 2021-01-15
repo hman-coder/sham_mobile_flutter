@@ -1,14 +1,10 @@
-class Category {
-  String name;
+import 'package:equatable/equatable.dart';
+import 'package:sham_mobile/models/summerizable.dart';
+
+class Category extends Equatable with Summarizable {
+  final String name;
 
   Category({this.name});
-
-  @override
-  bool operator ==(other) {
-    if(other is Category)
-      return name == other.name;
-    return false;
-  }
 
   @override
   String toString() {
@@ -16,6 +12,7 @@ class Category {
   }
 
   @override
-  int get hashCode => super.hashCode;
+  List<Object> get props => [name];
+
 
 }

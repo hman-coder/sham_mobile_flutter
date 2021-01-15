@@ -1,4 +1,6 @@
-class AgeGroup {
+import 'package:sham_mobile/models/summerizable.dart';
+
+class AgeGroup extends Summarizable {
   int minAge;
 
   int maxAge;

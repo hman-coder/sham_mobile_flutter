@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:sham_mobile/models/summerizable.dart';
 
-class Author extends Equatable {
+class Author extends Equatable with Summarizable {
   String name;
 
   String birthYear;
