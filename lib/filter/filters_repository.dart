@@ -34,7 +34,6 @@ class FiltersRepository {
     Author(name: 'أوسكار وايلد'),
     Author(name: 'مارك مانسون'),
     Author(name: 'جوردان ب. بيترسون'),
-
   ];
 
 

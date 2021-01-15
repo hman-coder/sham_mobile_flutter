@@ -6,6 +6,7 @@ Map<String, String> get englishTranslations => {
   'about_sham' : 'About Sham',
   'accept' : 'Accept',
   'account' : 'Account',
+  'activate' : 'Activate',
   'activities' : 'Activities',
   'add' : 'Add',
   'add_book_list' : 'Add book list',
@@ -121,6 +122,7 @@ Map<String, String> get englishTranslations => {
   'new_user' : 'New user',
   'next_session' : 'Next session',
   'no_books_found' : 'No books here yet',
+  'no_items_added' : 'No items added',
 
   // O
   'offers' : 'Offers',
@@ -173,6 +175,7 @@ Map<String, String> get englishTranslations => {
 
   // R
   'rating' : 'Rating',
+  'rating_values_are_equal_message' : 'Please specify unequal lower and higher rating bounds',
   'remove_all' : 'Remove all',
   'report' : 'Report',
   'reserve_book' : 'Reserve book',

@@ -6,6 +6,7 @@ Map<String, String> get arabicTranslations => {
   'about_sham' : 'حول شام',
   'accept' : 'موافق',
   'account': 'الحساب',
+  'activate' : 'تفعيل',
   'activities' : 'النشاطات',
   'add' : 'إضافة',
   'add_book_list' : 'إضافة قائمة جديدة',
@@ -121,6 +122,7 @@ Map<String, String> get arabicTranslations => {
   'new_user' : 'مستخدم جديد',
   'next_session' : 'الجلسة القادمة',
   'no_books_found' : 'لا توجد كتب هنا بعد',
+  'no_items_added' : 'لم تضف عناصر هنا',
 
   // O
   'offers' : 'العروض',
@@ -173,6 +175,7 @@ Map<String, String> get arabicTranslations => {
 
   // R
   'rating' : 'التقييم',
+  'rating_values_are_equal_message' : 'يرجى تحديد قيمتين غير متساويتين للتقييمين الأدنى والأعلى',
   'remove_all' : 'إزالة الكل',
   'report' : 'تبليغ',
   'reserve_book' : 'احجز الكتاب',
