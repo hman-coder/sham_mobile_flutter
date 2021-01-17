@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:sham_mobile/error/error_controller.dart';
-import 'package:sham_mobile/phone_auth/phone_auth_bindings.dart';
+import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
 
 import 'package:sham_mobile/translations/translations.dart';
-import 'package:sham_mobile/widgets/default_values.dart';
-import 'dynamic_values/dynamic_values_bloc.dart';
+import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:get/get.dart';
 
-import 'main/main_barrel.dart';
-import 'loading/loading_barrel.dart';
-import 'login/login_barrel.dart';
-import 'phone_auth/phone_auth_ui.dart';
-import 'user/user_controller.dart';
-import 'contact_info/contact_info_barrel.dart';
+import 'barrels/main_barrel.dart';
+import 'barrels/loading_barrel.dart';
+import 'barrels/login_barrel.dart';
+import 'ui/phone_auth_ui.dart';
+import 'controllers/user_controller.dart';
+import 'barrels/contact_info_barrel.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();

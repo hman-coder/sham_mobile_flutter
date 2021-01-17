@@ -3,7 +3,6 @@ import 'package:sham_mobile/models/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:sham_mobile/dynamic_values/dynamic_values_repository.dart';
-import 'package:sham_mobile/user/user_bloc.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 /// Provides constant values based on app changes such as
@@ -15,7 +14,7 @@ class DynamicValuesBloc {
         _repo = DynamicValuesRepository();
 
   String _getReserveBookDays(BuildContext context) {
-    int priorityPoints = context.bloc<UserBloc>().user.priorityPoints;
+    int priorityPoints = 50;
     if(priorityPoints < 50) {
       return _repo.lowPrioBookDays;
     } else if(priorityPoints < 100) {
@@ -52,5 +51,5 @@ class DynamicValuesBloc {
     return returnedString;
   }
 
-  bool userCanReserveBook(BuildContext context) => context.bloc<UserBloc>().user.priorityPoints >= 50;
+  bool userCanReserveBook(BuildContext context) => true;
 }
