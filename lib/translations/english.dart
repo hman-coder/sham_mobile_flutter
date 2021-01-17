@@ -129,6 +129,7 @@ Map<String, String> get englishTranslations => {
   'others' : 'Others',
 
   // P
+  'page_count' : 'Number of pages',
   'password' : 'Password',
   'participants' : 'Participants',
   'personal_info' : 'Personal information',
@@ -175,7 +176,6 @@ Map<String, String> get englishTranslations => {
 
   // R
   'rating' : 'Rating',
-  'rating_values_are_equal_message' : 'Please specify unequal lower and higher rating bounds',
   'remove_all' : 'Remove all',
   'report' : 'Report',
   'reserve_book' : 'Reserve book',
@@ -198,6 +198,7 @@ Map<String, String> get englishTranslations => {
   'username' : 'Username',
 
   // V
+  'values_should_be_unequal' : 'Please specify unequal lower and higher bounds',
   'verify_number' : 'Verify number',
   'view_list' : 'View list',
   'view_more' : 'View more',

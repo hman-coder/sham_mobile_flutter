@@ -13,8 +13,6 @@ class FilterController extends GetxController {
 
   FilterController(BookSearchFilter currentFilter) : _filter = currentFilter.obs;
 
-  bool get isLoading => _isLoading.value;
-
   List<Author> get authors => _filter.value.authors;
 
   List<Category> get categories => _filter.value.categories;
@@ -24,6 +22,14 @@ class FilterController extends GetxController {
   List<AgeGroup> get ageGroups => _filter.value.ageGroups;
 
   List<double> get ratingRange => [_filter.value.minRating, _filter.value.maxRating];
+
+  List<int> get pagesRange => [_filter.value.minPages, _filter.value.maxPages];
+
+  bool get isLoading => _isLoading.value;
+
+  bool get hasRating => ratingRange[0] != -1;
+
+  bool get hasPages => pagesRange[0] != -1;
 
   @override
   void onInit() {
@@ -85,13 +91,30 @@ class FilterController extends GetxController {
   }
 
   showRatingDialog() async {
-    List<double> rating = await Get.dialog<List<double>>(RatingsDialog(lowerBound: _filter.value.minRating, upperBound: _filter.value.maxRating,));
+    List<double> rating = await Get.dialog<List<double>>(RatingsDialog(
+      lowerBound: _filter.value.minRating,
+      upperBound: _filter.value.maxRating,
+    ));
 
     if(rating != null)
       _filter.update((val) {
         val.minRating = rating[0];
         val.maxRating = rating[1];
       });
+  }
 
+  showPagesDialog() async {
+    List<int> pagesRange = await Get.dialog<List<int>>(PagesDialog(
+      lowerBound: _filter.value.minPages,
+      upperBound: _filter.value.maxPages,
+    ));
+
+    if(pagesRange != null)
+      _filter.update((val) {
+        val.minPages = pagesRange[0];
+        val.maxPages = pagesRange[1];
+        print(val.minPages);
+        print(val.maxPages);
+      });
   }
 }

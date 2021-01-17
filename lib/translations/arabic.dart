@@ -129,6 +129,7 @@ Map<String, String> get arabicTranslations => {
   'others' : 'أخرى',
 
   // P
+  'page_count' : 'عدد الصفحات',
   'password' : 'كلمة السر',
   'personal_info' : 'المعلومات الشخصية',
   'participants' : 'المشتركون',
@@ -175,7 +176,6 @@ Map<String, String> get arabicTranslations => {
 
   // R
   'rating' : 'التقييم',
-  'rating_values_are_equal_message' : 'يرجى تحديد قيمتين غير متساويتين للتقييمين الأدنى والأعلى',
   'remove_all' : 'إزالة الكل',
   'report' : 'تبليغ',
   'reserve_book' : 'احجز الكتاب',
@@ -198,6 +198,7 @@ Map<String, String> get arabicTranslations => {
   'username' : 'اسم المستخدم',
 
   // V
+  'values_should_be_unequal' : 'يرجى تحديد قيمتين غير متساويتين للحدين الأدنى والأعلى',
   'verify_number' : 'تأكيد الرقم',
   'view_list' : 'استعراض القائمة',
   'view_more' : 'استعراض المزيد',

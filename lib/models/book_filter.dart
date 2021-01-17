@@ -19,9 +19,9 @@ class BookSearchFilter {
 
   double maxPrice;
 
-  double minPages;
+  int minPages;
 
-  double maxPages;
+  int maxPages;
 
   BookSearchFilter({
     this.authors = const [],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sham_mobile/filter/filter_controller.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
@@ -7,7 +6,7 @@ import 'package:sham_mobile/widgets/default_values.dart';
 import 'package:sham_mobile/models/summerizable.dart';
 
 class FiltersUI extends GetView<FilterController> {
-  final int kNumberOfFilters = 5;
+  final int kNumberOfFilters = 6;
 
   @override
   Widget build(BuildContext context) {
@@ -84,13 +83,26 @@ class FiltersUI extends GetView<FilterController> {
                     case 4:
                       return Obx(() =>
                           _buildFilterTile(
-                              filterIsApplied: controller.ratingRange[0] > 0,
-                              subtitle: controller.ratingRange[0] > 0
+                              filterIsApplied: controller.hasRating,
+                              subtitle: controller.hasRating
                                   ? '${controller.ratingRange[0]} - ${controller
                                   .ratingRange[1]}'
                                   : 'no_items_added'.tr,
                               title: 'rating'.tr,
                               onTap: controller.showRatingDialog
+                          ),
+                      );
+
+                    case 5:
+                      return Obx(() =>
+                          _buildFilterTile(
+                              filterIsApplied: controller.hasPages,
+                              subtitle: controller.hasPages
+                                  ? '${controller.pagesRange[0]} - ${controller
+                                  .pagesRange[1]}'
+                                  : 'no_items_added'.tr,
+                              title: 'page_count'.tr,
+                              onTap: controller.showPagesDialog
                           ),
                       );
 
