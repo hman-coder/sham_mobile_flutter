@@ -14,32 +14,44 @@ class ShamScreenWidthButton extends StatelessWidget {
 
   final ShapeBorder shape;
 
+  final Color color;
+
+  final Color textColor;
+
+  final Color splashColor;
+
+  final Color disabledColor;
+
   const ShamScreenWidthButton({
     Key key,
     this.onPressed,
     this.onLongPress,
     this.text,
     this.shape,
+    this.color,
+    this.textColor,
+    this.splashColor,
+    this.disabledColor,
     this.height = 40}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      splashColor: Colors.white.withOpacity(0.5),
+      splashColor: splashColor ?? Colors.white.withOpacity(0.5),
       height: height,
       shape: shape,
       minWidth: MediaQuery.of(context).size.width - 50,
       child: Text(
         text,
         style: TextStyle(
-            color: Colors.white,
+            color: textColor ?? Colors.white,
             fontSize: DefaultValues.mediumTextSize
         ),
       ),
       onPressed: onPressed,
       onLongPress: onLongPress,
-      disabledColor: Colors.grey,
-      color: DefaultValues.maroon,
+      disabledColor: disabledColor ?? Colors.grey,
+      color: color ?? DefaultValues.maroon,
     );
   }
 }
