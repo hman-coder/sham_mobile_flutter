@@ -90,9 +90,21 @@ class BooksController extends GetxController {
     );
   }
 
-  void goToFilters() {
-    Get.to(GetBuilder<FilterController>(
-        init: FilterController(_currentSearchFilter),
-        builder: (_) => FiltersUI()));
+  void goToFilters() async {
+    var newSearchFilter = await Get.to<BookSearchFilter>(
+        GetBuilder<FilterController>(
+          init: FilterController(_currentSearchFilter),
+          builder: (_) => FiltersUI()
+        )
+    );
+
+    if(newSearchFilter != null) _applyFilter(newSearchFilter);
+  }
+
+  void _applyFilter(BookSearchFilter filter) {
+    _currentSearchFilter = filter;
+    var filteredBooks = _repository.allBooks.where((book) => _currentSearchFilter.matchesBook(book));
+    _obsBooks.clear();
+    _obsBooks.addAll(filteredBooks);
   }
 }
