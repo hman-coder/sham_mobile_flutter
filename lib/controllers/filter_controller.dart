@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sham_mobile/book_barrel.dart';
 import 'package:sham_mobile/repositories/filters_repository.dart';
-import 'package:sham_mobile/dialogs/book_filter_dialogs.dart';
+import 'package:sham_mobile/dialogs/filters_dialogs.dart';
 import 'package:sham_mobile/models/book_filter.dart';
 
 class FilterController extends GetxController {
@@ -11,7 +11,7 @@ class FilterController extends GetxController {
 
   final Rx<BookSearchFilter> _filter;
 
-  FilterController(BookSearchFilter currentFilter) : _filter = currentFilter.obs;
+  FilterController(BookSearchFilter currentFilter) : _filter = currentFilter.clone().obs;
 
   List<Author> get authors => _filter.value.authors;
 
@@ -116,5 +116,27 @@ class FilterController extends GetxController {
         print(val.minPages);
         print(val.maxPages);
       });
+  }
+
+  returnResult() {
+    Get.back(result: this._filter.value);
+  }
+
+  clearAll() {
+    _filter.update((val) {
+      val.maxPages = -1;
+      val.minPages = -1;
+
+      val.minRating = -1;
+      val.maxRating = -1;
+
+      val.minPrice = -1;
+      val.maxPrice = -1;
+
+      val.authors = [];
+      val.categories = [];
+      val.specialCategories = [];
+      val.ageGroups = [];
+    });
   }
 }

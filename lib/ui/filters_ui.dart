@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:sham_mobile/models/summerizable.dart';
+import 'package:sham_mobile/widgets_ui/sham_screen_width_button.dart';
 
 class FiltersUI extends GetView<FilterController> {
-  final int kNumberOfFilters = 6;
+  final int kNumberOfItems = 6;
+
+  final double kBottomButtonsHeight = 120;
 
   @override
   Widget build(BuildContext context) {
@@ -25,91 +28,40 @@ class FiltersUI extends GetView<FilterController> {
 
           body: Stack(
             children: [
-              ListView.separated(
-                itemCount: kNumberOfFilters,
-                separatorBuilder: (context, index) => Divider(),
-                itemBuilder: (context, index) {
-                  switch (index) {
-                    case 0:
-                      return Obx(() =>
-                          _buildFilterTile(
-                            filterIsApplied: controller.categories.isNotEmpty,
-                            title: 'categories'.tr,
-                            subtitle: controller.categories.isNotEmpty
-                                ? controller.categories.summarize(
-                                separator: 'comma'.tr)
-                                : 'no_items_added'.tr,
-                            onTap: controller.showCategoriesDialog,),
-                      );
+              Positioned(
+                right: 0,
+                left: 0,
+                // width: MediaQuery.of(context).size.width,
+                top: 0,
+                bottom: kBottomButtonsHeight,
+                child: _buildAllFilterTiles(),
+              ),
 
-                    case 1:
-                      return Obx(() =>
-                          _buildFilterTile(
-                              filterIsApplied: controller.ageGroups.isNotEmpty,
-                              title: 'age_groups'.tr,
-                              subtitle: controller.ageGroups.isNotEmpty
-                                  ? controller.ageGroups.summarize(
-                                  separator: 'comma'.tr)
-                                  : 'no_items_added'.tr,
-                              onTap: controller.showAgeGroupsDialog),
-                      );
+              Positioned(
+                height: kBottomButtonsHeight,
+                right: 0,
+                left: 0,
+                bottom: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ShamScreenWidthButton(
+                      text: 'apply'.tr,
+                      onPressed: controller.returnResult,
+                    ),
 
-                    case 2:
-                      return Obx(() =>
-                          _buildFilterTile(
-                              filterIsApplied: controller.authors.isNotEmpty,
-                              title: 'authors'.tr,
-                              subtitle: controller.authors.isNotEmpty
-                                  ? controller.authors.summarize(
-                                  separator: 'comma'.tr)
-                                  : 'no_items_added'.tr,
-                              onTap: controller.showAuthorsDialog),
-                      );
+                    SizedBox(height: 10),
 
-                    case 3:
-                      return Obx(() =>
-                          _buildFilterTile(
-                              filterIsApplied: controller.specialCategories
-                                  .isNotEmpty,
-                              title: 'special_categories'.tr,
-                              subtitle: controller.specialCategories.isNotEmpty
-                                  ? controller.specialCategories.summarize(
-                                  separator: 'comma'.tr)
-                                  : 'no_items_added'.tr,
-                              onTap: controller.showSpecialCategoriesDialog
-                          ),
-                      );
-
-                    case 4:
-                      return Obx(() =>
-                          _buildFilterTile(
-                              filterIsApplied: controller.hasRating,
-                              subtitle: controller.hasRating
-                                  ? '${controller.ratingRange[0]} - ${controller
-                                  .ratingRange[1]}'
-                                  : 'no_items_added'.tr,
-                              title: 'rating'.tr,
-                              onTap: controller.showRatingDialog
-                          ),
-                      );
-
-                    case 5:
-                      return Obx(() =>
-                          _buildFilterTile(
-                              filterIsApplied: controller.hasPages,
-                              subtitle: controller.hasPages
-                                  ? '${controller.pagesRange[0]} - ${controller
-                                  .pagesRange[1]}'
-                                  : 'no_items_added'.tr,
-                              title: 'page_count'.tr,
-                              onTap: controller.showPagesDialog
-                          ),
-                      );
-
-                    default:
-                      return Container();
-                  }
-                },
+                    ShamScreenWidthButton(
+                      height: 40,
+                      text: 'remove_all'.tr,
+                      color: Colors.transparent,
+                      textColor: Colors.black,
+                      splashColor: Colors.white,
+                      onPressed: controller.clearAll,
+                    ),
+                  ],
+                )
               ),
 
               Obx(() => ! controller.isLoading ? Container()
@@ -120,6 +72,95 @@ class FiltersUI extends GetView<FilterController> {
             ]
           )
       ),
+    );
+  }
+
+  Widget _buildAllFilterTiles() {
+    return ListView.separated(
+      itemCount: kNumberOfItems,
+      separatorBuilder: (context, index) => Divider(),
+      itemBuilder: (context, index) {
+        switch (index) {
+          case 0:
+            return Obx(() =>
+                _buildFilterTile(
+                  filterIsApplied: controller.categories.isNotEmpty,
+                  title: 'categories'.tr,
+                  subtitle: controller.categories.isNotEmpty
+                      ? controller.categories.summarize(separator: 'comma'.tr)
+                      : 'no_items_added'.tr,
+                  onTap: controller.showCategoriesDialog,),
+            );
+
+          case 1:
+            return Obx(() =>
+                _buildFilterTile(
+                    filterIsApplied: controller.ageGroups.isNotEmpty,
+                    title: 'age_groups'.tr,
+                    subtitle: controller.ageGroups.isNotEmpty
+                        ? controller.ageGroups.summarize(separator: 'comma'.tr)
+                        : 'no_items_added'.tr,
+                    onTap: controller.showAgeGroupsDialog),
+            );
+
+          case 2:
+            return Obx(() =>
+                _buildFilterTile(
+                    filterIsApplied: controller.authors.isNotEmpty,
+                    title: 'authors'.tr,
+                    subtitle: controller.authors.isNotEmpty
+                        ? controller.authors.summarize(separator: 'comma'.tr)
+                        : 'no_items_added'.tr,
+                    onTap: controller.showAuthorsDialog),
+            );
+
+          case 3:
+            return Obx(() =>
+                _buildFilterTile(
+                    filterIsApplied: controller.specialCategories
+                        .isNotEmpty,
+                    title: 'special_categories'.tr,
+                    subtitle: controller.specialCategories.isNotEmpty
+                        ? controller.specialCategories.summarize(separator: 'comma'.tr)
+                        : 'no_items_added'.tr,
+                    onTap: controller.showSpecialCategoriesDialog
+                ),
+            );
+
+          case 4:
+            return Obx(() =>
+                _buildFilterTile(
+                    filterIsApplied: controller.hasRating,
+                    subtitle: controller.hasRating
+                        ? '${controller.ratingRange[0]} - ${controller.ratingRange[1]}'
+                        : 'no_items_added'.tr,
+                    title: 'rating'.tr,
+                    onTap: controller.showRatingDialog
+                ),
+            );
+
+          case 5:
+            return Obx(() =>
+                _buildFilterTile(
+                    filterIsApplied: controller.hasPages,
+                    subtitle: controller.hasPages
+                        ? '${controller.pagesRange[0]} - ${controller.pagesRange[1]}'
+                        : 'no_items_added'.tr,
+                    title: 'page_count'.tr,
+                    onTap: controller.showPagesDialog
+                ),
+            );
+
+          case 6:
+            return ShamScreenWidthButton(
+              text: 'confirm'.tr,
+              onPressed: controller.returnResult,
+            );
+
+          default:
+            return Container();
+        }
+      },
     );
   }
 

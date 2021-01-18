@@ -22,6 +22,7 @@ Map<String, String> get englishTranslations => {
   'age_group' : 'Age group',
   'age_groups' : 'Age groups',
   'a_text_will_be_sent' : 'We will send a text message to the number you entered to validate your phone number.',
+  'apply' : 'Apply',
   'authors' : 'Authors',
 
   // B
