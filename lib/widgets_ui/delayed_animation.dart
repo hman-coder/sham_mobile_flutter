@@ -20,6 +20,8 @@ class DelayedAnimationState extends State<DelayedAnimation> with
 
   Animation<Offset> _offsetAnim;
 
+  Timer _timer;
+
   @override
   void initState() {
     _controller = AnimationController(
@@ -35,7 +37,7 @@ class DelayedAnimationState extends State<DelayedAnimation> with
     if (widget.delayInMilliseconds == null) {
       _controller.forward();
     } else {
-      Timer(Duration(milliseconds: widget.delayInMilliseconds), () {
+      _timer = Timer(Duration(milliseconds: widget.delayInMilliseconds), () {
         _controller.forward();
       });
     }
@@ -45,8 +47,9 @@ class DelayedAnimationState extends State<DelayedAnimation> with
 
   @override
   void dispose() {
-    super.dispose();
+    if(_timer != null) _timer.cancel();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
