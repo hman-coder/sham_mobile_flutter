@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sham_mobile/helpers/get_extensions.dart';
 
 /// [menuItems] are the widgets that will represent menu items.
 /// [fromDegree] and [toDegree] define the range within
@@ -10,7 +12,7 @@ import 'package:flutter/material.dart';
 class MenuFloatingActionButton extends StatefulWidget {
   final List<Widget> menuItems;
 
-  final FloatingActionButton fab;
+  final Widget mainButton;
 
   final double fromDegree;
 
@@ -26,14 +28,14 @@ class MenuFloatingActionButton extends StatefulWidget {
 
   const MenuFloatingActionButton({Key key,
     @required this.menuItems,
-    @required this.fab,
+    @required this.mainButton,
     this.curve = Curves.easeInOut,
     this.fromDegree = 180,
     this.toDegree = 270,
     this.distance = 100,
     this.duration = const Duration(milliseconds: 500),
     this.animationController}) :
-        assert(menuItems != null && fab != null,
+        assert(menuItems != null && mainButton != null,
         'You must provide both the FloatingActionButton and '
             'the widgets that would extend from it'),
         assert (fromDegree < toDegree, 'fromDegree should be smaller than toDegree'),
@@ -52,6 +54,8 @@ class _MenuFloatingActionButtonState extends State<MenuFloatingActionButton>
 
   Animation _rotationAnimation;
 
+  Animation _mainButtonAnimation;
+
   AnimationController get _animationController =>
       widget.animationController ?? _privateAnimationController;
 
@@ -69,6 +73,20 @@ class _MenuFloatingActionButtonState extends State<MenuFloatingActionButton>
       else if(status == AnimationStatus.reverse)
         shouldReverse = false;
     });
+
+    _mainButtonAnimation = TweenSequence([
+      TweenSequenceItem(
+        weight: 5,
+        tween: Tween<double>(begin: 1, end: 0.7),
+      ),
+      TweenSequenceItem(
+        weight: 5,
+        tween: Tween<double>(begin: 0.7, end: 1),
+      ),
+    ]).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.slowMiddle,
+    ));
 
     _initAnimations();
     super.initState();
@@ -154,33 +172,17 @@ class _MenuFloatingActionButtonState extends State<MenuFloatingActionButton>
   }
 
   Widget _buildFab() {
-    return Positioned(
+    return Positioned.directional(
       bottom: 20,
-      right: 20,
-      child: FloatingActionButton(
-        onPressed: _runController,
-        child: widget.fab.child,
-        elevation: widget.fab.elevation,
-        shape: widget.fab.shape,
-        backgroundColor: widget.fab.backgroundColor,
-        splashColor: widget.fab.splashColor,
-        focusNode: widget.fab.focusNode,
-        autofocus: widget.fab.autofocus,
-        clipBehavior: widget.fab.clipBehavior,
-        disabledElevation: widget.fab.disabledElevation,
-        focusColor: widget.fab.focusColor,
-        focusElevation: widget.fab.focusElevation,
-        foregroundColor: widget.fab.foregroundColor,
-        heroTag: widget.fab.heroTag,
-        highlightElevation: widget.fab.highlightElevation,
-        hoverColor: widget.fab.hoverColor,
-        hoverElevation: widget.fab.hoverElevation,
-        isExtended: widget.fab.isExtended,
-        key: widget.fab.key,
-        materialTapTargetSize: widget.fab.materialTapTargetSize,
-        mini: widget.fab.mini,
-        mouseCursor: widget.fab.mouseCursor,
-        tooltip: widget.fab.tooltip,
+      start: 20,
+      textDirection: Get.direction,
+      child: AnimatedBuilder(
+        animation: _mainButtonAnimation,
+        builder: (_, child) => Transform.scale(scale: _mainButtonAnimation.value, child: child),
+        child: InkWell(
+          onTap: _runController,
+          child: widget.mainButton ?? FloatingActionButton(onPressed: () {}),
+        ),
       ),
     );
   }
