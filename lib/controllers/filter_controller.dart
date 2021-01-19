@@ -38,7 +38,7 @@ class FilterController extends GetxController {
 
   showCategoriesDialog() async {
     final allCategories = _repository.categories;
-    List<Category> selectedCategories = await Get.dialog<List<Category>>(BookFilterDialog<Category>(
+    List<Category> selectedCategories = await Get.dialog<List<Category>>(DefaultFilterDialog<Category>(
       allObjects: allCategories,
       initiallySelectedObjects: _filter.value.categories,
       title: 'categories'.tr,
@@ -51,7 +51,7 @@ class FilterController extends GetxController {
 
   showSpecialCategoriesDialog() async{
     final allCategories = _repository.specialCategories;
-    List<Category> selectedSpecialCategories = await Get.dialog<List<Category>>(BookFilterDialog<Category>(
+    List<Category> selectedSpecialCategories = await Get.dialog<List<Category>>(DefaultFilterDialog<Category>(
       allObjects: allCategories,
       initiallySelectedObjects: _filter.value.specialCategories,
       title: 'special_categories'.tr,
@@ -65,7 +65,7 @@ class FilterController extends GetxController {
 
   showAuthorsDialog() async {
     final allAuthors = _repository.authors;
-    List<Author> selectedAuthors = await Get.dialog<List<Author>>(BookFilterDialog<Author>(
+    List<Author> selectedAuthors = await Get.dialog<List<Author>>(DefaultFilterDialog<Author>(
       allObjects: allAuthors,
       initiallySelectedObjects: _filter.value.authors,
       title: 'authors'.tr,
@@ -78,7 +78,7 @@ class FilterController extends GetxController {
 
   showAgeGroupsDialog() async {
     final allAgeGroups = _repository.ageGroups;
-    List<AgeGroup> selectedGroups = await Get.dialog<List<AgeGroup>>(BookFilterDialog<AgeGroup>(
+    List<AgeGroup> selectedGroups = await Get.dialog<List<AgeGroup>>(DefaultFilterDialog<AgeGroup>(
       allObjects: allAgeGroups,
       initiallySelectedObjects: _filter.value.ageGroups,
       title: 'age_groups'.tr,
