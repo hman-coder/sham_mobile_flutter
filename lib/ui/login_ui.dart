@@ -30,6 +30,7 @@ class LoginUI extends GetView<LoginController> {
               _buildBackground(),
 
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   _buildDescriptionWidget(context),
 
@@ -175,7 +176,6 @@ class SignInButton extends StatelessWidget {
             disabledColor: Colors.black.withOpacity(0.1),
             disabledTextColor: Colors.grey,
             onPressed: disabled ? null : this.onPressed,
-
             color: color.withOpacity(0.6),
 
             shape: Border(
