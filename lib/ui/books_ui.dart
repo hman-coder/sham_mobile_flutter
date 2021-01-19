@@ -102,88 +102,62 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
   Widget _buildFab() {
     return MenuFloatingActionButton(
+      mainButton: _buildMainFabButton(),
       animationController: menuFabController,
       fromDegree: 190,
       toDegree: 260,
       curve: Curves.easeInOutBack,
       duration: Duration(milliseconds: 500),
+
       menuItems: [
-        FloatingActionButton(
-          heroTag: 'blind_dates_fab',
-          onPressed: () async {
-            await menuFabController.reverse();
-            booksController.goToBlindDates();
-          },
-          child: Icon(ShamCustomIcons.blind_date, color: Colors.white, size: 30),
-          backgroundColor: Colors.blue,
-        ),
+        _buildBlindDateButton(),
 
-        FloatingActionButton(
-          heroTag: 'book_lists_fab',
-          onPressed: () async {
-            await menuFabController.reverse();
-            booksController.goToBookLists();
-          },
-          child: Icon(Icons.book, color: Colors.white, size: 30),
-          backgroundColor: Colors.amber,
-        )
+        _buildBookListsButton()
       ],
-
-      fab: FloatingActionButton(),
     );
   }
 
-  void _showSearch(context) {
-    showSearch(context: context, delegate: BookSearchDelegate());
-  }
-}
-
-class BookSearchDelegate extends SearchDelegate {
-
-  BookSearchDelegate() : super(searchFieldLabel: 'search'.tr);
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () => query = '',
-      ),
-
-      IconButton(
-        icon: Icon(Icons.settings),
-        onPressed: () => print('advanced search'),
-      ),
-
-      IconButton(
-        icon: Icon(Icons.search),
-        onPressed: () => showResults(context)
-      )
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: Icon(Icons.arrow_back),
-      onPressed: () => close(context, null),
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return ListView.builder(
-      itemCount: 20,
-      itemBuilder: (context, index) => Padding(
-        padding: EdgeInsets.all(20),
-        child: Text(index.toString()),
+  Widget _buildMainFabButton() {
+    return Container(
+      width: 60,
+      height: 60,
+      child: Icon(Icons.menu, color: Colors.white),
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: DefaultValues.maroon,
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 2,
+                color: Colors.black.withOpacity(0.6),
+                offset: Offset(3, 3)
+            )
+          ]
       ),
     );
   }
 
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return Text(query);
+  Widget _buildBlindDateButton() {
+    return FloatingActionButton(
+      heroTag: 'blind_dates_fab',
+      onPressed: () async {
+        await menuFabController.reverse();
+        booksController.goToBlindDates();
+      },
+      child: Icon(ShamCustomIcons.blind_date, color: Colors.white, size: 30),
+      backgroundColor: Colors.blueAccent,
+    );
+  }
+
+  Widget _buildBookListsButton() {
+    return FloatingActionButton(
+      heroTag: 'book_lists_fab',
+      onPressed: () async {
+        await menuFabController.reverse();
+        booksController.goToBookLists();
+      },
+      child: Icon(Icons.book, color: Colors.white, size: 30),
+      backgroundColor: Colors.blueAccent,
+    );
   }
 }
 
