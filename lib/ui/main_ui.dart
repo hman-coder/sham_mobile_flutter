@@ -24,10 +24,7 @@ class MainUI extends GetView<MainController> {
                 body: PageView(
                   controller: pageController,
                   children: <Widget>[
-                    GetBuilder<BooksController>(
-                      init: BooksController(),
-                      builder: (controller) => BooksUI(),
-                    ),
+                     BooksUI(),
                     BookClubsUI(key: PageStorageKey<String>("book_clubs_ui")),
                     ActivitiesUI(),
                     OffersUI()

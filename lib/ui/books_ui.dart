@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -34,6 +36,9 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
   final Duration animationDuration =  Duration(milliseconds: 600);
 
+  // This listens to books in BooksController. Check initState
+  StreamSubscription _booksListener;
+
   @override
   void initState() {
     menuFabController = AnimationController(
@@ -43,13 +48,14 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
     // To avoid using Obx (see class documentation for reasoning),
     // a listener to the book list in the controller is added:
-    booksController.addListenerToBooks((books) => setState((){}));
+    _booksListener = booksController.addListenerToBooks((books) => setState((){}));
 
     super.initState();
   }
 
   @override
   void dispose() {
+    _booksListener.cancel();
     menuFabController.dispose();
     super.dispose();
   }

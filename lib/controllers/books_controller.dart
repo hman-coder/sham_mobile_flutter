@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/controllers/blind_dates_controller.dart';
@@ -37,8 +39,8 @@ class BooksController extends GetxController {
     super.onInit();
   }
 
-  void addListenerToBooks(Function(List<Book>) listener) {
-    _obsBooks.listen(listener);
+  StreamSubscription addListenerToBooks(Function(List<Book>) listener) {
+    return _obsBooks.listen(listener);
   }
 
   void loadMoreBooks() async {
