@@ -60,6 +60,7 @@ class _NumberSpinnerState extends State<NumberSpinner> {
 
   void setValue(double value) {
     textEditingController.text = widget.showDecimalPoint ? value.toString() : value.toInt().toString();
+    widget.onValueChanged(value);
   }
 
   @override
@@ -112,7 +113,6 @@ class _NumberSpinnerState extends State<NumberSpinner> {
     currentValue += widget.incrementValue * (useMultiplier ? widget.longPressMultiplier : 1);
     if(currentValue > widget.maxValue) currentValue = widget.maxValue;
     setValue(currentValue);
-    widget.onValueChanged(currentValue);
   }
 
   void decrement({bool useMultiplier = false}) {
