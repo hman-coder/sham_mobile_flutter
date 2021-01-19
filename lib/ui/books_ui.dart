@@ -20,6 +20,9 @@ import 'package:sham_mobile/controllers/books_controller.dart';
 /// To avoid the issue, a StatefulWidget has been used instead
 /// of a GetView<BooksController>
 class BooksUI extends StatefulWidget {
+
+  BooksUI({Key key}) : super(key: key);
+
   @override
   _BooksUIState createState() => _BooksUIState();
 }
