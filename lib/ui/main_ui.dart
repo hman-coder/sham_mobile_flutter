@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sham_mobile/controllers/books_controller.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:sham_mobile/controllers/main_controller.dart';
@@ -15,37 +14,31 @@ class MainUI extends GetView<MainController> {
     return Directionality(
           textDirection: Get.direction,
 
-          child: ChangeNotifierProvider<PageController>(
-            create: (context) => PageController(),
+          child: Scaffold(
+              body: PageView(
+                controller: controller.pageController,
+                children: <Widget>[
+                   BooksUI(),
+                  BookClubsUI(key: PageStorageKey<String>("book_clubs_ui")),
+                  ActivitiesUI(),
+                  OffersUI()
+                ],
+              ),
 
-            child: Consumer<PageController>(
-
-              builder: (context, pageController, child) => Scaffold(
-                body: PageView(
-                  controller: pageController,
-                  children: <Widget>[
-                     BooksUI(),
-                    BookClubsUI(key: PageStorageKey<String>("book_clubs_ui")),
-                    ActivitiesUI(),
-                    OffersUI()
+              bottomNavigationBar: Obx(() =>
+                BottomNavigationBar(
+                  currentIndex: controller.currentIndex,
+                  onTap: controller.switchToPage,
+                  backgroundColor: Colors.black,
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'books'.tr, icon: Icon(ShamCustomIcons.book_stack)),
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'clubs'.tr, icon: Icon(Icons.group)),
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'activities'.tr, icon: Icon(Icons.event)),
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'offers'.tr, icon: Icon(Icons.local_offer)),
                   ],
-                ),
-
-                bottomNavigationBar: Builder(
-                  builder: (context) => BottomNavigationBar(
-                    currentIndex: context.watch<PageController>()?.page?.floor() ?? 0,
-                    backgroundColor: Colors.black,
-                    items: <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'books'.tr, icon: Icon(ShamCustomIcons.book_stack)),
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'clubs'.tr, icon: Icon(Icons.group)),
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'activities'.tr, icon: Icon(Icons.event)),
-                      BottomNavigationBarItem(backgroundColor: Colors.black, label: 'offers'.tr, icon: Icon(Icons.local_offer)),
-                    ],
-                  ),
                 ),
               ),
             ),
-          ),
         );
   }
 }
