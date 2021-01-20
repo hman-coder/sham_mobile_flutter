@@ -6,7 +6,7 @@ import 'package:sham_mobile/controllers/main_controller.dart';
 import 'package:sham_mobile/ui/books_ui.dart';
 import 'package:sham_mobile/widgets_functional/sham_custom_icons.dart';
 import 'package:sham_mobile/ui_temp/activities_ui.dart';
-import 'package:sham_mobile/ui_temp/book_clubs_ui.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/ui/book_clubs_ui.dart';
 import 'package:sham_mobile/ui_temp/offers_ui.dart';
 
 class MainUI extends GetView<MainController> {

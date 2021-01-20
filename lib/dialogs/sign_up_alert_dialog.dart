@@ -55,7 +55,7 @@ class ContactInfoAlertDialog extends StatelessWidget {
           FlatButton(
             child: Text("contact_info".tr),
             onPressed: () async {
-              await Get.toNamed('/contact_info');
+              await Get.toNamed('/user/contact_info');
               Get.back();
             },
           ),

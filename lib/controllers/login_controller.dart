@@ -18,7 +18,7 @@ class LoginController extends GetxController {
       User user = await _repository.fetchUserFromGoogleAccount();
       await _repository.registerUser(user);
       Get.find<UserController>().changeUser(user);
-      Get.offNamed('/contact_info');
+      Get.offNamed('/user/contact_info');
 
     } catch (error) {
       print(error);
@@ -32,7 +32,7 @@ class LoginController extends GetxController {
       User user = await _repository.fetchUserFromFacebookAccount();
       await _repository.registerUser(user);
       Get.find<UserController>().changeUser(user);
-      Get.offNamed('/contact_info');
+      Get.offNamed('/user/contact_info');
 
     } catch(error) {
       print(error);
@@ -47,7 +47,7 @@ class LoginController extends GetxController {
       User user = User(phoneNumber: phoneNumber);
       await _repository.registerUser(user);
       Get.find<UserController>().updatePhoneNumber(phoneNumber);
-      Get.offNamed('/contact_info');
+      Get.offNamed('/user/contact_info');
     }
 
     _isProcessing.value = false;

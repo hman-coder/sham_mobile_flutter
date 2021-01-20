@@ -60,6 +60,7 @@ class UserController extends GetxController{
     int userId = sp.getInt(_userIdSharedPreferencesKey) ?? 0;
     _obsUser.update((val) {
       val.id = userId;
+      val.image = "assets/images/hisham.png";
     });
   }
 
