@@ -96,6 +96,7 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
           enablePullUp: true,
           footer: LoadingFooter(),
           child: ListView.builder(
+            key: PageStorageKey("books_ui_list"),
             itemBuilder: (context, index) {
               Book book = booksController.books[index];
               return BookTile(
