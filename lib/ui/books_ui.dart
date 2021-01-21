@@ -12,6 +12,8 @@ import 'package:sham_mobile/widgets_functional/sham_custom_icons.dart';
 
 import 'package:sham_mobile/controllers/books_controller.dart';
 
+import 'drawer_ui.dart';
+
 /// There is a small bug in using getx with pull_to_refresh
 /// If you want to use a ListView in wrapped in an Obx widget
 /// as a child of SmartRefresher, loading and pull-to-refresh
@@ -64,6 +66,8 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
+
+        drawer: DrawerUI(),
 
         appBar: AppBar(
           title: Center(

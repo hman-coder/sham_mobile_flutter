@@ -73,7 +73,7 @@ class _DrawerUIState extends State<DrawerUI> {
 
   List<Widget> _buildDrawerUserItems() {
     return <Widget>[
-      _buildListTile('personal_info', Icons.person, '/user/profile'),
+      _buildListTile('contact_info', Icons.person, '/user/contact_info'),
       _buildListTile( 'family_info', Icons.group, '/user/family_info'),
       _buildListTile('account', Icons.local_atm, '/user/account_info'),
       Divider(
