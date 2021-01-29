@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,10 @@ class MainUI extends GetView<MainController> {
               bottomNavigationBar: Obx(() =>
                 BottomNavigationBar(
                   currentIndex: controller.currentIndex,
-                  onTap: controller.switchToPage,
+                  onTap: (index) {
+                    SystemSound.play(SystemSoundType.click);
+                    controller.switchToPage(index);
+                  },
                   backgroundColor: Colors.black,
                   items: <BottomNavigationBarItem>[
                     BottomNavigationBarItem(backgroundColor: Colors.black, label: 'books'.tr, icon: Icon(ShamCustomIcons.book_stack)),

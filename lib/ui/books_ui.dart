@@ -71,9 +71,7 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
         appBar: AppBar(
           title: Center(
-              child: Text('books'.tr,
-                style: TextStyle(fontSize: DefaultValues.largeTextSize),
-              )
+              child: Text('books'.tr,)
           ),
 
           actions: [

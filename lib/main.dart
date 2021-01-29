@@ -36,6 +36,7 @@ class Sham extends StatelessWidget {
 
         child: GetMaterialApp(
           onInit: _initializeControllers,
+
           localizationsDelegates: _getLocalizationsDelegates(),
 
           translations: ShamTranslations(),
@@ -48,25 +49,8 @@ class Sham extends StatelessWidget {
 
           initialRoute: '/loading',
 
-          theme: ThemeData(
-              fontFamily: DefaultValues.mainFontFamily,
 
-              bottomAppBarTheme: BottomAppBarTheme(
-                color: Colors.black,
-              ),
-
-              tabBarTheme: TabBarTheme.of(context).copyWith(
-                labelColor: Colors.white,
-                unselectedLabelColor: Color(0xffD0D0D0),
-              ),
-
-              primaryColor: DefaultValues.maroon,
-
-              floatingActionButtonTheme: FloatingActionButtonThemeData(
-                  backgroundColor: DefaultValues.maroon
-              )
-          ),
-
+          theme: _buildTheme(context),
           title: 'Sham',
         )
     );
@@ -95,4 +79,38 @@ class Sham extends StatelessWidget {
     GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings()),
     GetPage(name: '/user/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings()),
   ];
+
+  ThemeData _buildTheme(BuildContext context) {
+    return ThemeData(
+        fontFamily: DefaultValues.mainFontFamily,
+
+        textTheme: TextTheme(
+          headline6: TextStyle(fontSize: DefaultValues.largeTextSize),
+          subtitle1: TextStyle(fontSize: DefaultValues.mediumTextSize), // ListTile title size
+          bodyText2: TextStyle(fontSize: DefaultValues.smallTextSize), // ListTile subtitle size
+        ),
+
+        bottomAppBarTheme: BottomAppBarTheme(
+          color: Colors.black,
+        ),
+
+        tabBarTheme: TabBarTheme.of(context).copyWith(
+          labelColor: Colors.white,
+          unselectedLabelColor: Color(0xffD0D0D0),
+        ),
+
+        appBarTheme: AppBarTheme(
+          textTheme: TextTheme(
+            headline6: TextStyle(fontSize: DefaultValues.extraLargeTextSize, fontFamily: DefaultValues.mainFontFamily,),
+          ),
+          centerTitle: true,
+        ),
+
+        primaryColor: DefaultValues.maroon,
+
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: DefaultValues.maroon
+        )
+    );
+  }
 }
