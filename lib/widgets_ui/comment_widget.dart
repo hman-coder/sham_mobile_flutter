@@ -32,7 +32,7 @@ class CommentWidget extends StatelessWidget {
                 trailing: comment.rating == null || comment.rating == 0 ? Container(width: 0,)
                     : SizedBox(
                   width: 80,
-                  child: RatingBar(
+                  child: RatingBar.builder(
                     initialRating: comment.rating,
                     onRatingUpdate: (value) => null,
                     ignoreGestures: true,

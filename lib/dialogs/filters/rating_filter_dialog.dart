@@ -58,7 +58,7 @@ class _RatingsDialogState extends State<RatingsDialog> {
 
                 Text('from'.tr, style: TextStyle(color: isActivated ? Colors.black : Colors.grey)),
 
-                RatingBar(
+                RatingBar.builder(
                   initialRating: newLowerBound,
                   onRatingUpdate: isActivated ? onLowerBoundChanged : null,
                   itemBuilder: (context, index) =>
@@ -70,7 +70,7 @@ class _RatingsDialogState extends State<RatingsDialog> {
 
                 Text('to'.tr, style: TextStyle(color: isActivated ? Colors.black : Colors.grey)),
 
-                RatingBar(
+                RatingBar.builder(
                   initialRating: newUpperBound,
                   onRatingUpdate: isActivated ? onUpperBoundChanged : null,
                   itemBuilder: (context, index) =>

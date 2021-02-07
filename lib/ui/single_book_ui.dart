@@ -342,7 +342,7 @@ class _SingleBookReviewSection extends GetView<SingleBookController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  RatingBar(
+                  RatingBar.builder(
                     ignoreGestures: true,
                     initialRating: controller.book.rating,
                     onRatingUpdate: (value) => null,
@@ -430,7 +430,7 @@ class _AddOrUpdateReviewDialogState extends State<_AddOrUpdateReviewDialog> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.all(12),
-                  child: RatingBar(
+                  child: RatingBar.builder(
                     initialRating: comment.rating ?? 0,
                     onRatingUpdate: (value) => setState(() => comment.rating = value),
                     itemBuilder: (context, index) => Icon(Icons.star, color: Colors.amber),
