@@ -18,15 +18,13 @@ import 'package:sham_mobile/controllers/user_controller.dart';
 import 'package:sham_mobile/ui/book_lists_ui.dart';
 
 class BooksController extends GetxController {
-  RefreshController _refreshController = RefreshController(
+  RefreshController refreshController = RefreshController(
       initialRefresh: false
   );
 
   BooksRepository _repository = BooksRepository();
 
   var _obsBooks = <Book>[].obs;
-
-  RefreshController get refreshController => _refreshController;
 
   List<Book> get books => _obsBooks.toList();
 
@@ -48,7 +46,7 @@ class BooksController extends GetxController {
     await Future.delayed(3.seconds);
     _obsBooks.addAll(_repository.allBooks);
 
-    _refreshController.loadComplete();
+    refreshController.loadComplete();
   }
 
   void refreshBooks() async {
@@ -56,7 +54,7 @@ class BooksController extends GetxController {
     _obsBooks.clear();
     _obsBooks.addAll(await _repository.allBooks);
 
-    _refreshController.refreshCompleted();
+    refreshController.refreshCompleted();
   }
 
   Future<bool> addBookToBookList(Book book) async {
