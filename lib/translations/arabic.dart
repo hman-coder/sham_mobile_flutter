@@ -66,6 +66,7 @@ Map<String, String> get arabicTranslations => {
   'create_new_account' : 'إنشاء حساب جديد',
 
   // D
+  'date' : 'التاريخ',
   'deliver_book' : 'إيصال الكتاب',
   'deliver_book_confirmation' : 'هل أنت متأكد من أنك تريد إيصال هذا الكتاب إليك',
   'done' : 'تم',
@@ -107,6 +108,7 @@ Map<String, String> get arabicTranslations => {
   'hide' : 'إخفاء',
 
   // I
+  'inquire' : 'استفسار',
   'invalid_code': 'رمز غير صحيح',
 
   // L
@@ -179,6 +181,7 @@ Map<String, String> get arabicTranslations => {
   'rating' : 'التقييم',
   'remove_all' : 'إزالة الكل',
   'report' : 'تبليغ',
+  'reserve' : 'حجز',
   'reserve_book' : 'احجز الكتاب',
   'reserve_book_request_high_priority' : 'لأنك لديك مجموع نقاط أولوية مرتفع فسوف تستطيع حجز نسخة من الكتاب لمدة',
   'reserve_book_request_medium_priority' : 'لديك مجموع نقاط أولوية متوسط، لذلك تستطيع حجز نسخة من الكتاب لمدة',

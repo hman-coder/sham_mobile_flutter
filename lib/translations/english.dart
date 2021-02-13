@@ -67,6 +67,7 @@ Map<String, String> get englishTranslations => {
   'create_account_to_complete_action' : 'You have to create an account to perform this action',
 
   // D
+  'date' : 'Date',
   'deliver_book' : 'Deliver Book',
   'deliver_book_confirmation' : 'Are you sure you want this book delivered',
   'district' : 'District',
@@ -107,6 +108,7 @@ Map<String, String> get englishTranslations => {
   'hide' : 'hide',
 
   // I
+  'inquire' : 'Inquire info',
   'invalid_code': 'Invalid code',
 
   // L
@@ -179,6 +181,7 @@ Map<String, String> get englishTranslations => {
   'rating' : 'Rating',
   'remove_all' : 'Remove all',
   'report' : 'Report',
+  'reserve' : 'Reserve',
   'reserve_book' : 'Reserve book',
   'reserve_book_request_high_priority' : 'Because you have a high priority score, your book will be reserved for',
   'reserve_book_request_medium_priority_1' : 'You have a medium priority score, so you can reserve a book for only',

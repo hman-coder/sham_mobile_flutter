@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/activities_controller.dart';
 import 'package:sham_mobile/controllers/book_clubs_controller.dart';
 import 'package:sham_mobile/controllers/books_controller.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
@@ -19,6 +20,7 @@ class MainController extends GetxController{
   void onInit() {
     Get.put(BooksController(), permanent: true);
     Get.put(BookClubsController(), permanent: true);
+    Get.put(ActivitiesController(), permanent: true);
     pageController.addListener(() {
       double currentPage = pageController.page;
       if(currentPage > (currentIndex + 0.5))
