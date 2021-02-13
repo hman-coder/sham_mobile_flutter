@@ -23,6 +23,8 @@ class AgeGroup extends Summarizable {
 
   AgeGroup.reallyAged() : minAge = 60, maxAge = 70, name = "مسنون (كتير)";
 
+  String get summary => '$name ($minAge - $maxAge)';
+
   @override
   String toString() {
     return name;
