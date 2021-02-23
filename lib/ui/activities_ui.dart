@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -9,37 +7,7 @@ import 'package:sham_mobile/ui/drawer_ui.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:sham_mobile/widgets_ui/loading_footer.dart';
 
-/// There is a small bug in using getx with pull_to_refresh
-/// If you want to use a ListView in wrapped in an Obx widget
-/// as a child of SmartRefresher, loading and pull-to-refresh
-/// functions will not work.
-/// This is because pull_to_refresh treats Widgets differently than
-/// Slivers (or SliverLists), and Obx is a widget.
-///
-/// To avoid the issue, a StatefulWidget has been used instead
-/// of a GetView<BooksController>
-class ActivitiesUI extends StatefulWidget{
-  @override
-  _ActivitiesUIState createState() => _ActivitiesUIState();
-}
-
-class _ActivitiesUIState extends State<ActivitiesUI> {
-
-  ActivitiesController get _controller => Get.find<ActivitiesController>();
-
-  StreamSubscription _activitiesListener;
-
-  @override
-  void initState() {
-    _activitiesListener = _controller.listenToActivities((_) => setState((){}));
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _activitiesListener.cancel();
-    super.dispose();
-  }
+class ActivitiesUI extends GetView<ActivitiesController> {
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +17,19 @@ class _ActivitiesUIState extends State<ActivitiesUI> {
         centerTitle: true,
         title: Text('activities'.tr),
       ),
-      body: SmartRefresher(
-        controller: _controller.refreshController,
-        onRefresh: _controller.refreshActivities,
-        onLoading: _controller.loadMoreActivities,
-        enablePullUp: true,
-        footer: LoadingFooter(),
-        child: ListView.builder(
-          key: PageStorageKey<String>('activities_list'),
-          itemCount: _controller.activities.length,
-          itemBuilder: (context, index) => ActivityWidget(_controller.activities[index])
+      body: Obx(() => SmartRefresher(
+          controller: controller.refreshController,
+          onRefresh: controller.refreshActivities,
+          onLoading: controller.loadMoreActivities,
+          enablePullUp: true,
+          footer: LoadingFooter(),
+          child: controller.activities == null ? Container() : ListView.builder(
+            key: PageStorageKey<String>('activities_list'),
+            itemCount: controller.activities.length,
+            itemBuilder: (context, index) => ActivityWidget(controller.activities[index])
+          ),
         ),
-      )
+      ),
     );
   }
 }

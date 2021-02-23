@@ -18,9 +18,9 @@ import 'package:sham_mobile/controllers/user_controller.dart';
 import 'package:sham_mobile/ui/book_lists_ui.dart';
 
 class BooksController extends GetxController {
-  RefreshController refreshController = RefreshController(
-      initialRefresh: false
-  );
+  static BookSearchFilter _currentSearchFilter = BookSearchFilter();
+
+  RefreshController refreshController = RefreshController(initialRefresh: true);
 
   BooksRepository _repository = BooksRepository();
 
@@ -28,20 +28,15 @@ class BooksController extends GetxController {
 
   List<Book> get books => _obsBooks.toList();
 
-  static BookSearchFilter _currentSearchFilter = BookSearchFilter();
+  Stream<List<Book>> get booksStream => _obsBooks.stream;
 
   @override
   void onInit() {
     Get.put(BookListsController(Get.find<UserController>().user.id));
-    loadMoreBooks();
     super.onInit();
   }
 
-  StreamSubscription addListenerToBooks(Function(List<Book>) listener) {
-    return _obsBooks.listen(listener);
-  }
-
-  void loadMoreBooks() async {
+  Future loadMoreBooks() async {
     printInfo(info: ': loading more books');
     await Future.delayed(3.seconds);
     _obsBooks.addAll(_repository.allBooks);
@@ -49,7 +44,7 @@ class BooksController extends GetxController {
     refreshController.loadComplete();
   }
 
-  void refreshBooks() async {
+  Future refreshBooks() async {
     await Future.delayed(3.seconds);
     _obsBooks.clear();
     _obsBooks.addAll(await _repository.allBooks);

@@ -10,20 +10,16 @@ class ActivitiesController extends GetxController {
 
   ActivitiesRepository _repo = ActivitiesRepository();
 
-  RefreshController refreshController = RefreshController(
-    initialRefresh: false
-  );
+  RefreshController refreshController = RefreshController(initialRefresh: true);
 
   List<Activity> get activities => _activities.toList();
+
+  Stream<List<Activity>> get activitiesStream => _activities.stream;
 
   @override
   void onInit() {
     loadMoreActivities();
     super.onInit();
-  }
-
-  StreamSubscription listenToActivities(Function(List<Activity>)  listener) {
-    return _activities.listen(listener);
   }
 
   void loadMoreActivities() async {

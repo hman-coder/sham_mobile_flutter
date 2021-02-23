@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -9,20 +7,10 @@ import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:sham_mobile/widgets_ui/loading_footer.dart';
 import 'package:sham_mobile/widgets_ui/menu_floating_action_button.dart';
 import 'package:sham_mobile/widgets_functional/sham_custom_icons.dart';
-
 import 'package:sham_mobile/controllers/books_controller.dart';
 
 import 'drawer_ui.dart';
 
-/// There is a small bug in using getx with pull_to_refresh
-/// If you want to use a ListView in wrapped in an Obx widget
-/// as a child of SmartRefresher, loading and pull-to-refresh
-/// functions will not work.
-/// This is because pull_to_refresh treats Widgets differently than
-/// Slivers (or SliverLists), and Obx is a widget.
-///
-/// To avoid the issue, a StatefulWidget has been used instead
-/// of a GetView<BooksController>
 class BooksUI extends StatefulWidget {
 
   BooksUI({Key key}) : super(key: key);
@@ -38,9 +26,6 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
   final Duration animationDuration =  Duration(milliseconds: 600);
 
-  // This listens to books in BooksController. Check initState
-  StreamSubscription _booksListener;
-
   @override
   void initState() {
     menuFabController = AnimationController(
@@ -48,16 +33,11 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
       duration: animationDuration
     );
 
-    // To avoid using Obx (see class documentation for reasoning),
-    // a listener to the book list in the controller is added:
-    _booksListener = booksController.addListenerToBooks((books) => setState((){}));
-
     super.initState();
   }
 
   @override
   void dispose() {
-    _booksListener.cancel();
     menuFabController.dispose();
     super.dispose();
   }
@@ -91,24 +71,25 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
         floatingActionButton: _buildFab(),
 
-        body: SmartRefresher(
-          controller: booksController.refreshController,
-          onLoading: booksController.loadMoreBooks,
-          onRefresh: booksController.refreshBooks,
-          enablePullUp: true,
-          footer: LoadingFooter(),
-          child: ListView.builder(
-            key: PageStorageKey("books_ui_list"),
-            itemBuilder: (context, index) {
-              Book book = booksController.books[index];
-              return BookTile(
-                book: book,
-                trailing: _BookTileTrailingIcon(book: book)
-              );
-            },
-            itemCount: booksController.books.length,
-              ),
-        )
+        body: Obx(() => SmartRefresher(
+            controller: booksController.refreshController,
+            onLoading: booksController.loadMoreBooks,
+            onRefresh: booksController.refreshBooks,
+            enablePullUp: true,
+            footer: LoadingFooter(),
+            child: booksController.books == null ? Center() : ListView.builder(
+              key: PageStorageKey("books_ui_list"),
+              itemBuilder: (context, index) {
+                Book book = booksController.books[index];
+                return BookTile(
+                  book: book,
+                  trailing: _BookTileTrailingIcon(book: book)
+                );
+              },
+              itemCount: booksController.books.length,
+            ),
+          ),
+        ),
     );
   }
 

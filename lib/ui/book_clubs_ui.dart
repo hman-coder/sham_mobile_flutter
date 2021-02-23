@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/controllers/book_clubs_controller.dart';
 import 'package:sham_mobile/helpers/string_helper.dart';
 import 'package:sham_mobile/models/activity.dart';
@@ -8,6 +9,7 @@ import 'package:sham_mobile/widgets_ui/linear_gradient_background.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
+import 'package:sham_mobile/widgets_ui/loading_footer.dart';
 
 class BookClubsUI extends GetView<BookClubsController> {
   BookClubsUI({Key key}) : super(key: key);
@@ -15,22 +17,24 @@ class BookClubsUI extends GetView<BookClubsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _buildAppBar(context),
+        appBar: _buildAppBar(),
         drawer: DrawerUI(),
-        body: _buildBody(context),
+        body: Obx(() => SmartRefresher(
+              controller: controller.refreshController,
+              enablePullUp: true,
+              onLoading: controller.loadMoreClubs,
+              onRefresh: controller.refreshClubs,
+              footer: LoadingFooter(),
+              child: CustomScrollView(slivers: _buildBookClubs(controller.bookClubs).toList())
+          ),
+        ),
       );
   }
 
-  Widget _buildAppBar(BuildContext context) {
+  Widget _buildAppBar() {
     return AppBar(
         centerTitle: true,
         title: Text('book_clubs'.tr));
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return controller.isLoading
-        ? Center(child: CircularProgressIndicator())
-        : Obx(() => CustomScrollView(slivers: _buildBookClubs(controller.bookClubs).toList(),));
   }
 
   Iterable<Widget> _buildBookClubs(List<Activity> bookClubs) sync* {
