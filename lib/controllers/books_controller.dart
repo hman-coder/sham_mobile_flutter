@@ -28,8 +28,6 @@ class BooksController extends GetxController {
 
   List<Book> get books => _obsBooks.toList();
 
-  Stream<List<Book>> get booksStream => _obsBooks.stream;
-
   @override
   void onInit() {
     Get.put(BookListsController(Get.find<UserController>().user.id));

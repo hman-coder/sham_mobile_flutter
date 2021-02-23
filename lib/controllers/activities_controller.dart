@@ -14,8 +14,6 @@ class ActivitiesController extends GetxController {
 
   List<Activity> get activities => _activities.toList();
 
-  Stream<List<Activity>> get activitiesStream => _activities.stream;
-
   @override
   void onInit() {
     loadMoreActivities();
