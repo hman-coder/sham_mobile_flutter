@@ -15,13 +15,9 @@ class BlindDatesController extends GetxController {
   final repository = BlindDatesRepository();
 
   @override
-  void onInit() {
+  void onReady() {
     loadMoreBlindDates();
-    super.onInit();
-  }
-
-  void addListenerToBlindDates(Function(List<BlindDate>) listener) {
-    _obsBlindDates.listen(listener);
+    super.onReady();
   }
 
   void loadMoreBlindDates() async {

@@ -10,7 +10,7 @@ class ActivitiesController extends GetxController {
 
   ActivitiesRepository _repo = ActivitiesRepository();
 
-  RefreshController refreshController = RefreshController(initialRefresh: true);
+  RefreshController refreshController = RefreshController();
 
   List<Activity> get activities => _activities.toList();
 

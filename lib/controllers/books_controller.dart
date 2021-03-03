@@ -20,7 +20,7 @@ import 'package:sham_mobile/ui/book_lists_ui.dart';
 class BooksController extends GetxController {
   static BookSearchFilter _currentSearchFilter = BookSearchFilter();
 
-  RefreshController refreshController = RefreshController(initialRefresh: true);
+  RefreshController refreshController = RefreshController();
 
   BooksRepository _repository = BooksRepository();
 
@@ -32,6 +32,12 @@ class BooksController extends GetxController {
   void onInit() {
     Get.put(BookListsController(Get.find<UserController>().user.id));
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    loadMoreBooks();
   }
 
   Future loadMoreBooks() async {

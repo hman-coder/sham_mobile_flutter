@@ -19,7 +19,9 @@ class BookClubsUI extends GetView<BookClubsController> {
     return Scaffold(
         appBar: _buildAppBar(),
         drawer: DrawerUI(),
-        body: Obx(() => SmartRefresher(
+        body: Obx(() => controller.bookClubs.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : SmartRefresher(
               controller: controller.refreshController,
               enablePullUp: true,
               onLoading: controller.loadMoreClubs,

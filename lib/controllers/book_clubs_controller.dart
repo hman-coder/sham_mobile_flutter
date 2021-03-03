@@ -8,9 +8,16 @@ class BookClubsController extends GetxController {
 
   var _repository = BookClubsRepository();
 
-  RefreshController refreshController = RefreshController(initialRefresh: true);
+  RefreshController refreshController = RefreshController();
 
   List<Activity> get bookClubs => _bookClubsObs.toList();
+
+
+  @override
+  void onReady() {
+    loadMoreClubs();
+    super.onReady();
+  }
 
   Future loadMoreClubs() async {
     await Future.delayed(3.seconds);

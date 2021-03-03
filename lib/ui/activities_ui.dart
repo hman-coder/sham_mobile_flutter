@@ -8,7 +8,6 @@ import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:sham_mobile/widgets_ui/loading_footer.dart';
 
 class ActivitiesUI extends GetView<ActivitiesController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,13 +16,15 @@ class ActivitiesUI extends GetView<ActivitiesController> {
         centerTitle: true,
         title: Text('activities'.tr),
       ),
-      body: Obx(() => SmartRefresher(
+      body: Obx(() => controller.activities.isEmpty
+          ? Center(child: CircularProgressIndicator())
+          : SmartRefresher(
           controller: controller.refreshController,
           onRefresh: controller.refreshActivities,
           onLoading: controller.loadMoreActivities,
           enablePullUp: true,
           footer: LoadingFooter(),
-          child: controller.activities == null ? Container() : ListView.builder(
+          child: ListView.builder(
             key: PageStorageKey<String>('activities_list'),
             itemCount: controller.activities.length,
             itemBuilder: (context, index) => ActivityWidget(controller.activities[index])

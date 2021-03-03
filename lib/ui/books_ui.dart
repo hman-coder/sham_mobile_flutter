@@ -71,24 +71,26 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
 
         floatingActionButton: _buildFab(),
 
-        body: Obx(() => SmartRefresher(
-            controller: booksController.refreshController,
-            onLoading: booksController.loadMoreBooks,
-            onRefresh: booksController.refreshBooks,
-            enablePullUp: true,
-            footer: LoadingFooter(),
-            child: booksController.books == null ? Center() : ListView.builder(
-              key: PageStorageKey("books_ui_list"),
-              itemBuilder: (context, index) {
-                Book book = booksController.books[index];
-                return BookTile(
-                  book: book,
-                  trailing: _BookTileTrailingIcon(book: book)
-                );
-              },
-              itemCount: booksController.books.length,
+        body: Obx(() => booksController.books.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : SmartRefresher(
+              controller: booksController.refreshController,
+              onLoading: booksController.loadMoreBooks,
+              onRefresh: booksController.refreshBooks,
+              enablePullUp: true,
+              footer: LoadingFooter(),
+              child: ListView.builder(
+                key: PageStorageKey("books_ui_list"),
+                itemBuilder: (context, index) {
+                  Book book = booksController.books[index];
+                  return BookTile(
+                    book: book,
+                    trailing: _BookTileTrailingIcon(book: book)
+                  );
+                },
+                itemCount: booksController.books.length,
+              ),
             ),
-          ),
         ),
     );
   }

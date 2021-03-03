@@ -14,34 +14,24 @@ import 'package:get/get.dart';
 ///
 /// To avoid the issue, a StatefulWidget has been used instead
 /// of a GetView<BooksController>
-class BlindDatesUI extends StatefulWidget {
-  @override
-  _BlindDatesUIState createState() => _BlindDatesUIState();
-}
-
-class _BlindDatesUIState extends State<BlindDatesUI> {
-  final BlindDatesController blindDatesController = Get.find<BlindDatesController>();
-
-  @override
-  void initState() {
-    blindDatesController.addListenerToBlindDates((list) => setState((){}));
-    super.initState();
-  }
-
+class BlindDatesUI extends GetView<BlindDatesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('blind_dates'.tr)),
-      body: SmartRefresher(
-        controller: blindDatesController.refreshController,
-        onLoading: blindDatesController.loadMoreBlindDates,
-        onRefresh: blindDatesController.refreshBlindDates,
-        enablePullUp: true,
-        footer: LoadingFooter(),
-        child: ListView.builder(
-          itemCount: blindDatesController.blindDates.length,
-          itemBuilder: (context, index) => _BlindDateItem(blindDate: blindDatesController.blindDates[index],)
-        )
+      body: Obx(() => controller.blindDates.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : SmartRefresher(
+              controller: controller.refreshController,
+              onLoading: controller.loadMoreBlindDates,
+              onRefresh: controller.refreshBlindDates,
+              enablePullUp: true,
+              footer: LoadingFooter(),
+              child: ListView.builder(
+                itemCount: controller.blindDates.length,
+                itemBuilder: (context, index) => _BlindDateItem(blindDate: controller.blindDates[index],)
+              )
+            ),
       ),
     );
   }
