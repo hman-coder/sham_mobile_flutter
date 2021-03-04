@@ -7,7 +7,7 @@ import 'package:sham_mobile/ui/books_ui.dart';
 import 'package:sham_mobile/widgets_functional/sham_custom_icons.dart';
 import 'package:sham_mobile/ui/activities_ui.dart';
 import 'package:sham_mobile/ui/book_clubs_ui.dart';
-import 'package:sham_mobile/ui_temp/offers_ui.dart';
+import 'package:sham_mobile/ui/offers_ui.dart';
 
 class MainUI extends GetView<MainController> {
   Widget build(BuildContext context) {
