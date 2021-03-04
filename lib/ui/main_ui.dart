@@ -30,7 +30,7 @@ class MainUI extends GetView<MainController> {
                   currentIndex: controller.currentIndex,
                   onTap: (index) {
                     SystemSound.play(SystemSoundType.click);
-                    controller.switchToPage(index);
+                    controller.switchToPageIndex(index);
                   },
                   backgroundColor: Colors.black,
                   items: <BottomNavigationBarItem>[

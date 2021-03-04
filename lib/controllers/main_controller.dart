@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sham_mobile/controllers/activities_controller.dart';
 import 'package:sham_mobile/controllers/book_clubs_controller.dart';
 import 'package:sham_mobile/controllers/books_controller.dart';
+import 'package:sham_mobile/controllers/offers_controller.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 
 class MainController extends GetxController{
@@ -12,15 +13,37 @@ class MainController extends GetxController{
 
   int get currentIndex => _currentIndex.value;
 
-  void switchToPage(int index) {
+  void switchToPageIndex(int index) {
     pageController.animateToPage(index, curve: Curves.easeOutCubic, duration: 500.milliseconds);
+  }
+
+  void switchToPageName(String name) {
+    switch(name) {
+      case 'books':
+        switchToPageIndex(0);
+        break;
+
+      case 'book_clubs':
+        switchToPageIndex(1);
+        break;
+
+      case 'activities':
+        switchToPageIndex(2);
+        break;
+
+      case 'offers':
+        switchToPageIndex(3);
+        break;
+    }
   }
 
   @override
   void onInit() {
-    Get.put(BooksController(), permanent: true);
-    Get.put(BookClubsController(), permanent: true);
-    Get.put(ActivitiesController(), permanent: true);
+    Get.lazyPut(() => BooksController(), fenix: true);
+    Get.lazyPut(() => BookClubsController(), fenix: true);
+    Get.lazyPut(() => ActivitiesController(), fenix: true);
+    Get.lazyPut(() => OffersController(), fenix: true);
+
     pageController.addListener(() {
       double currentPage = pageController.page;
       if(currentPage > (currentIndex + 0.5))
