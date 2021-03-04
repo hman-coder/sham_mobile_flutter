@@ -6,6 +6,7 @@ import 'package:sham_mobile/models/activity.dart';
 import 'package:sham_mobile/ui/drawer_ui.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:sham_mobile/widgets_ui/loading_footer.dart';
+import 'package:sham_mobile/widgets_ui/elevating_title.dart';
 
 class ActivitiesUI extends GetView<ActivitiesController> {
   @override
@@ -54,7 +55,7 @@ class ActivityWidget extends StatelessWidget {
             elevation: 5.0,
             child: Column(
               children: [
-                _buildUpperBar(),
+                _buildUpperBar(context),
 
                 Expanded(
                   child: _buildContent()
@@ -66,38 +67,40 @@ class ActivityWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildUpperBar() {
-    return Row(
-      children: [
-        PopupMenuButton<String>(
-          onSelected: _onMenuItemSelected,
-          padding: EdgeInsets.all(6),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
-          icon: Icon(Icons.more_vert),
-          itemBuilder: (context) => <PopupMenuEntry<String>>[
-            PopupMenuItem<String>(
-              child: Text('inquire'.tr),
-              value: 'inquire'
-            ),
-            PopupMenuItem<String>(
-              child: Text('reserve'.tr),
-              value: 'reserve'
-            ),
-          ],
-        ),
-
-        Expanded(
-          child: Center(
-              child: Padding(
-                padding: EdgeInsetsDirectional.only(end: 12),
-                child: Text(activity.title,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: DefaultValues.largeTextSize)
-                ),
-              )
+  Widget _buildUpperBar(BuildContext context) {
+    return ElevatingTitle(
+      child: Row(
+        children: [
+          PopupMenuButton<String>(
+            onSelected: _onMenuItemSelected,
+            padding: EdgeInsets.all(6),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+            icon: Icon(Icons.more_vert, color: Colors.white),
+            itemBuilder: (context) => <PopupMenuEntry<String>>[
+              PopupMenuItem<String>(
+                child: Text('inquire'.tr),
+                value: 'inquire'
+              ),
+              PopupMenuItem<String>(
+                child: Text('reserve'.tr),
+                value: 'reserve'
+              ),
+            ],
           ),
-        ),
-      ],
+
+          Expanded(
+            child: Center(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.only(end: 12),
+                  child: Text(activity.title,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.headline6.copyWith(color: Colors.white)
+                  ),
+                )
+            ),
+          ),
+        ],
+      ),
     );
   }
 

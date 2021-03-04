@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DefaultValues {
-  static final Color maroon = const Color(0xff8C0000);
+  static const  Color maroon = const Color(0xff8C0000);
 
   static final String mainFontFamily = 'Harmattan';
 
