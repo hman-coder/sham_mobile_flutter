@@ -9,6 +9,7 @@ import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:sham_mobile/widgets_ui/labeled_divider.dart';
 
 import 'package:sham_mobile/controllers/login_controller.dart';
+import 'package:sham_mobile/widgets_ui/social_button.dart';
 
 class LoginUI extends GetView<LoginController> {
   @override
@@ -55,7 +56,7 @@ class LoginUI extends GetView<LoginController> {
 
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
-                    child: Obx(() => SignInButton(
+                    child: Obx(() => SocialButton(
                       disabled: controller.isProcessing,
                       color: Color(0xFFD44637),
                       icon: Icon(ShamCustomIcons.gmail, color: Colors.white.withOpacity(0.8)),
@@ -67,7 +68,7 @@ class LoginUI extends GetView<LoginController> {
 
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
-                    child: Obx(() => SignInButton(
+                    child: Obx(() => SocialButton(
                       disabled: controller.isProcessing,
                       color: Color(0xFF29487D),
                       icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
@@ -79,7 +80,7 @@ class LoginUI extends GetView<LoginController> {
 
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
-                    child: Obx(() => SignInButton(
+                    child: Obx(() => SocialButton(
                       color: Color(0xFF25D366),
                       icon: Icon(Icons.phone, color: Colors.white),
                       text: 'phone_number'.tr,
@@ -148,67 +149,3 @@ class LoginUI extends GetView<LoginController> {
     return  _delay * _multiplier++;
   }
 }
-
-class SignInButton extends StatelessWidget {
-  final Widget icon;
-  final String text;
-  final Color color;
-  final bool disabled;
-  final Function onPressed;
-
-  const SignInButton({
-    Key key,
-    @required this.icon,
-    @required this.color,
-    @required this.text,
-    @required this.onPressed,
-    this.disabled = false})
-      : assert (icon != null) ,
-        assert (text != null),
-        assert (onPressed != null),
-        super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6.0),
-          child: MaterialButton(
-            disabledColor: Colors.black.withOpacity(0.1),
-            disabledTextColor: Colors.grey,
-            onPressed: disabled ? null : this.onPressed,
-            color: color.withOpacity(0.6),
-
-            shape: Border(
-              top: BorderSide(color: Colors.white),
-              bottom: BorderSide(color: Colors.white),
-            ),
-
-            child: IntrinsicHeight(
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: icon,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: VerticalDivider(color: Colors.white, width: 2, thickness: 2,),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Text(text,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        );
-  }
-}
-
