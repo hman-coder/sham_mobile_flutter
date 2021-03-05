@@ -58,7 +58,7 @@ class LoginUI extends GetView<LoginController> {
                     delayInMilliseconds: _getNextDelayDuration(),
                     child: Obx(() => SocialButton(
                       disabled: controller.isProcessing,
-                      color: Color(0xFFD44637),
+                      color: DefaultValues.gmail_red,
                       icon: Icon(ShamCustomIcons.gmail, color: Colors.white.withOpacity(0.8)),
                       text: 'google_sign_in'.tr,
                       onPressed: controller.performGoogleSignIn
@@ -70,7 +70,7 @@ class LoginUI extends GetView<LoginController> {
                     delayInMilliseconds: _getNextDelayDuration(),
                     child: Obx(() => SocialButton(
                       disabled: controller.isProcessing,
-                      color: Color(0xFF29487D),
+                      color: DefaultValues.facebook_blue,
                       icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
                       text: 'facebook_sign_in'.tr,
                       onPressed: controller.performFacebookSignIn
@@ -81,7 +81,7 @@ class LoginUI extends GetView<LoginController> {
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
                     child: Obx(() => SocialButton(
-                      color: Color(0xFF25D366),
+                      color: DefaultValues.whatsapp_green,
                       icon: Icon(Icons.phone, color: Colors.white),
                       text: 'phone_number'.tr,
                       onPressed: controller.performPhoneSignIn,

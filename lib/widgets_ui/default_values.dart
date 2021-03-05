@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 class DefaultValues {
   static const  Color maroon = const Color(0xff8C0000);
 
+  static const Color facebook_blue = const Color(0xFF29487D);
+
+  static const Color whatsapp_green = const Color(0xFF25D366);
+
+  static const Color gmail_red = const Color(0xFFD44637);
+
   static final String mainFontFamily = 'Harmattan';
 
   static final TextStyle sliverAppBarTextStyleWithShadow = TextStyle(
