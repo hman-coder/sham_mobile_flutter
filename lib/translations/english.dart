@@ -3,6 +3,7 @@ Map<String, String> get englishTranslations => {
   'all' : 'All',
   'all_info_obscured_message' : 'Information is obscured; only you and your family can see it',
   'about_app' : 'About app',
+  'about_app_description' : 'This application was developed by SwissKnife Software. For further info, please head over to one of our pages below.',
   'about_sham' : 'About Sham',
   'accept' : 'Accept',
   'account' : 'Account',
@@ -206,6 +207,7 @@ Map<String, String> get englishTranslations => {
   'verify_number' : 'Verify number',
   'view_list' : 'View list',
   'view_more' : 'View more',
+  'view_software_licenses' : 'Press to view software licenses',
 
   // W
   'wishlist' : 'WishList'

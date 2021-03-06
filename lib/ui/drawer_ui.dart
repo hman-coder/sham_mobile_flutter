@@ -84,10 +84,10 @@ class _DrawerUIState extends State<DrawerUI> {
 
   List<Widget> _buildDrawerGlobalItems() {
     return <Widget>[
-      _buildListTile('about_app', Icons.smartphone, '/drawer/about_app'),
-      _buildListTile( 'about_sham', Icons.local_library, '/drawer/about_library'),
-      _buildListTile('contact_us', Icons.mail, '/drawer/contact_us'),
-      _buildListTile('change_language', Icons.language, ''),
+      _buildListTile('about_app', Icons.smartphone, '/about_app'),
+      _buildListTile( 'about_sham', Icons.local_library, '/about_library'),
+      _buildListTile('contact_us', Icons.mail, '/contact_us'),
+      _buildListTile('change_language', Icons.language, '/language'),
     ];
   }
 

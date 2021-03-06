@@ -4,6 +4,7 @@ import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
 
 import 'package:sham_mobile/translations/translations.dart';
+import 'package:sham_mobile/ui_temp/about_app_ui.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:get/get.dart';
 
@@ -73,11 +74,14 @@ class Sham extends StatelessWidget {
   ];
 
   List<GetPage> _getPages() => [
-    GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings()),
-    GetPage(name:'/main', page: () => MainUI(), binding: MainBindings()),
-    GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings()),
-    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings()),
-    GetPage(name: '/user/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings()),
+    GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings(),),
+    GetPage(name:'/main', page: () => MainUI(), binding: MainBindings(),),
+    GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings(),),
+    GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings(),),
+    GetPage(name: '/user/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings(),),
+
+    // Drawer
+    GetPage(name:'/about_app', page: () => AboutAppUI(),),
   ];
 
   ThemeData _buildTheme(BuildContext context) {

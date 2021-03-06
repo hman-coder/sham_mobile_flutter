@@ -3,6 +3,7 @@ Map<String, String> get arabicTranslations => {
   'all' : 'الكل',
   'all_info_obscured_message' : 'هذه المعلومات مخفية، ولا يراها إلا أنت وعائلتك',
   'about_app' : 'حول التطبيق',
+  'about_app_description' : 'تم تطوير هذا التطبيق من قبل شركة سويس نايف سوفتوير. لمزيد من المعلومات، يُرجى زيارة إحدى صفحاتنا أدناه.',
   'about_sham' : 'حول شام',
   'accept' : 'موافق',
   'account': 'الحساب',
@@ -205,6 +206,7 @@ Map<String, String> get arabicTranslations => {
   'values_should_be_unequal' : 'يرجى تحديد قيمتين غير متساويتين للحدين الأدنى والأعلى',
   'verify_number' : 'تأكيد الرقم',
   'view_list' : 'استعراض القائمة',
+  'view_software_licenses' : 'اضغط هنا لعرض التراخيص البرمجية',
   'view_more' : 'استعراض المزيد',
 
   // W
