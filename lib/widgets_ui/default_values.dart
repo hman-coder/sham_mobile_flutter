@@ -37,13 +37,13 @@ class DefaultValues {
           )
       );
 
-  static final double extraLargeTextSize = 30;
+  static const double extraLargeTextSize = 30;
 
-  static final double largeTextSize = 24;
+  static const double largeTextSize = 24;
 
-  static final double mediumTextSize = 21;
+  static const double mediumTextSize = 21;
 
-  static final double smallTextSize = 18;
+  static const double smallTextSize = 18;
 
-  static final double extraSmallTextSize = 16;
+  static const double extraSmallTextSize = 16;
 }

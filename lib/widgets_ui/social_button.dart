@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sham_mobile/widgets_ui/default_values.dart';
 
 class SocialButton extends StatelessWidget {
   final Widget icon;
@@ -6,9 +7,18 @@ class SocialButton extends StatelessWidget {
   final Color color;
   final bool disabled;
   final Function onPressed;
+  final double opacity;
+  final TextStyle textStyle;
+  final Color marginColor;
 
   const SocialButton({
     Key key,
+    this.marginColor = Colors.white,
+    this.opacity = 1.00,
+    this.textStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: DefaultValues.largeTextSize,
+    ),
     @required this.icon,
     @required this.color,
     @required this.text,
@@ -27,11 +37,11 @@ class SocialButton extends StatelessWidget {
         disabledColor: Colors.black.withOpacity(0.1),
         disabledTextColor: Colors.grey,
         onPressed: disabled ? null : this.onPressed,
-        color: color.withOpacity(0.6),
+        color: color.withOpacity(opacity),
 
         shape: Border(
-          top: BorderSide(color: Colors.white),
-          bottom: BorderSide(color: Colors.white),
+          top: BorderSide(color: marginColor),
+          bottom: BorderSide(color: marginColor),
         ),
 
         child: IntrinsicHeight(
@@ -43,15 +53,12 @@ class SocialButton extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: VerticalDivider(color: Colors.white, width: 2, thickness: 2,),
+                child: VerticalDivider(color: marginColor, width: 2, thickness: 2,),
               ),
               Expanded(
                 child: Center(
                   child: Text(text,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35
-                    ),
+                    style: textStyle,
                   ),
                 ),
               )

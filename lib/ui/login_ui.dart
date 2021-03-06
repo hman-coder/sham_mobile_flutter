@@ -57,6 +57,11 @@ class LoginUI extends GetView<LoginController> {
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
                     child: Obx(() => SocialButton(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
+                      opacity: 0.6,
                       disabled: controller.isProcessing,
                       color: DefaultValues.gmail_red,
                       icon: Icon(ShamCustomIcons.gmail, color: Colors.white.withOpacity(0.8)),
@@ -69,6 +74,11 @@ class LoginUI extends GetView<LoginController> {
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
                     child: Obx(() => SocialButton(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
+                      opacity: 0.6,
                       disabled: controller.isProcessing,
                       color: DefaultValues.facebook_blue,
                       icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
@@ -81,6 +91,11 @@ class LoginUI extends GetView<LoginController> {
                   DelayedAnimation(
                     delayInMilliseconds: _getNextDelayDuration(),
                     child: Obx(() => SocialButton(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
+                      opacity: 0.6,
                       color: DefaultValues.whatsapp_green,
                       icon: Icon(Icons.phone, color: Colors.white),
                       text: 'phone_number'.tr,
