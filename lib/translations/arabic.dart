@@ -22,8 +22,10 @@ Map<String, String> get arabicTranslations => {
   'age_group' : 'الفئة العمرية',
   'age_groups' : 'الفئات العمرية',
   'apply' : 'تطبيق',
+  'app_management' : 'إدارة التطبيق',
   'a_text_will_be_sent' : 'سنقوم بإرسال رسالة إلى رقم الهاتف الذي قمت بإدخاله للتأكد من صحة الرقم.',
   'authors' : 'الكُتّاب',
+  'ask_a_question' : 'استفسار',
 
   // B
   'blind_dates' : 'موعد أعمى',
@@ -89,12 +91,15 @@ Map<String, String> get arabicTranslations => {
   'edit_address' : 'تعديل العنوان',
   'elements' : 'عنصراً',
   'enter_book_list_name' : 'أدخل اسم القائمة',
+  'enter_message_content' : 'أدخل نص الرسالة',
+  'enter_message_subject' : 'أدخل موضوع الرسالة',
   'enter_phone_number' : 'أدخل رقم الهاتف',
   'enter_review' : 'أدخل التقييم',
   'error_report_message' : 'نرجو التبليغ عن هذا الخطأ عن طريق الضغط على الزر أدناه. يتطلب ذلك اتصالاً بالإنترنت.',
   'error_while_building_ui' : 'حصل خطأ أثناء بناء الواجهة',
   'error_report_button' : 'التبليغ',
   'enter_phone_auth_pin_code' : 'يُرجى إدخال الرمز المكون من ستة أرقام المتضمن في الرسالة التي ستصلك.',
+  'error_sending_message' : 'حدث خطأ أثناء إرسال الرسالة. نرجو المحاولة مجدداً.',
   'error_while_retrieving_data' : 'خطأ أثناء تحميل المعلومات',
 
   'error_network' : 'حدث خطأ في الشبكة. نرجو التأكد من وجود اتصال بالإنترنت',
@@ -115,11 +120,16 @@ Map<String, String> get arabicTranslations => {
   // L
   'last_name' : 'اسم العائلة',
   'list_already_exists' : 'القائمة موجودة',
+  'library_management' : 'إدارة المكتبة',
   'loading' : 'يتم التحميل',
   'login_dialog_header' : 'تسجيل الدخول',
   'login_dialog_message' : 'يجب أن يكون لديك حساب لتستطيع المتابعة',
 
   // M
+  'message_range_from' : 'يجب أن يترواح عدد أحرف الرسالة من',
+  'message_range_to' : 'إلى',
+  'message_sent_successfully' : ' تم إرسال الرسالة بنجاح. شكراً على تواصلكم معنا',
+  'message_subject' : 'موضوع الرسالة',
   'more_info' : 'المزيد من المعلومات...',
 
   // N
@@ -131,6 +141,7 @@ Map<String, String> get arabicTranslations => {
   // O
   'offers' : 'العروض',
   'others' : 'أخرى',
+  'others_please_specify' : 'آخر (يُرجى تحديده أدناه)',
 
   // P
   'page_count' : 'عدد الصفحات',
@@ -166,6 +177,9 @@ Map<String, String> get arabicTranslations => {
   'select_book_list' : 'اختر قائمة الكتب',
   'select_country' : 'اختر بلدك',
   'select_city' : 'اختر المدينة',
+  'select_message_subject' : '-- اختر موضوعاً للرسالة --',
+  'send' : 'إرسال',
+  'send_to' : 'إرسال للجهات التالية',
   'session_duration' : 'مدة الجلسة',
   'sign_in' : 'تسجيل الدخول',
   'sign_in_description' : 'سيتيح لك إنشاء حساب على التطبيق القيام بعمليات شراء الكتب أو حجز مكان في نوادي الكتاب من منزلك بالإضافة إلى ميزات أخرى كثيرة!',
@@ -175,13 +189,17 @@ Map<String, String> get arabicTranslations => {
   'sign_in_with' : 'تسجيل الدخول عن طريق',
   'skip' : 'تخطي',
   'special_categories' : 'التصنيفات المميزة',
+  'specify_recipient' : 'يرجى تحديد الجهة المُرسل إليها',
+  'specify_subject' : 'يرجى تحديد موضوع للرسالة',
   'street' : 'الشارع',
   'submit' : 'تأكيد',
+  'suggestion' : 'اقتراح',
 
   // R
   'rating' : 'التقييم',
   'remove_all' : 'إزالة الكل',
   'report' : 'تبليغ',
+  'report_an_error' : 'تبليغ عن خطأ',
   'reserve' : 'حجز',
   'reserve_book' : 'احجز الكتاب',
   'reserve_book_request_high_priority' : 'لأنك لديك مجموع نقاط أولوية مرتفع فسوف تستطيع حجز نسخة من الكتاب لمدة',
@@ -212,3 +230,9 @@ Map<String, String> get arabicTranslations => {
   // W
   'wishlist' : 'قائمة الشراء',
 };
+
+// '-- اختر موضوعاً للرسالة --',
+// 'تبليغ عن خطأ',
+// 'استفسار',
+// 'اقتراح',
+// 'آخر (يُرجى تحديده أدناه)',

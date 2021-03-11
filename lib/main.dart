@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sham_mobile/bindings/contact_us_bindings.dart';
 import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
 
@@ -14,6 +15,7 @@ import 'barrels/login_barrel.dart';
 import 'ui/phone_auth_ui.dart';
 import 'controllers/user_controller.dart';
 import 'barrels/contact_info_barrel.dart';
+import 'barrels/contact_us_barrel.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,10 +32,7 @@ class Sham extends StatelessWidget {
   Widget build(BuildContext context) {
   return GestureDetector(
       // Allows hiding the keyboard when a TextField loses focus
-        onTap: () {
-          FocusNode currentFocus = FocusScope.of(context);
-          if(! currentFocus.hasPrimaryFocus) currentFocus.unfocus();
-        },
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
 
         child: GetMaterialApp(
           onInit: _initializeControllers,
@@ -76,12 +75,18 @@ class Sham extends StatelessWidget {
   List<GetPage> _getPages() => [
     GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings(),),
     GetPage(name:'/main', page: () => MainUI(), binding: MainBindings(),),
+
+    // login
     GetPage(name:'/login', page: () => LoginUI(), binding: LoginBindings(),),
     GetPage(name:'/phone_auth', page: () => PhoneAuthUI(), binding: PhoneAuthBindings(),),
+
+    // user
     GetPage(name: '/user/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings(),),
 
     // Drawer
     GetPage(name:'/about_app', page: () => AboutAppUI(),),
+    GetPage(name:'/contact_us', page: () => ContactUsUI(), binding: ContactUsBindings(),),
+    GetPage(name:'/change_language', page: () => ContactUsUI(),),
   ];
 
   ThemeData _buildTheme(BuildContext context) {

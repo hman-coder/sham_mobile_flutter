@@ -24,7 +24,9 @@ Map<String, String> get englishTranslations => {
   'age_groups' : 'Age groups',
   'a_text_will_be_sent' : 'We will send a text message to the number you entered to validate your phone number.',
   'apply' : 'Apply',
+  'app_management' : 'App Management',
   'authors' : 'Authors',
+  'ask_a_question' : 'Ask a question',
 
   // B
   'books' : 'Books',
@@ -83,9 +85,12 @@ Map<String, String> get englishTranslations => {
   'elements' : 'elements',
   'enter_phone_auth_pin_code' : 'Please enter the 6-digit code that was sent to the number you have submitted.',
   'enter_book_list_name' : 'Enter list name',
+  'enter_message_content' : 'Enter message content',
+  'enter_message_subject' : 'Enter message subject',
   'enter_review' : 'Enter review',
   'error_report_message' : 'Please report this exception by pressing the button below. This requires an internet connection.',
   'error_while_building_ui' : 'An error occurred while building your interface.',
+  'error_sending_message' : 'An error occurred while sending. Please try again.',
   'error_report_button' : 'Report',
   'error_while_retrieving_data' : 'Error retrieving data',
 
@@ -114,12 +119,17 @@ Map<String, String> get englishTranslations => {
 
   // L
   'last_name' : 'Last Name',
+  'library_management' : 'Library Management',
   'list_already_exists' : 'List already exists',
   'loading' : 'Loading',
   'login_dialog_header' : 'Account needed',
   'login_dialog_message' : 'You must have an account to perform this action',
 
   // M
+  'message_range_from' : 'Number of letters should be from',
+  'message_range_to' : 'to',
+  'message_sent_successfully' : 'Message sent successfully. Thank you for contacting us.',
+  'message_subject' : 'Message subject',
   'more_info' : 'More info...',
 
   // N
@@ -131,6 +141,7 @@ Map<String, String> get englishTranslations => {
   // O
   'offers' : 'Offers',
   'others' : 'Others',
+  'others_please_specify' : 'Other (please specify)',
 
   // P
   'page_count' : 'Number of pages',
@@ -166,6 +177,9 @@ Map<String, String> get englishTranslations => {
   'select_book_list' : 'Select book list',
   'select_country' : 'Select your country',
   'select_city' : 'Select city',
+  'select_message_subject' : '-- Select a subject --',
+  'send' : 'Send',
+  'send_to' : 'Send to',
   'session_duration' : 'Session duration',
   'sign_in' : 'Login',
   'sign_in_description' : 'login description',
@@ -175,13 +189,17 @@ Map<String, String> get englishTranslations => {
   'sign_in_with' : 'Sign in with',
   'skip' : 'Skip',
   'special_categories' : 'Special categories',
+  'specify_recipient' : 'Please specify a recipient',
+  'specify_subject' : 'Please specify a subject',
   'street' : 'Street',
   'submit' : 'Submit',
+  'suggestion' : 'Suggestion',
 
   // R
   'rating' : 'Rating',
   'remove_all' : 'Remove all',
   'report' : 'Report',
+  'report_an_error' : 'Report an error',
   'reserve' : 'Reserve',
   'reserve_book' : 'Reserve book',
   'reserve_book_request_high_priority' : 'Because you have a high priority score, your book will be reserved for',
