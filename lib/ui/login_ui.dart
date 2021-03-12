@@ -81,7 +81,7 @@ class LoginUI extends GetView<LoginController> {
                       opacity: 0.6,
                       disabled: controller.isProcessing,
                       color: DefaultValues.facebook_blue,
-                      icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
+                      icon: Icon(ShamCustomIcons.facebook_square, color: Colors.white),
                       text: 'facebook_sign_in'.tr,
                       onPressed: controller.performFacebookSignIn
                       ),

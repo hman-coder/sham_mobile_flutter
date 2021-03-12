@@ -99,6 +99,7 @@ Map<String, String> get englishTranslations => {
   'error_unknown_description' : 'If this error persists you can report it.',
 
   // F
+  'facebook' : 'Facebook',
   'facebook_sign_in' : 'Facebook account',
   'family' : 'family',
   'family_info' : 'Family information',
@@ -181,6 +182,7 @@ Map<String, String> get englishTranslations => {
   'send' : 'Send',
   'send_to' : 'Send to',
   'session_duration' : 'Session duration',
+  'sham_description' : 'Sham bookstore has two main branches: Syria, Aleppo; and Turkey. Our goal is to inspire the largest group of people possible to take up reading, especially those of younger ages. For more information, and to contact us, please visit our pages below',
   'sign_in' : 'Login',
   'sign_in_description' : 'login description',
   'sign_in_or_create_new_account' : 'Sign in or create a new account',
@@ -228,5 +230,6 @@ Map<String, String> get englishTranslations => {
   'view_software_licenses' : 'Press to view software licenses',
 
   // W
-  'wishlist' : 'WishList'
+  'website' : 'Website',
+  'wishlist' : 'WishList',
 };

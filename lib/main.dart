@@ -5,7 +5,8 @@ import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
 
 import 'package:sham_mobile/translations/translations.dart';
-import 'package:sham_mobile/ui_temp/about_app_ui.dart';
+import 'package:sham_mobile/ui/about_library_ui.dart';
+import 'file:///E:/Prog/Flutter/sham_mobile/lib/ui/about_app_ui.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
 import 'package:get/get.dart';
 
@@ -86,7 +87,7 @@ class Sham extends StatelessWidget {
     // Drawer
     GetPage(name:'/about_app', page: () => AboutAppUI(),),
     GetPage(name:'/contact_us', page: () => ContactUsUI(), binding: ContactUsBindings(),),
-    GetPage(name:'/change_language', page: () => ContactUsUI(),),
+    GetPage(name:'/about_library', page: () => AboutLibraryUI(),),
   ];
 
   ThemeData _buildTheme(BuildContext context) {

@@ -49,7 +49,7 @@ class AboutAppUI extends StatelessWidget {
                   child: SocialButton(
                     color: DefaultValues.facebook_blue,
                     onPressed: () => print('facebook page'),
-                    icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
+                    icon: Icon(ShamCustomIcons.facebook_square, color: Colors.white),
                     text: 'SwissKnife on Facebook',
                   ),
                 ),
@@ -71,7 +71,7 @@ class AboutAppUI extends StatelessWidget {
                   child: SocialButton(
                     color: DefaultValues.facebook_blue,
                     onPressed: () => print('facebook page'),
-                    icon: Icon(ShamCustomIcons.facebook, color: Colors.white),
+                    icon: Icon(ShamCustomIcons.facebook_square, color: Colors.white),
                     text: 'SwissKnife on Facebook',
                   ),
                 ),
