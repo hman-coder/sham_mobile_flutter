@@ -10,6 +10,8 @@ Map<String, String> get arabicTranslations => {
   'activate' : 'تفعيل',
   'activities' : 'النشاطات',
   'add' : 'إضافة',
+  'add_member' : 'إضافة عضو',
+  'add_child' : 'إضافة طفل',
   'add_book_list' : 'إضافة قائمة جديدة',
   'address' : 'العنوان',
   'address_other_field_hint' : 'نقاط علامة أخرى (متجر مجاور، شارع فرعي، إلخ)',
@@ -28,6 +30,7 @@ Map<String, String> get arabicTranslations => {
   'ask_a_question' : 'استفسار',
 
   // B
+  'birthday' : 'عيد الميلاد',
   'blind_dates' : 'موعد أعمى',
   'book_clubs' : 'نوادي الكتاب',
   'book_lists' : 'قوائم الكتب المحفوظة',
@@ -38,6 +41,7 @@ Map<String, String> get arabicTranslations => {
   'book_reserved_successfully' : 'تم حجز نسخة من هذا الكتاب لك',
 
   // C
+  'camera' : 'الكاميرا',
   'cancel' : 'إلغاء',
   'categories' : 'التصنيفات',
   'category' : 'التصنيف',
@@ -80,9 +84,12 @@ Map<String, String> get arabicTranslations => {
   'facebook_sign_in' : 'حساب Facebook',
   'family' : 'العائلة',
   'family_info' : 'معلومات العائلة',
+  'father' : 'الأب',
+
   'first_name' : 'الاسم الأول',
   'frequency' : 'التكرار',
   'from' : 'من',
+  'full_name' : 'الاسم الكامل',
 
   // E
   'edit' : 'تعديل',
@@ -108,6 +115,11 @@ Map<String, String> get arabicTranslations => {
   'error_unknown_description' : 'إن استمر هذا الخطأ بالظهور فبإمكانك التبليغ عنه.',
 
   // G
+  'gender' : 'الجنس',
+  'gender_male' : 'ذكر',
+  'gender_female' : 'أنثى',
+  'gender_undefined' : 'غير معرف',
+  'gallery' : 'الصور',
   'get_book' : 'احصل على الكتاب',
   'google_sign_in' : 'حساب Google',
 
@@ -132,11 +144,15 @@ Map<String, String> get arabicTranslations => {
   'message_sent_successfully' : ' تم إرسال الرسالة بنجاح. شكراً على تواصلكم معنا',
   'message_subject' : 'موضوع الرسالة',
   'more_info' : 'المزيد من المعلومات...',
+  'mother' : 'الأم',
+  'must_provide_child_name' : 'يجب أن تدخل اسم الطفل',
+  'must_provide_child_birthday' : 'يجب أن تدخل عيد ميلاد الطفل',
 
   // N
   'new_user' : 'مستخدم جديد',
   'next_session' : 'الجلسة القادمة',
   'no_books_found' : 'لا توجد كتب هنا بعد',
+  'no_child_added_yet' : 'لم تقم بإضافة أطفال هنا بعد',
   'no_items_added' : 'لم تضف عناصر هنا',
 
   // O
@@ -232,4 +248,8 @@ Map<String, String> get arabicTranslations => {
   // W
   'website' : 'موقعنا',
   'wishlist' : 'قائمة الشراء',
+
+  // Y
+  'years_old' : 'سنة',
+
 };

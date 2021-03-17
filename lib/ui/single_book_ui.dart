@@ -90,7 +90,7 @@ class _SingleBookSliverAppBar extends GetView<SingleBookController> {
             Padding(
               padding: EdgeInsetsDirectional.only(start: 12),
               child: Text(controller.book.title,
-                style: DefaultValues.sliverAppBarTextStyleWithShadow,
+                style: DefaultValues.ktsSliverAppBarTextStyleWithShadow,
                 maxLines: 1,
               ),
             ),

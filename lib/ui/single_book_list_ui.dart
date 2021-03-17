@@ -32,7 +32,7 @@ class _SingleBookListUIState extends State<SingleBookListUI> {
         appBar: AppBar(
             title: Center(
                 child: Text(controller.bookList.name,
-                  style: TextStyle(fontSize: DefaultValues.largeTextSize),
+                  style: TextStyle(fontSize: DefaultValues.ktsLargeTextSize),
                 )
             )
         ),

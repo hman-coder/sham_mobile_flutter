@@ -17,7 +17,7 @@ class SocialButton extends StatelessWidget {
     this.opacity = 1.00,
     this.textStyle = const TextStyle(
       color: Colors.white,
-      fontSize: DefaultValues.largeTextSize,
+      fontSize: DefaultValues.ktsLargeTextSize,
     ),
     @required this.icon,
     @required this.color,

@@ -11,6 +11,8 @@ Map<String, String> get englishTranslations => {
   'activities' : 'Activities',
   'add' : 'Add',
   'add_book_list' : 'Add book list',
+  'add_member' : 'Add member',
+  'add_child' : 'Add child',
   'add_review' : 'Add review',
   'address' : 'Address',
   'address_other_field_hint' : 'other landmarks (nearby store, bystreet, etc)',
@@ -29,6 +31,7 @@ Map<String, String> get englishTranslations => {
   'ask_a_question' : 'Ask a question',
 
   // B
+  'birthday' : 'Birthday',
   'books' : 'Books',
   'book_clubs' : 'Book clubs',
   'book_lists' : 'Book Lists',
@@ -38,6 +41,7 @@ Map<String, String> get englishTranslations => {
   'bookmarks' : 'Bookmarks',
 
   // C
+  'camera' : 'Camera',
   'cancel' : 'Cancel',
   'categories' : 'Categories',
   'category' : 'Category',
@@ -103,11 +107,19 @@ Map<String, String> get englishTranslations => {
   'facebook_sign_in' : 'Facebook account',
   'family' : 'family',
   'family_info' : 'Family information',
+  'father' : 'Father',
+
   'first_name' : 'First name',
   'frequency' : 'Frequency',
   'from' : 'From',
+  'full_name' : 'Full name',
 
   // G
+  'gender' : 'Gender',
+  'gender_male' : 'Male',
+  'gender_female' : 'Female',
+  'gender_undefined' : 'Undefined',
+  'gallery' : 'Gallery',
   'get_book' : 'Get book now',
   'google_sign_in' : 'Google account',
 
@@ -132,11 +144,15 @@ Map<String, String> get englishTranslations => {
   'message_sent_successfully' : 'Message sent successfully. Thank you for contacting us.',
   'message_subject' : 'Message subject',
   'more_info' : 'More info...',
+  'must_provide_child_name' : 'You must enter your child\'s name',
+  'must_provide_child_birthday' : 'You must provide your child\'s birthday',
+
 
   // N
   'new_user' : 'New user',
   'next_session' : 'Next session',
   'no_books_found' : 'No books here yet',
+  'no_child_added_yet' : 'No child added yet',
   'no_items_added' : 'No items added',
 
   // O
@@ -232,4 +248,7 @@ Map<String, String> get englishTranslations => {
   // W
   'website' : 'Website',
   'wishlist' : 'WishList',
+
+  // Y
+  'years_old' : 'years old',
 };

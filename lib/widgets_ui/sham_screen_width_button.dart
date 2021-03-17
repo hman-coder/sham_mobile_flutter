@@ -45,13 +45,13 @@ class ShamScreenWidthButton extends StatelessWidget {
         text,
         style: TextStyle(
             color: textColor ?? Colors.white,
-            fontSize: DefaultValues.mediumTextSize
+            fontSize: DefaultValues.ktsMediumTextSize
         ),
       ),
       onPressed: onPressed,
       onLongPress: onLongPress,
       disabledColor: disabledColor ?? Colors.grey,
-      color: color ?? DefaultValues.maroon,
+      color: color ?? DefaultValues.kcMaroon,
     );
   }
 }

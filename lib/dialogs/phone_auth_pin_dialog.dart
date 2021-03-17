@@ -22,7 +22,7 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text('enter_phone_auth_pin_code'.tr,
-                        style: TextStyle(fontSize: DefaultValues.smallTextSize)
+                        style: TextStyle(fontSize: DefaultValues.ktsSmallTextSize)
                     ),
 
                     SizedBox(height: 20,),
@@ -45,7 +45,7 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                               'invalid_code'.tr + '.',
                               style: TextStyle(
                                   color: Colors.red,
-                                  fontSize: DefaultValues.smallTextSize
+                                  fontSize: DefaultValues.ktsSmallTextSize
                               )
                           ));
 
@@ -65,11 +65,11 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                       child: Text(
                         'confirm'.tr,
                         style: TextStyle(
-                            fontSize: DefaultValues.smallTextSize,
+                            fontSize: DefaultValues.ktsSmallTextSize,
                             color: Colors.white
                         ),
                       ),
-                      color: DefaultValues.maroon,
+                      color: DefaultValues.kcMaroon,
                       onPressed: () => controller.submitPinCode(_pinCode),
                     ),
 
@@ -77,8 +77,8 @@ class PhoneAuthPinVerificationDialog extends GetView<PhoneAuthController> {
                       minWidth: double.infinity,
                       child: Text('cancel'.tr,
                         style: TextStyle(
-                            fontSize: DefaultValues.smallTextSize,
-                            color: DefaultValues.maroon
+                            fontSize: DefaultValues.ktsSmallTextSize,
+                            color: DefaultValues.kcMaroon
                         ),
                       ),
                       onPressed: () => Navigator.pop(context, false),

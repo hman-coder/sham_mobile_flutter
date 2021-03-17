@@ -11,7 +11,7 @@ class ElevatingTitle extends StatelessWidget {
   final BorderRadius borderRadius;
 
   const ElevatingTitle({Key key,
-    this.color = DefaultValues.maroon,
+    this.color = DefaultValues.kcMaroon,
     this.height = double.infinity,
     @required this.child,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),

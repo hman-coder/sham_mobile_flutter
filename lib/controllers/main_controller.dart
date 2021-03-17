@@ -59,13 +59,12 @@ class MainController extends GetxController{
   @override
   void onReady() {
     super.onReady();
-    // if(_isFirstAppStart()) {
-    //   print('first time');
-    //   Get.toNamed('/login');
-    // }
+    if(_shouldShowLogin()) Get.toNamed('/login');
+
   }
 
-  bool _isFirstAppStart() =>
+
+  bool _shouldShowLogin() =>
     Get.find<UserController>().user?.id == null
         || Get.find<UserController>().user.id == 0;
 }

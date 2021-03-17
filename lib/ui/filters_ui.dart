@@ -167,7 +167,7 @@ class FiltersUI extends GetView<FilterController> {
   Widget _buildFilterTile({String title, String subtitle, Function() onTap, bool filterIsApplied}) {
     return ListTile(
       onTap: onTap,
-      title: Text(title, style: TextStyle(fontSize: DefaultValues.largeTextSize)),
+      title: Text(title, style: TextStyle(fontSize: DefaultValues.ktsLargeTextSize)),
       subtitle: Text(subtitle ?? '', maxLines: 1, overflow: TextOverflow.ellipsis,),
       trailing: Icon(
           filterIsApplied

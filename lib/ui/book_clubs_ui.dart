@@ -61,7 +61,7 @@ class BookClubsUI extends GetView<BookClubsController> {
                 right: 10,
                 left: 10),
             title: Text(bookClub.title,
-                  style: DefaultValues.sliverAppBarTextStyleWithShadow
+                  style: DefaultValues.ktsSliverAppBarTextStyleWithShadow
               ),
             background: LinearGradientBackground(
                 color: Colors.black54,
@@ -113,7 +113,7 @@ class BookClubsUI extends GetView<BookClubsController> {
             child: Text(value,
               style: TextStyle(
                   fontSize: 16,
-                  color: DefaultValues.maroon
+                  color: DefaultValues.kcMaroon
               ),
             ),
           ),

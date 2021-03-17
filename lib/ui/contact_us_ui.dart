@@ -41,7 +41,7 @@ class ContactUsUI extends GetView<ContactUsController> {
                           child: _buildContentField(),
                         ),
                         ShamScreenWidthButton(
-                          color: DefaultValues.maroon,
+                          color: DefaultValues.kcMaroon,
                           onPressed: controller.sendMessage,
                           text: 'send'.tr,
                         ),

@@ -36,7 +36,7 @@ class LoadingUI extends GetView<LoadingController> {
 
                   Text("${'loading'.tr}...",
                     style: TextStyle(
-                      fontSize: DefaultValues.extraLargeTextSize,
+                      fontSize: DefaultValues.ktsExtraLargeTextSize,
                       color: Colors.white,
                     ),
                   )

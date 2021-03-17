@@ -43,7 +43,7 @@ class AddressUI extends StatelessWidget {
                 controller: TextEditingController(text: address?.district),
                 textInputAction: TextInputAction.next,
                 decoration: DefaultValues
-                    .defaultTextFieldInputDecoration.copyWith(
+                    .ktsDefaultTextFieldInputDecoration.copyWith(
                   labelText: 'district'.tr + ' *'
                 ),
 
@@ -57,7 +57,7 @@ class AddressUI extends StatelessWidget {
                 controller: TextEditingController(text: address?.street),
                 textInputAction: TextInputAction.next,
                 decoration: DefaultValues
-                    .defaultTextFieldInputDecoration.copyWith(
+                    .ktsDefaultTextFieldInputDecoration.copyWith(
                   labelText: 'street'.tr + ' *',
                 ),
 
@@ -70,7 +70,7 @@ class AddressUI extends StatelessWidget {
               child: TextField(
                   controller: TextEditingController(text: address?.others),
                 decoration: DefaultValues
-                    .defaultTextFieldInputDecoration.copyWith(
+                    .ktsDefaultTextFieldInputDecoration.copyWith(
                   labelText: 'others'.tr  + ' *',
                   hintText: 'address_other_field_hint'.tr,
                 ),
@@ -137,7 +137,7 @@ class _CitySelectionComponent extends StatelessWidget {
         Expanded(
           child: Text('select_city'.tr + ' *',
             style: TextStyle(
-              fontSize: DefaultValues.mediumTextSize
+              fontSize: DefaultValues.ktsMediumTextSize
             )
           ),
         ),
@@ -151,7 +151,7 @@ class _CitySelectionComponent extends StatelessWidget {
               DropdownMenuItem(
                   value: 'aleppo',
                   child: Text('city_aleppo'.tr,
-                    style: TextStyle(fontSize: DefaultValues.mediumTextSize),)
+                    style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize),)
               ),
 
               // DropdownMenuItem(

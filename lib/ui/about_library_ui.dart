@@ -45,7 +45,7 @@ class AboutLibraryUI extends StatelessWidget {
                 onTap: goToWebsite,
                 child: CircleIcon(
                   icon: ShamCustomIcons.facebook_letter_only,
-                  backgroundColor: DefaultValues.facebook_blue,
+                  backgroundColor: DefaultValues.kcFacebookBlue,
                   iconColor: Colors.white,
                 ),
               ),

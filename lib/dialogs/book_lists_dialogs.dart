@@ -36,7 +36,7 @@ class BookListsPickerDialog extends GetView<BookListsController> {
   Widget _buildAddBookListTile(BuildContext context) {
     return ListTile(
         leading: Icon(Icons.add, color: Colors.green),
-        title: Text('add_book_list'.tr, style: TextStyle(fontSize: DefaultValues.mediumTextSize)),
+        title: Text('add_book_list'.tr, style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize)),
         onTap: controller.addBookList
     );
   }

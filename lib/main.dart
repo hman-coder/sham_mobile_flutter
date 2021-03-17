@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sham_mobile/bindings/contact_us_bindings.dart';
+import 'package:sham_mobile/bindings/family_info_bindings.dart';
 import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
+import 'package:intl/intl.dart';
 
 import 'package:sham_mobile/translations/translations.dart';
 import 'package:sham_mobile/ui/about_library_ui.dart';
-import 'file:///E:/Prog/Flutter/sham_mobile/lib/ui/about_app_ui.dart';
 import 'package:sham_mobile/widgets_ui/default_values.dart';
+import 'package:sham_mobile/ui/about_app_ui.dart';
 import 'package:get/get.dart';
 
 import 'barrels/main_barrel.dart';
@@ -17,6 +20,7 @@ import 'ui/phone_auth_ui.dart';
 import 'controllers/user_controller.dart';
 import 'barrels/contact_info_barrel.dart';
 import 'barrels/contact_us_barrel.dart';
+import 'barrels/family_info_barrel.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +40,9 @@ class Sham extends StatelessWidget {
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
 
         child: GetMaterialApp(
+          supportedLocales: _getSupportedLocales(),
+
+          debugShowCheckedModeBanner: false,
           onInit: _initializeControllers,
 
           localizationsDelegates: _getLocalizationsDelegates(),
@@ -66,6 +73,8 @@ class Sham extends StatelessWidget {
   List<LocalizationsDelegate> _getLocalizationsDelegates() => [
       DefaultMaterialLocalizations.delegate,
       DefaultWidgetsLocalizations.delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
     ];
 
   List<Locale> _getSupportedLocales() => [
@@ -83,6 +92,7 @@ class Sham extends StatelessWidget {
 
     // user
     GetPage(name: '/user/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings(),),
+    GetPage(name:'/user/family_info', page: () => FamilyInfoUI(), binding: FamilyInfoBindings(),),
 
     // Drawer
     GetPage(name:'/about_app', page: () => AboutAppUI(),),
@@ -92,12 +102,15 @@ class Sham extends StatelessWidget {
 
   ThemeData _buildTheme(BuildContext context) {
     return ThemeData(
-        fontFamily: DefaultValues.mainFontFamily,
+        fontFamily: DefaultValues.ksMainFontFamily,
+
+        colorScheme: Theme.of(context).colorScheme.copyWith(primary: DefaultValues.kcMaroon,),
 
         textTheme: TextTheme(
-          headline6: TextStyle(fontSize: DefaultValues.largeTextSize),
-          subtitle1: TextStyle(fontSize: DefaultValues.mediumTextSize), // ListTile title size
-          bodyText2: TextStyle(fontSize: DefaultValues.smallTextSize), // ListTile subtitle size
+          headline6: TextStyle(fontSize: DefaultValues.ktsLargeTextSize),
+          subtitle1: TextStyle(fontSize: DefaultValues.ktsMediumTextSize), // ListTile title size
+          bodyText2: TextStyle(fontSize: DefaultValues.ktsSmallTextSize), // ListTile subtitle size
+          button: TextStyle(fontSize: DefaultValues.ktsSmallTextSize)
         ),
 
         bottomAppBarTheme: BottomAppBarTheme(
@@ -111,15 +124,15 @@ class Sham extends StatelessWidget {
 
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(
-            headline6: TextStyle(fontSize: DefaultValues.extraLargeTextSize, fontFamily: DefaultValues.mainFontFamily,),
+            headline6: TextStyle(fontSize: DefaultValues.ktsExtraLargeTextSize, fontFamily: DefaultValues.ksMainFontFamily,),
           ),
           centerTitle: true,
         ),
 
-        primaryColor: DefaultValues.maroon,
+        primaryColor: DefaultValues.kcMaroon,
 
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: DefaultValues.maroon
+            backgroundColor: DefaultValues.kcMaroon
         )
     );
   }

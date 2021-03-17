@@ -137,11 +137,11 @@ class ActivityWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ListTile(
-          title: Text('age_group'.tr, style: TextStyle(fontSize: DefaultValues.largeTextSize),),
+          title: Text('age_group'.tr, style: TextStyle(fontSize: DefaultValues.ktsLargeTextSize),),
           subtitle: Text(activity.ageGroup.summary),
         ),
         ListTile(
-          title: Text('date'.tr, style: TextStyle(fontSize: DefaultValues.largeTextSize)),
+          title: Text('date'.tr, style: TextStyle(fontSize: DefaultValues.ktsLargeTextSize)),
           subtitle: Text(activity.duration),
         )
       ],

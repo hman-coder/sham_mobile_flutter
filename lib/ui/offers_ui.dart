@@ -64,7 +64,7 @@ class OfferWidget extends GetView<OffersController> {
                   BoxShadow(color: Colors.black26, offset: Offset(0, 2.5),),
                   BoxShadow(color: Colors.black26, offset: Offset(0, 3),),
                 ],
-                color: DefaultValues.maroon,
+                color: DefaultValues.kcMaroon,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(12)),
               ),

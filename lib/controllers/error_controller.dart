@@ -64,7 +64,7 @@ class ShamMessageController extends GetxController {
               child: Text('report'.tr,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: DefaultValues.mediumTextSize,
+                  fontSize: DefaultValues.ktsMediumTextSize,
                   fontWeight: FontWeight.bold
                 ),
               )
