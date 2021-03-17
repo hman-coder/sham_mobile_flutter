@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class DefaultValues {
-  static const  Color maroon = const Color(0xff8C0000);
+  static const  Color kcMaroon = const Color(0xff8C0000);
 
-  static const Color facebook_blue = const Color(0xFF29487D);
+  static const Color kcFacebookBlue = const Color(0xFF29487D);
 
-  static const Color whatsapp_green = const Color(0xFF25D366);
+  static const Color kcWhatsappGreen = const Color(0xFF25D366);
 
-  static const Color gmail_red = const Color(0xFFD44637);
+  static const Color kcGmailRed = const Color(0xFFD44637);
 
-  static final String mainFontFamily = 'Harmattan';
+  static const String ksMainFontFamily = 'Harmattan';
 
-  static final TextStyle sliverAppBarTextStyleWithShadow = TextStyle(
+  static const TextStyle ktsSliverAppBarTextStyleWithShadow = TextStyle(
     shadows: [Shadow(
         color: Colors.black,
         offset: Offset(2.0, 2.0),
@@ -19,31 +19,43 @@ class DefaultValues {
     fontSize: 18,
   );
 
-  static final TextStyle commentTextStyle = TextStyle(
+  static const TextStyle ktsCommentTextStyle = TextStyle(
     fontSize: 18,
   );
 
-  static final TextStyle commentHeaderTextStyle = TextStyle(
+  static const TextStyle ktsCommentHeaderTextStyle = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     color: const Color(0xff8C0000),
   );
 
-  static InputDecoration get defaultTextFieldInputDecoration =>
+  static InputDecoration get ktsDefaultTextFieldInputDecoration =>
       InputDecoration(
-          labelStyle: TextStyle(fontSize: DefaultValues.mediumTextSize),
+          labelStyle: TextStyle(fontSize: DefaultValues.ktsMediumTextSize),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15)
           )
       );
 
-  static const double extraLargeTextSize = 30;
+  static const double ktsExtraLargeTextSize = 30;
 
-  static const double largeTextSize = 24;
+  static const double ktsLargeTextSize = 24;
 
-  static const double mediumTextSize = 21;
+  static const double ktsMediumTextSize = 21;
 
-  static const double smallTextSize = 18;
+  static const double ktsSmallTextSize = 18;
 
-  static const double extraSmallTextSize = 16;
+  static const double ktsExtraSmallTextSize = 16;
+
+  static const BorderRadius kbrDefaultFieldBorderRadius =
+  const BorderRadius.all(Radius.circular(5));
+
+  static const Border kbDefaultFieldBorder = const Border(
+    bottom: _defaultBorderSide,
+    top: _defaultBorderSide,
+    left: _defaultBorderSide,
+    right: _defaultBorderSide,
+  );
+
+  static const BorderSide _defaultBorderSide = BorderSide(color: Colors.grey, width: 1);
 }
