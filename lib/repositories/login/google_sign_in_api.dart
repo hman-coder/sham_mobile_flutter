@@ -86,7 +86,7 @@ class GoogleSignInApi extends SignInApi {
 
   Gender _genderFromGoogleProfileMap(Map<String, dynamic> profileMap) {
     Map<String, dynamic> genderMap = profileMap['genders'][0];
-    return GenderConverters.fromString(genderMap['value']);
+    return (genderMap['value'] as String).toGender();
   }
 
 }

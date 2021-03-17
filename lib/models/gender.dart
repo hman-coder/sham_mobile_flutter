@@ -2,9 +2,9 @@ enum Gender {
   male, female, undefined
 }
 
-extension GenderConverters on Gender {
-  static Gender fromString(String value) {
-    switch(value.toLowerCase()) {
+extension GenderStringConverter on String {
+  Gender toGender() {
+    switch(this.toLowerCase()) {
       case "male":
         return Gender.male;
       case "female":
@@ -13,20 +13,11 @@ extension GenderConverters on Gender {
         return Gender.undefined;
     }
   }
+}
 
-  static String convertToString(Gender value) {
-    switch(value) {
-      case Gender.female:
-        return 'female';
-      case Gender.male:
-        return 'male';
-      default:
-        return null;
-    }
-  }
-
-  static Gender fromInt(int value) {
-    switch(value) {
+extension GenderIntConverter on int {
+  Gender toGender() {
+    switch(this) {
       case 1:
         return Gender.male;
       case 2:
@@ -35,8 +26,32 @@ extension GenderConverters on Gender {
         return Gender.undefined;
     }
   }
+}
 
-  static int toInt(Gender value) {
+extension GenderToOther on Gender {
+  String toRawString() {
+    switch(this) {
+      case Gender.female:
+        return 'female';
+      case Gender.male:
+        return 'male';
+      default:
+        return 'undefined';
+    }
+  }
+
+  String toTranslationString() {
+    switch(this) {
+      case Gender.female:
+        return 'gender_female';
+      case Gender.male:
+        return 'gender_male';
+      default:
+        return 'gender_undefined';
+    }
+  }
+
+  int toInt(Gender value) {
     switch(value) {
       case Gender.female:
         return 2;
