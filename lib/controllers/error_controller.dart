@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
-import 'package:sham_mobile/widgets_ui/error_widgets.dart';
+import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/ui/widgets/error_widgets.dart';
 import 'package:get/get.dart';
 
 class ShamMessageController extends GetxController {

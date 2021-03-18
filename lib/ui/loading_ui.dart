@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/controllers/loading_controller.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
-import 'package:sham_mobile/widgets_ui/image_switcher.dart';
+import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/ui/widgets/image_switcher.dart';
 
 class LoadingUI extends GetView<LoadingController> {
   @override

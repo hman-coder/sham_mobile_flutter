@@ -4,9 +4,9 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/controllers/offers_controller.dart';
 import 'package:sham_mobile/models/offer.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
-import 'package:sham_mobile/widgets_ui/loading_footer.dart';
-import 'package:sham_mobile/ui/drawer_ui.dart';
+import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/ui/widgets/loading_footer.dart';
+import 'package:sham_mobile/ui/drawer/drawer_ui.dart';
 
 class OffersUI extends GetView<OffersController>{
 

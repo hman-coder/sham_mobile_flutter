@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sham_mobile/controllers/filter_controller.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
+import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/models/summerizable.dart';
-import 'package:sham_mobile/widgets_ui/sham_screen_width_button.dart';
+import 'package:sham_mobile/ui/widgets/buttons/sham_screen_width_button.dart';
 
 class FiltersUI extends GetView<FilterController> {
   final int kNumberOfItems = 6;

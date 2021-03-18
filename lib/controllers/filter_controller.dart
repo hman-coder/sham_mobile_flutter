@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sham_mobile/barrels/book_barrel.dart';
 import 'package:sham_mobile/repositories/filters_repository.dart';
-import 'package:sham_mobile/dialogs/filters_dialogs.dart';
+import 'package:sham_mobile/ui/dialogs/filters_dialogs.dart';
 import 'package:sham_mobile/models/book_filter.dart';
 
 class FilterController extends GetxController {

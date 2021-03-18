@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:country_pickers/country.dart';
 import 'package:sham_mobile/controllers/error_controller.dart';
-import 'package:sham_mobile/dialogs/phone_auth_pin_dialog.dart';
+import 'package:sham_mobile/ui/dialogs/phone_auth_pin_dialog.dart';
 
 class PhoneAuthController extends GetxController {
   static final String  _logTag = "phone_auth_controller";

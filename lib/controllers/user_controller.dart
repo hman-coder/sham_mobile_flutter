@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/models/address.dart';
 import 'package:sham_mobile/models/gender.dart';
-import 'package:sham_mobile/dialogs/sign_up_alert_dialog.dart';
+import 'package:sham_mobile/ui/dialogs/sign_up_alert_dialog.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

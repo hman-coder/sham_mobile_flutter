@@ -2,14 +2,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
-import 'package:sham_mobile/widgets_ui/delayed_animation.dart';
-import 'package:sham_mobile/widgets_ui/linear_gradient_background.dart';
-import 'package:sham_mobile/widgets_functional/sham_custom_icons.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
-import 'package:sham_mobile/widgets_ui/labeled_divider.dart';
+import 'package:sham_mobile/ui/widgets/delayed_animation.dart';
+import 'package:sham_mobile/ui/widgets/linear_gradient_background.dart';
+import 'package:sham_mobile/constants/sham_custom_icons.dart';
+import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/ui/widgets/labeled_divider.dart';
 
 import 'package:sham_mobile/controllers/login_controller.dart';
-import 'package:sham_mobile/widgets_ui/social_button.dart';
+import 'package:sham_mobile/ui/widgets/buttons/social_button.dart';
 
 class LoginUI extends GetView<LoginController> {
   @override

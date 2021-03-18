@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sham_mobile/controllers/single_book_list_controller.dart';
-import 'package:sham_mobile/ui/single_book_list_ui.dart';
-import 'package:sham_mobile/dialogs/book_lists_dialogs.dart';
+import 'package:sham_mobile/ui/books/single_book_list_ui.dart';
+import 'package:sham_mobile/ui/dialogs/book_lists_dialogs.dart';
 import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';

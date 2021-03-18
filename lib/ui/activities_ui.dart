@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/controllers/activities_controller.dart';
 import 'package:sham_mobile/models/activity.dart';
-import 'package:sham_mobile/ui/drawer_ui.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
-import 'package:sham_mobile/widgets_ui/loading_footer.dart';
-import 'package:sham_mobile/widgets_ui/elevating_title.dart';
+import 'package:sham_mobile/ui/drawer/drawer_ui.dart';
+import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/ui/widgets/loading_footer.dart';
+import 'package:sham_mobile/ui/widgets/elevating_title.dart';
 
 class ActivitiesUI extends GetView<ActivitiesController> {
   @override

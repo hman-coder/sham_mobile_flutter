@@ -7,15 +7,15 @@ import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
 
 import 'package:sham_mobile/translations/translations.dart';
-import 'package:sham_mobile/ui/about_library_ui.dart';
-import 'package:sham_mobile/widgets_ui/default_values.dart';
-import 'package:sham_mobile/ui/about_app_ui.dart';
+import 'package:sham_mobile/ui/drawer/about_library_ui.dart';
+import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/ui/drawer/about_app_ui.dart';
 import 'package:get/get.dart';
 
 import 'barrels/main_barrel.dart';
 import 'barrels/loading_barrel.dart';
 import 'barrels/login_barrel.dart';
-import 'ui/phone_auth_ui.dart';
+import 'ui/user/phone_auth_ui.dart';
 import 'controllers/user_controller.dart';
 import 'barrels/contact_info_barrel.dart';
 import 'barrels/contact_us_barrel.dart';
