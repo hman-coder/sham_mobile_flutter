@@ -119,7 +119,7 @@ class _BooksUIState extends State<BooksUI> with SingleTickerProviderStateMixin {
       child: Icon(Icons.menu, color: Colors.white),
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: DefaultValues.kcMaroon,
+          color: kcMaroon,
           boxShadow: [
             BoxShadow(
                 blurRadius: 2,

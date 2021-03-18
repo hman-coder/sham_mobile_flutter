@@ -105,10 +105,10 @@ class _PersonalInfoTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
-        style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize),
+        style: TextStyle(fontSize: ktsMediumTextSize),
         controller: TextEditingController(text: this.text),
         textInputAction: inputAction,
-        decoration: DefaultValues.ktsDefaultTextFieldInputDecoration.copyWith(
+        decoration: ktsDefaultTextFieldInputDecoration.copyWith(
             labelText: labelText,
         ),
 

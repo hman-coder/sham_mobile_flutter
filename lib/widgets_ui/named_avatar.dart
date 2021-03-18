@@ -64,7 +64,7 @@ class NamedAvatar extends StatelessWidget {
           title,
           style: TextStyle(
             color: titleColor,
-            fontSize: DefaultValues.ktsMediumTextSize,
+            fontSize: ktsMediumTextSize,
           ),
         ),
         if (subtitle != null)

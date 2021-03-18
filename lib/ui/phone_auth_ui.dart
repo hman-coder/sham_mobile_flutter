@@ -36,7 +36,7 @@ class PhoneAuthUI extends GetView<PhoneAuthController> {
                 'please_enter_phone_number'.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                    fontSize: DefaultValues.ktsLargeTextSize,
+                    fontSize: ktsLargeTextSize,
                     fontWeight: FontWeight.bold
                 ),
               ),
@@ -48,7 +48,7 @@ class PhoneAuthUI extends GetView<PhoneAuthController> {
                   'please_enter_phone_number_guide'.tr + ".",
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                      fontSize: DefaultValues.ktsSmallTextSize
+                      fontSize: ktsSmallTextSize
                   )
               ),
             ),
@@ -85,7 +85,7 @@ class PhoneAuthUI extends GetView<PhoneAuthController> {
                           'a_text_will_be_sent'.tr,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                              fontSize: DefaultValues.ktsSmallTextSize
+                              fontSize: ktsSmallTextSize
                           )
                       ),
                     ),
@@ -122,7 +122,7 @@ class _PhoneNumberField extends GetView<PhoneAuthController> {
                     contentPadding: EdgeInsetsDirectional.only(start: 12),
                   ),
                   style: TextStyle(
-                      fontSize: DefaultValues.ktsSmallTextSize
+                      fontSize: ktsSmallTextSize
                   ),
                   keyboardType: TextInputType.phone,
                   onChanged: (text) => controller.phoneNumber = text
@@ -148,7 +148,7 @@ class _CountryPickerButton extends GetView<PhoneAuthController> {
               onPressed: () => _showCountryPickerDialog(context),
               icon: CountryPickerUtils.getDefaultFlagImage(controller.country),
               label: Text('+${controller.country.phoneCode}',
-                style: TextStyle(fontSize: DefaultValues.ktsSmallTextSize),
+                style: TextStyle(fontSize: ktsSmallTextSize),
               )
           ),
         ),

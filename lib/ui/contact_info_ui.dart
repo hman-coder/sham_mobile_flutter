@@ -24,7 +24,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
                 textDirection: Get.direction,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  fontSize: DefaultValues.ktsLargeTextSize
+                  fontSize: ktsLargeTextSize
                 ),
               ),
 
@@ -39,7 +39,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
               child: Obx(() =>
                   CheckboxListTile(
                     secondary: Icon(Icons.phone),
-                    title: Text("phone_number".tr, style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize),),
+                    title: Text("phone_number".tr, style: TextStyle(fontSize: ktsMediumTextSize),),
                     subtitle: Text(controller.isPhoneNumberAuthenticated
                         ? "contact_info_change_phone_number".tr
                         : "contact_info_info_not_provided".tr),
@@ -56,7 +56,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
             child: Center(
               child: Obx(() => CheckboxListTile(
                   secondary: Icon(Icons.account_circle),
-                  title: Text("personal_info".tr, style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize)),
+                  title: Text("personal_info".tr, style: TextStyle(fontSize: ktsMediumTextSize)),
                   subtitle: Text(controller.isPersonalInfoGiven
                       ? "contact_info_change_personal_info".tr
                       : "contact_info_info_not_provided".tr),
@@ -73,7 +73,7 @@ class ContactInfoUI extends GetView<ContactInfoController> {
             child: Center(
               child: Obx(() => CheckboxListTile(
                   secondary: Icon(Icons.location_on),
-                    title: Text("address".tr, style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize)),
+                    title: Text("address".tr, style: TextStyle(fontSize: ktsMediumTextSize)),
                     subtitle: Text(controller.isAddressGiven
                         ? "contact_info_change_change_address".tr
                         : "contact_info_info_not_provided".tr),

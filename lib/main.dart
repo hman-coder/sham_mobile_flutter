@@ -5,7 +5,6 @@ import 'package:sham_mobile/bindings/contact_us_bindings.dart';
 import 'package:sham_mobile/bindings/family_info_bindings.dart';
 import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
-import 'package:intl/intl.dart';
 
 import 'package:sham_mobile/translations/translations.dart';
 import 'package:sham_mobile/ui/about_library_ui.dart';
@@ -67,7 +66,6 @@ class Sham extends StatelessWidget {
   _initializeControllers () {
     Get.put(ShamMessageController(), permanent: true);
     Get.put(UserController(), permanent: true);
-    Get.put(DefaultValues(), permanent: true);
   }
 
   List<LocalizationsDelegate> _getLocalizationsDelegates() => [
@@ -102,15 +100,15 @@ class Sham extends StatelessWidget {
 
   ThemeData _buildTheme(BuildContext context) {
     return ThemeData(
-        fontFamily: DefaultValues.ksMainFontFamily,
+        fontFamily: ksMainFontFamily,
 
-        colorScheme: Theme.of(context).colorScheme.copyWith(primary: DefaultValues.kcMaroon,),
+        colorScheme: Theme.of(context).colorScheme.copyWith(primary: kcMaroon,),
 
         textTheme: TextTheme(
-          headline6: TextStyle(fontSize: DefaultValues.ktsLargeTextSize),
-          subtitle1: TextStyle(fontSize: DefaultValues.ktsMediumTextSize), // ListTile title size
-          bodyText2: TextStyle(fontSize: DefaultValues.ktsSmallTextSize), // ListTile subtitle size
-          button: TextStyle(fontSize: DefaultValues.ktsSmallTextSize)
+          headline6: TextStyle(fontSize: ktsLargeTextSize),
+          subtitle1: TextStyle(fontSize: ktsMediumTextSize), // ListTile title size
+          bodyText2: TextStyle(fontSize: ktsSmallTextSize), // ListTile subtitle size
+          button: TextStyle(fontSize: ktsSmallTextSize)
         ),
 
         bottomAppBarTheme: BottomAppBarTheme(
@@ -124,15 +122,15 @@ class Sham extends StatelessWidget {
 
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(
-            headline6: TextStyle(fontSize: DefaultValues.ktsExtraLargeTextSize, fontFamily: DefaultValues.ksMainFontFamily,),
+            headline6: TextStyle(fontSize: ktsExtraLargeTextSize, fontFamily: ksMainFontFamily,),
           ),
           centerTitle: true,
         ),
 
-        primaryColor: DefaultValues.kcMaroon,
+        primaryColor: kcMaroon,
 
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: DefaultValues.kcMaroon
+            backgroundColor: kcMaroon
         )
     );
   }

@@ -21,7 +21,7 @@ class LoginUI extends GetView<LoginController> {
             centerTitle: true,
               title: Text('sign_in'.tr,
                 style: TextStyle(
-                    fontSize: DefaultValues.ktsLargeTextSize
+                    fontSize: ktsLargeTextSize
                 ),
               ),
           ),
@@ -44,7 +44,7 @@ class LoginUI extends GetView<LoginController> {
                         thickness: 1,
                         label: Text('sign_in_with'.tr,
                           style: TextStyle(
-                            fontSize: DefaultValues.ktsSmallTextSize,
+                            fontSize: ktsSmallTextSize,
                             color: Colors.white
                           ),
                         ),
@@ -63,7 +63,7 @@ class LoginUI extends GetView<LoginController> {
                       ),
                       opacity: 0.6,
                       disabled: controller.isProcessing,
-                      color: DefaultValues.kcGmailRed,
+                      color: kcGmailRed,
                       icon: Icon(ShamCustomIcons.gmail, color: Colors.white.withOpacity(0.8)),
                       text: 'google_sign_in'.tr,
                       onPressed: controller.performGoogleSignIn
@@ -80,7 +80,7 @@ class LoginUI extends GetView<LoginController> {
                       ),
                       opacity: 0.6,
                       disabled: controller.isProcessing,
-                      color: DefaultValues.kcFacebookBlue,
+                      color: kcFacebookBlue,
                       icon: Icon(ShamCustomIcons.facebook_square, color: Colors.white),
                       text: 'facebook_sign_in'.tr,
                       onPressed: controller.performFacebookSignIn
@@ -96,7 +96,7 @@ class LoginUI extends GetView<LoginController> {
                         fontSize: 35,
                       ),
                       opacity: 0.6,
-                      color: DefaultValues.kcWhatsappGreen,
+                      color: kcWhatsappGreen,
                       icon: Icon(Icons.phone, color: Colors.white),
                       text: 'phone_number'.tr,
                       onPressed: controller.performPhoneSignIn,
@@ -143,7 +143,7 @@ class LoginUI extends GetView<LoginController> {
               child: AutoSizeText(
                 'sign_in_description'.tr,
                 textAlign: TextAlign.center,
-                minFontSize: DefaultValues.ktsMediumTextSize,
+                minFontSize: ktsMediumTextSize,
                 maxLines: 5,
                 style: TextStyle(
                   fontSize: 22,

@@ -26,7 +26,7 @@ class AboutAppUI extends StatelessWidget {
                 ),
                 Text('SwissKnife Software',
                     style: TextStyle(
-                      fontSize: DefaultValues.ktsExtraLargeTextSize,
+                      fontSize: ktsExtraLargeTextSize,
                     )),
               ],
             ),
@@ -40,14 +40,14 @@ class AboutAppUI extends StatelessWidget {
                   'about_app_description'.tr,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline6.copyWith(
-                        color: DefaultValues.kcMaroon,
+                        color: kcMaroon,
                   ),
                 ),
 
                 SizedBox(
                   height: 75,
                   child: SocialButton(
-                    color: DefaultValues.kcFacebookBlue,
+                    color: kcFacebookBlue,
                     onPressed: () => print('facebook page'),
                     icon: Icon(ShamCustomIcons.facebook_square, color: Colors.white),
                     text: 'SwissKnife on Facebook',
@@ -69,7 +69,7 @@ class AboutAppUI extends StatelessWidget {
                 SizedBox(
                   height: 75,
                   child: SocialButton(
-                    color: DefaultValues.kcFacebookBlue,
+                    color: kcFacebookBlue,
                     onPressed: () => print('facebook page'),
                     icon: Icon(ShamCustomIcons.facebook_square, color: Colors.white),
                     text: 'SwissKnife on Facebook',

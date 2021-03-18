@@ -57,7 +57,7 @@ class ConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title, style: TextStyle(fontSize: DefaultValues.ktsLargeTextSize )),
+      title: Text(title, style: TextStyle(fontSize: ktsLargeTextSize )),
       content: Text(message),
       actions: [
         FlatButton(

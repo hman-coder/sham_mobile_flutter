@@ -21,7 +21,7 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
         children: [
           Container(    // Fill background with maroon color
             constraints: BoxConstraints.expand(),
-            color: DefaultValues.kcMaroon,
+            color: kcMaroon,
           ),
 
           SizedBox(
@@ -69,7 +69,7 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
         Text(
           controller.familyName,
           style: TextStyle(
-            fontSize: DefaultValues.ktsExtraLargeTextSize,
+            fontSize: ktsExtraLargeTextSize,
             color: Colors.white,
           ),
         ),

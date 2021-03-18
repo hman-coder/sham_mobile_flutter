@@ -21,7 +21,7 @@ class BookListTile extends StatelessWidget {
     return ListTile(
       leading: leading,
       trailing: trailing,
-      title: Text(bookList.name, style: TextStyle(fontSize: DefaultValues.ktsMediumTextSize)),
+      title: Text(bookList.name, style: TextStyle(fontSize: ktsMediumTextSize)),
       subtitle: Text( '${'contains'.tr} ${bookList.books.length} ${'elements'.tr}'),
       onTap: onTap,
     );

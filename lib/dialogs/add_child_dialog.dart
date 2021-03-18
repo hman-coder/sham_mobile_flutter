@@ -68,8 +68,8 @@ class _AddChildDialogState extends State<AddChildDialog> {
               padding: EdgeInsets.all(8),
               height: defaultFieldHeight,
               decoration: BoxDecoration(
-                borderRadius: DefaultValues.kbrDefaultFieldBorderRadius,
-                border: DefaultValues.kbDefaultFieldBorder,
+                borderRadius: kbrDefaultFieldBorderRadius,
+                border: kbDefaultFieldBorder,
               ),
               child: Center(
                 child: GenderDropdownMenu(
@@ -170,14 +170,14 @@ class _BirthdayPickerButton extends StatelessWidget {
         width: double.infinity,
         height: height,
         decoration: BoxDecoration(
-          border: DefaultValues.kbDefaultFieldBorder,
-          borderRadius: DefaultValues.kbrDefaultFieldBorderRadius,
+          border: kbDefaultFieldBorder,
+          borderRadius: kbrDefaultFieldBorderRadius,
         ),
         child: Row(
           children: [
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Icon(Icons.cake_outlined, color: DefaultValues.kcMaroon),
+              child: Icon(Icons.cake_outlined, color: kcMaroon),
             ),
             Text(birthdayButtonText),
           ],
@@ -218,7 +218,7 @@ class _ImageSelectorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: DefaultValues.kcMaroon,
+      backgroundColor: kcMaroon,
       foregroundColor: Colors.white,
       radius: radius,
       child: PopupMenuImagePicker(

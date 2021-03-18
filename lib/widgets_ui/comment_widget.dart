@@ -26,7 +26,7 @@ class CommentWidget extends StatelessWidget {
                 ),
 
                 title: Text(comment.username ?? 'new_user'.tr,
-                    style: DefaultValues.ktsCommentHeaderTextStyle
+                    style: ktsCommentHeaderTextStyle
                 ),
 
                 trailing: comment.rating == null || comment.rating == 0 ? Container(width: 0,)
@@ -47,7 +47,7 @@ class CommentWidget extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 35),
                 child: Text(
                   comment.body,
-                  style: DefaultValues.ktsCommentTextStyle,
+                  style: ktsCommentTextStyle,
                   maxLines: 20,
                 ),
               )
