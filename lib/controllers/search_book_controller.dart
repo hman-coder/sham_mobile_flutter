@@ -4,7 +4,7 @@ import 'package:sham_mobile/repositories/books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_filter.dart';
 
-import 'package:sham_mobile/book_barrel.dart';
+import 'package:sham_mobile/barrels/book_barrel.dart';
 
 class SearchBookController extends GetxController {
   static final _searchFilter = BookSearchFilter().obs;

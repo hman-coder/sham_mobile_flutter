@@ -1,4 +1,4 @@
-import 'package:sham_mobile/book_barrel.dart';
+import 'package:sham_mobile/barrels/book_barrel.dart';
 import 'package:sham_mobile/models/activity.dart';
 
 class ActivitiesRepository {
