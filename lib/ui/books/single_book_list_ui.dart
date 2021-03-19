@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/models/book.dart';
-import 'package:sham_mobile/widgets_UI/book_tile.dart';
+import 'package:sham_mobile/ui/widgets/tiles/book_tile.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/ui/widgets/loading_footer.dart';
 import 'package:sham_mobile/controllers/single_book_list_controller.dart';
