@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:sham_mobile/ui/widgets/buttons/cancel_button.dart';
 import 'package:sham_mobile/controllers/family_info_controller.dart';
 import 'package:sham_mobile/models/family_member.dart';
 import 'package:sham_mobile/constants/default_values.dart';
@@ -19,16 +21,16 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(    // Fill background with maroon color
+          Container(
+            // Fill background with maroon color
             constraints: BoxConstraints.expand(),
             color: kcMaroon,
           ),
-
           SizedBox(
             height: topSectionHeight,
             child: _buildTopSection(context),
           ),
-
+          // Bottom, white sheet
           Container(
             margin: EdgeInsets.only(top: topSectionHeight),
             width: double.infinity,
@@ -51,11 +53,12 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
                 ? Center(
                     child: Text('no_child_added_yet'.tr),
                   )
-                : ListView(
-                    padding: EdgeInsets.only(top: 15),
-                    children:
-                        _buildChildrenWidgets(controller.children).toList(),
-                  ),
+                : Obx(()=> ListView(
+                      padding: EdgeInsets.only(top: 15),
+                      children:
+                          _buildChildrenWidgets(controller.children).toList(),
+                    ),
+                ),
           ),
         ],
       ),
@@ -66,12 +69,25 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
     return Column(
       children: [
         _buildAppBar(context),
-        Text(
-          controller.familyName,
-          style: TextStyle(
-            fontSize: ktsExtraLargeTextSize,
-            color: Colors.white,
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(
+              () => Text(
+                controller.familyName,
+                style: TextStyle(
+                  fontSize: ktsExtraLargeTextSize,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            horizontalSmallSpacer,
+            IconButton(
+              icon: Icon(Icons.edit_outlined, color: Colors.white),
+              onPressed: _onEditFamilyNamePressed,
+            ),
+          ],
         ),
         verticalHugeSpacer,
         Row(
@@ -99,12 +115,12 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
     return AppBar(
       actions: [
         IconButton(
-          icon: Icon(Icons.edit, color: Colors.white),
-          onPressed: () => null,
+          icon: Icon(Icons.delete, color: Colors.white),
+          onPressed: controller.deleteFamily,
         ),
         IconButton(
           icon: Icon(Icons.add, color: Colors.white),
-          onPressed: () => _onAddPressed(),
+          onPressed: () => _onAddParentPressed(),
         ),
       ],
       elevation: 0,
@@ -120,23 +136,12 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
       yield verticalSmallSpacer;
     }
 
+    // In case [children.length] is even, add a row to have
+    // the "add-child" widget.
     if (children.length % 2 == 0) {
       yield _buildChildrenRow([null]);
       yield verticalSmallSpacer;
     }
-  }
-
-  Widget _buildAddChildAvatar() {
-    return GestureDetector(
-      onTap: () => _onAddPressed(),
-      child: NamedAvatar(
-        title: 'add_child'.tr,
-        titleColor: Colors.black,
-        backgroundColor: Colors.blue,
-        child: Icon(Icons.add, size: childAvatarSize),
-        avatarSize: childAvatarSize,
-      ),
-    );
   }
 
   Widget _buildChildrenRow(List<FamilyMember> children) {
@@ -154,11 +159,28 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
             .toList());
   }
 
+  Widget _buildAddChildAvatar() {
+    return GestureDetector(
+      onTap: () => _onAddChildPressed(),
+      child: NamedAvatar(
+        title: 'add_child'.tr,
+        titleColor: Colors.black,
+        backgroundColor: Colors.blue,
+        child: Icon(Icons.add, size: childAvatarSize),
+        avatarSize: childAvatarSize,
+      ),
+    );
+  }
+
   Widget _buildSingleChildAvatar(FamilyMember child) {
+    bool childHasImage = child.image.isNotEmpty;
     return NamedAvatar(
-      image: NetworkImage(child.image),
+      image: childHasImage
+          ? NetworkImage(child.image)
+          : AssetImage('assets/images/profile_picture.png'),
       title: child.name,
-      subtitle: child.title,
+      backgroundColor: childHasImage ? Colors.white :  Colors.black,
+      subtitle: child.title + ' ' + 'years_old'.tr,
       titleColor: Colors.black,
       subtitleColor: Colors.black87,
       borderColor: Colors.black,
@@ -166,9 +188,124 @@ class FamilyInfoUI extends GetView<FamilyInfoController> {
     );
   }
 
-  void _onAddPressed() {
+  void _onAddParentPressed() {
+    Get.dialog(_AddParentDialog(),);
+  }
+
+  void _onAddChildPressed() {
     Get.dialog(AddChildDialog());
+  }
+
+  void _onEditFamilyNamePressed() async {
+    String newName =
+        await Get.dialog(_EditFamilyDialog(familyName: controller.familyName));
+    if (newName != null) controller.familyName = newName;
   }
 }
 
+class _AddParentDialog extends StatelessWidget {
+  const _AddParentDialog({
+    Key key,
+  }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('add_parent'.tr),
+      content: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('to_add_a_parent'.tr),
+            _IndentedText(
+              text: '1. ' + 'install_app_for_parent'.tr + '.',
+            ),
+            _IndentedText(
+              text: '2. ' + 'sign_up_for_parent'.tr + '.',
+            ),
+            _IndentedText(
+              text: '3. ' + 'go_to_family_ui_for_parent'.tr + '.',
+            ),
+            _IndentedText(
+              text: '4. ' + 'select_join_family_for_parent'.tr + '.',
+            ),
+            Flexible(
+              child: Wrap(
+                children: [
+                  _IndentedText(
+                    text: '5. ' + 'enter_this_code_for_parent'.tr + ':',
+                  ),
+                  horizontalSmallSpacer,
+                  Text(
+                    Get.find<FamilyInfoController>().code,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kcMaroon,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            _IndentedText(
+              text: '6. ' + 'accept_join_request_for_parent'.tr,
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        CancelButton(
+          style: TextStyle(),
+        )
+      ],
+    );
+  }
+}
+
+/// A simple [Text] widget that starts with an indent.
+class _IndentedText extends StatelessWidget {
+  final String text;
+
+  final double indent;
+
+  const _IndentedText({Key key, @required this.text, this.indent = 8})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsetsDirectional.only(start: indent),
+      child: Text(text),
+    );
+  }
+}
+
+class _EditFamilyDialog extends GetView<FamilyInfoController> {
+  _EditFamilyDialog({this.familyName = '', Key key}) : super(key: key);
+
+  String familyName;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('edit_family'.tr),
+      content: TextField(
+        controller: TextEditingController(
+          text: familyName,
+        ),
+        onChanged: (text) => this.familyName = text,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+        ),
+      ),
+      actions: [
+        CancelButton(),
+        FlatButton(
+          onPressed: () => Get.back(result: familyName),
+          child: Text('confirm'.tr),
+        ),
+      ],
+    );
+  }
+}

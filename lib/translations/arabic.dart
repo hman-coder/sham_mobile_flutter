@@ -6,13 +6,14 @@ Map<String, String> get arabicTranslations => {
   'about_app_description' : 'تم تطوير هذا التطبيق من قبل شركة سويس نايف سوفتوير. لمزيد من المعلومات، يُرجى زيارة إحدى صفحاتنا أدناه.',
   'about_sham' : 'حول شام',
   'accept' : 'موافق',
+  'accept_join_request_for_parent' : 'اقبل طلب انضمامهم (من جهازك)',
   'account': 'الحساب',
   'activate' : 'تفعيل',
   'activities' : 'النشاطات',
   'add' : 'إضافة',
-  'add_member' : 'إضافة عضو',
   'add_child' : 'إضافة طفل',
   'add_book_list' : 'إضافة قائمة جديدة',
+  'add_parent' : 'إضافة ولي أمر',
   'address' : 'العنوان',
   'address_other_field_hint' : 'نقاط علامة أخرى (متجر مجاور، شارع فرعي، إلخ)',
   'address_helper_text' : 'ستساعدنا هذه المعلومات في تقديم خدمات محددة (كإيصال الكتب) عند منزلك',
@@ -56,6 +57,9 @@ Map<String, String> get arabicTranslations => {
   'confirm' : 'تأكيد',
   'confirm_book_request_message' : 'هل أنت متؤكد من أنك تريد إيصال هذا الكتاب إليك',
   'confirm_book_list_removal' : 'هل أنت متأكد من حذف هذه القائمة مع جميع الكتب المحفوظة فيها؟',
+  'confirm_continue' : 'هل أنت متأكد أنك تريد المتابعة',
+  'confirm_family_removal_header' :'تأكيد حذف العائلة',
+  'confirm_family_removal_message' : 'بعد قيامك بحذف هذه العائلة ستفقد معلومات جميع الأعضاء الموجودين في هذه العائلة. لن يؤثر ذلك في الحسابات المتعلقة بأحد أفراد العائلة.',
   'contact_info' : 'معلومات الاتصال',
   'contact_info_description' : 'ستمكننا هذه المعلومات من إيصال خدماتنا إلى منزلك',
   'contact_info_dialog_header' : 'معلومات الاتصال',
@@ -74,6 +78,7 @@ Map<String, String> get arabicTranslations => {
 
   // D
   'date' : 'التاريخ',
+  'delete_family' : 'حذف العائلة',
   'deliver_book' : 'إيصال الكتاب',
   'deliver_book_confirmation' : 'هل أنت متأكد من أنك تريد إيصال هذا الكتاب إليك',
   'done' : 'تم',
@@ -94,6 +99,7 @@ Map<String, String> get arabicTranslations => {
   // E
   'edit' : 'تعديل',
   'edit_book_review' : 'اضغط هنا لتعديل تقييمك',
+  'edit_family' : 'تعديل العائلة',
   'edit_username' : 'تعديل الاسم',
   'edit_phone_number' : 'تعديل رقم الهاتف',
   'edit_address' : 'تعديل العنوان',
@@ -103,6 +109,7 @@ Map<String, String> get arabicTranslations => {
   'enter_message_subject' : 'أدخل موضوع الرسالة',
   'enter_phone_number' : 'أدخل رقم الهاتف',
   'enter_review' : 'أدخل التقييم',
+  'enter_this_code_for_parent' : 'قم بإدخال هذا الرمز عنده',
   'error_report_message' : 'نرجو التبليغ عن هذا الخطأ عن طريق الضغط على الزر أدناه. يتطلب ذلك اتصالاً بالإنترنت.',
   'error_while_building_ui' : 'حصل خطأ أثناء بناء الواجهة',
   'error_report_button' : 'التبليغ',
@@ -122,11 +129,13 @@ Map<String, String> get arabicTranslations => {
   'gallery' : 'الصور',
   'get_book' : 'احصل على الكتاب',
   'google_sign_in' : 'حساب Google',
+  'go_to_family_ui_for_parent' : ' انتقل إلى واجهة "معلومات العائلة" (من جهازه)',
 
   // H
   'hide' : 'إخفاء',
 
   // I
+  'install_app_for_parent' : 'حمل تطبيق شام على جهازه',
   'inquire' : 'استفسار',
   'invalid_code': 'رمز غير صحيح',
 
@@ -194,6 +203,7 @@ Map<String, String> get arabicTranslations => {
   'select_book_list' : 'اختر قائمة الكتب',
   'select_country' : 'اختر بلدك',
   'select_city' : 'اختر المدينة',
+  'select_join_family_for_parent' : 'اختر "الانضمام إلى عائلة"',
   'select_message_subject' : '-- اختر موضوعاً للرسالة --',
   'send' : 'إرسال',
   'send_to' : 'إرسال للجهات التالية',
@@ -203,8 +213,10 @@ Map<String, String> get arabicTranslations => {
   'sign_in_description' : 'سيتيح لك إنشاء حساب على التطبيق القيام بعمليات شراء الكتب أو حجز مكان في نوادي الكتاب من منزلك بالإضافة إلى ميزات أخرى كثيرة!',
   'sign_in_or_create_new_account' : 'إنشاء حساب جديد أو تسجيل الدخول',
   'sign_up' : 'إنشاء حساب',
+  'sign_up_for_parent' : 'قم بإنشاء حساب على التطبيق من جهازه',
   'similar_books' : 'كتب مشابهة',
   'sign_in_with' : 'تسجيل الدخول عن طريق',
+
   'skip' : 'تخطي',
   'special_categories' : 'التصنيفات المميزة',
   'specify_recipient' : 'يرجى تحديد الجهة المُرسل إليها',
@@ -231,6 +243,7 @@ Map<String, String> get arabicTranslations => {
   'text_is_empty' : 'لقد أدخلت نصاً فارغاً',
   'title' : 'مكتبة شام',
   'to' : 'إلى',
+  'to_add_a_parent' : 'لإضافة ولي أمر',
   'to_learn_more_about_priority' : 'اضغط على "نقاط الأولوية" أدناه لتعرف المزيد عن نقاط الأولوية',
 
   // U

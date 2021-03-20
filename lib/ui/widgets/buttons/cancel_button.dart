@@ -12,7 +12,7 @@ class CancelButton extends StatelessWidget {
     return FlatButton(
       child: Text(
         'cancel'.tr,
-        style: style ?? DefaultTextStyle.of(context).style,
+        style: style,
       ),
       onPressed: () => Get.back(),
     );

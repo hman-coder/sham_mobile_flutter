@@ -18,36 +18,50 @@ class Family {
     @required this.code,
   });
 
+  Family copyWith({
+    List<FamilyMember> parents,
+    List<FamilyMember> children,
+    String familyName,
+    String code,
+  }) {
+    return Family(
+      parents: parents ?? this.parents,
+      children: children ?? this.children,
+      familyName: familyName ?? this.familyName,
+      code: code ?? this.code,
+    );
+  }
+
   static final Family mock = Family(
     parents: [
-      FamilyMember(
+      Parent(
           image:
           'https://linktopin.com/assets/images/avatars/random-avatar1.jpg',
           name: 'John Smith',
           title: 'father'.tr,
       ),
-      FamilyMember(
+      Parent(
           image:
           'https://linktopin.com/assets/images/avatars/random-avatar8.jpg',
           name: 'Sara Smith',
           title: 'mother'.tr),
     ],
     children: [
-      FamilyMember(
+      Child(
           image:
           'https://linktopin.com/assets/images/avatars/random-avatar7.jpg',
           name: 'John Smith Jr.',
-          title: '12 ' + 'years_old'.tr),
-      FamilyMember(
+          birthday: DateTime(2010)),
+      Child(
           image:
           'https://cdn1.iconfinder.com/data/icons/children-avatar-flat/128/children_avatar-16-512.png',
           name: 'Samantha Smith',
-          title: '9 ' + 'years_old'.tr),
-      FamilyMember(
+          birthday: DateTime(2019)),
+      Child(
           image:
           'https://www.shareicon.net/data/128x128/2016/06/25/786530_people_512x512.png',
           name: 'محمد سميث',
-          title: '4 ' + 'years_old'.tr),
+          birthday: DateTime(2015)),
     ],
     familyName: 'العائلة الملكية',
     code: '67483',

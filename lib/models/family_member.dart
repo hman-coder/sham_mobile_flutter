@@ -1,35 +1,44 @@
 import 'package:flutter/foundation.dart';
-import 'package:sham_mobile/helpers/string_helper.dart';
 
 import 'gender.dart';
 
-class FamilyMember {
+abstract class FamilyMember {
   final String name;
-
-  final String title;
 
   final String image;
 
   final Gender gender;
 
-  FamilyMember({
-    this.gender = Gender.undefined,
-    this.image = '',
-    @required this.name,
-    @required this.title,
-  });
+  const FamilyMember({this.name, this.image, this.gender});
 
   const FamilyMember.nonNull()
-      : this.name = '',
-        this.image = '',
-        this.title = '',
-        this.gender = null;
+      : name = '',
+        image = '',
+        gender = null;
 
-  FamilyMember copyWith({String image, String name, String title}) {
-    return FamilyMember(
+  String get title;
+}
+
+class Parent extends FamilyMember {
+  final String title;
+
+  const Parent({
+    gender = Gender.undefined,
+    image = '',
+    String name,
+    this.title,
+  }) : super(name: name, image: image, gender: gender);
+
+  const Parent.nonNull()
+      : title = '',
+        super.nonNull();
+
+  Parent copyWith({String image, String name, String title, Gender gender}) {
+    return Parent(
       image: image ?? this.image,
       name: name ?? this.name,
       title: title ?? this.title,
+      gender: this.gender,
     );
   }
 }
@@ -41,12 +50,12 @@ class Child extends FamilyMember {
       : super(
           image: image,
           name: name,
-          title: birthday == null
-              ? ''
-              : (DateTime.now().year - birthday.year).toString(),
         );
 
   const Child.nonNull()
       : this.birthday = null,
         super.nonNull();
+
+  @override
+  String get title => birthday == null ? '' : (DateTime.now().year - birthday.year).toString();
 }

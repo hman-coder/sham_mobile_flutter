@@ -6,13 +6,14 @@ Map<String, String> get englishTranslations => {
   'about_app_description' : 'This application was developed by SwissKnife Software. For further info, please head over to one of our pages below.',
   'about_sham' : 'About Sham',
   'accept' : 'Accept',
+  'accept_join_request_for_parent' : 'On your device, accept their request',
   'account' : 'Account',
   'activate' : 'Activate',
   'activities' : 'Activities',
   'add' : 'Add',
   'add_book_list' : 'Add book list',
-  'add_member' : 'Add member',
   'add_child' : 'Add child',
+  'add_parent' : 'Add parent',
   'add_review' : 'Add review',
   'address' : 'Address',
   'address_other_field_hint' : 'other landmarks (nearby store, bystreet, etc)',
@@ -56,6 +57,9 @@ Map<String, String> get englishTranslations => {
   'confirm' : 'Confirm',
   'confirm_book_list_removal' : 'Are you sure you want to delete this list with all its contents?',
   'confirm_book_request_message' : 'Are you sure you want this book delivered to you',
+  'confirm_continue' : 'Are you sure you want to continue',
+  'confirm_family_removal_header' :'Confirm family deletion',
+  'confirm_family_removal_message' : 'Deleting this family will remove all members of this family, and you will not be able to restore it. Any account data regarding a member of this family will be perserved.',
   'contact_info' : 'Contact Information',
   'contact_info_change_phone_number' : 'You have already added a phone number. Click here to edit.',
   'contact_info_change_personal_info' : 'You have already completed your personal info. Click here to edit.',
@@ -75,6 +79,7 @@ Map<String, String> get englishTranslations => {
 
   // D
   'date' : 'Date',
+  'delete_family' : 'Delete family',
   'deliver_book' : 'Deliver Book',
   'deliver_book_confirmation' : 'Are you sure you want this book delivered',
   'district' : 'District',
@@ -83,6 +88,7 @@ Map<String, String> get englishTranslations => {
   // E
   'edit' : 'Edit',
   'edit_book_review' : 'Press here to edit your review',
+  'edit_family' : 'Edit family',
   'edit_name' : 'Edit name',
   'edit_phone_number' : 'Edit phone number',
   'edit_address' : 'Edit address',
@@ -93,6 +99,7 @@ Map<String, String> get englishTranslations => {
   'enter_message_subject' : 'Enter message subject',
   'enter_review' : 'Enter review',
   'error_report_message' : 'Please report this exception by pressing the button below. This requires an internet connection.',
+  'enter_this_code_for_parent' : 'Enter this code',
   'error_while_building_ui' : 'An error occurred while building your interface.',
   'error_sending_message' : 'An error occurred while sending. Please try again.',
   'error_report_button' : 'Report',
@@ -122,12 +129,14 @@ Map<String, String> get englishTranslations => {
   'gallery' : 'Gallery',
   'get_book' : 'Get book now',
   'google_sign_in' : 'Google account',
+  'go_to_family_ui_for_parent' : 'On their device, navigate to "Family Info" interface',
 
   // H
   'hide' : 'hide',
 
   // I
   'inquire' : 'Inquire info',
+  'install_app_for_parent' : 'Install Sham app on their device',
   'invalid_code': 'Invalid code',
 
   // L
@@ -194,6 +203,7 @@ Map<String, String> get englishTranslations => {
   'select_book_list' : 'Select book list',
   'select_country' : 'Select your country',
   'select_city' : 'Select city',
+  'select_join_family_for_parent' : 'Select "Join a family" option',
   'select_message_subject' : '-- Select a subject --',
   'send' : 'Send',
   'send_to' : 'Send to',
@@ -205,6 +215,7 @@ Map<String, String> get englishTranslations => {
   'sign_up' : 'Sign up',
   'similar_books' : 'Similar books',
   'sign_in_with' : 'Sign in with',
+  'sign_up_for_parent' : 'Create an account for them',
   'skip' : 'Skip',
   'special_categories' : 'Special categories',
   'specify_recipient' : 'Please specify a recipient',
@@ -231,6 +242,7 @@ Map<String, String> get englishTranslations => {
   'text_is_empty' : 'You entered an empty text',
   'title' : 'Sham Bookstore',
   'to' : 'To',
+  'to_add_a_parent' : 'To add a parent',
   'to_learn_more_about_priority' : 'To learn more about priority score, press "Priority score" below',
 
   // U
