@@ -11,6 +11,7 @@ import 'package:sham_mobile/ui/drawer/about_library_ui.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/ui/drawer/about_app_ui.dart';
 import 'package:get/get.dart';
+import 'package:sham_mobile/ui/drawer/change_language_dialog.dart';
 
 import 'barrels/main_barrel.dart';
 import 'barrels/loading_barrel.dart';
@@ -21,14 +22,20 @@ import 'barrels/contact_info_barrel.dart';
 import 'barrels/contact_us_barrel.dart';
 import 'barrels/family_info_barrel.dart';
 
+import 'package:sham_mobile/constants/locales.dart';
+
 void main(){
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]).then((_) {
-    runApp(Sham());
-  });
+    WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]).then((_) {
+      runApp(Sham());
+    });
+}
+
+class RestartAppException implements Exception {
+
 }
 
 class Sham extends StatelessWidget {
@@ -39,12 +46,12 @@ class Sham extends StatelessWidget {
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
 
         child: GetMaterialApp(
-          supportedLocales: _getSupportedLocales(),
+          supportedLocales: supportedLocales,
 
           debugShowCheckedModeBanner: false,
           onInit: _initializeControllers,
 
-          localizationsDelegates: _getLocalizationsDelegates(),
+          localizationsDelegates: localizationsDelegates,
 
           translations: ShamTranslations(),
 
@@ -68,17 +75,12 @@ class Sham extends StatelessWidget {
     Get.put(UserController(), permanent: true);
   }
 
-  List<LocalizationsDelegate> _getLocalizationsDelegates() => [
+  static const List<LocalizationsDelegate> localizationsDelegates = const [
       DefaultMaterialLocalizations.delegate,
       DefaultWidgetsLocalizations.delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
     ];
-
-  List<Locale> _getSupportedLocales() => [
-    const Locale('en'),
-    const Locale('ar')
-  ];
 
   List<GetPage> _getPages() => [
     GetPage(name: '/loading', page: () => LoadingUI(), binding: LoadingBindings(),),
@@ -96,6 +98,7 @@ class Sham extends StatelessWidget {
     GetPage(name:'/about_app', page: () => AboutAppUI(),),
     GetPage(name:'/contact_us', page: () => ContactUsUI(), binding: ContactUsBindings(),),
     GetPage(name:'/about_library', page: () => AboutLibraryUI(),),
+    GetPage(name: '/change_language', page: () => ChangeLanguageDialog(),),
   ];
 
   ThemeData _buildTheme(BuildContext context) {

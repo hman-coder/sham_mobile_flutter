@@ -236,6 +236,7 @@ Map<String, String> get englishTranslations => {
   'reserve_book_request_low_priority' : 'We\'re sorry, but your priority score doesn\'t allow you to reserve this book',
   'reserve_book_request_submitted' : 'Your request has been submitted',
   'request_sent' : 'Your request was sent',
+  'restart_required_for_this_action' : 'This action requires restarting the application',
   'review' : 'Review',
 
   // T
@@ -263,4 +264,8 @@ Map<String, String> get englishTranslations => {
 
   // Y
   'years_old' : 'years old',
+
+  // Languages
+  'en' : 'English',
+  'ar' : 'العربية',
 };

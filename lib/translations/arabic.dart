@@ -237,6 +237,7 @@ Map<String, String> get arabicTranslations => {
   'reserve_book_request_low_priority' : 'عذراً، ليس بإمكانك أن تحجز كتاباً لأن مجموع نقاط الأولوية لديك منخفض',
   'reserve_book_request_submitted' : 'تم إرسال طلبك',
   'request_sent' : 'تم إرسال طلبك',
+  'restart_required_for_this_action' : 'سيتطلب هذا إعادة بدء التطبيق',
   'review' : 'تقييم',
 
   // T
@@ -265,4 +266,8 @@ Map<String, String> get arabicTranslations => {
   // Y
   'years_old' : 'سنة',
 
+
+  // Languages
+  'en' : 'English',
+  'ar' : 'العربية',
 };
