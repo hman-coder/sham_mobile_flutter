@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
@@ -37,30 +36,33 @@ class _DrawerUIState extends State<DrawerUI> {
   Widget _buildDrawerHeader(BuildContext context) {
     UserController userController = Get.find<UserController>();
     return DrawerHeader(
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        CircleAvatar(
-            backgroundImage: userController.isUserLoggedIn
-                ? AssetImage(userController.user.image)
-                : AssetImage('assets/images/profile_picture.png'),
-            radius: 35),
-        Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          CircleAvatar(
+              backgroundImage: userController.isUserLoggedIn
+                  ? AssetImage(userController.user.image)
+                  : AssetImage('assets/images/profile_picture.png'),
+              radius: 35),
+          Container(
             margin: EdgeInsets.only(top: 10, right: 10),
             child: GestureDetector(
-                onTap: userController.isUserLoggedIn
-                    ? () => Get.toNamed('/login')
-                    : null, // TODO: Go to profile
-                child: Text(
-                  userController.isUserLoggedIn
-                      ? userController.user.fullName
-                      : 'create_account'.tr,
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Arslan', fontSize: 30),
-                ))),
-        Divider(color: Colors.grey)
-      ],
-    ));
+              onTap: userController.isUserLoggedIn
+                  ? () => Get.toNamed('/login')
+                  : null, // TODO: Go to profile
+              child: Text(
+                userController.isUserLoggedIn
+                    ? userController.user.fullName
+                    : 'create_account'.tr,
+                style: TextStyle(
+                    color: Colors.white, fontFamily: 'Arslan', fontSize: 30),
+              ),
+            ),
+          ),
+          Divider(color: Colors.grey)
+        ],
+      ),
+    );
   }
 
   List<Widget> _buildDrawerUserItems() {

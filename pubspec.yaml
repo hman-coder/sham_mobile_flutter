@@ -25,7 +25,6 @@ dependencies:
   pull_to_refresh: 1.6.3
   country_pickers: ^1.2.0
   auto_size_text: ^2.1.0
-  flutter_bloc: ^6.0.5
   flutter_rating_bar: ^3.0.1+1
   async: ^2.4.0
   google_sign_in: ^4.1.5
