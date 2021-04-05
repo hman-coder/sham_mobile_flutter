@@ -74,6 +74,7 @@ Map<String, String> get arabicTranslations => {
   'contact_us' : 'اتصل بنا',
   'contains' : 'يحتوي',
   'change_language' : 'تغيير اللغة',
+  'create_family' : 'إنشاء عائلة',
   'create_new_account' : 'إنشاء حساب جديد',
 
   // D
@@ -88,7 +89,10 @@ Map<String, String> get arabicTranslations => {
   'facebook' : 'فيسبوك',
   'facebook_sign_in' : 'حساب Facebook',
   'family' : 'العائلة',
+  'family_code_is_six_digits' : 'يجب أن يتألف رمز العائلة من ستة أرقام',
   'family_info' : 'معلومات العائلة',
+  'family_name' : 'اسم العائلة',
+  'family_not_found': 'لم نجد عائلة بذلك الرمز',
   'father' : 'الأب',
 
   'first_name' : 'الاسم الأول',
@@ -105,6 +109,7 @@ Map<String, String> get arabicTranslations => {
   'edit_address' : 'تعديل العنوان',
   'elements' : 'عنصراً',
   'enter_book_list_name' : 'أدخل اسم القائمة',
+  'enter_family_code': 'أدخل رمز العائلة',
   'enter_message_content' : 'أدخل نص الرسالة',
   'enter_message_subject' : 'أدخل موضوع الرسالة',
   'enter_phone_number' : 'أدخل رقم الهاتف',
@@ -139,6 +144,10 @@ Map<String, String> get arabicTranslations => {
   'inquire' : 'استفسار',
   'invalid_code': 'رمز غير صحيح',
 
+  // J
+  'join_family' : 'الانضمام إلى عائلة',
+  'join_family_request_sent' : 'تم إرسال طلب الانضمام للعائلة',
+
   // L
   'last_name' : 'اسم العائلة',
   'list_already_exists' : 'القائمة موجودة',
@@ -162,6 +171,8 @@ Map<String, String> get arabicTranslations => {
   'next_session' : 'الجلسة القادمة',
   'no_books_found' : 'لا توجد كتب هنا بعد',
   'no_child_added_yet' : 'لم تقم بإضافة أطفال هنا بعد',
+  'no_family_added_header' : 'لم تقم بإضافة عائلة... حتى الآن',
+  'no_family_added_description' : 'ستتيح لكم إضافة عائلة تسجيل أولادكم في نوادي الكتاب والنشاطات الخاصة بهم، كما بإمكانكم أن تُضيفوا شريككم (زوج \\ زوجة) إلى العائلة لتقوما بإدارتها سوية',
   'no_items_added' : 'لم تضف عناصر هنا',
 
   // O

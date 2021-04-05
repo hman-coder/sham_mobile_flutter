@@ -9,20 +9,23 @@ import 'package:sham_mobile/helpers/value_editor.dart';
 class FamilyNameDialog extends GetView<FamilyInfoController> {
   final ValueEditor<String> familyNameEditor;
 
-  FamilyNameDialog({String initialFamilyName = '', Key key}) :
+  final String title;
+
+  FamilyNameDialog({@required this.title, String initialFamilyName = '', Key key}) :
         familyNameEditor = ValueEditor<String>(initialFamilyName),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('edit_family'.tr),
+      title: Text(title),
       content: TextField(
         controller: TextEditingController(
           text: familyNameEditor.originalValue,
         ),
         onChanged: (text) => familyNameEditor.editedValue = text,
         decoration: InputDecoration(
+          hintText: 'family_name'.tr,
           border: OutlineInputBorder(),
         ),
       ),

@@ -2,21 +2,26 @@ import 'package:get/get.dart';
 import 'package:sham_mobile/controllers/error_controller.dart';
 import 'package:sham_mobile/models/family.dart';
 import 'package:sham_mobile/models/family_member.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 
-class FamilyInfoController extends GetxController {
-  var _mockFamily = Family.mock.obs;
+class FamilyInfoController extends ShamController {
+  Rx<Family> _family;
 
-  List<FamilyMember> get parents => _mockFamily.value.parents;
+  List<FamilyMember> get parents => _family?.value?.parents;
 
-  List<FamilyMember> get children => _mockFamily.value.children;
+  List<FamilyMember> get children => _family?.value?.children;
 
-  String get familyName => _mockFamily.value.familyName;
+  String get familyName => _family?.value?.familyName;
 
-  String get code => _mockFamily.value.code;
+  String get code => _family?.value?.code;
+
+  var _hasFamily = false.obs;
+
+  bool get hasFamily => _hasFamily.value;
 
   set familyName(String newFamilyName) {
     if (newFamilyName.isNotEmpty)
-      _mockFamily.value = _mockFamily.value.copyWith(
+      _family.value = _family.value.copyWith(
         familyName: newFamilyName,
       );
     else {
@@ -26,6 +31,36 @@ class FamilyInfoController extends GetxController {
         message: 'text_is_empty'.tr,
       ));
     }
+  }
+
+  @override
+  void onInit() {
+    _updateHasFamily();
+    super.onInit();
+  }
+
+  void createFamilyFromName(String name) async {
+    isLoading = true;
+
+    // Web API call
+    await Future.delayed(1.seconds);
+    var newFamily = Family.mock.copyWith(familyName: name);
+
+    // Create the new family object
+    if(_family == null)
+      _family = newFamily.obs;
+    else
+      _family.value = newFamily;
+
+    // Update hasFamily property
+    _updateHasFamily();
+
+    isLoading = false;
+  }
+
+  /// Updates hasFamily property with correct value
+  void _updateHasFamily() {
+    _hasFamily.value = _family?.value != null;
   }
 
   /// Returns [true] if child is successfully added
@@ -41,6 +76,7 @@ class FamilyInfoController extends GetxController {
         ),
       );
       return false;
+
     } else if (child.birthday == null) {
       smc.showMessage(
         ShamMessage(
@@ -50,8 +86,9 @@ class FamilyInfoController extends GetxController {
         ),
       );
       return false;
+
     } else {
-      _mockFamily.update((value) => value.children.add(child));
+      _family.update((value) => value.children.add(child));
       return true;
     }
   }
@@ -65,5 +102,51 @@ class FamilyInfoController extends GetxController {
           'confirm_continue'.tr +
           'question_mark'.tr,
     );
+
+    if (confirmation)
+      this._family.value = null;
+
+    _updateHasFamily();
+  }
+
+  Future<bool> joinFamilyWithCode(String code) async {
+    isLoading = true;
+
+    ShamMessageController messageCenter = Get.find<ShamMessageController>();
+    // Verify code length
+    if (code.length != 6) {
+      messageCenter.showMessage(ShamMessage(
+        severity: MessageSeverity.moderate,
+        displayType: MessageDisplayType.snackbar,
+        message: 'family_code_is_six_digits'.tr + '.',
+      ));
+      isLoading = false;
+
+    // Verify code matches a family code
+    } else if (code != this.code) {
+      await Future.delayed(1.seconds);
+      isLoading = false;
+      messageCenter.showMessage(ShamMessage(
+        severity: MessageSeverity.moderate,
+        displayType: MessageDisplayType.snackbar,
+        message: 'family_not_found'.tr + '.',
+      ));
+      return false;
+
+    // Code is correct.
+    } else {
+      await Future.delayed(1.seconds);
+      isLoading = false;
+      // Hide dialog
+      Get.back();
+
+      // Show notification
+      messageCenter.showMessage(ShamMessage(
+        severity: MessageSeverity.mild,
+        displayType: MessageDisplayType.snackbar,
+        message: 'join_family_request_sent'.tr + '.',
+      ));
+      return true;
+    }
   }
 }

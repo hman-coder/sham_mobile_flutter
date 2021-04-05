@@ -4,8 +4,6 @@ import 'package:sham_mobile/controllers/family_info_controller.dart';
 import 'package:sham_mobile/constants/default_widgets.dart';
 import 'package:sham_mobile/ui/widgets/buttons/cancel_button.dart';
 
-
-
 /// The dialog used when wanting to join a pre-existing family
 class FamilyCodeDialog extends GetView<FamilyInfoController> {
   final TextEditingController familyCodeController = TextEditingController();

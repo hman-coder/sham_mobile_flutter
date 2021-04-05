@@ -34,10 +34,6 @@ void main(){
     });
 }
 
-class RestartAppException implements Exception {
-
-}
-
 class Sham extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,6 +45,7 @@ class Sham extends StatelessWidget {
           supportedLocales: supportedLocales,
 
           debugShowCheckedModeBanner: false,
+
           onInit: _initializeControllers,
 
           localizationsDelegates: localizationsDelegates,
@@ -62,7 +59,6 @@ class Sham extends StatelessWidget {
           getPages: _getPages(),
 
           initialRoute: '/loading',
-
 
           theme: _buildTheme(context),
           title: 'Sham',
@@ -111,7 +107,7 @@ class Sham extends StatelessWidget {
           headline6: TextStyle(fontSize: ktsLargeTextSize),
           subtitle1: TextStyle(fontSize: ktsMediumTextSize), // ListTile title size
           bodyText2: TextStyle(fontSize: ktsSmallTextSize), // ListTile subtitle size
-          button: TextStyle(fontSize: ktsSmallTextSize)
+          button: TextStyle(fontSize: ktsSmallTextSize, color: kcMaroon)
         ),
 
         bottomAppBarTheme: BottomAppBarTheme(

@@ -74,6 +74,7 @@ Map<String, String> get englishTranslations => {
   'contact_us' : 'Contact us',
   'contains' : 'Contains',
   'change_language' : 'Change language',
+  'create_family' : 'Create family',
   'create_new_account' : 'Create a new account',
   'create_account_to_complete_action' : 'You have to create an account to perform this action',
 
@@ -93,6 +94,7 @@ Map<String, String> get englishTranslations => {
   'edit_phone_number' : 'Edit phone number',
   'edit_address' : 'Edit address',
   'elements' : 'elements',
+  'enter_family_code': 'Enter family code',
   'enter_phone_auth_pin_code' : 'Please enter the 6-digit code that was sent to the number you have submitted.',
   'enter_book_list_name' : 'Enter list name',
   'enter_message_content' : 'Enter message content',
@@ -113,7 +115,10 @@ Map<String, String> get englishTranslations => {
   'facebook' : 'Facebook',
   'facebook_sign_in' : 'Facebook account',
   'family' : 'family',
+  'family_code_is_six_digits' : 'Family code should be 6 digits long',
   'family_info' : 'Family information',
+  'family_name' : 'Family name',
+  'family_not_found': 'We couldn\'t find a family with that code',
   'father' : 'Father',
 
   'first_name' : 'First name',
@@ -139,6 +144,10 @@ Map<String, String> get englishTranslations => {
   'install_app_for_parent' : 'Install Sham app on their device',
   'invalid_code': 'Invalid code',
 
+  // J
+  'join_family' : 'Join a Family',
+  'join_family_request_sent' : 'Join request sent',
+
   // L
   'last_name' : 'Last Name',
   'library_management' : 'Library Management',
@@ -162,6 +171,8 @@ Map<String, String> get englishTranslations => {
   'next_session' : 'Next session',
   'no_books_found' : 'No books here yet',
   'no_child_added_yet' : 'No child added yet',
+  'no_family_added_header' : 'You have not added a family... yet',
+  'no_family_added_description' : 'Adding a family will allow you to register your child in a book club or activity from home. You can also add a partner to have shared management with them over the family',
   'no_items_added' : 'No items added',
 
   // O
