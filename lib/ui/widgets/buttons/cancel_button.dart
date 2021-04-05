@@ -5,11 +5,14 @@ import 'package:get/get.dart';
 class CancelButton extends StatelessWidget {
   final TextStyle style;
 
-  const CancelButton({Key key, this.style}) : super(key: key);
+  final ButtonTextTheme textTheme;
+
+  const CancelButton({Key key, this.style, this.textTheme = ButtonTextTheme.primary }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      textTheme: textTheme,
       child: Text(
         'cancel'.tr,
         style: style,
