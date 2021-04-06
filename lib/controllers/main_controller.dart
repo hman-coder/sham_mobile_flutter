@@ -4,9 +4,10 @@ import 'package:sham_mobile/controllers/activities_controller.dart';
 import 'package:sham_mobile/controllers/book_clubs_controller.dart';
 import 'package:sham_mobile/controllers/books_controller.dart';
 import 'package:sham_mobile/controllers/offers_controller.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 
-class MainController extends GetxController{
+class MainController extends ShamController{
   final PageController pageController = PageController();
 
   var _currentIndex = 0.obs;

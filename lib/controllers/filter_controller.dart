@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
 import 'package:sham_mobile/barrels/book_barrel.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/repositories/filters_repository.dart';
 import 'package:sham_mobile/ui/dialogs/filters_dialogs.dart';
 import 'package:sham_mobile/models/book_filter.dart';
 
-class FilterController extends GetxController {
-  final _isLoading = false.obs;
-
+class FilterController extends ShamController {
   final FiltersRepository _repository = FiltersRepository();
 
   final Rx<BookSearchFilter> _filter;
@@ -24,8 +23,6 @@ class FilterController extends GetxController {
   List<double> get ratingRange => [_filter.value.minRating, _filter.value.maxRating];
 
   List<int> get pagesRange => [_filter.value.minPages, _filter.value.maxPages];
-
-  bool get isLoading => _isLoading.value;
 
   bool get hasRating => ratingRange[0] != -1;
 

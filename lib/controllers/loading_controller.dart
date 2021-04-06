@@ -1,8 +1,9 @@
 
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoadingController extends GetxController {
+class LoadingController extends ShamController {
   static final String _logTag = "LoadingController";
 
   static final String _introShownKey = 'intro_shown';

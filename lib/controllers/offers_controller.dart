@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/controllers/main_controller.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/models/offer.dart';
 import 'package:sham_mobile/repositories/offers_repository.dart';
 
-class OffersController extends GetxController {
+class OffersController extends ShamController {
   var _offers = <Offer>[].obs;
 
   List<Offer> get offers => _offers.toList();

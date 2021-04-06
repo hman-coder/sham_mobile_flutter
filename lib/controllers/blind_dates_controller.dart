@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/repositories/blind_dates_repository.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
 import 'package:sham_mobile/models/blind_date.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 
-class BlindDatesController extends GetxController {
+class BlindDatesController extends ShamController {
   final _obsBlindDates = <BlindDate>[].obs;
 
   List<BlindDate> get blindDates => _obsBlindDates.toList();
@@ -39,7 +40,7 @@ class BlindDatesController extends GetxController {
     if(await Get.find<UserController>().eligibleForServices
     && await _confirmRequest()) {
       await Future.delayed(1.seconds);
-      Get.find<ShamMessageController>().showMessage(ShamMessage(
+      messageController.showMessage(ShamMessage(
         message: 'request_sent'.tr,
         severity: MessageSeverity.mild,
         displayType: MessageDisplayType.snackbar,
@@ -48,7 +49,7 @@ class BlindDatesController extends GetxController {
   }
 
   Future<bool> _confirmRequest() async {
-    return await Get.find<ShamMessageController>()
+    return await messageController
         .showConfirmation(
         title: 'confirm'.tr, message: 'confirm_book_request_message'.tr);
   }

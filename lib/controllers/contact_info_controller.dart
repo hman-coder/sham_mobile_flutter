@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/ui/user/address_ui.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:sham_mobile/ui/user/personal_info_ui.dart';
 
-class ContactInfoController extends GetxController {
+class ContactInfoController extends ShamController {
   var _phoneNumberAuthenticated = true.obs;
 
   var _personalInfoGiven = false.obs;

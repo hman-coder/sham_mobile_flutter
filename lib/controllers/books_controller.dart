@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sham_mobile/controllers/blind_dates_controller.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/ui/books/blind_dates_ui.dart';
 import 'package:sham_mobile/controllers/book_lists_controller.dart';
 import 'package:sham_mobile/ui/dialogs/book_lists_dialogs.dart';
@@ -17,7 +18,7 @@ import 'package:sham_mobile/models/book_list.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 import 'package:sham_mobile/ui/books/book_lists_ui.dart';
 
-class BooksController extends GetxController {
+class BooksController extends ShamController {
   static BookSearchFilter _currentSearchFilter = BookSearchFilter();
 
   RefreshController refreshController = RefreshController();

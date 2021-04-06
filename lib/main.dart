@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sham_mobile/bindings/contact_us_bindings.dart';
 import 'package:sham_mobile/bindings/family_info_bindings.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
 import 'package:sham_mobile/bindings/phone_auth_bindings.dart';
 
 import 'package:sham_mobile/translations/translations.dart';

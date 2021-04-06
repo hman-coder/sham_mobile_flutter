@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/models/address.dart';
 import 'package:sham_mobile/models/gender.dart';
 import 'package:sham_mobile/ui/dialogs/sign_up_alert_dialog.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserController extends GetxController{
+class UserController extends ShamController{
   final String _userIdSharedPreferencesKey = 'user_id';
 
   var _obsUser = User().obs;

@@ -5,10 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:country_pickers/country.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/ui/dialogs/phone_auth_pin_dialog.dart';
 
-class PhoneAuthController extends GetxController {
+class PhoneAuthController extends ShamController {
   static final String  _logTag = "phone_auth_controller";
 
   // vars ----------------------------------------
@@ -96,7 +97,7 @@ class PhoneAuthController extends GetxController {
     log('An error has occurred: $error', name: _logTag, level: 2);
     if(error != null && (error?.plugin != null)) {
       if (error.code == "network-request-failed")
-        Get.find<ShamMessageController>().showMessage(
+        messageController.showMessage(
             ShamMessage(
               displayType: MessageDisplayType.snackbar,
               message: 'No internet connection',
@@ -105,7 +106,7 @@ class PhoneAuthController extends GetxController {
         );
 
       else
-        Get.find<ShamMessageController>().showUnknownError();
+        messageController.showUnknownError();
     }
   }
 
@@ -127,7 +128,7 @@ class PhoneAuthController extends GetxController {
     } catch(error) {
       if(error is FirebaseAuthException) {
         _state.value = _PhoneAuthState.invalid_pin_code;
-        Get.find<ShamMessageController>().showMessage(
+        messageController.showMessage(
             ShamMessage(
                 message: 'invalid_code'.tr,
                 severity: MessageSeverity.moderate,
@@ -138,7 +139,7 @@ class PhoneAuthController extends GetxController {
 
       else {
         _state.value = _PhoneAuthState.none;
-        Get.find<ShamMessageController>().showUnknownError();
+        messageController.showUnknownError();
       }
     }
   }

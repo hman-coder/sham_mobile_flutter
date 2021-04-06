@@ -2,10 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/constants/default_values.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/ui/widgets/error_widgets.dart';
 import 'package:get/get.dart';
 
-class ShamMessageController extends GetxController {
+class ShamMessageController extends ShamController {
   showMessage(ShamMessage error) {
     switch(error.displayType) {
       case MessageDisplayType.snackbar:

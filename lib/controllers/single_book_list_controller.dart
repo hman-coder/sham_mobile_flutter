@@ -1,12 +1,13 @@
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/repositories/books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_list.dart';
 
 /// Responsible for loading books of a specific
-class SingleBookListController extends GetxController {
+class SingleBookListController extends ShamController {
   final BookList bookList;
 
   final books = <Book>[].obs;

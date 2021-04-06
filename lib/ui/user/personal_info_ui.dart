@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/ui/widgets/buttons/sham_screen_width_button.dart';

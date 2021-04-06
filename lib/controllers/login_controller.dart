@@ -1,19 +1,16 @@
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/repositories/login/login_repository.dart';
 import 'package:sham_mobile/models/user.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 
-class LoginController extends GetxController {
-  var _isProcessing = false.obs;
-
+class LoginController extends ShamController {
   final LoginRepository _repository;
 
   LoginController(this._repository);
 
-  bool get isProcessing => _isProcessing.value;
-
   void performGoogleSignIn() async {
-    _isProcessing.value = true;
+    isLoading = true;
     try {
       User user = await _repository.fetchUserFromGoogleAccount();
       await _repository.registerUser(user);
@@ -23,11 +20,11 @@ class LoginController extends GetxController {
     } catch (error) {
       print(error);
     }
-    _isProcessing.value = false;
+    isLoading = false;
   }
 
   void performFacebookSignIn() async {
-    _isProcessing.value = true;
+    isLoading = true;
     try {
       User user = await _repository.fetchUserFromFacebookAccount();
       await _repository.registerUser(user);
@@ -37,11 +34,11 @@ class LoginController extends GetxController {
     } catch(error) {
       print(error);
     }
-      _isProcessing.value = false;
+      isLoading = false;
   }
 
   void performPhoneSignIn() async {
-    _isProcessing.value = true;
+    isLoading = true;
     var phoneNumber = await Get.toNamed('/phone_auth');
     if(phoneNumber != null) {
       User user = User(phoneNumber: phoneNumber);
@@ -50,7 +47,7 @@ class LoginController extends GetxController {
       Get.offNamed('/user/contact_info');
     }
 
-    _isProcessing.value = false;
+    isLoading = false;
 
   }
 }

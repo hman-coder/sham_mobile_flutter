@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/models/contact_message.dart';
 
-class ContactUsController extends GetxController {
+class ContactUsController extends ShamController {
   var _message = ContactMessage(
     subject: 'select_message_subject'.tr,
   ).obs;
@@ -70,7 +71,7 @@ class ContactUsController extends GetxController {
     _sendingMessage.value = false;
     if(messageIsSent) Get.back();
 
-    Get.find<ShamMessageController>().showMessage(ShamMessage(
+    messageController.showMessage(ShamMessage(
         message: message,
         severity: MessageSeverity.mild,
         displayType: MessageDisplayType.snackbar));

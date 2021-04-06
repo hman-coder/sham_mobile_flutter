@@ -1,11 +1,11 @@
-import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/models/activity.dart';
 import 'package:sham_mobile/repositories/activities_repository.dart';
 
-class ActivitiesController extends GetxController {
+class ActivitiesController extends ShamController {
   var _activities = <Activity>[].obs;
 
   ActivitiesRepository _repo = ActivitiesRepository();

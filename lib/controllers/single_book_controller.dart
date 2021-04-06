@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/repositories/books_repository.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/comment.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 
-class SingleBookController extends GetxController {
+class SingleBookController extends ShamController {
   final Rx<Book> _book;
 
   var _comments = <Comment>[];
@@ -40,12 +41,11 @@ class SingleBookController extends GetxController {
 
   void onReserveBook() async {
     if(await Get.find<UserController>().eligibleForServices) {
-      ShamMessageController msgCntrl = Get.find<ShamMessageController>();
-      if(await msgCntrl.showConfirmation(
+      if(await messageController.showConfirmation(
           title: "deliver_book".tr,
           message: '${'deliver_book_confirmation'.tr}${'question_mark'.tr}'))
 
-        msgCntrl.showMessage(ShamMessage(
+        messageController.showMessage(ShamMessage(
           displayType: MessageDisplayType.snackbar,
           severity: MessageSeverity.mild,
           message: 'request_sent'

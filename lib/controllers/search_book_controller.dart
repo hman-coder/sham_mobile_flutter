@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sham_mobile/controllers/sham_controller.dart';
 import 'package:sham_mobile/repositories/books_repository.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/book_filter.dart';
 
 import 'package:sham_mobile/barrels/book_barrel.dart';
 
-class SearchBookController extends GetxController {
+class SearchBookController extends ShamController {
   static final _searchFilter = BookSearchFilter().obs;
 
   final results = <Book>[].obs;

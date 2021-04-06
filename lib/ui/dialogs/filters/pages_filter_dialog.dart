@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sham_mobile/controllers/error_controller.dart';
+import 'package:sham_mobile/controllers/message_controller.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/ui/widgets/activatable_widget.dart';
 import 'package:sham_mobile/ui/widgets/number_spinner.dart';
