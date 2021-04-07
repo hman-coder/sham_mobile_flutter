@@ -6,7 +6,10 @@ abstract class ShamController extends GetxController {
   bool get isLoading => _isLoading.value;
 
   @protected
-  set isLoading(bool value) => _isLoading.value = value;
+  void finishLoading() => _isLoading.value = false;
+
+  @protected
+  void startLoading() => _isLoading.value = true;
 
   var _isLoading;
 

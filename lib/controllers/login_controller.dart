@@ -10,7 +10,7 @@ class LoginController extends ShamController {
   LoginController(this._repository);
 
   void performGoogleSignIn() async {
-    isLoading = true;
+    startLoading();
     try {
       User user = await _repository.fetchUserFromGoogleAccount();
       await _repository.registerUser(user);
@@ -20,11 +20,11 @@ class LoginController extends ShamController {
     } catch (error) {
       print(error);
     }
-    isLoading = false;
+    finishLoading();
   }
 
   void performFacebookSignIn() async {
-    isLoading = true;
+    startLoading();
     try {
       User user = await _repository.fetchUserFromFacebookAccount();
       await _repository.registerUser(user);
@@ -34,11 +34,11 @@ class LoginController extends ShamController {
     } catch(error) {
       print(error);
     }
-      isLoading = false;
+    finishLoading();
   }
 
   void performPhoneSignIn() async {
-    isLoading = true;
+    startLoading();
     var phoneNumber = await Get.toNamed('/phone_auth');
     if(phoneNumber != null) {
       User user = User(phoneNumber: phoneNumber);
@@ -47,7 +47,7 @@ class LoginController extends ShamController {
       Get.offNamed('/user/contact_info');
     }
 
-    isLoading = false;
+    finishLoading();
 
   }
 }

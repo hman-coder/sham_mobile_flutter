@@ -40,7 +40,7 @@ class FamilyInfoController extends ShamController {
   }
 
   void createFamilyFromName(String name) async {
-    isLoading = true;
+    startLoading();
 
     // Web API call
     await Future.delayed(1.seconds);
@@ -55,7 +55,7 @@ class FamilyInfoController extends ShamController {
     // Update hasFamily property
     _updateHasFamily();
 
-    isLoading = false;
+    finishLoading();
   }
 
   /// Updates hasFamily property with correct value
@@ -110,23 +110,21 @@ class FamilyInfoController extends ShamController {
   }
 
   Future<bool> joinFamilyWithCode(String code) async {
-    isLoading = true;
-
-    ShamMessageController messageCenter = Get.find<ShamMessageController>();
+    startLoading();
     // Verify code length
     if (code.length != 6) {
-      messageCenter.showMessage(ShamMessage(
+      messageController.showMessage(ShamMessage(
         severity: MessageSeverity.moderate,
         displayType: MessageDisplayType.snackbar,
         message: 'family_code_is_six_digits'.tr + '.',
       ));
-      isLoading = false;
+      finishLoading();
 
     // Verify code matches a family code
     } else if (code != this.code) {
       await Future.delayed(1.seconds);
-      isLoading = false;
-      messageCenter.showMessage(ShamMessage(
+      finishLoading();
+      messageController.showMessage(ShamMessage(
         severity: MessageSeverity.moderate,
         displayType: MessageDisplayType.snackbar,
         message: 'family_not_found'.tr + '.',
@@ -136,12 +134,12 @@ class FamilyInfoController extends ShamController {
     // Code is correct.
     } else {
       await Future.delayed(1.seconds);
-      isLoading = false;
+      finishLoading();
       // Hide dialog
       Get.back();
 
       // Show notification
-      messageCenter.showMessage(ShamMessage(
+      messageController.showMessage(ShamMessage(
         severity: MessageSeverity.mild,
         displayType: MessageDisplayType.snackbar,
         message: 'join_family_request_sent'.tr + '.',
