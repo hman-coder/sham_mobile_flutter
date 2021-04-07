@@ -131,7 +131,7 @@ class _AddChildDialogState extends State<AddChildDialog> {
 
   String get _birthdayButtonText {
     if (_selectedBirthday != null)
-      return StringHelper.dateToString(_selectedBirthday);
+      return _selectedBirthday.toShamFormattedString();
     else
       return 'birthday'.tr + '*';
   }

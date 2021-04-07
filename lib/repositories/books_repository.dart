@@ -38,8 +38,8 @@ class BooksRepository{
   }
 
   bool _eligibleForSearch(Book searchBook, Book book) {
-    String normalizedBookTitle = StringHelper.normalizeArabicText(book.title);
-    String normalizedSearchBookTitle = StringHelper.normalizeArabicText(searchBook.title);
+    String normalizedBookTitle = book.title.withNormalizedArabicCharacters();
+    String normalizedSearchBookTitle = searchBook.title.withNormalizedArabicCharacters();
 
     bool title = (searchBook.title == null || normalizedBookTitle.contains(normalizedSearchBookTitle));
     bool authors = searchBook.authors.isEmpty || _checkIfListAppliesForSearch(book.authors, searchBook.authors);

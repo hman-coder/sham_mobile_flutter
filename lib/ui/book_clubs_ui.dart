@@ -77,7 +77,7 @@ class BookClubsUI extends GetView<BookClubsController> {
             Container(height: 10,),
             _buildLabelValuePair('age_group'.tr, bookClub.ageGroup.toString()),
             _buildLabelValuePair('frequency'.tr, bookClub.frequency),
-            _buildLabelValuePair('next_session'.tr, StringHelper.dateToString(bookClub.nextSession)),
+            _buildLabelValuePair('next_session'.tr, bookClub.nextSession.toShamFormattedString()),
             _buildLabelValuePair('participants'.tr, '${bookClub.participants} \\ ${bookClub.slots}'),
             _buildMoreInfoButton(bookClub),
             Container(height: 15.0),
