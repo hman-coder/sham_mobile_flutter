@@ -35,9 +35,9 @@ class MainUI extends GetView<MainController> {
                   backgroundColor: Colors.black,
                   items: <BottomNavigationBarItem>[
                     BottomNavigationBarItem(backgroundColor: Colors.black, label: 'books'.tr, icon: Icon(ShamCustomIcons.book_stack)),
-                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'clubs'.tr, icon: Icon(Icons.group)),
-                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'activities'.tr, icon: Icon(Icons.event)),
-                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'offers'.tr, icon: Icon(Icons.local_offer)),
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'clubs'.tr, icon: Icon(ShamCustomIcons.book_club)),
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'activities'.tr, icon: Icon(ShamCustomIcons.activity)),
+                    BottomNavigationBarItem(backgroundColor: Colors.black, label: 'offers'.tr, icon: Icon(ShamCustomIcons.offer)),
                   ],
                 ),
               ),
