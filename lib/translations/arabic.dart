@@ -9,6 +9,7 @@ Map<String, String> get arabicTranslations => {
   'accept_join_request_for_parent' : 'اقبل طلب انضمامهم (من جهازك)',
   'account': 'الحساب',
   'activate' : 'تفعيل',
+  'activity' : 'نشاط',
   'activities' : 'النشاطات',
   'add' : 'إضافة',
   'add_child' : 'إضافة طفل',
@@ -33,6 +34,8 @@ Map<String, String> get arabicTranslations => {
   // B
   'birthday' : 'عيد الميلاد',
   'blind_dates' : 'موعد أعمى',
+  'book' : 'كتاب',
+  'book_club' : 'نادي كتاب',
   'book_clubs' : 'نوادي الكتاب',
   'book_lists' : 'قوائم الكتب المحفوظة',
   'bookmarks' : 'المفضلة',
@@ -174,6 +177,7 @@ Map<String, String> get arabicTranslations => {
   'no_family_added_header' : 'لم تقم بإضافة عائلة... حتى الآن',
   'no_family_added_description' : 'ستتيح لكم إضافة عائلة تسجيل أولادكم في نوادي الكتاب والنشاطات الخاصة بهم، كما بإمكانكم أن تُضيفوا شريككم (زوج \\ زوجة) إلى العائلة لتقوما بإدارتها سوية',
   'no_items_added' : 'لم تضف عناصر هنا',
+  'no_items_to_show' : 'لا توجد أية عناصر هنا',
 
   // O
   'offers' : 'العروض',
@@ -201,6 +205,12 @@ Map<String, String> get arabicTranslations => {
   'priority_score_low' : 'متدنية',
   'priority_score_mid' : 'متوسطة',
   'provide_valid_number' : 'يرجى إدخال رقم هاتف صحيح',
+
+  'purchase_record_subject' : 'المادة',
+  'purchase_record_item_name' : 'العنوان',
+  'purchase_record_made_by' : 'المشتري',
+  'purchase_record_for_family_member' : 'المشترى له',
+  'purchase_record_payment' : 'القيمة',
 
   // Q
   'question_mark' : '؟',

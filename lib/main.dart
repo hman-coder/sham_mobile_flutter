@@ -21,6 +21,7 @@ import 'controllers/user_controller.dart';
 import 'barrels/contact_info_barrel.dart';
 import 'barrels/contact_us_barrel.dart';
 import 'barrels/family_info_barrel.dart';
+import 'barrels/accounting_barrel.dart';
 
 import 'package:sham_mobile/constants/locales.dart';
 
@@ -89,12 +90,14 @@ class Sham extends StatelessWidget {
     // user
     GetPage(name: '/user/contact_info', page: () => ContactInfoUI(), binding: ContactInfoBindings(),),
     GetPage(name:'/user/family_info', page: () => FamilyInfoUI(), binding: FamilyInfoBindings(),),
+    GetPage(name: '/user/account_info', page: () => AccountingUI(),binding: AccountingBindings(),),
 
     // Drawer
     GetPage(name:'/about_app', page: () => AboutAppUI(),),
     GetPage(name:'/contact_us', page: () => ContactUsUI(), binding: ContactUsBindings(),),
     GetPage(name:'/about_library', page: () => AboutLibraryUI(),),
     GetPage(name: '/change_language', page: () => ChangeLanguageDialog(),),
+
   ];
 
   ThemeData _buildTheme(BuildContext context) {

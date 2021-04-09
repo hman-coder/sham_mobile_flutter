@@ -9,6 +9,7 @@ Map<String, String> get englishTranslations => {
   'accept_join_request_for_parent' : 'On your device, accept their request',
   'account' : 'Account',
   'activate' : 'Activate',
+  'activity' : 'Activity',
   'activities' : 'Activities',
   'add' : 'Add',
   'add_book_list' : 'Add book list',
@@ -33,7 +34,9 @@ Map<String, String> get englishTranslations => {
 
   // B
   'birthday' : 'Birthday',
+  'book' : 'Book',
   'books' : 'Books',
+  'book_club' : 'Book club',
   'book_clubs' : 'Book clubs',
   'book_lists' : 'Book Lists',
   'book_requested_successfully' : 'Book was requested successfully',
@@ -174,6 +177,7 @@ Map<String, String> get englishTranslations => {
   'no_family_added_header' : 'You have not added a family... yet',
   'no_family_added_description' : 'Adding a family will allow you to register your child in a book club or activity from home. You can also add a partner to have shared management with them over the family',
   'no_items_added' : 'No items added',
+  'no_items_to_show' : 'No items to show',
 
   // O
   'offers' : 'Offers',
@@ -201,6 +205,12 @@ Map<String, String> get englishTranslations => {
   'priority_score_low' : 'Low',
   'priority_score_mid' : 'Mid',
   'provide_valid_number' : 'You must provide a valid number',
+  'purchase_record_subject' : 'Subject',
+  'purchase_record_item_name' : 'Item',
+  'purchase_record_made_by' : 'Buyer',
+  'purchase_record_for_family_member' : 'Bought for',
+  'purchase_record_payment' : 'Amount paid',
+
 
   // Q
   'question_mark' : '?',

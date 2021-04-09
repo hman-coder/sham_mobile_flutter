@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// A tooltip that shows the message on tap instead of on long press
-class OnClickToolTip extends StatelessWidget {
+class OnClickTooltip extends StatelessWidget {
   final String message;
 
   final double height;
@@ -26,7 +26,7 @@ class OnClickToolTip extends StatelessWidget {
 
   final Widget child;
 
-  OnClickToolTip(
+  OnClickTooltip(
       {Key key,
       @required this.message,
       this.height,
