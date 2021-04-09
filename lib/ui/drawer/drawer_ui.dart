@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/controllers/user_controller.dart';
 import 'package:sham_mobile/ui/drawer/change_language_dialog.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class DrawerUI extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _DrawerUIState extends State<DrawerUI> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/drawer_background.png'),
+            image: AssetImage('${kpAssetImages}drawer_background.png'),
             fit: BoxFit.fill,
           ),
         ),
@@ -42,14 +43,14 @@ class _DrawerUIState extends State<DrawerUI> {
           CircleAvatar(
               backgroundImage: userController.isUserLoggedIn
                   ? AssetImage(userController.user.image)
-                  : AssetImage('assets/images/profile_picture.png'),
+                  : AssetImage('${kpAssetImages}profile_picture.png'),
               radius: 35),
           Container(
             margin: EdgeInsets.only(top: 10, right: 10),
             child: GestureDetector(
               onTap: userController.isUserLoggedIn
                   ? () => Get.toNamed('/login')
-                  : null, // TODO: Go to profile
+                  : null,
               child: Text(
                 userController.isUserLoggedIn
                     ? userController.user.fullName

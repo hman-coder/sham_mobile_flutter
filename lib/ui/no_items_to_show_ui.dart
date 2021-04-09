@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:get/utils.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 /// Used in views where there should be lists but there are no items to show.
 /// It shows a background, fading image, with a text below it.
@@ -12,7 +13,7 @@ class NoItemsToShowUI extends StatelessWidget {
   /// Image asset path
   final String imagePath;
 
-  NoItemsToShowUI({Key key, this.message, this.imagePath = 'assets/images/sham_logo.png'}) : super(key: key);
+  NoItemsToShowUI({Key key, this.message, this.imagePath = '${kpAssetImages}sham_logo.png'}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

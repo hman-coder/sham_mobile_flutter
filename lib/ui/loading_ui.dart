@@ -5,6 +5,7 @@ import 'package:sham_mobile/controllers/loading_controller.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/ui/widgets/image_switcher.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class LoadingUI extends GetView<LoadingController> {
   @override
@@ -57,7 +58,7 @@ class LoadingUI extends GetView<LoadingController> {
         elevation: 12,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Image.asset('assets/images/sham_logo.png',
+          child: Image.asset('${kpAssetImages}sham_logo.png',
             fit: BoxFit.fill,),
         ),
       ),
@@ -69,11 +70,11 @@ class LoadingUI extends GetView<LoadingController> {
         opacity: 0.6,
         child: ImageSwitcher(
           images: const [
-            'assets/images/sham_books_1.jpg',
-            'assets/images/sham_facade.jpg',
-            'assets/images/sham_books_2.jpg',
-            'assets/images/sham_kids.jpg',
-            'assets/images/sham_single_book.jpg',
+            '${kpAssetImages}sham_books_1.jpg',
+            '${kpAssetImages}sham_facade.jpg',
+            '${kpAssetImages}sham_books_2.jpg',
+            '${kpAssetImages}sham_kids.jpg',
+            '${kpAssetImages}sham_single_book.jpg',
           ],
           duration: 3.seconds,
         ),

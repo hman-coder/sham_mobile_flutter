@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:sham_mobile/constants/paths.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -20,7 +19,7 @@ class AboutLibraryUI extends StatelessWidget {
             child: Material(
               elevation: 6,
               child: Image.asset(
-                'assets/images/sham_facade.jpg',
+                '${kpAssetImages}sham_facade.jpg',
                 width: double.infinity,
                 fit: BoxFit.fitWidth,
               ),

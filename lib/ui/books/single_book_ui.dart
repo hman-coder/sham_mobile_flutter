@@ -10,6 +10,7 @@ import 'package:sham_mobile/constants/default_values.dart';
 import 'package:get/get.dart';
 import 'package:sham_mobile/helpers/get_extensions.dart';
 import 'package:sham_mobile/controllers/single_book_controller.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class SingleBookUI extends GetView<SingleBookController> {
   @override
@@ -57,7 +58,7 @@ class SingleBookUI extends GetView<SingleBookController> {
     print('${comment.body}');
 
     if (comment != null) {
-      comment.userImage = 'assets/images/user_icon.png';
+      comment.userImage = '${kpAssetImages}user_icon.png';
       // context.bloc<ViewBookBloc>().add(AddReviewEvent(comment));
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sham_mobile/models/activity.dart';
 import 'package:sham_mobile/models/age_group.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class BookClubsRepository extends ChangeNotifier {
   List<Activity> get bookClubs {
@@ -14,7 +15,7 @@ class BookClubsRepository extends ChangeNotifier {
         isBookClub: true,
         price: 5000,
         nextSession: DateTime(2020, 7, 30),
-        image: 'assets/images/group_reading.jpg',
+        image: '${kpAssetImages}group_reading.jpg',
         duration: '90 دقيقة',
         participants: 2,
         slots: 10,
@@ -29,7 +30,7 @@ class BookClubsRepository extends ChangeNotifier {
         isBookClub: true,
         price: 8000,
         nextSession: DateTime(2020, 8, 1),
-        image: 'assets/images/family_reading.jpg',
+        image: '${kpAssetImages}family_reading.jpg',
         duration: '90 دقيقة',
         participants: 10,
         slots: 10,
@@ -44,7 +45,7 @@ class BookClubsRepository extends ChangeNotifier {
         isBookClub: true,
         price: 10000,
         nextSession: DateTime(2020, 8, 10),
-        image: 'assets/images/aged_reading.jpg',
+        image: '${kpAssetImages}aged_reading.jpg',
         duration: '90 دقيقة',
         participants: 8,
         slots: 10,
@@ -58,7 +59,7 @@ class BookClubsRepository extends ChangeNotifier {
         isBookClub: true,
         price: 50000,
         nextSession: DateTime(2020, 9, 1),
-        image: 'assets/images/group_reading.jpg',
+        image: '${kpAssetImages}group_reading.jpg',
         duration: '90 دقيقة',
         participants: 7,
         slots: 10,
@@ -73,7 +74,7 @@ class BookClubsRepository extends ChangeNotifier {
         isBookClub: true,
         price: 50000,
         nextSession: DateTime(2020, 9, 3),
-        image: 'assets/images/adult_reading.jpg',
+        image: '${kpAssetImages}adult_reading.jpg',
         duration: '90 دقيقة',
         participants: 8,
         slots: 10,

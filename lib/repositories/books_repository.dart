@@ -5,6 +5,7 @@ import 'package:sham_mobile/models/author.dart';
 import 'package:sham_mobile/models/book.dart';
 import 'package:sham_mobile/models/category.dart';
 import 'package:sham_mobile/models/offer.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class BooksRepository{
 
@@ -91,7 +92,7 @@ class BooksRepository{
       authors: [Author(name: 'جوردان ب. بيترسون')],
       isNew: true,
       hasOffer: false,
-      image: 'assets/images/12_rules.jpg',
+      image: '${kpAssetImages}12_rules.jpg',
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'فلسفة') , Category(name: 'تطوير ذاتي')
       ],
@@ -115,7 +116,7 @@ class BooksRepository{
       isNew: false,
       hasOffer: false,
       price: 4500,
-      image: 'assets/images/crime_and_punishment.jpg',
+      image: '${kpAssetImages}crime_and_punishment.jpg',
       categories: <Category>[
         Category(name: 'رعب'), Category(name: 'روايات'), Category(name: 'أدب روسي')
       ],
@@ -141,7 +142,7 @@ class BooksRepository{
       isNew: false,
       price: 4200,
       hasOffer: false,
-      image: 'assets/images/body_language.jpg',
+      image: '${kpAssetImages}body_language.jpg',
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'تطوير ذاتي')
       ],
@@ -168,7 +169,7 @@ class BooksRepository{
       rating: 3,
       price: 3000,
       hasOffer: true,
-      image: 'assets/images/mill.png',
+      image: '${kpAssetImages}mill.png',
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'تجارة'), Category(name: 'تطوير ذاتي')
       ],
@@ -195,7 +196,7 @@ class BooksRepository{
       price: 3800,
       isNew: false,
       hasOffer: true,
-      image: 'assets/images/dorian.png',
+      image: '${kpAssetImages}dorian.png',
       categories: <Category>[
         Category(name: 'أدب إنكليزي'), Category(name: 'رعب')
       ],
@@ -223,7 +224,7 @@ class BooksRepository{
       price: 3000,
       isNew: true,
       hasOffer: false,
-      image: 'assets/images/fuck.png',
+      image: '${kpAssetImages}fuck.png',
 
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'تطوير ذاتي')
@@ -250,7 +251,7 @@ class BooksRepository{
       authors: [Author(name: 'جوردان ب. بيترسون')],
       isNew: true,
       hasOffer: false,
-      image: 'assets/images/12_rules.jpg',
+      image: '${kpAssetImages}12_rules.jpg',
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'فلسفة') , Category(name: 'تطوير ذاتي')
       ],
@@ -274,7 +275,7 @@ class BooksRepository{
       isNew: false,
       hasOffer: false,
       price: 4500,
-      image: 'assets/images/crime_and_punishment.jpg',
+      image: '${kpAssetImages}crime_and_punishment.jpg',
       categories: <Category>[
         Category(name: 'رعب'), Category(name: 'روايات'), Category(name: 'أدب روسي')
       ],
@@ -300,7 +301,7 @@ class BooksRepository{
       isNew: false,
       price: 4200,
       hasOffer: false,
-      image: 'assets/images/body_language.jpg',
+      image: '${kpAssetImages}body_language.jpg',
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'تطوير ذاتي')
       ],
@@ -327,7 +328,7 @@ class BooksRepository{
       rating: 3,
       price: 3000,
       hasOffer: true,
-      image: 'assets/images/mill.png',
+      image: '${kpAssetImages}mill.png',
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'تجارة'), Category(name: 'تطوير ذاتي')
       ],
@@ -354,7 +355,7 @@ class BooksRepository{
       price: 3800,
       isNew: false,
       hasOffer: true,
-      image: 'assets/images/dorian.png',
+      image: '${kpAssetImages}dorian.png',
       categories: <Category>[
         Category(name: 'أدب إنكليزي'), Category(name: 'رعب')
       ],
@@ -382,7 +383,7 @@ class BooksRepository{
       price: 3000,
       isNew: true,
       hasOffer: false,
-      image: 'assets/images/fuck.png',
+      image: '${kpAssetImages}fuck.png',
 
       categories: <Category>[
         Category(name: 'تنمية بشرية'), Category(name: 'تطوير ذاتي')

@@ -1,5 +1,6 @@
 import 'package:sham_mobile/barrels/book_barrel.dart';
 import 'package:sham_mobile/models/activity.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class ActivitiesRepository {
   Future<List<Activity>> fetchActivities([int currentIndex = 0]) async {
@@ -13,15 +14,14 @@ class ActivitiesRepository {
       frequency: 'يوم واحد',
       duration: 'ساعة واحدة',
       ageGroup: AgeGroup.adults(),
-      image: 'assets/images/blind_date_1.jpg',
+      image: '${kpAssetImages}blind_date_1.jpg',
     ),
 
     Activity(
       title: 'محاضرة عن المشاريع الخاصة',
       ageGroup: AgeGroup.adults(),
       duration: 'ساعة واحدة',
-      image: 'assets/images/group_reading.jpg',
-      // image: 'assets/images/basic_upside_down.jpg',
+      image: '${kpAssetImages}group_reading.jpg',
     ),
 
     Activity(
@@ -29,7 +29,7 @@ class ActivitiesRepository {
       ageGroup: AgeGroup.kids(),
       duration: 'شهر واحد',
       nextSession: DateTime(2021, 2, 15),
-      image: 'assets/images/sham_bag.jpg',
+      image: '${kpAssetImages}sham_bag.jpg',
     ),
 
     Activity(
@@ -37,7 +37,7 @@ class ActivitiesRepository {
       ageGroup: AgeGroup.kids(),
       duration: 'شهر واحد',
       nextSession: DateTime(2021, 2, 15),
-      image: 'assets/images/family_reading.jpg',
+      image: '${kpAssetImages}family_reading.jpg',
     ),
   ];
 }

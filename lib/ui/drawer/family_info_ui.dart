@@ -11,6 +11,7 @@ import 'package:sham_mobile/ui/widgets/named_avatar.dart';
 import 'package:sham_mobile/ui/dialogs/add_child_dialog.dart';
 import 'package:sham_mobile/ui/dialogs/family/family_code_dialog.dart';
 import 'package:sham_mobile/ui/widgets/activatable_widget.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class FamilyInfoUI extends GetView<FamilyInfoController> {
   static final double topSectionHeight = 370;
@@ -289,7 +290,7 @@ class _ChildrenWidget extends GetView<FamilyInfoController> {
     return NamedAvatar(
       image: childHasImage
           ? NetworkImage(child.image)
-          : AssetImage('assets/images/profile_picture.png'),
+          : AssetImage('${kpAssetImages}profile_picture.png'),
       title: child.name,
       backgroundColor: childHasImage ? Colors.white : Colors.black,
       subtitle: child.title + ' ' + 'years_old'.tr,

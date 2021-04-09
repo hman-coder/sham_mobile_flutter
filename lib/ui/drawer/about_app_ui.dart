@@ -3,6 +3,7 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:sham_mobile/constants/sham_custom_icons.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/ui/widgets/buttons/social_button.dart';
+import 'package:sham_mobile/constants/paths.dart';
 
 class AboutAppUI extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class AboutAppUI extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/swissknife_logo.png',
+                  '${kpAssetImages}swissknife_logo.png',
                   fit: BoxFit.fill,
                 ),
                 Text('SwissKnife Software',

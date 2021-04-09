@@ -7,7 +7,7 @@ import 'package:sham_mobile/ui/widgets/linear_gradient_background.dart';
 import 'package:sham_mobile/constants/sham_custom_icons.dart';
 import 'package:sham_mobile/constants/default_values.dart';
 import 'package:sham_mobile/ui/widgets/labeled_divider.dart';
-
+import 'package:sham_mobile/constants/paths.dart';
 import 'package:sham_mobile/controllers/login_controller.dart';
 import 'package:sham_mobile/ui/widgets/buttons/social_button.dart';
 
@@ -119,7 +119,7 @@ class LoginUI extends GetView<LoginController> {
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/sham_bag.jpg'),
+                image: AssetImage('${kpAssetImages}sham_bag.jpg'),
                 fit: BoxFit.fitHeight
             )
         ),
